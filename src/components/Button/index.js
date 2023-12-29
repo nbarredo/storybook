@@ -15,7 +15,7 @@ function Button ({
 }) {
   return (
     <CarbonButton
-      className={`${styles.button} className`}
+      className={`${styles.button} ${className || ""}`}
       disabled={disabled}
       iconDescription='Icon Description'
       kind={kind}
