@@ -17,7 +17,7 @@ function Button ({
     <CarbonButton
       className={`${styles.button} className`}
       disabled={disabled}
-      iconDescription="Icon Description"
+      iconDescription='Icon Description'
       kind={kind}
       onClick={(evt) => onClick(evt)}
       renderIcon={renderIcon}

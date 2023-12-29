@@ -1,5 +1,5 @@
 import React from "react";
-//import "../../App.scss";
+// import "../../App.scss";
 import { Button } from "./index";
 
 const meta = {
@@ -96,6 +96,7 @@ export const Danger = {
   }
 };
 
+// eslint-disable-next-line camelcase
 export const Danger_Tertiary = {
   args: {
     ...Default.args,
@@ -103,6 +104,7 @@ export const Danger_Tertiary = {
   }
 };
 
+// eslint-disable-next-line camelcase
 export const Danger_Ghost = {
   args: {
     ...Default.args,

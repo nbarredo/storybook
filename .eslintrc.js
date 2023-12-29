@@ -1,3 +1,4 @@
+
 module.exports = {
   env: {
     browser: true,
@@ -8,10 +9,7 @@ module.exports = {
       version: "detect"
     }
   },
-  extends: [
-    "standard",
-    "plugin:react/recommended"
-  ],
+  extends: ["standard", "plugin:react/recommended", "plugin:storybook/recommended"],
   overrides: [
     {
       env: {
@@ -32,7 +30,7 @@ module.exports = {
   plugins: [
     "react"
   ],
-  ignorePatterns: ["*.test.js", "*.stories.js"],
+  ignorePatterns: ["*.test.js", "**/story_samples/*.*"],
   rules: {
     semi: [2, "always"],
     quotes: ["error", "double"],
