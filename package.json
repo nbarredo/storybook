@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem -p 6006",
     "build-storybook": "storybook build",
     "lint": "npx eslint \"./**/*.js\" --cache --cache-strategy content",
     "lint:fix": "npx eslint \"./**/*.js\" --cache --cache-strategy content --fix"
