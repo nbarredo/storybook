@@ -1,7 +1,7 @@
 import React from "react";
 import { Button as CarbonButton } from "@carbon/react";
 import PropTypes from "prop-types";
-import styles from "./Button.module.scss";
+// import styles from "./Button.module.scss";
 import "./Button.scss";
 
 function Button ({
@@ -16,7 +16,7 @@ function Button ({
 }) {
   return (
     <CarbonButton
-      className={`${styles.button} ${className || ""}`}
+      className={className || ""}
       disabled={disabled}
       iconDescription='Icon Description'
       kind={kind}
