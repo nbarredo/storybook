@@ -5,7 +5,7 @@ import { Button } from ".";
 const handleCLick = jest.fn();
 
 test("Renders enabled Button component", () => {
-  const buttonComponentEnabled = <Button type="tertiary" disabled={false} onClick={handleCLick} label='Submit' />;
+  const buttonComponentEnabled = <Button kind="tertiary" disabled={false} onClick={handleCLick} label='Submit' />;
   render(buttonComponentEnabled);
   const buttonElement = screen.getByText("Submit");
   expect(buttonElement).toBeDefined();
