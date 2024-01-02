@@ -1,4 +1,5 @@
 import React from "react";
+import AddIcon from "@mui/icons-material/Add";
 // import "../../App.scss";
 import { Button } from "./index";
 
@@ -9,6 +10,7 @@ const meta = {
     onClick: { action: "clicked" },
     type: {
       options: ["button", "submit", "reset"],
+      defaultValue: "button",
       control: {
         type: "select"
       }
@@ -39,9 +41,16 @@ Default.args = {
   label: "Button"
 };
 
+export const WithIcon = {
+  args: {
+    ...Default.args,
+    renderIcon: AddIcon
+  }
+};
+/*
 export const Path = {
   args: {
     ...Default.args,
     kind: "path"
   }
-};
+}; */
