@@ -7,30 +7,6 @@ const meta = {
   component: Button,
   argTypes: {
     onClick: { action: "clicked" },
-    label: {
-      control: { type: "text" },
-      defaultValue: "Submit",
-      description: "Some text"
-    },
-    size: {
-      options: ["sm", "md", "lg"],
-      control: { type: "select" }
-    },
-    kind: {
-      options: [
-        "primary",
-        "secondary",
-        "tertiary",
-        "ghost",
-        "danger",
-        "danger--tertiary",
-        "danger--ghost",
-        "path"
-      ],
-      control: {
-        type: "select"
-      }
-    },
     type: {
       options: ["button", "submit", "reset"],
       control: {
@@ -43,10 +19,6 @@ const meta = {
       control: {
         type: "radio"
       }
-    },
-    disabled: {
-      options: [true, false],
-      control: { type: "select" }
     }
   },
   parameters: {
@@ -64,58 +36,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   disabled: false,
-  label: "test"
-};
-
-export const Primary = {
-  args: {
-    ...Default.args,
-    kind: "primary"
-  }
-};
-
-export const Secondary = {
-  args: {
-    ...Default.args,
-    kind: "secondary"
-  }
-};
-
-export const Tertiary = {
-  args: {
-    ...Default.args,
-    kind: "tertiary"
-  }
-};
-
-export const Ghost = {
-  args: {
-    ...Default.args,
-    kind: "ghost"
-  }
-};
-
-export const Danger = {
-  args: {
-    ...Default.args,
-    kind: "danger"
-  }
-};
-
-// eslint-disable-next-line camelcase
-export const Danger_Tertiary = {
-  args: {
-    ...Default.args,
-    kind: "danger-tertiary"
-  }
-};
-
-// eslint-disable-next-line camelcase
-export const Danger_Ghost = {
-  args: {
-    ...Default.args,
-    kind: "danger-ghost"
-  }
+  label: "Button"
 };
 
 export const Path = {

@@ -33,8 +33,11 @@ function Button ({
 export { Button };
 
 Button.propTypes = {
+  /** An optional class which will be applied to the button  */
   className: PropTypes.string,
+  /** Use to set the disabled/enabled state of the Button */
   disabled: PropTypes.bool,
+
   kind: PropTypes.oneOf(["primary",
     "secondary",
     "danger",
@@ -43,6 +46,7 @@ Button.propTypes = {
     "danger--ghost",
     "danger--tertiary",
     "tertiary"]),
+  /** Hello Label */
   label: PropTypes.string,
   onClick: PropTypes.func,
   renderIcon: PropTypes.oneOfType([
@@ -51,9 +55,7 @@ Button.propTypes = {
   ]),
   size: PropTypes.oneOf(["sm",
     "md",
-    "lg",
-    "xl",
-    "2xl"]),
+    "lg"]),
   type: PropTypes.oneOf(["button",
     "reset",
     "submit"])

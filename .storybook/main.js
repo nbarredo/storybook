@@ -5,6 +5,7 @@ const config = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
+    "@storybook/addon-docs",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
@@ -19,7 +20,7 @@ const config = {
     },
   },
   docs: {
-    autodocs: "tag",
+    autodocs: true,
   },
   staticDirs: ["..\\public"],
 };
