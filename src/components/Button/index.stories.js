@@ -48,6 +48,12 @@ const meta = {
       options: [true, false],
       control: { type: "select" }
     }
+  },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/XV5UEMIBTZvKb1xg3YUyuM/Design-System---External?type=design&node-id=1%3A4388&mode=dev"
+    }
   }
 };
 
