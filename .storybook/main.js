@@ -21,6 +21,7 @@ const config = {
   },
   docs: {
     autodocs: true,
+    defaultName: 'Documentation',
   },
   staticDirs: ["..\\public"],
 };
