@@ -16,12 +16,20 @@ function Button ({
   renderIcon,
   className
 }) {
+  let buttonType;
+  if (kind === "ghost--subtle") {
+    className = `${className || ""} .es--btn--ghost--subtle`;
+    buttonType = "ghost";
+  } else {
+    buttonType = kind;
+  }
   return (
+
     <CarbonButton
       className={className || ""}
       disabled={disabled}
       iconDescription='Icon Description'
-      kind={kind}
+      kind={buttonType}
       onClick={(evt) => onClick(evt)}
       renderIcon={renderIcon}
       size={size}
@@ -47,7 +55,8 @@ Button.propTypes = {
     "danger--primary",
     "danger--ghost",
     "danger--tertiary",
-    "tertiary"]),
+    "tertiary",
+    "ghost--subtle"]),
   /** The text content of the button */
   label: PropTypes.string,
   /** A function that should be triggererd when the Button is clicked */
