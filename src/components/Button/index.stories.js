@@ -13,13 +13,6 @@ const meta = {
       control: {
         type: "select"
       }
-    },
-    iconPosition: {
-      options: ["before", "after"],
-      defaultValue: "after",
-      control: {
-        type: "radio"
-      }
     }
   },
   parameters: {
@@ -37,8 +30,11 @@ const Template = (args) => <Button {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
+  size: "lg",
   disabled: false,
-  label: "Button"
+  label: "Button",
+  kind: "primary",
+  type: "button"
 };
 
 export const WithIcon = {
