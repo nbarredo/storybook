@@ -4,7 +4,7 @@
 /// 
 .cds--btn {
   border-radius: 8px;
-  color: var(--teal-50);
+  color: var(--black);
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   font-style: normal;
@@ -12,11 +12,18 @@
   letter-spacing: 0.16px;
 
   &.cds--btn--primary {
-    background-color: #1ab0ff;
+    background-color: var(--blue-50)
   }
   &.cds--btn--secondary {
-    background-color: #068bdb;
-  }  
+    background-color: var(--blue-60)
+  }
+  &.cds--btn--tertiary {
+    background-color: transparent;
+  }
+  
+  
+
+ 
 }
 /*
 .cds--btn {
