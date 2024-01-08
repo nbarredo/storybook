@@ -18,7 +18,7 @@ function Button ({
 }) {
   let buttonType;
   if (kind === "ghost--subtle") {
-    className = `${className || ""} .es--btn--ghost--subtle`;
+    className = `${className || ""} es--btn--ghost--subtle`;
     buttonType = "ghost";
   } else {
     buttonType = kind;
