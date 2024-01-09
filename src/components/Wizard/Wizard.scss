@@ -1,0 +1,347 @@
+// Delete these styles if you can include Carbon styles TODO: talk with David about why this is here?(repeated code?)
+.cds--modal {
+  position: fixed;
+  z-index: 9000;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  content: "";
+  opacity: 1;
+  transition: opacity 240ms cubic-bezier(0.4, 0.14, 1, 1),
+    visibility 0ms linear 240ms;
+}
+
+.cds--modal.is-visible .cds--modal-container {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transition: -webkit-transform 240ms cubic-bezier(0, 0, 0.3, 1);
+  transition: transform 240ms cubic-bezier(0, 0, 0.3, 1);
+  transition: transform 240ms cubic-bezier(0, 0, 0.3, 1),
+    -webkit-transform 240ms cubic-bezier(0, 0, 0.3, 1);
+}
+
+.cds--modal-container {
+  position: fixed;
+  top: 0;
+  display: grid;
+  overflow: overlay;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr auto;
+  outline: 3px solid transparent;
+  outline-offset: -3px;
+  -webkit-transform: translate3d(0, -24px, 0);
+  transform: translate3d(0, -24px, 0);
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+  transition: -webkit-transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
+  transition: transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
+  transition: transform 240ms cubic-bezier(0.4, 0.14, 1, 1),
+    -webkit-transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
+}
+
+@media (min-width: 42rem) {
+  .cds--modal-container {
+    position: static;
+    width: 84%;
+    height: auto;
+    overflow: overlay;
+  }
+}
+
+.cds--assistive-text,
+.cds--visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+  visibility: inherit;
+  white-space: nowrap;
+}
+
+.cds--modal-content {
+  position: relative;
+}
+
+.c-wizard {
+  background-color: rgba(33, 56, 72, 0.8);
+}
+
+.c-wizard {
+  .cds--modal-container {
+    width: 92%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.35);
+    background: rgb(45, 101, 125);
+    background: linear-gradient(90deg, #2d657d 0%, #368b70 100%);
+    padding: 12px;
+    top: 20px;
+/*
+    @include md {
+      max-width: 776px;
+      width: 100%;
+    }
+    */
+  }
+}
+
+.c-wizard--success {
+  .cds--modal-container {
+    background: linear-gradient(90deg, #007749 0%, #5ca88b 100%);
+  }
+
+  .c-wizard__header__heading {
+    color: #007129;
+  }
+
+  .cds--modal-header {
+    // background-image: url(../images/bg_checkmark.svg);
+    background-repeat: no-repeat;
+    background-position: -7vw 2vh;
+/*
+    @include md {
+      background-position: 0 0;
+    }
+    */
+  }
+
+  .c-wizard__success-slot-btm {
+    display: block;
+  }
+}
+
+.c-wizard--error {
+  .cds--modal-container {
+    background: linear-gradient(90deg, #8a3b2a 0%, #1a0f0d 100%);
+  }
+}
+
+.c-wizard--highlight {
+  .cds--modal-container {
+    background: linear-gradient(180deg, #1984dd 0%, #298e76 100%);
+  }
+}
+
+.c-wizard {
+  .cds--modal-header,
+  .cds--modal-content {
+    background-color: #ffffff;
+    margin: 0;
+  }
+
+  .cds--modal-header {
+    position: relative;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 40px 32px 24px;
+    box-shadow: 0px 2px 2px rgba(33, 56, 72, 0.1);
+    z-index: 1; // allows box shadow to show
+/*
+    @include md {
+      padding: 24px 32px;
+    }
+    */
+  }
+
+  .cds--modal-content {
+    padding: 32px 16px 40px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: #ffffff;
+/*
+    @include md {
+      padding: 40px 32px;
+    }
+    */
+  }
+
+  .cds--modal-close {
+    position: absolute;
+    z-index: 2;
+    top: 6px;
+    right: 10px;
+    overflow: hidden;
+    width: 48px;
+    height: 32px;
+    padding: 12px;
+    border: 2px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
+    transform: scale(1.6);
+    color: #213848;
+  }
+}
+
+.c-wizard__header__heading {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #144870;
+  text-align: center;
+}
+
+// Generic slot component
+.c-wizard__slot {
+  position: relative;
+  background-color: #f8f9fa;
+  padding: 24px 16px;
+  border-radius: 8px;
+  color: #213848;
+  margin-bottom: 24px;
+/*
+  @include md {
+    padding: 32px 24px;
+  } */
+
+  p {
+    font-size: 18px;
+  }
+}
+
+.c-wizard--success .c-wizard__slot--2,
+.c-wizard--error .c-wizard__slot--2,
+.c-wizard--highlight .c-wizard__slot--2 {
+  display: none;
+}
+
+// Success Slot Bottom
+.c-wizard__success-slot-btm {
+  position: relative;
+  display: none; // visible on success screen
+  background-color: #f8f9fa;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  color: #213848;
+  margin-left: -16px;
+  margin-right: -16px;
+  margin-bottom: -40px;
+  padding: 32px 16px 40px;
+/*
+  @include md {
+    margin-left: -32px;
+    margin-right: -32px;
+    padding: 40px 32px;
+  } */
+}
+
+// Slot for wizard description
+.c-wizard__description {
+  margin-bottom: 24px;
+}
+
+.c-wizard--error .c-wizard__description {
+  background-color: #f8f9fa;
+  color: #213848;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.c-wizard__btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.c-wizard__btn-group--right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  // margin-bottom: 40px;
+/*
+  @include md {
+    flex-direction: row;
+  } */
+}
+
+.c-wizard--success .c-wizard__btn-group--right {
+  margin-bottom: 40px;
+}
+
+.c-wizard__btn {
+  background-color: #e7f3f3;
+  border: 1px solid #b9dddc;
+  padding: 12px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.16px;
+  color: #445968;
+  min-width: 117px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.c-wizard__highlight-badge {
+  display: none;
+}
+
+.c-wizard--highlight .c-wizard__highlight-badge {
+  display: inline-block;
+  background-color: #bde4f8;
+  padding: 4px 6px 4px 6px;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -11%;
+/*
+  @include md {
+    // top: -12%;
+  }
+*/
+  p {
+    font-size: 10px;
+    font-weight: 600;
+    color: #213848;
+  }
+}
+
+.c-wizard--highlight .c-wizard__slot {
+  border: 1px solid #b9dddc;
+}
+
+.c-wizard__description {
+  color: #213848;
+}
+/* commenting transition classes until we can talk with david
+.wizard-enter > .cds--modal-container {
+  opacity: 0.4 !important;
+  transform: scaleY(0.6) !important;
+  transform-origin: center !important;
+  transition: transform 0.2s linear !important;
+}
+.wizard-enter-active > .cds--modal-container {
+  opacity: 0.6 !important;
+  transform: scaleY(0.9) !important;
+  transform-origin: center !important;
+  transition: transform 0.1s linear !important;
+}
+.wizard-enter-done > .cds--modal-container {
+  opacity: 0.8 !important;
+  transform: scaleY(1) !important;
+  transform-origin: center !important;
+  transition: transform 0.1s linear !important;
+}
+*/
+h1,
+h2 {
+  font-family: "Open Sans", "Segoe UI", Tahoma, sans-serif !important;
+}
