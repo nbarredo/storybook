@@ -11,6 +11,15 @@
   font-weight: 700;
   letter-spacing: 0.16px;
 
+  svg {
+    height: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0;
+    width: 24px;
+
+  }
+
   &.cds--btn--primary {
     background-color: var(--blue-50);
     border-bottom: 2px solid var(--blue-60);
@@ -128,13 +137,74 @@
   }
   
   &.cds--btn--danger {
+    border-bottom: 2px solid var(--red-80);
+    background-color: var(--red-60);
+    color: var(--white);
 
+    &:hover {
+      border-bottom: 2px solid var(--red-90);
+      background-color: var(--red-70);
+    }
+    
+    &:active {
+      border-bottom: 2px solid var(--red-100);
+      background-color: var(--red-80);
+    }
+
+    &:focus {
+      background-color: var(--red-60);
+      border: 2px solid var(--white);
+      box-shadow: 0px 0px 1px 0px rgba(0, 36, 64, 0.31), 0px 0px 6px 3px rgba(0, 109, 179, 0.20);
+      outline: 2px solid var(--blue-60);
+    }
+
+    &:disabled {
+      background-color: var(--gray-20);
+      border: none;
+      color: var(--gray-30);
+    }  
   }
-  &.cds--btn--danger-tertiary {
-
+  &.cds--btn--danger--tertiary {
+    background-color: transparent;
+    border: 1px solid var(--red-70);
+    color: var(--red-70);
+    &:hover {
+      background-color: var(--red-00);
+    }
+    &:active {
+      border: 1px solid var(--red-80);
+      background-color: var(--red-10);
+    }
+    &:focus {
+      background-color: var(--white);
+      border: 1px solid var(--white);
+      box-shadow: 0px 0px 1px 0px rgba(0, 36, 64, 0.31), 0px 0px 6px 3px rgba(0, 109, 179, 0.20);
+      outline: 2px solid var(--blue-60);
+    }  
+    &:disabled {
+      background-color: var(--white);      
+      border: 1px solid var(--gray-30);
+      color: var(--gray-20);
+    } 
   }
-  &.cds--btn--danger-ghost {
-
+  &.cds--btn--danger--ghost {
+    color: var(--red-70);
+    &:hover {
+      background-color: var(--red-00);
+    } 
+    &:active {
+      background-color: var(--red-10);
+      color: var(--red-80);
+    }
+    &:focus {
+      background-color: var(--white);
+      border: 1px solid var(--white);
+      box-shadow: 0px 0px 1px 0px rgba(0, 36, 64, 0.31), 0px 0px 6px 3px rgba(0, 109, 179, 0.20);
+      outline: 2px solid var(--blue-60);
+    }  
+    &:disabled {
+      color: var(--gray-20);
+    }   
   }
 
 
