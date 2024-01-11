@@ -1,4 +1,5 @@
 import React from "react";
+import { ButtonSet } from "@carbon/react";
 import PropTypes from "prop-types";
 
 export const WizardDescription = (props) => {
@@ -34,7 +35,9 @@ WizardSlot.propTypes = {
 export const WizardBtnGrp = (props) => {
   return (
     <div className="c-wizard__btn-group c-wizard__btn-group--right">
-      {props.children}
+        <ButtonSet stacked={false}>
+          {props.children}
+        </ButtonSet>
     </div>
   );
 };

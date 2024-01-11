@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Wizard } from ".";
+import { Button } from "../Button";
 
 import {
   WizardDescription,
@@ -50,7 +51,9 @@ const defaultContent =
   Placeholder area for Wizard content.
   </p>
   </WizardSlot>
-  <WizardBtnGrp>This is a button group</WizardBtnGrp>
+  <WizardBtnGrp>
+      <Button kind="tertiary" label="Button 1" /><Button kind="tertiary" label="Button 2" />
+    </WizardBtnGrp>
 </>;
 
 const successContent =
