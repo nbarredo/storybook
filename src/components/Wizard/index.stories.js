@@ -9,7 +9,7 @@ import {
   WizardSlotBtm
 } from "./childrens";
 
-const meta = {
+export default {
   title: "Approved/Wizard",
   component: Wizard,
   parameters: {
@@ -20,56 +20,41 @@ const meta = {
   }
 };
 
-export default meta;
-
-// const Template = (args) => <Wizard {...args}/>;
-// export const Default = Template.bind({});
-
-// Default.args = {
-//     open: true,
-//     state: 'wizard-default',
-// }
-
-export const Test = {
-  args: {
-    open: true,
-    state: "c-wizard--default"
-  },
-  render: (args) => (
-    <Wizard {...args}>
-      <WizardDescription>
-        <p>
-          Area reserved to give the user context of what is being asked, or
-          shown. Please keep it short, max two lines.
-        </p>
-      </WizardDescription>
-      <WizardSlot>
-        <p>
-          Slot Component
-          <br />
-          Placeholder area for Wizard content.
-        </p>
-      </WizardSlot>
-      <WizardSlot>
-        <p>
-          Slot Component
-          <br />
-          Placeholder area for Wizard content.
-        </p>
-      </WizardSlot>
-      <WizardBtnGrp>This is a button group</WizardBtnGrp>
-    </Wizard>
-  )
+const defaultArgs = {
+  open: true,
+  state: "default",
+  headerTitle: "Title",
+  hasCloseButton: true
 };
 
-export const Success = {
-  args: {
-    open: true,
-    state: "c-wizard--success"
-  },
-  render: (args) => (
-    <Wizard {...args}>
-      <WizardDescription>
+const defaultContent =
+<>
+  <WizardDescription>
+  <p>
+  Area reserved to give the user context of what is being asked, or
+  shown. Please keep it short, max two lines.
+  </p>
+  </WizardDescription>
+  <WizardSlot>
+  <p>
+  Slot Component
+  <br />
+  Placeholder area for Wizard content.
+  </p>
+  </WizardSlot>
+  <WizardSlot>
+  <p>
+  Slot Component
+  <br />
+  Placeholder area for Wizard content.
+  </p>
+  </WizardSlot>
+  <WizardBtnGrp>This is a button group</WizardBtnGrp>
+</>;
+
+const successContent =
+<>
+<WizardDescription>
         <p>
           Area reserved to give the user context of what is being asked, or
           shown. Please keep it short, max two lines.
@@ -86,56 +71,73 @@ export const Success = {
       <WizardSlotBtm>
         <p>Slot Component Success Bottom (Optional)</p>
       </WizardSlotBtm>
-    </Wizard>
-  )
+</>;
+
+const errorContent =
+<>
+<WizardDescription>
+        <p>
+          Area reserved to give the user context of what is being asked, or
+          shown. Please keep it short, max two lines.
+        </p>
+      </WizardDescription>
+      <WizardSlot>
+        <p>
+          Slot Component
+          <br />
+          Placeholder area for Wizard content.
+        </p>
+      </WizardSlot>
+      <WizardBtnGrp>This is a button group</WizardBtnGrp>
+</>;
+
+const highlightContent =
+<>
+<WizardDescription>
+        <p>
+          Area reserved to give the user context of what is being asked, or
+          shown. Please keep it short, max two lines.
+        </p>
+      </WizardDescription>
+      <WizardSlot>
+        <p>
+          Slot Component
+          <br />
+          Placeholder area for Wizard content.
+        </p>
+      </WizardSlot>
+      <WizardBtnGrp>This is a button group</WizardBtnGrp>
+</>;
+
+export const Default = {
+  args: {
+    ...defaultArgs,
+    children: defaultContent
+  }
+};
+
+export const Success = {
+  args: {
+    ...defaultArgs,
+    state: "success",
+    children: successContent
+  }
 };
 
 export const Error = {
   args: {
-    open: true,
-    state: "c-wizard--error"
-  },
-  render: (args) => (
-    <Wizard {...args}>
-      <WizardDescription>
-        <p>
-          Area reserved to give the user context of what is being asked, or
-          shown. Please keep it short, max two lines.
-        </p>
-      </WizardDescription>
-      <WizardSlot>
-        <p>
-          Slot Component
-          <br />
-          Placeholder area for Wizard content.
-        </p>
-      </WizardSlot>
-      <WizardBtnGrp>This is a button group</WizardBtnGrp>
-    </Wizard>
-  )
+    ...defaultArgs,
+    state: "error",
+    children: errorContent
+
+  }
 };
 
 export const Highlight = {
   args: {
-    open: true,
-    state: "c-wizard--highlight"
-  },
-  render: (args) => (
-    <Wizard {...args}>
-      <WizardDescription>
-        <p>
-          Area reserved to give the user context of what is being asked, or
-          shown. Please keep it short, max two lines.
-        </p>
-      </WizardDescription>
-      <WizardSlot>
-        <p>
-          Slot Component
-          <br />
-          Placeholder area for Wizard content.
-        </p>
-      </WizardSlot>
-      <WizardBtnGrp>This is a button group</WizardBtnGrp>
-    </Wizard>
-  )
+    ...defaultArgs,
+    state: "highlight",
+    children: highlightContent
+
+  }
 };
