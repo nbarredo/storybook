@@ -1,4 +1,3 @@
-import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { Button } from "./index";
 
@@ -25,16 +24,14 @@ const meta = {
 
 export default meta;
 
-const Template = (args) => <Button {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  size: "lg",
-  disabled: false,
-  label: "Button",
-  kind: "primary",
-  type: "button"
+export const Default = {
+  args: {
+    size: "lg",
+    disabled: false,
+    label: "Button",
+    kind: "primary",
+    type: "button"
+  }
 };
 
 export const WithIcon = {
