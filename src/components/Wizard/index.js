@@ -1,6 +1,6 @@
 import React from "react";
 import { ComposedModal, ModalHeader, ModalBody } from "@carbon/react";
-
+import { Loading } from "../Loading";
 import PropTypes from "prop-types";
 import "./Wizard.scss";
 
@@ -8,13 +8,14 @@ import "./Wizard.scss";
  * Description of Wizard Component
  */
 function Wizard ({
-  headerTitle,
-  state,
-  open,
   children,
-  id,
   className,
   hasCloseButton = true,
+  headerTitle,
+  id,
+  open,
+  state,
+  isLoading,
   ...props
 }) {
   return (
@@ -22,10 +23,11 @@ function Wizard ({
         data-testid={id}
         preventCloseOnClickOutside
         id={id}
-        className={`c-wizard c-wizard--${state} ${className}`}
+        className={`c-wizard c-wizard--${state} ${className || ""} ${isLoading ? "loading" : ""}`}
         open={open}
         {...props}
       >
+        {isLoading && <div className="loading-container"><Loading withOverlay={false} /></div> }
         <ModalHeader closeClassName={hasCloseButton ? "" : "hide-close-button"}>
           <h1 className="c-wizard__header__heading">{headerTitle}</h1>
         </ModalHeader>
@@ -53,6 +55,8 @@ Wizard.propTypes = {
     "error",
     "highlight"]).isRequired,
   /** Determines whether a close button will appear inside the modal */
-  hasCloseButton: PropTypes.bool
+  hasCloseButton: PropTypes.bool,
+  /** Determines whether the component should display its loading state */
+  isLoading: PropTypes.bool
 
 };

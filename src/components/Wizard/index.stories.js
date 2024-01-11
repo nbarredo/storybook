@@ -24,7 +24,8 @@ const defaultArgs = {
   open: true,
   state: "default",
   headerTitle: "Title",
-  hasCloseButton: true
+  hasCloseButton: true,
+  isLoading: false
 };
 
 const defaultContent =
