@@ -1,0 +1,44 @@
+@use 'sass:math';
+@use "sass:map";
+
+@function to-rem($size) {
+    @return math.div($size, 16px) * 1rem;
+}
+
+
+$breakpoints: (
+  md: 672px,
+  lg: 1056px,
+  xl: 1272px,
+);
+
+/*
+
+Example breakpoint mixin usage:
+
+@include do-this-above(sm) {
+  .element {
+    font-weight: bold;
+  }
+}
+
+*/
+
+@mixin do-this-above($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map.get($breakpoints, $breakpoint);
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+/* stylelint-disable */
+:export {
+  @each $key, $value in $breakpoints {
+    #{unquote($key)}: $value;
+  }
+}
+/* stylelint-enable */
