@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { ComposedModal, ModalHeader, ModalBody } from "@carbon/react";
-import { CSSTransition } from "react-transition-group";
+
 import PropTypes from "prop-types";
 import "./Wizard.scss";
 
@@ -11,78 +11,48 @@ function Wizard ({
   headerTitle,
   state,
   open,
-  setOpen,
   children,
   id,
   className,
+  hasCloseButton = true,
   ...props
 }) {
-  const [inProp, setInProp] = useState(false);
-  const nodeRef = useRef(null);
-  React.useEffect(() => {
-    document.body.style.overflow = "hidden";
-    setInProp(true);
-    return () => {
-      document.body.style.overflow = "overlay";
-    };
-  }, []);
-
   return (
-    <CSSTransition
-      nodeRef={nodeRef}
-      in={inProp}
-      timeout={200}
-      classNames="wizard"
-    >
       <ComposedModal
         data-testid={id}
+        preventCloseOnClickOutside
         id={id}
-        ref={nodeRef}
-        className={`c-wizard ${state} ${className}`}
+        className={`c-wizard c-wizard--${state} ${className}`}
         open={open}
         {...props}
       >
-        <ModalHeader>
+        <ModalHeader closeClassName={hasCloseButton ? "" : "hide-close-button"}>
           <h1 className="c-wizard__header__heading">{headerTitle}</h1>
         </ModalHeader>
         <ModalBody>{children}</ModalBody>
       </ComposedModal>
-    </CSSTransition>
   );
 };
 
 export { Wizard };
 
 Wizard.propTypes = {
-  /** An optional class which will be applied to the button  */
+  /** The text you'd like to appear at the very top of the wizard modal */
+  headerTitle: PropTypes.string,
+  /** This is the content that will appear in the body of the wizard modal */
+  children: PropTypes.node,
+  /** An optional class which will be applied to the wizard modal  */
   className: PropTypes.string,
-  /** Use to set the disabled/enabled state of the Button */
-  disabled: PropTypes.bool,
-  /** Specify the kind of Button you want to create */
-  kind: PropTypes.oneOf(["primary",
-    "secondary",
-    "danger",
-    "ghost",
-    "danger--primary",
-    "danger--ghost",
-    "danger--tertiary",
-    "tertiary",
-    "ghost--subtle"]),
-  /** The text content of the button */
-  label: PropTypes.string,
-  /** A function that should be triggererd when the Button is clicked */
-  onClick: PropTypes.func,
-  /** Add a Material-UI icon to the button.  Search for an icon here:  https://mui.com/material-ui/material-icons/   */
-  renderIcon: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.object
-  ]),
+  /** An option ID which can be added to the component */
+  id: PropTypes.string,
+  /** Determines whether the wizard modal is visible or not  */
+  open: PropTypes.bool.isRequired,
   /** Specify the size of the button */
-  size: PropTypes.oneOf(["sm",
-    "md",
-    "lg"]),
-  /** Optional prop to specify the type of the Button */
-  type: PropTypes.oneOf(["button",
-    "reset",
-    "submit"])
+  state: PropTypes.oneOf(["default",
+    "success",
+    "error",
+    "highlight"]).isRequired,
+  /** Determines whether a close button will appear inside the modal */
+  hasCloseButton: PropTypes.bool
+
 };

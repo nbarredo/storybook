@@ -1,4 +1,3 @@
-
 module.exports = {
   env: {
     browser: true,
@@ -33,7 +32,6 @@ module.exports = {
   ignorePatterns: ["*.test.js", "**/story_samples/*.*"],
   rules: {
     semi: [2, "always"],
-    quotes: ["error", "double"],
-    "react/prop-types": 0
+    quotes: ["error", "double"]
   }
 };
