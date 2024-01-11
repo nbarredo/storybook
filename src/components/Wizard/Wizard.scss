@@ -106,9 +106,9 @@
   }
 
   .cds--modal-header {
-    // background-image: url(../images/bg_checkmark.svg);
+    background-image: url(bg_checkmark.svg);
     background-repeat: no-repeat;
-    background-position: -7vw 2vh;
+    background-position: bottom left;
 /*
     @include md {
       background-position: 0 0;
@@ -344,4 +344,8 @@
 h1,
 h2 {
   font-family: "Open Sans", "Segoe UI", Tahoma, sans-serif !important;
+}
+
+.hide-close-button {
+  display: none;
 }
