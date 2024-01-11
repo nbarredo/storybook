@@ -132,7 +132,7 @@
   }
 
   .c-wizard__header__heading {
-    color: #007129;
+    color: var(--bright-green-70);
   }
 
   .cds--modal-header {
@@ -166,7 +166,7 @@
 .c-wizard {
   .cds--modal-header,
   .cds--modal-content {
-    background-color: #ffffff;
+    background-color: var(--white);
     margin: 0;
   }
 
@@ -188,7 +188,7 @@
     padding: 32px 16px 40px;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
-    background-color: #ffffff;
+    background-color: var(--white);
 
     @include do-this-above(md) {
       padding: 40px 32px;
@@ -197,39 +197,39 @@
   }
 
   .cds--modal-close {
-    position: absolute;
-    z-index: 2;
-    top: 6px;
-    right: 10px;
-    overflow: hidden;
-    width: 48px;
-    height: 32px;
-    padding: 12px;
-    border: 2px solid transparent;
     background-color: transparent;
+    border: 2px solid transparent;
+    color: var(--gray-100);
     cursor: pointer;
-    transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
+    height: 32px;
+    overflow: hidden;
+    padding: 12px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
     transform: scale(1.6);
-    color: #213848;
+    transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
+    width: 48px;
+    z-index: 2;
   }
 }
 
 .c-wizard__header__heading {
+  color: var(--blue-80);
   font-size: 24px;
   font-weight: 700;
   line-height: 1.6;
-  color: #144870;
   text-align: center;
 }
 
 // Generic slot component
 .c-wizard__slot {
-  position: relative;
-  background-color: #f8f9fa;
-  padding: 24px 16px;
+  background-color: var(--gray-10);
   border-radius: 8px;
-  color: #213848;
+  color: var(--gray-100);
   margin-bottom: 24px;
+  padding: 24px 16px;
+  position: relative;
 
   @include do-this-above(md) {
     padding: 32px 24px;
@@ -250,10 +250,10 @@
 .c-wizard__success-slot-btm {
   position: relative;
   display: none; // visible on success screen
-  background-color: #f8f9fa;
+  background-color: var(--gray-10);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  color: #213848;
+  color: var(--gray-100);
   margin-left: -16px;
   margin-right: -16px;
   margin-bottom: -40px;
@@ -272,18 +272,19 @@
 }
 
 .c-wizard--error .c-wizard__description {
-  background-color: #f8f9fa;
-  color: #213848;
+  background-color: var(--gray-10);
+  color: var(--gray-100);
   padding: 16px;
   font-size: 16px;
   border-radius: 8px;
 }
 
 .c-wizard__btn-group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
+  .cds--btn-set {
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
 }
 
 .c-wizard__btn-group--right {
@@ -291,7 +292,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 12px;
   // margin-bottom: 40px;
 
   @include do-this-above(md) {
@@ -301,22 +302,6 @@
 
 .c-wizard--success .c-wizard__btn-group--right {
   margin-bottom: 40px;
-}
-
-.c-wizard__btn {
-  background-color: #e7f3f3;
-  border: 1px solid #b9dddc;
-  padding: 12px;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.16px;
-  color: #445968;
-  min-width: 117px;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .c-wizard__highlight-badge {
