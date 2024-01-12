@@ -1,4 +1,4 @@
-import { Loading } from "./index";
+import { Loading } from "./Loading";
 const meta = {
   component: Loading,
   title: "In Progress/Loading",

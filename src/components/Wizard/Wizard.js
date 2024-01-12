@@ -1,6 +1,6 @@
 import React from "react";
 import { ComposedModal, ModalHeader, ModalBody } from "@carbon/react";
-import { Loading } from "../Loading";
+import { Loading } from "../Loading/Loading";
 import PropTypes from "prop-types";
 import "./Wizard.scss";
 

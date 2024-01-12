@@ -1,17 +1,18 @@
 import React from "react";
 
-import { Wizard } from ".";
-import { Button } from "../Button";
+import { Wizard } from "./Wizard";
+import { Button } from "../Button/Button";
+import { ButtonSet } from "../ButtonSet/ButtonSet";
 
 import {
   WizardDescription,
   WizardSlot,
   WizardBtnGrp,
   WizardSlotBtm
-} from "./childrens";
+} from "./children";
 
 export default {
-  title: "Approved/Wizard",
+  title: "In Progress/Wizard",
   component: Wizard,
   parameters: {
     design: {
@@ -50,10 +51,11 @@ const defaultContent =
   <br />
   Placeholder area for Wizard content.
   </p>
-  </WizardSlot>
-  <WizardBtnGrp>
+  <ButtonSet>
       <Button kind="tertiary" label="Button 1" /><Button kind="tertiary" label="Button 2" />
-    </WizardBtnGrp>
+      </ButtonSet>
+  </WizardSlot>
+
 </>;
 
 const successContent =

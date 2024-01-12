@@ -1,5 +1,5 @@
 import AddIcon from "@mui/icons-material/Add";
-import { Button } from "./index";
+import { Button } from "./Button";
 
 const meta = {
   title: "In Progress/Button",
