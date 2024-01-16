@@ -50,7 +50,6 @@ Button.propTypes = {
   kind: PropTypes.oneOf([
     "primary",
     "secondary",
-    "danger",
     "ghost",
     "danger--primary",
     "danger--ghost",
