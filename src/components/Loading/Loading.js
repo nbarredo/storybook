@@ -1,6 +1,6 @@
 import React from "react";
-import { PropTypes } from "prop-types";
 import { Loading as CarbonLoading } from "@carbon/react";
+import { PropTypes } from "prop-types";
 import "./Loading.scss";
 
 export const Loading = ({
@@ -8,15 +8,15 @@ export const Loading = ({
   className,
   description,
   small,
-  withOverlay
+  withOverlay,
 }) => {
   return (
     <CarbonLoading
-     active={active}
-     className= {className}
-     description={description}
-     small={small}
-     withOverlay={withOverlay}
+      active={active}
+      className={className}
+      description={description}
+      small={small}
+      withOverlay={withOverlay}
     />
   );
 };
@@ -30,5 +30,5 @@ Loading.propTypes = {
   /** Choose whether or not to use the small variant */
   small: PropTypes.bool,
   /** Specify whether you want the loader to be applied with an overlay */
-  withOverlay: PropTypes.bool
+  withOverlay: PropTypes.bool,
 };

@@ -1,17 +1,7 @@
 module.exports = {
-  plugins: [require.resolve("@trivago/prettier-plugin-sort-imports")],
-  importOrder: ["^@carbon/(.*)$", "^[./]"],
+  plugins: ["@trivago/prettier-plugin-sort-imports"],
+  importOrder: ["^react$", "^@carbon$", "<THIRD_PARTY_MODULES>", "^[./]"],
   importOrderSeparation: false,
   importOrderSortSpecifiers: true,
   printWidth: 80,
 };
-
-/*
-importOrder: [
-    "^@carbon/(.*)$",
-    "react",
-    "<THIRD_PARTY_MODULES>",
-    "components/(.*)",
-    ".scss",
-  ],
-  */
