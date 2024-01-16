@@ -1,4 +1,4 @@
-@use '../../styles/mixins' as *;
+@use "../../styles/mixins" as *;
 
 // Delete these styles if you can include Carbon styles TODO: talk with David about why this is here?(repeated code?)
 .cds--modal {
@@ -11,8 +11,9 @@
   opacity: 1;
   position: fixed;
   top: 0;
-  transition: opacity 240ms cubic-bezier(0.4, 0.14, 1, 1),
-  visibility 0ms linear 240ms;
+  transition:
+    opacity 240ms cubic-bezier(0.4, 0.14, 1, 1),
+    visibility 0ms linear 240ms;
   width: 100vw;
   z-index: 9000;
 
@@ -23,7 +24,7 @@
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
-      z-index:3;
+      z-index: 3;
     }
     .cds--modal-container-body {
       &::before {
@@ -40,63 +41,60 @@
         z-index: 2;
       }
     }
-  }  
+  }
 }
 
-
-
 .cds--modal.is-visible .cds--modal-container {
-  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   transition: -webkit-transform 240ms cubic-bezier(0, 0, 0.3, 1);
   transition: transform 240ms cubic-bezier(0, 0, 0.3, 1);
-  transition: transform 240ms cubic-bezier(0, 0, 0.3, 1),
+  transition:
+    transform 240ms cubic-bezier(0, 0, 0.3, 1),
     -webkit-transform 240ms cubic-bezier(0, 0, 0.3, 1);
 }
 
 .cds--modal-container {
-  position: fixed;
-  top: 0;
   display: grid;
-  overflow: overlay;
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
   grid-template-columns: 100%;
   grid-template-rows: auto 1fr auto;
+  height: 100%;
+  max-height: 100%;
   outline: 3px solid transparent;
   outline-offset: -3px;
-  -webkit-transform: translate3d(0, -24px, 0);
+  overflow: overlay;
+  position: fixed;
+  top: 0;
   transform: translate3d(0, -24px, 0);
-  -webkit-transform-origin: top center;
   transform-origin: top center;
   transition: -webkit-transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
   transition: transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
-  transition: transform 240ms cubic-bezier(0.4, 0.14, 1, 1),
+  transition:
+    transform 240ms cubic-bezier(0.4, 0.14, 1, 1),
     -webkit-transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
+  width: 100%;
 }
 
-@media (min-width: 42rem) {
+@media (width >= 42rem) {
   .cds--modal-container {
-    position: static;
-    width: 84%;
     height: auto;
     overflow: overlay;
+    position: static;
+    width: 84%;
   }
 }
 
 .cds--assistive-text,
 .cds--visually-hidden {
-  position: absolute;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  padding: 0;
   border: 0;
-  margin: -1px;
   clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
   visibility: inherit;
   white-space: nowrap;
+  width: 1px;
 }
 
 .cds--modal-content {
@@ -109,20 +107,19 @@
 
 .c-wizard {
   .cds--modal-container {
-    width: 92%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.35);
     background: rgb(45, 101, 125);
     background: linear-gradient(90deg, #2d657d 0%, #368b70 100%);
+    border-radius: 12px;
+    box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.35);
+    height: auto;
     padding: 12px;
     top: 20px;
+    width: 92%;
 
     @include do-this-above(md) {
       max-width: 776px;
       width: 100%;
     }
-    
   }
 }
 
@@ -136,14 +133,13 @@
   }
 
   .cds--modal-header {
-    background-image: url(bg_checkmark.svg);
-    background-repeat: no-repeat;
+    background-image: url("bg_checkmark.svg");
     background-position: bottom left;
+    background-repeat: no-repeat;
 
     @include do-this-above(md) {
       background-position: 0 0;
     }
-    
   }
 
   .c-wizard__success-slot-btm {
@@ -171,29 +167,27 @@
   }
 
   .cds--modal-header {
-    position: relative;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    padding: 40px 32px 24px;
     box-shadow: 0px 2px 2px rgba(33, 56, 72, 0.1);
-    z-index: 1; // allows box shadow to show
+    padding: 40px 32px 24px;
+    position: relative;
+    z-index: 1; // allows box shadow to showxl
 
     @include do-this-above(md) {
       padding: 24px 32px;
     }
-
   }
 
   .cds--modal-content {
-    padding: 32px 16px 40px;
+    background-color: var(--white);
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
-    background-color: var(--white);
+    padding: 32px 16px 40px;
 
     @include do-this-above(md) {
       padding: 40px 32px;
     }
-    
   }
 
   .cds--modal-close {
@@ -233,7 +227,7 @@
 
   @include do-this-above(md) {
     padding: 32px 24px;
-  } 
+  }
 
   p {
     font-size: 18px;
@@ -248,22 +242,22 @@
 
 // Success Slot Bottom
 .c-wizard__success-slot-btm {
-  position: relative;
-  display: none; // visible on success screen
   background-color: var(--gray-10);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   color: var(--gray-100);
+  display: none; // visible on success screen
+  margin-bottom: -40px;
   margin-left: -16px;
   margin-right: -16px;
-  margin-bottom: -40px;
   padding: 32px 16px 40px;
+  position: relative;
 
   @include do-this-above(md) {
     margin-left: -32px;
     margin-right: -32px;
     padding: 40px 32px;
-  } 
+  }
 }
 
 // Slot for wizard description
@@ -273,31 +267,32 @@
 
 .c-wizard--error .c-wizard__description {
   background-color: var(--gray-10);
-  color: var(--gray-100);
-  padding: 16px;
-  font-size: 16px;
   border-radius: 8px;
+  color: var(--gray-100);
+  font-size: 16px;
+  padding: 16px;
 }
 
 .c-wizard__btn-group {
   .cds--btn-set {
     align-items: center;
-    justify-content: center;
     gap: 12px;
+    justify-content: center;
   }
 }
 
 .c-wizard__btn-group--right {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
   gap: 12px;
+  justify-content: flex-end;
+
   // margin-bottom: 40px;
 
   @include do-this-above(md) {
     flex-direction: row;
-  } 
+  }
 }
 
 .c-wizard--success .c-wizard__btn-group--right {
@@ -309,23 +304,23 @@
 }
 
 .c-wizard--highlight .c-wizard__highlight-badge {
-  display: inline-block;
   background-color: #bde4f8;
-  padding: 4px 6px 4px 6px;
   border-radius: 10px;
-  position: absolute;
+  display: inline-block;
   left: 50%;
-  transform: translateX(-50%);
+  padding: 4px 6px 4px 6px;
+  position: absolute;
   top: -11%;
+  transform: translateX(-50%);
 
   @include do-this-above(md) {
     // top: -12%;
   }
 
   p {
+    color: #213848;
     font-size: 10px;
     font-weight: 600;
-    color: #213848;
   }
 }
 

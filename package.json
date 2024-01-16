@@ -27,7 +27,9 @@
     "eject": "react-scripts eject",
     "storybook": "storybook dev --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem -p 6006",
     "build-storybook": "storybook build",
-    "lint": "npx eslint \"./**/*.js\" --cache --cache-strategy content",
+    "lint:scss": "stylelint \"**/*.scss\"",
+    "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
+    "lint:js": "npx eslint \"./**/*.js\" --cache --cache-strategy content",
     "lint:fix": "npx eslint \"./**/*.js\" --cache --cache-strategy content --fix"
   },
   "browserslist": {
@@ -56,12 +58,19 @@
     "@storybook/react": "^7.6.6",
     "@storybook/react-webpack5": "^7.6.6",
     "@storybook/test": "^7.6.6",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-storybook": "^0.6.15",
+    "prettier": "3.2.0",
     "prop-types": "^15.8.1",
     "storybook": "^7.6.6",
+    "stylelint": "^16.1.0",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "stylelint-order": "^6.0.4",
     "webpack": "^5.89.0"
   }
 }

@@ -1,13 +1,13 @@
-import React from "react";
-import { ComposedModal, ModalHeader, ModalBody } from "@carbon/react";
-import { Loading } from "../Loading/Loading";
 import PropTypes from "prop-types";
+import React from "react";
+import { ComposedModal, ModalBody, ModalHeader } from "@carbon/react";
+import { Loading } from "../Loading/Loading";
 import "./Wizard.scss";
 
 /**
  * Description of Wizard Component
  */
-function Wizard ({
+function Wizard({
   children,
   className,
   hasCloseButton = true,
@@ -19,22 +19,26 @@ function Wizard ({
   ...props
 }) {
   return (
-      <ComposedModal
-        data-testid={id}
-        preventCloseOnClickOutside
-        id={id}
-        className={`c-wizard c-wizard--${state} ${className || ""} ${isLoading ? "loading" : ""}`}
-        open={open}
-        {...props}
-      >
-        {isLoading && <div className="loading-container"><Loading withOverlay={false} /></div> }
-        <ModalHeader closeClassName={hasCloseButton ? "" : "hide-close-button"}>
-          <h1 className="c-wizard__header__heading">{headerTitle}</h1>
-        </ModalHeader>
-        <ModalBody>{children}</ModalBody>
-      </ComposedModal>
+    <ComposedModal
+      data-testid={id}
+      preventCloseOnClickOutside
+      id={id}
+      className={`c-wizard c-wizard--${state} ${className || ""} ${isLoading ? "loading" : ""}`}
+      open={open}
+      {...props}
+    >
+      {isLoading && (
+        <div className="loading-container">
+          <Loading withOverlay={false} />
+        </div>
+      )}
+      <ModalHeader closeClassName={hasCloseButton ? "" : "hide-close-button"}>
+        <h1 className="c-wizard__header__heading">{headerTitle}</h1>
+      </ModalHeader>
+      <ModalBody>{children}</ModalBody>
+    </ComposedModal>
   );
-};
+}
 
 export { Wizard };
 
@@ -50,13 +54,10 @@ Wizard.propTypes = {
   /** Determines whether the wizard modal is visible or not  */
   open: PropTypes.bool.isRequired,
   /** Specify the size of the button */
-  state: PropTypes.oneOf(["default",
-    "success",
-    "error",
-    "highlight"]).isRequired,
+  state: PropTypes.oneOf(["default", "success", "error", "highlight"])
+    .isRequired,
   /** Determines whether a close button will appear inside the modal */
   hasCloseButton: PropTypes.bool,
   /** Determines whether the component should display its loading state */
-  isLoading: PropTypes.bool
-
+  isLoading: PropTypes.bool,
 };

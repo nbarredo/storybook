@@ -1,37 +1,34 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   settings: {
     react: {
-      version: "detect"
-    }
+      version: "detect",
+    },
   },
-  extends: ["standard", "plugin:react/recommended", "plugin:storybook/recommended"],
+  extends: [
+    "standard",
+    "plugin:react/recommended",
+    "plugin:storybook/recommended",
+    "prettier",
+  ],
   overrides: [
     {
       env: {
-        node: true
+        node: true,
       },
-      files: [
-        ".eslintrc.{js,cjs}"
-      ],
+      files: [".eslintrc.{js,cjs}"],
       parserOptions: {
-        sourceType: "script"
-      }
-    }
+        sourceType: "script",
+      },
+    },
   ],
   parserOptions: {
     ecmaVersion: "latest",
-    sourceType: "module"
+    sourceType: "module",
   },
-  plugins: [
-    "react"
-  ],
+  plugins: ["react"],
   ignorePatterns: ["*.test.js", "**/story_samples/*.*"],
-  rules: {
-    semi: [2, "always"],
-    quotes: ["error", "double"]
-  }
 };

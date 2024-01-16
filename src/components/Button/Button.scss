@@ -13,11 +13,10 @@
 
   svg {
     height: 24px;
+    margin-left: 0;
     top: 50%;
     transform: translateY(-50%);
-    margin-left: 0;
     width: 24px;
-
   }
 
   &.cds--btn--primary {
@@ -80,8 +79,8 @@
       background-color: var(--blue-00);
     }
     &:active {
-      border: 1px solid var(--blue-50);
       background-color: var(--blue-10);
+      border: 1px solid var(--blue-50);
     }
     &:focus {
       background-color: var(--white);
@@ -137,18 +136,18 @@
   }
   
   &.cds--btn--danger {
-    border-bottom: 2px solid var(--red-80);
     background-color: var(--red-60);
+    border-bottom: 2px solid var(--red-80);
     color: var(--white);
 
     &:hover {
-      border-bottom: 2px solid var(--red-90);
       background-color: var(--red-70);
+      border-bottom: 2px solid var(--red-90);
     }
     
     &:active {
-      border-bottom: 2px solid var(--red-100);
       background-color: var(--red-80);
+      border-bottom: 2px solid var(--red-100);
     }
 
     &:focus {
@@ -172,8 +171,8 @@
       background-color: var(--red-00);
     }
     &:active {
-      border: 1px solid var(--red-80);
       background-color: var(--red-10);
+      border: 1px solid var(--red-80);
     }
     &:focus {
       background-color: var(--white);
@@ -210,6 +209,7 @@
 
  
 }
+
 /*
 .cds--btn {
     -webkit-user-select: none;
