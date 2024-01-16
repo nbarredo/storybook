@@ -1,0 +1,362 @@
+@use "../../styles/mixins" as *;
+
+// Delete these styles if you can include Carbon styles TODO: talk with David about why this is here?(repeated code?)
+.cds--modal {
+  align-items: center;
+  content: "";
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  transition:
+    opacity 240ms cubic-bezier(0.4, 0.14, 1, 1),
+    visibility 0ms linear 240ms;
+  width: 100vw;
+  z-index: 9000;
+
+  &.loading {
+    user-select: none;
+    .loading-container {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+    .cds--modal-container-body {
+      &::before {
+        background-color: var(--white);
+        border-radius: 12px;
+        content: "";
+        height: calc(100% - 24px);
+        left: 12px;
+        opacity: 0.8;
+        pointer-events: none;
+        position: absolute;
+        top: 12px;
+        width: calc(100% - 24px);
+        z-index: 2;
+      }
+    }
+  }
+}
+
+.cds--modal.is-visible .cds--modal-container {
+  transform: translate3d(0, 0, 0);
+  transition: -webkit-transform 240ms cubic-bezier(0, 0, 0.3, 1);
+  transition: transform 240ms cubic-bezier(0, 0, 0.3, 1);
+  transition:
+    transform 240ms cubic-bezier(0, 0, 0.3, 1),
+    -webkit-transform 240ms cubic-bezier(0, 0, 0.3, 1);
+}
+
+.cds--modal-container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  max-height: 100%;
+  outline: 3px solid transparent;
+  outline-offset: -3px;
+  overflow: overlay;
+  position: fixed;
+  top: 0;
+  transform: translate3d(0, -24px, 0);
+  transform-origin: top center;
+  transition: -webkit-transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
+  transition: transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
+  transition:
+    transform 240ms cubic-bezier(0.4, 0.14, 1, 1),
+    -webkit-transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
+  width: 100%;
+}
+
+@media (width >= 42rem) {
+  .cds--modal-container {
+    height: auto;
+    overflow: overlay;
+    position: static;
+    width: 84%;
+  }
+}
+
+.cds--assistive-text,
+.cds--visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  visibility: inherit;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.cds--modal-content {
+  position: relative;
+}
+
+.c-wizard {
+  background-color: rgba(33, 56, 72, 0.8);
+}
+
+.c-wizard {
+  .cds--modal-container {
+    background: rgb(45, 101, 125);
+    background: linear-gradient(90deg, #2d657d 0%, #368b70 100%);
+    border-radius: 12px;
+    box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.35);
+    height: auto;
+    padding: 12px;
+    top: 20px;
+    width: 92%;
+
+    @include do-this-above(md) {
+      max-width: 776px;
+      width: 100%;
+    }
+  }
+}
+
+.c-wizard--success {
+  .cds--modal-container {
+    background: linear-gradient(90deg, #007749 0%, #5ca88b 100%);
+  }
+
+  .c-wizard__header__heading {
+    color: var(--bright-green-70);
+  }
+
+  .cds--modal-header {
+    background-image: url("bg_checkmark.svg");
+    background-position: bottom left;
+    background-repeat: no-repeat;
+
+    @include do-this-above(md) {
+      background-position: 0 0;
+    }
+  }
+
+  .c-wizard__success-slot-btm {
+    display: block;
+  }
+}
+
+.c-wizard--error {
+  .cds--modal-container {
+    background: linear-gradient(90deg, #8a3b2a 0%, #1a0f0d 100%);
+  }
+}
+
+.c-wizard--highlight {
+  .cds--modal-container {
+    background: linear-gradient(180deg, #1984dd 0%, #298e76 100%);
+  }
+}
+
+.c-wizard {
+  .cds--modal-header,
+  .cds--modal-content {
+    background-color: var(--white);
+    margin: 0;
+  }
+
+  .cds--modal-header {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    box-shadow: 0px 2px 2px rgba(33, 56, 72, 0.1);
+    padding: 40px 32px 24px;
+    position: relative;
+    z-index: 1; // allows box shadow to showxl
+
+    @include do-this-above(md) {
+      padding: 24px 32px;
+    }
+  }
+
+  .cds--modal-content {
+    background-color: var(--white);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 32px 16px 40px;
+
+    @include do-this-above(md) {
+      padding: 40px 32px;
+    }
+  }
+
+  .cds--modal-close {
+    background-color: transparent;
+    border: 2px solid transparent;
+    color: var(--gray-100);
+    cursor: pointer;
+    height: 32px;
+    overflow: hidden;
+    padding: 12px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    transform: scale(1.6);
+    transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
+    width: 48px;
+    z-index: 2;
+  }
+}
+
+.c-wizard__header__heading {
+  color: var(--blue-80);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+}
+
+// Generic slot component
+.c-wizard__slot {
+  background-color: var(--gray-10);
+  border-radius: 8px;
+  color: var(--gray-100);
+  margin-bottom: 24px;
+  padding: 24px 16px;
+  position: relative;
+
+  @include do-this-above(md) {
+    padding: 32px 24px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+}
+
+.c-wizard--success .c-wizard__slot--2,
+.c-wizard--error .c-wizard__slot--2,
+.c-wizard--highlight .c-wizard__slot--2 {
+  display: none;
+}
+
+// Success Slot Bottom
+.c-wizard__success-slot-btm {
+  background-color: var(--gray-10);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  color: var(--gray-100);
+  display: none; // visible on success screen
+  margin-bottom: -40px;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding: 32px 16px 40px;
+  position: relative;
+
+  @include do-this-above(md) {
+    margin-left: -32px;
+    margin-right: -32px;
+    padding: 40px 32px;
+  }
+}
+
+// Slot for wizard description
+.c-wizard__description {
+  margin-bottom: 24px;
+}
+
+.c-wizard--error .c-wizard__description {
+  background-color: var(--gray-10);
+  border-radius: 8px;
+  color: var(--gray-100);
+  font-size: 16px;
+  padding: 16px;
+}
+
+.c-wizard__btn-group {
+  .cds--btn-set {
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+  }
+}
+
+.c-wizard__btn-group--right {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-end;
+
+  // margin-bottom: 40px;
+
+  @include do-this-above(md) {
+    flex-direction: row;
+  }
+}
+
+.c-wizard--success .c-wizard__btn-group--right {
+  margin-bottom: 40px;
+}
+
+.c-wizard__highlight-badge {
+  display: none;
+}
+
+.c-wizard--highlight .c-wizard__highlight-badge {
+  background-color: #bde4f8;
+  border-radius: 10px;
+  display: inline-block;
+  left: 50%;
+  padding: 4px 6px 4px 6px;
+  position: absolute;
+  top: -11%;
+  transform: translateX(-50%);
+
+  @include do-this-above(md) {
+    // top: -12%;
+  }
+
+  p {
+    color: #213848;
+    font-size: 10px;
+    font-weight: 600;
+  }
+}
+
+.c-wizard--highlight .c-wizard__slot {
+  border: 1px solid #b9dddc;
+}
+
+.c-wizard__description {
+  color: #213848;
+}
+
+/* commenting transition classes until we can talk with david
+.wizard-enter > .cds--modal-container {
+  opacity: 0.4 !important;
+  transform: scaleY(0.6) !important;
+  transform-origin: center !important;
+  transition: transform 0.2s linear !important;
+}
+.wizard-enter-active > .cds--modal-container {
+  opacity: 0.6 !important;
+  transform: scaleY(0.9) !important;
+  transform-origin: center !important;
+  transition: transform 0.1s linear !important;
+}
+.wizard-enter-done > .cds--modal-container {
+  opacity: 0.8 !important;
+  transform: scaleY(1) !important;
+  transform-origin: center !important;
+  transition: transform 0.1s linear !important;
+}
+*/
+h1,
+h2 {
+  font-family: "Open Sans", "Segoe UI", Tahoma, sans-serif !important;
+}
+
+.hide-close-button {
+  display: none;
+}

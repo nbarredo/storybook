@@ -1,0 +1,12 @@
+.cds--btn-set {
+  gap: 12px;
+  &.left {
+    justify-content: flex-start;
+  }
+  &.center {
+    justify-content: center;
+  }  
+  &.right {
+    justify-content: flex-end;
+  }  
+}
