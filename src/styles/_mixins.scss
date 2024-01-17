@@ -1,10 +1,9 @@
-@use 'sass:math';
+@use "sass:math";
 @use "sass:map";
 
 @function to-rem($size) {
-    @return math.div($size, 16px) * 1rem;
+  @return math.div($size, 16px) * 1rem;
 }
-
 
 $breakpoints: (
   md: 672px,
@@ -12,17 +11,13 @@ $breakpoints: (
   xl: 1272px,
 );
 
-/*
-
-Example breakpoint mixin usage:
-
-@include do-this-above(sm) {
-  .element {
-    font-weight: bold;
-  }
-}
-
-*/
+/// Example breakpoint mixin usage:
+///
+///@include do-this-above(sm) {
+///  .element {
+///    font-weight: bold;
+///  }
+///}
 
 @mixin do-this-above($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {

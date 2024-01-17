@@ -1,0 +1,44 @@
+@use "./mixins" as *;
+@use "./global" as g;
+@use "sass:map";
+@use "sass:list";
+
+@import "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap";
+
+$primary-font-stack: "Open Sans", "Segoe UI", tahoma, sans-serif;
+
+$font-sizes: (
+  "size-00": list.slash(to-rem(10px), to-rem(15px)),
+  "size-0": list.slash(to-rem(12px), to-rem(18px)),
+  "size-1": list.slash(to-rem(14px), to-rem(21px)),
+  "size-2": list.slash(to-rem(16px), to-rem(24px)),
+  "size-3": list.slash(to-rem(18px), to-rem(27px)),
+  "size-4": list.slash(to-rem(20px), to-rem(30px)),
+  "size-5": list.slash(to-rem(24px), to-rem(36px)),
+  "size-6": list.slash(to-rem(28px), to-rem(42px)),
+  "size-7": list.slash(to-rem(32px), to-rem(48px)),
+  "size-8": list.slash(to-rem(36px), to-rem(48px)),
+  "size-9": list.slash(to-rem(42px), to-rem(63px)),
+  "size-10": list.slash(to-rem(48px), to-rem(72px)),
+  "size-11": list.slash(to-rem(54px), to-rem(81px)),
+  "size-12": list.slash(to-rem(60px), to-rem(90px)),
+  "size-13": list.slash(to-rem(68px), to-rem(102px)),
+  "size-14": list.slash(to-rem(76px), to-rem(114px)),
+);
+
+$font-weights: (
+  "light": 300,
+  "reg": 400,
+  "semi": 600,
+  "bold": 700,
+);
+
+$font-variants: ("light", "reg", "semi", "bold");
+
+@each $key, $size in $font-sizes {
+  @each $variant in $font-variants {
+    %font-#{$key}-#{$variant} {
+      font: #{map.get($font-weights, $variant) $size $primary-font-stack};
+    }
+  }
+}
