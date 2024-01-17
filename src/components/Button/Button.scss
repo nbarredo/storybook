@@ -1,14 +1,15 @@
+@use "../../styles/typography";
+@use "../../styles/global" as g;
+
 ////////////////////
 // Buttons
 ///////////////////
 ///
 .cds--btn {
-  border-radius: 8px;
+  @extend %font-size-3-bold;
+
+  border-radius: g.$border-radius;
   color: var(--black);
-  font-family: "Open Sans", sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
   letter-spacing: 0.16px;
 
   svg {
