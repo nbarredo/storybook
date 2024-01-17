@@ -1,5 +1,5 @@
 import React from "react";
-// import HelpIcon from '@mui/icons-material/Help';
+import HelpIcon from "@mui/icons-material/Help";
 import { Accordion } from "./Accordion";
 import image from "./art_acct_number.png.png";
 
@@ -12,7 +12,8 @@ export default meta;
 
 export const Default = {
   args: {
-    title: <p>Where do I find my account number?</p>,
+    title: "Where do I find my account number?",
+    icon: <HelpIcon />,
     children: (
       <>
         <p>

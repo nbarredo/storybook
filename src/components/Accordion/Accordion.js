@@ -1,6 +1,5 @@
 import React from "react";
 import { AccordionItem, Accordion as CarbonAccordion } from "@carbon/react";
-import HelpIcon from "@mui/icons-material/Help";
 import PropTypes from "prop-types";
 import "./Accordion.scss";
 
@@ -10,12 +9,10 @@ import "./Accordion.scss";
 function Accordion({ children, title, icon }) {
   const createTitle = () => {
     return (
-      <>
-        <span>
-          <HelpIcon />
-        </span>
-        <h1>{title}</h1>
-      </>
+      <div className="title-container">
+        {icon}
+        <p>{title}</p>
+      </div>
     );
   };
 
@@ -32,7 +29,7 @@ Accordion.propTypes = {
   /** An optional icon to precede the title text */
   icon: PropTypes.node,
   /** The title text for the accordion */
-  title: PropTypes.node,
+  title: PropTypes.string,
   /** The content that appears inside the accordion when it is open/expanded */
   children: PropTypes.node,
 };

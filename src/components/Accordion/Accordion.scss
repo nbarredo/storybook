@@ -1,12 +1,44 @@
-.cds--btn-set {
-  gap: 12px;
-  &.left {
-    justify-content: flex-start;
+@use "../../styles/typography";
+@use "../../styles/global" as g;
+
+.cds--accordion__item {
+  border: 1px solid var(--gray-30);
+  border-radius: g.$border-radius;
+
+  .cds--accordion__heading {
+    &:hover,
+    &:focus {
+      border-radius: g.$border-radius;
+    }
+
+    .cds--accordion__title {
+      .title-container {
+        padding-left: 28px;
+        position: relative;
+
+        svg {
+          color: var(--purple-70);
+          height: 20px;
+          left: 0;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 20px;
+        }
+
+        p {
+          @extend %font-size-1-semi;
+
+          color: var(--gray-70);
+        }
+      }
+    }
   }
-  &.center {
-    justify-content: center;
-  }  
-  &.right {
-    justify-content: flex-end;
-  }  
+
+  &.cds--accordion__item--active:hover,
+  &.cds--accordion__item--active:focus {
+    .cds--accordion__heading {
+      border-radius: g.$border-radius g.$border-radius 0 0;
+    }
+  }
 }
