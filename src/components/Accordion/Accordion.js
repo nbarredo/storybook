@@ -14,7 +14,6 @@ function Accordion({ children, title, icon }) {
         <span>
           <HelpIcon />
         </span>
-
         <h1>{title}</h1>
       </>
     );
@@ -22,7 +21,7 @@ function Accordion({ children, title, icon }) {
 
   return (
     <CarbonAccordion>
-      <AccordionItem title={createTitle()}>{children}</AccordionItem>
+      <AccordionItem title={title && createTitle()}>{children}</AccordionItem>
     </CarbonAccordion>
   );
 }
@@ -34,6 +33,6 @@ Accordion.propTypes = {
   icon: PropTypes.node,
   /** The title text for the accordion */
   title: PropTypes.node,
-  /** A collection of button components that you would like to display */
+  /** The content that appears inside the accordion when it is open/expanded */
   children: PropTypes.node,
 };

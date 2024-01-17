@@ -17,7 +17,7 @@ export const Default = {
       <>
         <p>
           Account numbers are on your bill. Contact customer service for help if
-          you don’t yet have a bill.
+          you don&#apos;t yet have a bill.
         </p>
         <img src={image} />
       </>
