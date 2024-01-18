@@ -30,7 +30,7 @@ name: '$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:-r)'
 jobs:
  
 - job: 'Feature_Topic_Prerelease'
-  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'))
+  condition: and(succeeded(), or( startsWith(variables['Build.SourceBranch'], 'refs/heads/users/'), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/')))
   
   steps:
   - checkout: self
