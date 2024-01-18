@@ -4,4 +4,5 @@ module.exports = {
   importOrderSeparation: false,
   importOrderSortSpecifiers: true,
   printWidth: 80,
+  trailingComma: "none",
 };

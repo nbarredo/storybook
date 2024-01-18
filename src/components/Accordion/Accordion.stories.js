@@ -5,7 +5,7 @@ import image from "./art_acct_number.png.png";
 
 const meta = {
   title: "In Progress/Accordion",
-  component: Accordion,
+  component: Accordion
 };
 
 export default meta;
@@ -22,6 +22,6 @@ export const Default = {
         </p>
         <img src={image} />
       </>
-    ),
-  },
+    )
+  }
 };

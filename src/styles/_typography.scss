@@ -20,17 +20,14 @@ $font-sizes: (
   "size-8": list.slash(to-rem(36px), to-rem(48px)),
   "size-9": list.slash(to-rem(42px), to-rem(63px)),
   "size-10": list.slash(to-rem(48px), to-rem(72px)),
-  "size-11": list.slash(to-rem(54px), to-rem(81px)),
-  "size-12": list.slash(to-rem(60px), to-rem(90px)),
-  "size-13": list.slash(to-rem(68px), to-rem(102px)),
-  "size-14": list.slash(to-rem(76px), to-rem(114px)),
+  "size-11": list.slash(to-rem(54px), to-rem(81px))
 );
 
 $font-weights: (
   "light": 300,
   "reg": 400,
   "semi": 600,
-  "bold": 700,
+  "bold": 700
 );
 
 $font-variants: ("light", "reg", "semi", "bold");
