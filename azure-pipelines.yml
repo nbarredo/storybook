@@ -47,7 +47,7 @@ jobs:
     inputs:
         command: 'custom'
         workingDir: '$(System.DefaultWorkingDirectory)'
-        customCommand: 'version $(Build.BuildNumber)' 
+        customCommand: 'version $(Build.BuildNumber) --force' 
         
   - task: Npm@1
     displayName: NPM Install
