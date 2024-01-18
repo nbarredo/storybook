@@ -17,9 +17,11 @@ export const Default = {
     children: (
       <>
         <p>
-          Account numbers are on your bill. Contact customer service for help if
-          you don&#apos;t yet have a bill.
+          Account numbers are on your bill. Contact{" "}
+          <a href="#">customer service</a> for help if you don&#apos;t yet have
+          a bill.
         </p>
+        <br />
         <img src={image} />
       </>
     )

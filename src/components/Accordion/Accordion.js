@@ -26,10 +26,10 @@ function Accordion({ children, title, icon }) {
 export { Accordion };
 
 Accordion.propTypes = {
+  /** The content that appears inside the accordion when it is open/expanded */
+  children: PropTypes.node,
   /** An optional icon to precede the title text */
   icon: PropTypes.node,
   /** The title text for the accordion */
-  title: PropTypes.string,
-  /** The content that appears inside the accordion when it is open/expanded */
-  children: PropTypes.node,
+  title: PropTypes.string.isRequired
 };
