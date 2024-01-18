@@ -6,7 +6,6 @@ const config = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
     "@storybook/addon-docs",
-    "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
     "@storybook/addon-designs"
@@ -15,14 +14,14 @@ const config = {
     name: "@storybook/react-webpack5",
     options: {
       builder: {
-        useSWC: true,
-      },
-    },
+        useSWC: true
+      }
+    }
   },
   docs: {
     autodocs: true,
-    defaultName: 'Documentation',
+    defaultName: "Documentation"
   },
-  staticDirs: ["..\\public"],
+  staticDirs: ["..\\public"]
 };
 export default config;
