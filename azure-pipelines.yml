@@ -126,8 +126,7 @@ jobs:
     inputs:
       command: 'custom'
       workingDir: $(System.DefaultWorkingDirectory)/build
-      #customCommand: 'run publish:ci'
-      customCommand: 'npm publish --registry https://pkgs.dev.azure.com/Eversource-Energy/_packaging/$(feedId)/registry/ --tag $(preReleaseFeedView)"'
+      customCommand: 'run publish:ci pre-release'
       customRegistry: 'useFeed'
       customFeed: $(feedId)
       
@@ -266,7 +265,7 @@ jobs:
     inputs:
       command: 'custom'
       workingDir: $(System.DefaultWorkingDirectory)/build
-      customCommand: 'run publish:ci'
+      customCommand: 'run publish:ci release'
       customRegistry: 'useFeed'
       customFeed: $(feedId)
 
