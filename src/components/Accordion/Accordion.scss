@@ -5,6 +5,7 @@
   border: 1px solid var(--gray-30);
   border-radius: g.$border-radius;
 
+  /// This section refers to the Button element that Carbon generates
   .cds--accordion__heading {
     &:hover,
     &:focus {
@@ -35,9 +36,14 @@
     }
   }
 
-  &.cds--accordion__item--active:hover,
-  &.cds--accordion__item--active:focus {
-    .cds--accordion__heading {
+  /// Carbon applies "cds--accordion__item--active" to indicate that the accordion is open.
+  /// The classes below determine what should happen stylistically when it is open.
+
+  &.cds--accordion__item--active {
+    .cds--accordion__heading:hover {
+      border-radius: g.$border-radius g.$border-radius 0 0;
+    }
+    .cds--accordion__heading:focus {
       border-radius: g.$border-radius g.$border-radius 0 0;
     }
   }
