@@ -1,0 +1,266 @@
+pool:
+  #vmImage: ubuntu-latest
+  name: $(agent_name)
+
+trigger:
+  branches:
+    include:
+      - master
+      - feature/*
+      - users/*
+  paths:
+    exclude:
+      - README.md
+
+
+variables:
+- group: devops_config
+- group: nuget-Eversource.Storybook
+- name: preReleaseFeedView
+  value: pre-release
+- name: releaseFeedView
+  value: release
+- name: feedId
+  value: 920b2c70-c890-4c92-a66a-c53cd39cf05b/96cdb231-7ea1-40a0-b861-b71056a9a44e
+- name: packageName
+  value: eversource/storybook
+
+name: '$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:-r)'
+
+jobs:
+ 
+- job: 'Feature_Topic_Prerelease'
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'))
+  
+  steps:
+  - checkout: self
+    fetchDepth: 1
+
+  - script: |
+        git config user.email "pipeline@eversource.com" 
+        git config user.name "Azure DevOps"
+
+  - task: Npm@1
+    displayName: 'Set NPM version'
+    enabled: true
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    inputs:
+        command: 'custom'
+        workingDir: '$(System.DefaultWorkingDirectory)'
+        customCommand: 'version $(Build.BuildNumber)' 
+        
+  - task: Npm@1
+    displayName: NPM Install
+    inputs:
+        command: 'install'
+        workingDir: '$(System.DefaultWorkingDirectory)'        
+  
+  - task: Npm@1
+    displayName: NPM Run Unit Tests with code coverage
+    enabled: false
+    inputs:
+        command: 'custom'
+        workingDir: '$(System.DefaultWorkingDirectory)'
+        customCommand: 'run test:ci'
+
+  - task: Npm@1
+    displayName: NPM Build
+    inputs:
+        command: 'custom'
+        workingDir: '$(System.DefaultWorkingDirectory)'
+        customCommand: 'run build'
+  
+  - task: PublishTestResults@2
+    displayName: 'Publish Unit Test Results'
+    condition: succeededOrFailed()
+    inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '$(System.DefaultWorkingDirectory)/**/junit.xml'
+        mergeTestResults: true
+        failTaskOnFailedTests: true
+        testRunTitle: 'React App Test'
+
+  - task: PublishCodeCoverageResults@1
+    displayName: "Publish code coverage"
+    inputs:
+        codeCoverageTool: Cobertura
+        summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/coverage/cobertura-coverage.xml"
+        reportDirectory: "$(System.DefaultWorkingDirectory)/coverage"
+        failIfCoverageEmpty: false
+
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        $buildNumber = $Env:BUILD_BUILDNUMBER
+        $revision = $buildNumber.Substring($buildNumber.LastIndexOf('_') + 1)
+        $srcbranch = "$(Build.SourceBranchName)" -replace '[^a-zA-Z0-9]'
+        $newbranch = -join($srcbranch,".",$revision)
+        echo "##vso[task.setvariable variable=newSourceBranch;isOutput=true]$newbranch"
+    name: branchsetter
+
+  - task: PowerShell@2
+    name: print
+    inputs:
+      targetType: 'inline'
+      script: write-host "$(branchsetter.newSourceBranch)"
+   
+# Promotion to prerelease of the feature/* commit 
+  - task: PublishPipelineArtifact@1
+    displayName: Publish Artifact
+    #condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
+    inputs:
+      targetPath: $(System.DefaultWorkingDirectory)/build
+      artifactName: build
+
+  
+  - task: Npm@1
+    displayName: Publish NPM Pkg to Artifact feed
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    inputs:
+      command: 'custom'
+      workingDir: $(System.DefaultWorkingDirectory)/build
+      customCommand: 'run publish:ci '
+      customRegistry: 'useFeed'
+      customFeed: $(feedId)
+      
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet pack'
+    enabled: false
+    inputs:
+      command: 'pack'
+      packagesToPack: '$(System.DefaultWorkingDirectory)/build'
+      includeReferencedProjects: true
+      versioningScheme: 'byEnvVar'
+      versionEnvVar: 'PackageVersionCommit'
+      includeSymbols: true
+      packDestination: '$(Build.ArtifactStagingDirectory)\nugetpkg'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet push'
+    enabled: false
+    inputs:
+      command: 'push'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+      nuGetFeedType: 'internal'
+      publishVstsFeed: $(feedId)
+      allowPackageConflicts: true
+
+  - task: rvo-vsts-promotepackage-task@3
+    enabled: false
+    inputs:
+      feed: $(feedId)
+      inputType: 'nameVersion'
+      definition: 'eversource/storybook'
+      version: '$(PackageVersionCommit)'
+      releaseView: 'a6462fd4-c529-42eb-bd4d-df5d991ae3c8'
+  
+  
+- job: 'Master_Release'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  
+  steps:
+  - checkout: self
+    fetchDepth: 1
+
+  - script: |
+        git config user.email "pipeline@eversource.com" 
+        git config user.name "Azure DevOps"
+
+  - task: Npm@1
+    displayName: 'Set NPM version'
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    inputs:
+        command: 'custom'
+        workingDir: '$(System.DefaultWorkingDirectory)/src'
+        customCommand: 'version $(Build.BuildNumber)' 
+
+  - task: Npm@1
+    displayName: NPM Install
+    inputs:
+        command: 'install'
+        workingDir: '$(System.DefaultWorkingDirectory)/src'
+
+  - task: Npm@1
+    displayName: NPM Build
+    inputs:
+        command: 'custom'
+        workingDir: '$(System.DefaultWorkingDirectory)/src'
+        customCommand: 'run build-storybook'
+
+  - task: Npm@1
+    displayName: NPM Run Unit Tests with code coverage
+    inputs:
+        command: 'custom'
+        workingDir: '$(System.DefaultWorkingDirectory)/src'
+        customCommand: 'run test:ci'
+
+  - task: PublishTestResults@2
+    displayName: 'Publish Unit Test Results'
+    condition: succeededOrFailed()
+    inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '$(System.DefaultWorkingDirectory)/**/junit.xml'
+        mergeTestResults: true
+        failTaskOnFailedTests: true
+        testRunTitle: 'React App Test'
+
+  - task: PublishCodeCoverageResults@1
+    displayName: "Publish code coverage"
+    inputs:
+        codeCoverageTool: Cobertura
+        summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/coverage/cobertura-coverage.xml"
+        reportDirectory: "$(System.DefaultWorkingDirectory)/coverage"
+        failIfCoverageEmpty: false
+  
+# Promotion to release of the master commit
+  - task: NuGetCommand@2
+    displayName: 'NuGet pack'
+    enabled: false
+    inputs:
+      command: 'pack'
+      packagesToPack: '$(System.DefaultWorkingDirectory)/build/'
+      includeReferencedProjects: true
+      versioningScheme: 'byEnvVar'
+      versionEnvVar: 'PackageVersionPR'
+      includeSymbols: true
+      packDestination: '$(Build.ArtifactStagingDirectory)\nugetpkg'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet push'
+    enabled: false
+    inputs:
+      command: 'push'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+      nuGetFeedType: 'internal'
+      publishVstsFeed: $(feedId)
+      allowPackageConflicts: true
+
+  - task: rvo-vsts-promotepackage-task@3
+    enabled: false
+    inputs:
+      feed: $(feedId)
+      inputType: 'nameVersion'
+      definition: 'eversource/storybook'
+      version: '$(PackageVersionPR)'
+      releaseView: 'ceaff219-6d4e-4098-992e-65c1d025053c'
+
+  - task: PublishPipelineArtifact@1
+    displayName: Publish Artifact
+    #condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
+    inputs:
+      targetPath: $(System.DefaultWorkingDirectory)/build
+      artifactName: build
+
+  - task: Npm@1
+    displayName: Publish NPM Pkg to Artifact feed with release view
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    inputs:
+      command: 'custom'
+      workingDir: $(System.DefaultWorkingDirectory)/build
+      customCommand: 'run publish:ci '
+      customRegistry: 'useFeed'
+      customFeed: $(feedId)
+
+ 
