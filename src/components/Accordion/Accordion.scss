@@ -5,6 +5,10 @@
   border: 1px solid var(--gray-30);
   border-radius: g.$border-radius;
 
+  .cds--accordion__wrapper {
+    max-block-size: none;
+  }
+
   /// This section refers to the Button element that Carbon generates
   .cds--accordion__heading {
     &:hover,
