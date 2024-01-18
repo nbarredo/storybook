@@ -39,6 +39,12 @@ jobs:
   - script: |
         git config user.email "pipeline@eversource.com" 
         git config user.name "Azure DevOps"
+  
+  - task: npmAuthenticate@0
+    enabled: true  
+    inputs:
+      workingFile: '$(System.DefaultWorkingDirectory)/.npmrc'
+
 
   - task: Npm@1
     displayName: 'Set NPM version'
