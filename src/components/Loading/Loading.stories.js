@@ -1,7 +1,8 @@
 import { Loading } from "./Loading";
+
 const meta = {
   component: Loading,
-  title: "In Progress/Loading",
+  title: "Approved for Use/Loading",
   parameters: {
     design: {
       type: "figma",
