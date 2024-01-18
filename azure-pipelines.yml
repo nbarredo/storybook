@@ -120,7 +120,7 @@ jobs:
     inputs:
       command: 'custom'
       workingDir: $(System.DefaultWorkingDirectory)/build
-      customCommand: 'run publish:ci '
+      customCommand: 'run publish:ci'
       customRegistry: 'useFeed'
       customFeed: $(feedId)
       
@@ -259,7 +259,7 @@ jobs:
     inputs:
       command: 'custom'
       workingDir: $(System.DefaultWorkingDirectory)/build
-      customCommand: 'run publish:ci '
+      customCommand: 'run publish:ci'
       customRegistry: 'useFeed'
       customFeed: $(feedId)
 
