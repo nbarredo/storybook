@@ -126,7 +126,7 @@ jobs:
     inputs:
       command: 'custom'
       workingDir: $(System.DefaultWorkingDirectory)/build
-      customCommand: 'run publish:ci pre-release'
+      customCommand: 'run publish:ci-pre-release'
       customRegistry: 'useFeed'
       customFeed: $(feedId)
       
@@ -265,7 +265,7 @@ jobs:
     inputs:
       command: 'custom'
       workingDir: $(System.DefaultWorkingDirectory)/build
-      customCommand: 'run publish:ci release'
+      customCommand: 'run publish:ci-release'
       customRegistry: 'useFeed'
       customFeed: $(feedId)
 
