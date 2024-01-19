@@ -89,6 +89,7 @@ jobs:
         failIfCoverageEmpty: false
 
   - task: PowerShell@2
+    enabled: false
     inputs:
       targetType: 'inline'
       script: |
@@ -100,6 +101,7 @@ jobs:
     name: branchsetter
 
   - task: PowerShell@2
+    enabled: false
     name: print
     inputs:
       targetType: 'inline'
@@ -127,7 +129,29 @@ jobs:
       customCommand: 'run publish:ci-pre-release'
       customRegistry: 'useFeed'
       customFeed: $(feedId)
-      
+  
+  - powershell: |
+    # Run npm show command to get the package details including versions
+    $packageDetails = npm show $packageName
+
+    # Extract the latest version from the package details
+    $latestVersion = $packageDetails | Select-String "latest:" | ForEach-Object { $_.ToString().Split(":")[1].Trim() }
+
+    # Set an environment variable with the latest version
+    Write-Host "##vso[task.setvariable variable=LatestPackageVersion]$latestVersion"
+    displayName: 'Retrieve Package Version'
+
+  - script: echo "Latest version of the package is $(LatestPackageVersion)"
+    displayName: 'Display Latest Package Version'    
+  
+  - task: PowerShell@2
+    enabled: true
+    name: print
+    inputs:
+      targetType: 'inline'
+      script: 'PATCH https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/$(feedId)/npm/$(packageName)/versions/$(LatestPackageVersion)?api-version=7.1-preview.1'
+
+  
 
   - task: NuGetCommand@2
     displayName: 'NuGet pack'
