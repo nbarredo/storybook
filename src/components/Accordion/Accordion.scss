@@ -1,0 +1,80 @@
+@use "../../styles/typography";
+@use "../../styles/global" as g;
+
+.cds--accordion__item {
+  border: 1px solid var(--gray-30);
+  border-radius: g.$border-radius;
+
+  .cds--accordion__wrapper {
+    padding: 0;
+    p {
+      @extend %font-size-1-reg;
+
+      color: var(--gray-70);
+    }
+  }
+
+  .cds--accordion__content {
+    padding: 16px 24px 24px 24px;
+  }
+
+  /// This section refers to the Button element that Carbon generates
+  .cds--accordion__heading {
+    //padding: 16px 0;
+    &:hover,
+    &:focus {
+      border-radius: g.$border-radius;
+    }
+
+    .cds--accordion__arrow {
+      background-color: var(--gray-00);
+      border-radius: g.$border-radius-small;
+      fill: var(--blue-70);
+      scale: 1.25;
+    }
+
+    .cds--accordion__title {
+      padding-left: 12px;
+      .title-container {
+        padding-left: 0;
+        position: relative;
+
+        svg {
+          color: var(--purple-70);
+          height: 20px;
+          left: 0;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 20px;
+        }
+
+        p {
+          @extend %font-size-1-semi;
+
+          color: var(--gray-70);
+        }
+      }
+    }
+  }
+
+  // Add padding when an icon is present
+  &.icon .cds--accordion__heading .cds--accordion__title .title-container {
+    padding-left: 28px;
+  }
+
+  /// Carbon applies "cds--accordion__item--active" to indicate that the accordion is open.
+  /// The classes below determine what should happen stylistically when it is open.
+
+  &.cds--accordion__item--active {
+    .cds--accordion__heading:hover {
+      border-radius: g.$border-radius g.$border-radius 0 0;
+    }
+    .cds--accordion__heading:focus {
+      border-radius: g.$border-radius g.$border-radius 0 0;
+    }
+    .cds--accordion__content {
+      border-top: 1px dashed var(--gray-20);
+    }
+  }
+}

@@ -1,19 +1,24 @@
 import React from "react";
-import { ButtonSet } from "./ButtonSet";
 import { Button } from "../Button/Button";
+import { ButtonSet } from "./ButtonSet";
 
 const meta = {
-  title: "In Progress/ButtonSet",
-  component: ButtonSet
+  title: "Approved For Use/ButtonSet",
+  component: ButtonSet,
 };
 
 export default meta;
 
-const buttonSeries = <><Button kind="tertiary" label="Button 1" /><Button kind="tertiary" label="Button 2" /></>;
+const buttonSeries = (
+  <>
+    <Button kind="tertiary" label="Button 1" />
+    <Button kind="tertiary" label="Button 2" />
+  </>
+);
 
 export const Default = {
   args: {
     stacked: false,
-    children: buttonSeries
-  }
+    children: buttonSeries,
+  },
 };

@@ -1,14 +1,15 @@
+@use "../../styles/typography";
+@use "../../styles/global" as g;
+
 ////////////////////
 // Buttons
 ///////////////////
-/// 
+///
 .cds--btn {
-  border-radius: 8px;
+  @extend %font-size-3-bold;
+
+  border-radius: g.$border-radius;
   color: var(--black);
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
   letter-spacing: 0.16px;
 
   svg {
@@ -35,7 +36,9 @@
     &:focus {
       background-color: var(--blue-50);
       border: 2px solid var(--white);
-      box-shadow: 0px 0px 1px 0px rgba(0, 36, 64, 0.31), 0px 0px 6px 3px rgba(0, 109, 179, 0.20);
+      box-shadow:
+        0px 0px 1px 0px rgba(0, 36, 64, 0.31),
+        0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
     }
 
@@ -43,12 +46,12 @@
       background-color: var(--gray-20);
       border: none;
       color: var(--gray-30);
-    }  
+    }
   }
   &.cds--btn--secondary {
     background-color: var(--blue-60);
     border-bottom: 2px solid var(--blue-80);
-        
+
     &:hover {
       background-color: var(--blue-70);
       border-bottom: 2px solid var(--blue-90);
@@ -61,15 +64,16 @@
     &:focus {
       background-color: var(--blue-60);
       border: 2px solid var(--white);
-      box-shadow: 0px 0px 1px 0px rgba(0, 36, 64, 0.31), 0px 0px 6px 3px rgba(0, 109, 179, 0.20);
+      box-shadow:
+        0px 0px 1px 0px rgba(0, 36, 64, 0.31),
+        0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
-    }  
+    }
     &:disabled {
       background-color: var(--gray-20);
       border: none;
       color: var(--gray-30);
-    }      
-
+    }
   }
   &.cds--btn--tertiary {
     background-color: transparent;
@@ -85,32 +89,36 @@
     &:focus {
       background-color: var(--white);
       border: 1px solid var(--white);
-      box-shadow: 0px 0px 1px 0px rgba(0, 36, 64, 0.31), 0px 0px 6px 3px rgba(0, 109, 179, 0.20);
+      box-shadow:
+        0px 0px 1px 0px rgba(0, 36, 64, 0.31),
+        0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
-    }  
+    }
     &:disabled {
-      background-color: var(--white);      
+      background-color: var(--white);
       border: 1px solid var(--gray-30);
       color: var(--gray-20);
-    }       
+    }
   }
   &.cds--btn--ghost {
     color: var(--blue-70);
     &:hover {
       background-color: var(--gray-10);
-    } 
+    }
     &:active {
       background-color: var(--gray-20);
     }
     &:focus {
       background-color: var(--white);
       border: 1px solid var(--white);
-      box-shadow: 0px 0px 1px 0px rgba(0, 36, 64, 0.31), 0px 0px 6px 3px rgba(0, 109, 179, 0.20);
+      box-shadow:
+        0px 0px 1px 0px rgba(0, 36, 64, 0.31),
+        0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
-    }  
+    }
     &:disabled {
       color: var(--gray-20);
-    }          
+    }
   }
 
   &.es--btn--ghost--subtle {
@@ -118,7 +126,7 @@
     &:hover {
       background-color: var(--gray-10);
       color: var(--gray-70);
-    } 
+    }
     &:active {
       background-color: var(--gray-20);
       color: var(--gray-80);
@@ -126,16 +134,18 @@
     &:focus {
       background-color: var(--white);
       border: 1px solid var(--white);
-      box-shadow: 0px 0px 1px 0px rgba(0, 36, 64, 0.31), 0px 0px 6px 3px rgba(0, 109, 179, 0.20);
+      box-shadow:
+        0px 0px 1px 0px rgba(0, 36, 64, 0.31),
+        0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       color: var(--gray-70);
       outline: 2px solid var(--blue-60);
-    }  
+    }
     &:disabled {
       color: var(--gray-20);
-    } 
+    }
   }
-  
-  &.cds--btn--danger {
+
+  &.cds--btn--danger--primary {
     background-color: var(--red-60);
     border-bottom: 2px solid var(--red-80);
     color: var(--white);
@@ -144,7 +154,7 @@
       background-color: var(--red-70);
       border-bottom: 2px solid var(--red-90);
     }
-    
+
     &:active {
       background-color: var(--red-80);
       border-bottom: 2px solid var(--red-100);
@@ -153,7 +163,9 @@
     &:focus {
       background-color: var(--red-60);
       border: 2px solid var(--white);
-      box-shadow: 0px 0px 1px 0px rgba(0, 36, 64, 0.31), 0px 0px 6px 3px rgba(0, 109, 179, 0.20);
+      box-shadow:
+        0px 0px 1px 0px rgba(0, 36, 64, 0.31),
+        0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
     }
 
@@ -161,7 +173,7 @@
       background-color: var(--gray-20);
       border: none;
       color: var(--gray-30);
-    }  
+    }
   }
   &.cds--btn--danger--tertiary {
     background-color: transparent;
@@ -177,20 +189,22 @@
     &:focus {
       background-color: var(--white);
       border: 1px solid var(--white);
-      box-shadow: 0px 0px 1px 0px rgba(0, 36, 64, 0.31), 0px 0px 6px 3px rgba(0, 109, 179, 0.20);
+      box-shadow:
+        0px 0px 1px 0px rgba(0, 36, 64, 0.31),
+        0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
-    }  
+    }
     &:disabled {
-      background-color: var(--white);      
+      background-color: var(--white);
       border: 1px solid var(--gray-30);
       color: var(--gray-20);
-    } 
+    }
   }
   &.cds--btn--danger--ghost {
     color: var(--red-70);
     &:hover {
       background-color: var(--red-00);
-    } 
+    }
     &:active {
       background-color: var(--red-10);
       color: var(--red-80);
@@ -198,16 +212,15 @@
     &:focus {
       background-color: var(--white);
       border: 1px solid var(--white);
-      box-shadow: 0px 0px 1px 0px rgba(0, 36, 64, 0.31), 0px 0px 6px 3px rgba(0, 109, 179, 0.20);
+      box-shadow:
+        0px 0px 1px 0px rgba(0, 36, 64, 0.31),
+        0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
-    }  
+    }
     &:disabled {
       color: var(--gray-20);
-    }   
+    }
   }
-
-
- 
 }
 
 /*
