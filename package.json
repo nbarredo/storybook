@@ -30,7 +30,8 @@
     "lint:scss": "stylelint \"**/*.scss\"",
     "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
     "lint:js": "npx eslint \"./**/*.js\" --cache --cache-strategy content",
-    "lint:js:fix": "npx eslint \"./**/*.js\" --cache --cache-strategy content --fix"
+    "lint:js:fix": "npx eslint \"./**/*.js\" --cache --cache-strategy content --fix",
+    "publish:ci": "npm publish"
   },
   "browserslist": {
     "production": [
