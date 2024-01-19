@@ -36,7 +36,7 @@
     .cds--accordion__title {
       padding-left: 12px;
       .title-container {
-        padding-left: 28px;
+        padding-left: 0;
         position: relative;
 
         svg {
@@ -58,6 +58,11 @@
     }
   }
 
+  // Add padding when an icon is present
+  &.icon .cds--accordion__heading .cds--accordion__title .title-container {
+    padding-left: 28px;
+  }
+
   /// Carbon applies "cds--accordion__item--active" to indicate that the accordion is open.
   /// The classes below determine what should happen stylistically when it is open.
 
@@ -70,7 +75,6 @@
     }
     .cds--accordion__content {
       border-top: 1px dashed var(--gray-20);
-      max-block-size: none !important;
     }
   }
 }
