@@ -164,6 +164,10 @@ jobs:
         command: 'custom'
         workingDir: '$(System.DefaultWorkingDirectory)/src'
         customCommand: 'version $(Build.BuildNumber)' 
+  - task: npmAuthenticate@0
+    enabled: true  
+    inputs:
+      workingFile: '$(System.DefaultWorkingDirectory)/.npmrc'
 
   - task: Npm@1
     displayName: NPM Install
