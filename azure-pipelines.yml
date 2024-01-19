@@ -71,6 +71,7 @@ jobs:
         customCommand: 'run build'
   
   - task: PublishTestResults@2
+    enabled: false #as requested by Leo
     displayName: 'Publish Unit Test Results'
     condition: succeededOrFailed()
     inputs:
@@ -81,6 +82,7 @@ jobs:
         testRunTitle: 'React App Test'
 
   - task: PublishCodeCoverageResults@1
+    enabled: false #as requested by Leo
     displayName: "Publish code coverage"
     inputs:
         codeCoverageTool: Cobertura
@@ -131,6 +133,7 @@ jobs:
       customFeed: $(feedId)
   
   - task: AzureCLI@2
+    enabled: false
     inputs:
       azureSubscription: 'Eversource-CX-Dev-Contributor-Cloud and DevOps-ms-benchmark'
       scriptType: 'pscore'
@@ -142,39 +145,6 @@ jobs:
           --method PATCH \
           --url "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/${feedId}/nuget/packages/${packageName}/versions/${latestVersion}?api-version=7.1-preview.1'
       arguments: '--body ''{"views": {"op": "add", "path": "/views/-", "value": "Prerelease"}}'''
-  
-
-  - task: NuGetCommand@2
-    displayName: 'NuGet pack'
-    enabled: false
-    inputs:
-      command: 'pack'
-      packagesToPack: '$(System.DefaultWorkingDirectory)/build'
-      includeReferencedProjects: true
-      versioningScheme: 'byEnvVar'
-      versionEnvVar: 'PackageVersionCommit'
-      includeSymbols: true
-      packDestination: '$(Build.ArtifactStagingDirectory)\nugetpkg'
-
-  - task: NuGetCommand@2
-    displayName: 'NuGet push'
-    enabled: false
-    inputs:
-      command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-      nuGetFeedType: 'internal'
-      publishVstsFeed: $(feedId)
-      allowPackageConflicts: true
-
-  - task: rvo-vsts-promotepackage-task@3
-    enabled: false
-    inputs:
-      feed: $(feedId)
-      inputType: 'nameVersion'
-      definition: 'eversource/storybook'
-      version: '$(PackageVersionCommit)'
-      releaseView: 'a6462fd4-c529-42eb-bd4d-df5d991ae3c8'
-  
   
 - job: 'Master_Release'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
@@ -216,6 +186,7 @@ jobs:
         customCommand: 'run test:ci'
 
   - task: PublishTestResults@2
+    enabled: false #as requested by Leo
     displayName: 'Publish Unit Test Results'
     condition: succeededOrFailed()
     inputs:
@@ -226,6 +197,7 @@ jobs:
         testRunTitle: 'React App Test'
 
   - task: PublishCodeCoverageResults@1
+    enabled: false #as requested by Leo
     displayName: "Publish code coverage"
     inputs:
         codeCoverageTool: Cobertura
@@ -234,37 +206,7 @@ jobs:
         failIfCoverageEmpty: false
   
 # Promotion to release of the master commit
-  - task: NuGetCommand@2
-    displayName: 'NuGet pack'
-    enabled: false
-    inputs:
-      command: 'pack'
-      packagesToPack: '$(System.DefaultWorkingDirectory)/build/'
-      includeReferencedProjects: true
-      versioningScheme: 'byEnvVar'
-      versionEnvVar: 'PackageVersionPR'
-      includeSymbols: true
-      packDestination: '$(Build.ArtifactStagingDirectory)\nugetpkg'
-
-  - task: NuGetCommand@2
-    displayName: 'NuGet push'
-    enabled: false
-    inputs:
-      command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-      nuGetFeedType: 'internal'
-      publishVstsFeed: $(feedId)
-      allowPackageConflicts: true
-
-  - task: rvo-vsts-promotepackage-task@3
-    enabled: false
-    inputs:
-      feed: $(feedId)
-      inputType: 'nameVersion'
-      definition: 'eversource/storybook'
-      version: '$(PackageVersionPR)'
-      releaseView: 'ceaff219-6d4e-4098-992e-65c1d025053c'
-
+  
   - task: PublishPipelineArtifact@1
     displayName: Publish Artifact
     #condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
