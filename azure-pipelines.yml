@@ -168,7 +168,10 @@ jobs:
     enabled: true  
     inputs:
       workingFile: '$(System.DefaultWorkingDirectory)/.npmrc'
-
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '20.10.0'  # Specify the Node.js version you want
+      checkLatest: true
   - task: Npm@1
     displayName: NPM Install
     inputs:
