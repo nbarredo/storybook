@@ -52,7 +52,7 @@ jobs:
   - task: Npm@1
     displayName: NPM Install
     inputs:
-        command: 'install'
+        command: 'ci'
         workingDir: '$(System.DefaultWorkingDirectory)'        
   
   - task: Npm@1
@@ -168,7 +168,7 @@ jobs:
   - task: Npm@1
     displayName: NPM Install
     inputs:
-        command: 'install'
+        command: 'ci'
         workingDir: '$(System.DefaultWorkingDirectory)/src'
 
   - task: Npm@1
