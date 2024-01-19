@@ -26,6 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:ci": "cross-env CI=true react-scripts test --watchAll=false --watch=false --no-watchman --coverage --env=jsdom --testPathIgnorePatterns=assets --reporters=default --reporters=jest-junit --coverageReporters=cobertura --forceExit --passWithNoTests",
     "eject": "react-scripts eject",
     "storybook": "storybook dev --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem -p 6006",
     "build-storybook": "storybook build",
