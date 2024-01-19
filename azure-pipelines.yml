@@ -186,6 +186,7 @@ jobs:
         customCommand: 'run build-storybook'
 
   - task: Npm@1
+    enabled: false #as requested by Leo
     displayName: NPM Run Unit Tests with code coverage
     inputs:
         command: 'custom'
