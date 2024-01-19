@@ -41,7 +41,7 @@ jobs:
         git config user.name "Azure DevOps"
   
   - task: Npm@1
-    displayName: 'Set NPM version'
+    displayName: 'Set NPM package version'
     enabled: true
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     inputs:
@@ -130,27 +130,18 @@ jobs:
       customRegistry: 'useFeed'
       customFeed: $(feedId)
   
-  - powershell: |
-    # Run npm show command to get the package details including versions
-    $packageDetails = npm show $packageName
-
-    # Extract the latest version from the package details
-    $latestVersion = $packageDetails | Select-String "latest:" | ForEach-Object { $_.ToString().Split(":")[1].Trim() }
-
-    # Set an environment variable with the latest version
-    Write-Host "##vso[task.setvariable variable=LatestPackageVersion]$latestVersion"
-    displayName: 'Retrieve Package Version'
-
-  - script: echo "Latest version of the package is $(LatestPackageVersion)"
-    displayName: 'Display Latest Package Version'    
-  
-  - task: PowerShell@2
-    enabled: true
-    name: print
+  - task: AzureCLI@2
     inputs:
-      targetType: 'inline'
-      script: 'PATCH https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/$(feedId)/npm/$(packageName)/versions/$(LatestPackageVersion)?api-version=7.1-preview.1'
-
+      azureSubscription: 'Eversource-CX-Dev-Contributor-Cloud and DevOps-ms-benchmark'
+      scriptType: 'pscore'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        $packageDetails = npm show $packageName
+        $latestVersion = $packageDetails | Select-String "latest:" | ForEach-Object { $_.ToString().Split(":")[1].Trim() }
+        az rest --resource 0d67bc21-cdea-4f69-8ff0-a44b85218ae2 \
+          --method PATCH \
+          --url "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/${feedId}/nuget/packages/${packageName}/versions/${latestVersion}?api-version=7.1-preview.1'
+      arguments: '--body ''{"views": {"op": "add", "path": "/views/-", "value": "Prerelease"}}'''
   
 
   - task: NuGetCommand@2
