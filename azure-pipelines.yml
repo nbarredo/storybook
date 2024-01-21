@@ -138,7 +138,7 @@ jobs:
       customFeed: $(feedId)
   
   - task: AzureCLI@2
-    enabled: false
+    enabled: true
     inputs:
       azureSubscription: 'Eversource-CX-Dev-Contributor-Cloud and DevOps-ms-benchmark'
       scriptType: 'pscore'
@@ -146,10 +146,8 @@ jobs:
       inlineScript: |
         $packageDetails = npm show $packageName
         $latestVersion = $packageDetails | Select-String "latest:" | ForEach-Object { $_.ToString().Split(":")[1].Trim() }
-        az rest --resource 0d67bc21-cdea-4f69-8ff0-a44b85218ae2 \
-          --method PATCH \
-          --url "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/${feedId}/nuget/packages/${packageName}/versions/${latestVersion}?api-version=7.1-preview.1'
-      arguments: '--body ''{"views": {"op": "add", "path": "/views/-", "value": "Prerelease"}}'''
+        az rest --resource 0d67bc21-cdea-4f69-8ff0-a44b85218ae2 --method PATCH --url 'https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/${feedId}/nuget/packages/${packageName}/versions/${latestVersion}?api-version=7.1-preview.1' --body '{"views": {"op": "add", "path": "/views/-", "value": "Prerelease"}}'
+    
   
 - job: 'Master_Release'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
