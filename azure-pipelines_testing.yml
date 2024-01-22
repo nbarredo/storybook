@@ -150,7 +150,7 @@ jobs:
       script: |
          # Write your PowerShell commands here.
          
-         $base64AuthInfo = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('npm:'+$(System.AccessToken)))
+         $base64AuthInfo = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('npm:$(System.AccessToken)'))
          $uri = "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/96cdb231-7ea1-40a0-b861-b71056a9a44e/npm/@eversource/storybook/versions/2024.1.22-2?api-version=7.1-preview.1"
          $body = "{'views': {'op': 'add', 'path': '/views/-', 'value': 'Prerelease'}}"
          Invoke-WebRequest -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
