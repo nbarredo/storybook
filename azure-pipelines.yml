@@ -21,7 +21,7 @@ variables:
 - name: releaseFeedView
   value: release
 - name: feedId
-  value: 920b2c70-c890-4c92-a66a-c53cd39cf05b/96cdb231-7ea1-40a0-b861-b71056a9a44e
+  value: 96cdb231-7ea1-40a0-b861-b71056a9a44e
 - name: packageName
   value: eversource/storybook
 
@@ -146,7 +146,7 @@ jobs:
       inlineScript: |
         $packageDetails = npm show $packageName
         $latestVersion = $packageDetails | Select-String "latest:" | ForEach-Object { $_.ToString().Split(":")[1].Trim() }
-        az rest --resource 0d67bc21-cdea-4f69-8ff0-a44b85218ae2 --method PATCH --url 'https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/${feedId}/nuget/packages/${packageName}/versions/${latestVersion}?api-version=7.1-preview.1' --body '{"views": {"op": "add", "path": "/views/-", "value": "Prerelease"}}'
+        az rest --resource 499b84ac-1321-427f-aa17-267ca6975798 --method PATCH --url 'https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/${feedId}/npm/packages/${packageName}/versions/${latestVersion}?api-version=7.1-preview.1' --body '{"views": {"op": "add", "path": "/views/-", "value": "Prerelease"}}'
     
   
 - job: 'Master_Release'
