@@ -4,7 +4,7 @@ import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Accordion } from "./Accordion";
 
-describe("Accordion", () => {
+describe("Accordion component functions properly", () => {
   test("renders the title", () => {
     render(<Accordion title="Test Title">Test Content</Accordion>);
     expect(screen.getByText("Test Title")).toBeInTheDocument();
