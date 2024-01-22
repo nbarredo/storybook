@@ -24,7 +24,8 @@ variables:
   value: 96cdb231-7ea1-40a0-b861-b71056a9a44e
 - name: packageName
   value: '@eversource/storybook'
-
+- name: packageVersion
+  value: $(Build.BuildNumber)
 name: '$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:-r)'
 
 jobs:
@@ -136,9 +137,20 @@ jobs:
       customCommand: 'run publish:ci'
       customRegistry: 'useFeed'
       customFeed: $(feedId)
-  
-  - task: AzureCLI@2
+
+  - task: PowerShell@2
     enabled: true
+    inputs:
+      targetType: 'inline'
+      script: |
+         # Write your PowerShell commands here.
+         $base64AuthInfo = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('npm:$(System.AccessToken)'))
+         $uri = "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/$(feedId)/npm/$(packageName)/versions/$(packageVersion)?api-version=7.1-preview.1"
+         $body = "{'views': {'op': 'add', 'path': '/views/-', 'value': 'Prerelease'}}"
+         Invoke-WebRequest -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
+
+  - task: AzureCLI@2
+    enabled: false
     inputs:
       azureSubscription: 'Eversource-CX-Dev-Contributor-Cloud and DevOps-ms-benchmark'
       scriptType: 'pscore'
