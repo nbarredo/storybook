@@ -142,6 +142,7 @@ jobs:
       customFeed: $(feedId)
 
   - task: PowerShell@2
+    displayName: "Promote package to prerelease view"
     enabled: true
     inputs:
       targetType: 'inline'
@@ -242,6 +243,7 @@ jobs:
       customFeed: $(feedId)
   
   - task: PowerShell@2
+    displayName: "Promote package to release view"
     enabled: true
     inputs:
       targetType: 'inline'
