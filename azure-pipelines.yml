@@ -144,10 +144,11 @@ jobs:
       scriptType: 'pscore'
       scriptLocation: 'inlineScript'
       inlineScript: |
+        $ver= $(Build.BuildNumber)
         $packageDetails = npm show $packageName
         $latestVersion = $packageDetails | Select-String "latest:" | ForEach-Object { $_.ToString().Split(":")[1].Trim() }
-        Write-Host "NPM Package Version:- $(latestVersion)"
-        az rest --resource '499b84ac-1321-427f-aa17-267ca6975798' --method PATCH --url "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/${feedId}/npm/${packageName}/versions/${latestVersion}?api-version=7.1-preview.1" --body "{'views': {'op': 'add', 'path': '/views/-', 'value': 'Prerelease'}}"
+        az rest --resource '499b84ac-1321-427f-aa17-267ca6975798' --method PATCH --url "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/${feedId}/npm/${packageName}/versions/${ver}?api-version=7.1-preview.1" --body "{'views': {'op': 'add', 'path': '/views/-', 'value': 'Prerelease'}}"
+        Write-Host 'NPM Package Version:- $latestVersion'
     
   
 - job: 'Master_Release'
