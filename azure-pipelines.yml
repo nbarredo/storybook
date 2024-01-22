@@ -26,6 +26,8 @@ variables:
   value: '@eversource/storybook'
 - name: packageVersion
   value: $(Build.BuildNumber)
+- name: packagePromote
+  value: 'Prerelease'
 name: '$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:-r)'
 
 jobs:
@@ -146,7 +148,7 @@ jobs:
          # Write your PowerShell commands here.
          $base64AuthInfo = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('npm:$(System.AccessToken)'))
          $uri = "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/$(feedId)/npm/$(packageName)/versions/$(packageVersion)?api-version=7.1-preview.1"
-         $body = "{'views': {'op': 'add', 'path': '/views/-', 'value': 'Prerelease'}}"
+         $body = "{'views': {'op': 'add', 'path': '/views/-', 'value':'$(packagePromote)'}}"
          Invoke-WebRequest -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
 
   - task: AzureCLI@2
