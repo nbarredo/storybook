@@ -151,7 +151,7 @@ jobs:
       scriptType: 'pscore'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az rest --resource '499b84ac-1321-427f-aa17-267ca6975798' --method PATCH --url "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/${feedId}/npm/${packageName}/versions/${packageVersion}?api-version=7.1-preview.1" --body "{'views': {'op': 'add', 'path': '/views/-', 'value': 'Prerelease'}}"
+        az rest --resource '499b84ac-1321-427f-aa17-267ca6975798' --method PATCH --url "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/96cdb231-7ea1-40a0-b861-b71056a9a44e/npm/@eversource/storybook/versions/2024.1.22-3?api-version=7.1-preview.1" --body "{'views': {'op': 'add', 'path': '/views/-', 'value': 'Prerelease'}}"
     
   
 - job: 'Master_Release'
