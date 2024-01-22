@@ -84,18 +84,14 @@ const errorContent = (
   <>
     <WizardDescription>
       <p>
-        Area reserved to give the user context of what is being asked, or shown.
-        Please keep it short, max two lines.
+        We are unable to process your request. Please try again. If the problem
+        persists, please <a href="#">contact us</a> for assistance.
       </p>
     </WizardDescription>
-    <WizardSlot>
-      <p>
-        Slot Component
-        <br />
-        Placeholder area for Wizard content.
-      </p>
-    </WizardSlot>
-    <WizardBtnGrp>This is a button group</WizardBtnGrp>
+    <ButtonSet align="right">
+      <Button kind="ghost--subtle" label="Cancel" />
+      <Button kind="tertiary" label="Try Again" />
+    </ButtonSet>
   </>
 );
 
@@ -121,9 +117,11 @@ const highlightContent = (
 const letsContinueContent = (
   <>
     <WizardSlot>
-      <Text variant="p" marginBottom={3} inline={false}>
-        Do you (or did you) have electric or gas service with Eversource?
-      </Text>
+      <center>
+        <Text variant="p" marginBottom={4} inline={false} className="test">
+          Do you (or did you) have electric or gas service with Eversource?
+        </Text>
+      </center>
       <ButtonSet>
         <Button kind="tertiary" label="Not Yet" />
         <Button kind="tertiary" label="Yes" />
@@ -150,6 +148,7 @@ export const Success = {
 export const Error = {
   args: {
     ...defaultArgs,
+    headerTitle: "There Was A Problem",
     state: "error",
     children: errorContent
   }
