@@ -21,10 +21,15 @@ variables:
 - name: releaseFeedView
   value: release
 - name: feedId
-  value: 920b2c70-c890-4c92-a66a-c53cd39cf05b/96cdb231-7ea1-40a0-b861-b71056a9a44e
+  value: 96cdb231-7ea1-40a0-b861-b71056a9a44e
 - name: packageName
-  value: eversource/storybook
-
+  value: '@eversource/storybook'
+- name: packageVersion
+  value: $(Build.BuildNumber)
+- name: nonprodpackagePromote
+  value: 'Prerelease'
+- name: prodpackagePromote
+  value: 'Release'
 name: '$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:-r)'
 
 jobs:
@@ -42,7 +47,6 @@ jobs:
   
   - task: Npm@1
     displayName: 'Set NPM package version'
-    enabled: true
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     inputs:
         command: 'custom'
@@ -136,20 +140,18 @@ jobs:
       customCommand: 'run publish:ci'
       customRegistry: 'useFeed'
       customFeed: $(feedId)
-  
-  - task: AzureCLI@2
-    enabled: false
+
+  - task: PowerShell@2
+    enabled: true
     inputs:
-      azureSubscription: 'Eversource-CX-Dev-Contributor-Cloud and DevOps-ms-benchmark'
-      scriptType: 'pscore'
-      scriptLocation: 'inlineScript'
-      inlineScript: |
-        $packageDetails = npm show $packageName
-        $latestVersion = $packageDetails | Select-String "latest:" | ForEach-Object { $_.ToString().Split(":")[1].Trim() }
-        az rest --resource 0d67bc21-cdea-4f69-8ff0-a44b85218ae2 \
-          --method PATCH \
-          --url "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/${feedId}/nuget/packages/${packageName}/versions/${latestVersion}?api-version=7.1-preview.1'
-      arguments: '--body ''{"views": {"op": "add", "path": "/views/-", "value": "Prerelease"}}'''
+      targetType: 'inline'
+      script: |
+         # Write your PowerShell commands here.
+         $base64AuthInfo = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('npm:$(System.AccessToken)'))
+         $uri = "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/$(feedId)/npm/$(packageName)/versions/$(packageVersion)?api-version=7.1-preview.1"
+         $body = "{'views': {'op': 'add', 'path': '/views/-', 'value':'$(nonprodpackagePromote)'}}"
+         Invoke-WebRequest -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
+
   
 - job: 'Master_Release'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
@@ -169,10 +171,7 @@ jobs:
         command: 'custom'
         workingDir: '$(System.DefaultWorkingDirectory)'
         customCommand: 'version $(Build.BuildNumber) --force' 
-  - task: npmAuthenticate@0
-    enabled: true  
-    inputs:
-      workingFile: '$(System.DefaultWorkingDirectory)/.npmrc'
+  
   - task: NodeTool@0
     inputs:
       versionSpec: '20.10.0'  # Specify the Node.js version you want
@@ -226,6 +225,11 @@ jobs:
     inputs:
       targetPath: $(System.DefaultWorkingDirectory)/build
       artifactName: build
+  
+  - task: npmAuthenticate@0
+    enabled: true  
+    inputs:
+      workingFile: '$(System.DefaultWorkingDirectory)/.npmrc'
 
   - task: Npm@1
     displayName: Publish NPM Pkg to Artifact feed
@@ -236,5 +240,17 @@ jobs:
       customCommand: 'run publish:ci'
       customRegistry: 'useFeed'
       customFeed: $(feedId)
+  
+  - task: PowerShell@2
+    enabled: true
+    inputs:
+      targetType: 'inline'
+      script: |
+         # Write your PowerShell commands here.
+         $base64AuthInfo = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('npm:$(System.AccessToken)'))
+         $uri = "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/$(feedId)/npm/$(packageName)/versions/$(packageVersion)?api-version=7.1-preview.1"
+         $body = "{'views': {'op': 'add', 'path': '/views/-', 'value':'$(prodpackagePromote)'}}"
+         Invoke-WebRequest -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
+
 
  
