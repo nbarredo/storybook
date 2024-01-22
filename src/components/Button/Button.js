@@ -14,7 +14,7 @@ function Button({
   size,
   type,
   renderIcon,
-  className,
+  className
 }) {
   let buttonType;
   if (kind === "ghost--subtle") {
@@ -34,7 +34,7 @@ function Button({
       size={size}
       type={type}
     >
-      {label}
+      <span className="label-container">{label}</span>
     </CarbonButton>
   );
 }
@@ -55,7 +55,7 @@ Button.propTypes = {
     "danger--ghost",
     "danger--tertiary",
     "tertiary",
-    "ghost--subtle",
+    "ghost--subtle"
   ]),
   /** The text content of the button */
   label: PropTypes.string,
@@ -66,5 +66,5 @@ Button.propTypes = {
   /** Specify the size of the button */
   size: PropTypes.oneOf(["sm", "md", "lg"]),
   /** Optional prop to specify the type of the Button */
-  type: PropTypes.oneOf(["button", "reset", "submit"]),
+  type: PropTypes.oneOf(["button", "reset", "submit"])
 };
