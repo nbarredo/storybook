@@ -68,3 +68,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+## How to import and use the new storybook npm package on another repo:
+
+1) Add .npmrc file on the root with this content:
+
+registry=https://pkgs.dev.azure.com/Eversource-Energy/Eversource-Digital/_packaging/Eversource-Digital/npm/registry/ 
+
+always-auth=true
+
+2) Remove the package  "@eversource/mf-storybook" from package.json file
+
+3) Run the command npm i @eversource/storybook to install the latest version of the new storybook npm package
+
+4) Replace the package name on the decs.d.ts to use the new storybook package
+
+declare module "@eversource/storybook";
+
+5) Make sure all the components used are the ones from Storybook
