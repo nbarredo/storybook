@@ -1,0 +1,41 @@
+@use "../../styles/typography";
+@use "../../styles/global" as g;
+
+$placeholder-color: var(--gray-60);
+.cds--text-input__field-outer-wrapper {
+  border: 1px solid var(--gray-40);
+  border-radius: g.$border-radius;
+  .cds--text-input {
+    background-color: var(--white);
+    border-bottom: 3px solid var(--white);
+    border-left: none;
+    border-radius: g.$border-radius;
+    border-right: none;
+    border-top: 3px solid var(--gray-10);
+    position: relative;
+
+    /* stylelint-disable-next-line selector-no-vendor-prefix */
+    &::-webkit-input-placeholder {
+      @extend %font-size-1-reg;
+
+      color: $placeholder-color;
+    }
+    /* stylelint-disable-next-line selector-no-vendor-prefix */
+    &:-ms-input-placeholder {
+      @extend %font-size-1-reg;
+
+      color: $placeholder-color;
+    }
+
+    &::placeholder {
+      @extend %font-size-1-reg;
+
+      color: $placeholder-color;
+    }
+  }
+  .cds--label {
+    @extend %font-size-1-reg;
+
+    color: var(--gray-80);
+  }
+}
