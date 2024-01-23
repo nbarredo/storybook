@@ -11,7 +11,7 @@ import {
 } from "./children";
 
 export default {
-  title: "In Progress/Wizard",
+  title: "Approved for Use/Wizard",
   component: Wizard,
   parameters: {
     design: {
