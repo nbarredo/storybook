@@ -31,4 +31,20 @@ describe("Accordion component functions properly", () => {
     const icon = getByTestId("AddIcon");
     expect(icon).toBeInTheDocument;
   });
+
+  test("renders the correct size, type, kind, and classname", () => {
+    render(
+      <Button
+        size="sm"
+        kind="danger--primary"
+        type="submit"
+        className="eureka"
+      />
+    );
+    const buttonElement = screen.getByRole("button");
+    expect(buttonElement).toHaveClass("cds--layout--size-sm");
+    expect(buttonElement).toHaveClass("cds--btn--danger--primary");
+    expect(buttonElement).toHaveAttribute("type", "submit");
+    expect(buttonElement).toHaveClass("eureka");
+  });
 });
