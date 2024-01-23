@@ -2,7 +2,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Button } from "./Button";
 
 const meta = {
-  title: "In Progress/Button",
+  title: "Approved for Use/Button",
   component: Button,
   argTypes: {
     onClick: { action: "clicked" },

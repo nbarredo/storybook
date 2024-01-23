@@ -148,6 +148,18 @@
 }
 
 .c-wizard--error {
+  .c-wizard__header__heading {
+    color: var(--gray-80);
+  }
+  .c-wizard__description {
+    background-color: var(--gray-00);
+    border-radius: 8px;
+    color: var(--gray-70);
+    font-size: 16px;
+    padding: 16px;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
   .cds--modal-container {
     background: linear-gradient(90deg, #8a3b2a 0%, #1a0f0d 100%);
   }
@@ -186,7 +198,7 @@
     padding: 32px 16px 40px;
 
     @include do-this-above(md) {
-      padding: 40px 32px;
+      padding: 32px 32px 40px 32px;
     }
   }
 
@@ -218,7 +230,7 @@
 
 // Generic slot component
 .c-wizard__slot {
-  background-color: var(--gray-10);
+  background-color: var(--gray-00);
   border-radius: 8px;
   color: var(--gray-100);
   margin-bottom: 24px;
@@ -231,6 +243,10 @@
 
   p {
     font-size: 18px;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
   }
 }
 
@@ -262,15 +278,8 @@
 
 // Slot for wizard description
 .c-wizard__description {
+  color: #213848;
   margin-bottom: 24px;
-}
-
-.c-wizard--error .c-wizard__description {
-  background-color: var(--gray-10);
-  border-radius: 8px;
-  color: var(--gray-100);
-  font-size: 16px;
-  padding: 16px;
 }
 
 .c-wizard__btn-group {
@@ -328,30 +337,6 @@
   border: 1px solid #b9dddc;
 }
 
-.c-wizard__description {
-  color: #213848;
-}
-
-/* commenting transition classes until we can talk with david
-.wizard-enter > .cds--modal-container {
-  opacity: 0.4 !important;
-  transform: scaleY(0.6) !important;
-  transform-origin: center !important;
-  transition: transform 0.2s linear !important;
-}
-.wizard-enter-active > .cds--modal-container {
-  opacity: 0.6 !important;
-  transform: scaleY(0.9) !important;
-  transform-origin: center !important;
-  transition: transform 0.1s linear !important;
-}
-.wizard-enter-done > .cds--modal-container {
-  opacity: 0.8 !important;
-  transform: scaleY(1) !important;
-  transform-origin: center !important;
-  transition: transform 0.1s linear !important;
-}
-*/
 h1,
 h2 {
   font-family: "Open Sans", "Segoe UI", Tahoma, sans-serif !important;

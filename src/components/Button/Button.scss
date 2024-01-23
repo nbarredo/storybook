@@ -10,14 +10,24 @@
 
   border-radius: g.$border-radius;
   color: var(--black);
+  display: inline-block;
   letter-spacing: 0.16px;
+  padding-inline-end: 15px;
 
-  svg {
-    height: 24px;
-    margin-left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 24px;
+  .label-container {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .cds--btn__icon {
+    block-size: 24px;
+    display: inline-block;
+    inline-size: 24px;
+    inset-block: 0;
+    inset-inline: 0;
+    margin-left: 12px;
+    position: relative;
+    vertical-align: middle;
   }
 
   &.cds--btn--primary {

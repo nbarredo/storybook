@@ -8,7 +8,12 @@ import "./ButtonSet.scss";
  */
 function ButtonSet({ stacked = false, children, align = "center" }) {
   return (
-    <CarbonButtonSet stacked={stacked} align={align} className={`${align}`}>
+    <CarbonButtonSet
+      data-testid="ev-button-set"
+      stacked={stacked}
+      align={align}
+      className={`${align}`}
+    >
       {children}
     </CarbonButtonSet>
   );
@@ -22,5 +27,5 @@ ButtonSet.propTypes = {
   /** Specify the alignment of the buttons in the set (left, center, or right) */
   align: PropTypes.oneOf(["left", "center", "right"]),
   /** A collection of button components that you would like to display */
-  children: PropTypes.node,
+  children: PropTypes.node
 };

@@ -5,8 +5,11 @@
   }
   &.center {
     justify-content: center;
-  }  
+  }
   &.right {
     justify-content: flex-end;
-  }  
+  }
+  .cds--btn {
+    text-align: center;
+  }
 }

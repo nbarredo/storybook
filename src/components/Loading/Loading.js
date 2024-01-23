@@ -8,10 +8,11 @@ export const Loading = ({
   className,
   description,
   small,
-  withOverlay,
+  withOverlay
 }) => {
   return (
     <CarbonLoading
+      data-testid="ev-loading"
       active={active}
       className={className}
       description={description}
@@ -30,5 +31,5 @@ Loading.propTypes = {
   /** Choose whether or not to use the small variant */
   small: PropTypes.bool,
   /** Specify whether you want the loader to be applied with an overlay */
-  withOverlay: PropTypes.bool,
+  withOverlay: PropTypes.bool
 };
