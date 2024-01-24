@@ -20,6 +20,9 @@ export const Default = {
     defaultValue: "Delete this text to view the placeholder",
     size: "md",
     id: "test-id",
-    helperText: "Helper text goes here"
+    helperText: "Helper text goes here",
+    invalid: false,
+    invalidText: "Please enter a valid zip code",
+    disabled: false
   }
 };

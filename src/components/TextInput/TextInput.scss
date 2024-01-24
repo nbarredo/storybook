@@ -10,7 +10,6 @@ $field-text-color: var(--gray-70);
   .cds--text-input__field-outer-wrapper {
     .cds--text-input {
       @extend %font-size-1-reg;
-
       background-color: var(--white);
       border: 1px solid var(--gray-40);
       border-radius: g.$border-radius;
@@ -19,23 +18,53 @@ $field-text-color: var(--gray-70);
       padding-bottom: 2px;
       position: relative;
 
+      &.cds--text-input--invalid {
+        box-shadow: inset 2px 7px 0px -3px var(--red-00);
+        outline: 2px solid var(--red-80);
+      }
+
       &::placeholder {
         @extend %font-size-1-reg;
-
         color: $placeholder-color;
       }
+
+      &:hover {
+        background-color: var(--blue-00);
+        box-shadow: inset 2px 7px 0px -3px var(--blue-10);
+      }
+
+      &:focus {
+        outline: 2px solid var(--blue-60);
+      }
+
+      &:disabled {
+        background-color: var(--gray-10);
+        border: 1px solid var(--gray-20);
+        box-shadow: none;
+      }
+    }
+    .cds--text-input__invalid-icon {
+      fill: var(--red-70);
+      height: 24px;
+      width: 24px;
+      z-index: 1;
     }
     .cds--form__helper-text {
       @extend %font-size-0-reg;
-
       color: var(--gray-60);
+      margin-top: 8px;
+      padding-left: 4px;
+    }
+    .cds--form-requirement {
+      @extend %font-size-0-semi;
+      color: var(--red-80);
+      margin-top: 8px;
       padding-left: 4px;
     }
   }
   .cds--text-input__label-wrapper {
     .cds--label {
       @extend %font-size-1-reg;
-
       color: $field-label-color;
       padding-left: 4px;
     }

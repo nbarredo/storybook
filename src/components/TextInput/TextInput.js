@@ -19,11 +19,11 @@ TextInput.propTypes = {
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Specify whether the `<input>` should be disabled */
   disabled: PropTypes.bool,
-  /** Specify whether to display the character counter */
+  /** Specify whether to display the character counter. Note: You must specify a maxCount in order for the counter to appear. */
   enableCounter: PropTypes.bool,
   /** Provide text that is used alongside the control label for additional help */
   helperText: PropTypes.node,
-  /** Specify whether you want the underlying label to be visually hidden */
+  /** Specify whether you want to hide the form field's label */
   hideLabel: PropTypes.bool,
   /** Specify a custom `id` for the `<input>` */
   id: PropTypes.string.isRequired,
@@ -52,10 +52,6 @@ TextInput.propTypes = {
   size: PropTypes.oneOf(["sm", "md", "lg"]),
   /** Specify the type of the `<input>` */
   type: PropTypes.string,
-  /** Specify the value of the `<input>` */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Specify whether the control is currently in warning state */
-  warn: PropTypes.bool,
-  /** Provide the text that is displayed when the control is in warning state */
-  warnText: PropTypes.node
+  /** Specify the value of the `<input>` (for controlled forms only) */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
