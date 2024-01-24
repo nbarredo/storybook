@@ -19,6 +19,7 @@ export const Default = {
     labelText: "Input Field Label",
     defaultValue: "Delete this text to view the placeholder",
     size: "md",
-    id: "test-id"
+    id: "test-id",
+    helperText: "Helper text goes here"
   }
 };
