@@ -6,10 +6,10 @@
   border-radius: g.$border-radius;
 
   .cds--accordion__wrapper {
+    overflow: hidden; //required to fix a bug with the Carbon Accordion component
     padding: 0;
     p {
       @extend %font-size-1-reg;
-
       color: var(--gray-70);
     }
   }
@@ -51,7 +51,6 @@
 
         p {
           @extend %font-size-1-semi;
-
           color: var(--gray-70);
         }
       }
