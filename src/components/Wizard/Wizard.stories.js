@@ -146,8 +146,9 @@ const accountInformationContent = (
           maxCount={11}
           helperText="Account numbers are 11 digits"
           placeholder=""
-          size="sm"
+          size="lg"
           type="number"
+          id="test-id"
         />
       </form>
     </WizardSlot>
@@ -166,7 +167,7 @@ const accountInformationContent = (
       title="Which ID # are you looking for?"
       icon={<ContactMailIcon />}
     />
-    <ButtonSet align="right">
+    <ButtonSet align="right" fixedSize={false}>
       <Button kind="ghost" label="Back" />
       <Button kind="tertiary" label="Continue" />
     </ButtonSet>

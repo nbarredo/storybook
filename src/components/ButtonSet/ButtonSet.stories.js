@@ -11,7 +11,7 @@ export default meta;
 
 const buttonSeries = (
   <>
-    <Button kind="tertiary" label="Button 1" />
+    <Button kind="ghost" label="Button 1" />
     <Button kind="tertiary" label="Button 2" />
   </>
 );

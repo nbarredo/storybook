@@ -10,6 +10,12 @@
     justify-content: flex-end;
   }
   .cds--btn {
+    inline-size: auto;
     text-align: center;
+  }
+  &.fixed-size {
+    .cds--btn {
+      inline-size: 100%;
+    }
   }
 }
