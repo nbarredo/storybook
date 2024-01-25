@@ -1,7 +1,7 @@
 import React from "react";
 import HelpIcon from "@mui/icons-material/Help";
 import { Accordion } from "./Accordion";
-import image from "./art_acct_number.png.png";
+import image from "./art_acct_number.png";
 
 const meta = {
   title: "Approved for Use/Accordion",

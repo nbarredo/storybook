@@ -1,7 +1,12 @@
 import React from "react";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
+import HelpIcon from "@mui/icons-material/Help";
+import { Accordion } from "../Accordion/Accordion";
+import image from "../Accordion/art_acct_number.png";
 import { Button } from "../Button/Button";
 import { ButtonSet } from "../ButtonSet/ButtonSet";
 import { Text } from "../Text/Text";
+import { TextInput } from "../TextInput/TextInput";
 import { Wizard } from "./Wizard";
 import {
   WizardBtnGrp,
@@ -130,6 +135,44 @@ const letsContinueContent = (
   </>
 );
 
+const accountInformationContent = (
+  <>
+    <WizardSlot>
+      <form style={{ width: "250px" }}>
+        <TextInput
+          labelText="Account Number"
+          invalidText="Must be 11 digits"
+          inline={false}
+          maxCount={11}
+          helperText="Account numbers are 11 digits"
+          placeholder=""
+          size="sm"
+          type="number"
+        />
+      </form>
+    </WizardSlot>
+    <Accordion title="Where do I find my account number?" icon={<HelpIcon />}>
+      <>
+        <p>
+          Account numbers are on your bill. Contact{" "}
+          <a href="#">customer service</a> for help if you don&#apos;t yet have
+          a bill.
+        </p>
+        <br />
+        <img src={image} />
+      </>
+    </Accordion>
+    <Accordion
+      title="Which ID # are you looking for?"
+      icon={<ContactMailIcon />}
+    />
+    <ButtonSet align="right">
+      <Button kind="ghost" label="Back" />
+      <Button kind="tertiary" label="Continue" />
+    </ButtonSet>
+  </>
+);
+
 export const Default = {
   args: {
     ...defaultArgs,
@@ -168,5 +211,14 @@ export const LetsContinue = {
     headerTitle: "Let's Continue Your Online Set Up",
     state: "default",
     children: letsContinueContent
+  }
+};
+
+export const AccountInformation = {
+  args: {
+    ...defaultArgs,
+    headerTitle: "Account Information",
+    state: "default",
+    children: accountInformationContent
   }
 };
