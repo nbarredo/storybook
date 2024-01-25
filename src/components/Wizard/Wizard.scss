@@ -1,22 +1,8 @@
 @use "../../styles/mixins" as *;
+@use "../../styles/typography" as t;
+@use "../../styles/global" as g;
 
-// Delete these styles if you can include Carbon styles TODO: talk with David about why this is here?(repeated code?)
 .cds--modal {
-  align-items: center;
-  content: "";
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  left: 0;
-  opacity: 1;
-  position: fixed;
-  top: 0;
-  transition:
-    opacity 240ms cubic-bezier(0.4, 0.14, 1, 1),
-    visibility 0ms linear 240ms;
-  width: 100vw;
-  z-index: 9000;
-
   &.loading {
     user-select: none;
     .loading-container {
@@ -44,68 +30,8 @@
   }
 }
 
-.cds--modal.is-visible .cds--modal-container {
-  transform: translate3d(0, 0, 0);
-  transition: -webkit-transform 240ms cubic-bezier(0, 0, 0.3, 1);
-  transition: transform 240ms cubic-bezier(0, 0, 0.3, 1);
-  transition:
-    transform 240ms cubic-bezier(0, 0, 0.3, 1),
-    -webkit-transform 240ms cubic-bezier(0, 0, 0.3, 1);
-}
-
-.cds--modal-container {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto 1fr auto;
-  height: 100%;
-  max-height: 100%;
-  outline: 3px solid transparent;
-  outline-offset: -3px;
-  overflow: overlay;
-  position: fixed;
-  top: 0;
-  transform: translate3d(0, -24px, 0);
-  transform-origin: top center;
-  transition: -webkit-transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
-  transition: transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
-  transition:
-    transform 240ms cubic-bezier(0.4, 0.14, 1, 1),
-    -webkit-transform 240ms cubic-bezier(0.4, 0.14, 1, 1);
-  width: 100%;
-}
-
-@media (width >= 42rem) {
-  .cds--modal-container {
-    height: auto;
-    overflow: overlay;
-    position: static;
-    width: 84%;
-  }
-}
-
-.cds--assistive-text,
-.cds--visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  visibility: inherit;
-  white-space: nowrap;
-  width: 1px;
-}
-
-.cds--modal-content {
-  position: relative;
-}
-
 .c-wizard {
   background-color: rgba(33, 56, 72, 0.8);
-}
-
-.c-wizard {
   .cds--modal-container {
     background: rgb(45, 101, 125);
     background: linear-gradient(90deg, #2d657d 0%, #368b70 100%);
@@ -121,57 +47,6 @@
       width: 100%;
     }
   }
-}
-
-.c-wizard--success {
-  .cds--modal-container {
-    background: linear-gradient(90deg, #007749 0%, #5ca88b 100%);
-  }
-
-  .c-wizard__header__heading {
-    color: var(--bright-green-70);
-  }
-
-  .cds--modal-header {
-    background-image: url("bg_checkmark.svg");
-    background-position: bottom left;
-    background-repeat: no-repeat;
-
-    @include do-this-above(md) {
-      background-position: 0 0;
-    }
-  }
-
-  .c-wizard__success-slot-btm {
-    display: block;
-  }
-}
-
-.c-wizard--error {
-  .c-wizard__header__heading {
-    color: var(--gray-80);
-  }
-  .c-wizard__description {
-    background-color: var(--gray-00);
-    border-radius: 8px;
-    color: var(--gray-70);
-    font-size: 16px;
-    padding: 16px;
-  }
-
-  /* stylelint-disable-next-line no-descending-specificity */
-  .cds--modal-container {
-    background: linear-gradient(90deg, #8a3b2a 0%, #1a0f0d 100%);
-  }
-}
-
-.c-wizard--highlight {
-  .cds--modal-container {
-    background: linear-gradient(180deg, #1984dd 0%, #298e76 100%);
-  }
-}
-
-.c-wizard {
   .cds--modal-header,
   .cds--modal-content {
     background-color: var(--white);
@@ -218,14 +93,80 @@
     width: 48px;
     z-index: 2;
   }
+
+  .c-wizard__description {
+    color: #213848;
+    margin-bottom: 24px;
+  }
 }
 
 .c-wizard__header__heading {
+  @extend %font-size-5-bold;
   color: var(--blue-80);
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.6;
   text-align: center;
+}
+
+.c-wizard--success {
+  .cds--modal-container {
+    background: linear-gradient(90deg, #007749 0%, #5ca88b 100%);
+  }
+
+  .c-wizard__header__heading {
+    color: var(--bright-green-70);
+  }
+
+  .cds--modal-header {
+    background-image: url("bg_checkmark.svg");
+    background-position: bottom left;
+    background-repeat: no-repeat;
+
+    @include do-this-above(md) {
+      background-position: 0 0;
+    }
+  }
+
+  .c-wizard__success-slot-btm {
+    background-color: var(--gray-10);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: var(--gray-100);
+    display: block;
+    margin-bottom: -40px;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding: 32px 16px 40px;
+    position: relative;
+
+    @include do-this-above(md) {
+      margin-left: -32px;
+      margin-right: -32px;
+      padding: 40px 32px;
+    }
+  }
+}
+
+.c-wizard--error {
+  .c-wizard__header__heading {
+    color: var(--gray-80);
+  }
+  .c-wizard__description {
+    background-color: var(--gray-00);
+    border-radius: 8px;
+    color: var(--gray-70);
+    font-size: 16px;
+    padding: 16px;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .cds--modal-container {
+    background: linear-gradient(90deg, #8a3b2a 0%, #1a0f0d 100%);
+  }
+}
+
+.c-wizard--highlight {
+  .cds--modal-container {
+    background: linear-gradient(180deg, #1984dd 0%, #298e76 100%);
+  }
 }
 
 // Generic slot component
@@ -254,32 +195,6 @@
 .c-wizard--error .c-wizard__slot--2,
 .c-wizard--highlight .c-wizard__slot--2 {
   display: none;
-}
-
-// Success Slot Bottom
-.c-wizard__success-slot-btm {
-  background-color: var(--gray-10);
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  color: var(--gray-100);
-  display: none; // visible on success screen
-  margin-bottom: -40px;
-  margin-left: -16px;
-  margin-right: -16px;
-  padding: 32px 16px 40px;
-  position: relative;
-
-  @include do-this-above(md) {
-    margin-left: -32px;
-    margin-right: -32px;
-    padding: 40px 32px;
-  }
-}
-
-// Slot for wizard description
-.c-wizard__description {
-  color: #213848;
-  margin-bottom: 24px;
 }
 
 .c-wizard__btn-group {
@@ -335,11 +250,6 @@
 
 .c-wizard--highlight .c-wizard__slot {
   border: 1px solid #b9dddc;
-}
-
-h1,
-h2 {
-  font-family: "Open Sans", "Segoe UI", Tahoma, sans-serif !important;
 }
 
 .hide-close-button {
