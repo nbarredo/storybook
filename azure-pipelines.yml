@@ -100,7 +100,6 @@ stages:
         inputs:
           targetPath: $(System.DefaultWorkingDirectory)/build
           artifactName: build
-
        
   -   job: 'Feature_Branch_Prerelease'
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'))
@@ -220,7 +219,7 @@ stages:
              $base64AuthInfo = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('npm:$(System.AccessToken)'))
              $uri = "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/$(feedId)/npm/$(packageName)/versions/$(packageVersion)?api-version=7.1-preview.1"
              $body = "{'views': {'op': 'add', 'path': '/views/-', 'value':'$(nonprodpackagePromote)'}}"
-             Invoke-WebRequest -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
+             Invoke-WebRequest -UseBasicParsing -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
        
 
   - job: 'Master_Release'
