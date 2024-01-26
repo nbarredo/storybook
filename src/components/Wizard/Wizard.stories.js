@@ -143,35 +143,37 @@ const letsContinueContent = (
 const accountInformationContent = (
   <>
     <WizardSlot>
-      <form style={{ width: "250px" }}>
-        <TextInput
-          labelText="Account Number"
-          invalidText="Must be 11 digits"
-          inline={false}
-          maxCount={11}
-          helperText="Account numbers are 11 digits"
-          placeholder=""
-          size="lg"
-          type="number"
-          id="test-id"
-        />
-      </form>
+      <TextInput
+        labelText="Account Number"
+        invalidText="Must be 11 digits"
+        inline={false}
+        maxCount={11}
+        helperText="Account numbers are 11 digits"
+        placeholder=""
+        size="lg"
+        type="number"
+        id="test-id"
+      />
     </WizardSlot>
-    <Accordion title="Where do I find my account number?" icon={<HelpIcon />}>
-      <>
-        <p>
-          Account numbers are on your bill. Contact{" "}
-          <a href="#">customer service</a> for help if you don&#apos;t yet have
-          a bill.
-        </p>
-        <br />
-        <img src={image} />
-      </>
-    </Accordion>
-    <Accordion
-      title="Which ID # are you looking for?"
-      icon={<ContactMailIcon />}
-    />
+    <div style={{ "margin-bottom": "8px" }}>
+      <Accordion title="Where do I find my account number?" icon={<HelpIcon />}>
+        <>
+          <p>
+            Account numbers are on your bill. Contact{" "}
+            <a href="#">customer service</a> for help if you don&#apos;t yet
+            have a bill.
+          </p>
+          <br />
+          <img src={image} />
+        </>
+      </Accordion>
+    </div>
+    <div style={{ "margin-bottom": "24px" }}>
+      <Accordion
+        title="Which ID # are you looking for?"
+        icon={<ContactMailIcon />}
+      />
+    </div>
     <ButtonSet align="right" fixedSize={false}>
       <Button kind="ghost--subtle" label="Back" />
       <Button kind="tertiary" label="Continue" />
@@ -195,7 +197,7 @@ export const SetupComplete = {
   }
 };
 
-export const Error = {
+export const ThereWasAProblem = {
   args: {
     ...defaultArgs,
     headerTitle: "There Was A Problem",
