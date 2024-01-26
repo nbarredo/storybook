@@ -5,6 +5,7 @@ import { Accordion } from "../Accordion/Accordion";
 import image from "../Accordion/art_acct_number.png";
 import { Button } from "../Button/Button";
 import { ButtonSet } from "../ButtonSet/ButtonSet";
+import { InlineNotification } from "../Notification/InlineNotification/InlineNotification";
 import { Text } from "../Text/Text";
 import { TextInput } from "../TextInput/TextInput";
 import { Wizard } from "./Wizard";
@@ -78,9 +79,16 @@ const setupCompleteContent = (
     </WizardSlot>
     <WizardSlotBtm>
       <center>
-        <Text variant="h4" marginBottom={4} inline={false}>
+        <Text variant="h4" marginBottom={3} inline={false}>
           Do you have another gas or electric account to add?
         </Text>
+        <div style={{ "margin-bottom": "22px", width: "500px" }}>
+          <InlineNotification
+            kind="warning"
+            subtitle="Each of your services at Eversource has its own account number"
+            hideCloseButton={true}
+          />
+        </div>
       </center>
       <ButtonSet>
         <Button kind="tertiary" label="No" />
