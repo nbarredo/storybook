@@ -323,7 +323,6 @@ stages:
             $body = "{'views': {'op': 'add', 'path': '/views/-', 'value':'$(prodpackagePromote)'}}"
             Invoke-WebRequest -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
 
-
 - stage: DeploytoNonProdNetstorage
   displayName: NonProd Netstorage
   dependsOn: Build
@@ -376,7 +375,6 @@ stages:
                    preservePaths: true
                    trustSSL: true
       
-
 - stage: DeploytoProdNetstorage
   displayName: Prod Netstorage
   dependsOn: Build
@@ -428,7 +426,7 @@ stages:
 
 - stage: CleanupBuildServerWorkingDirectory
   displayName: Cleanup working directory
-  dependsOn: Build
+  condition: and(succeeded('Build'), or(succeeded('DeploytoNonProdNetstorage'),succeeded('DeploytoProdNetstorage')))
   jobs:
   - job: CleanupJob
     pool:
