@@ -1,7 +1,13 @@
 import React from "react";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
+import HelpIcon from "@mui/icons-material/Help";
+import { Accordion } from "../Accordion/Accordion";
+import image from "../Accordion/art_acct_number.png";
 import { Button } from "../Button/Button";
 import { ButtonSet } from "../ButtonSet/ButtonSet";
+import { InlineNotification } from "../Notification/InlineNotification/InlineNotification";
 import { Text } from "../Text/Text";
+import { TextInput } from "../TextInput/TextInput";
 import { Wizard } from "./Wizard";
 import {
   WizardBtnGrp,
@@ -58,24 +64,36 @@ const defaultContent = (
   </>
 );
 
-const successContent = (
+const setupCompleteContent = (
   <>
     <WizardDescription>
-      <p>
-        Area reserved to give the user context of what is being asked, or shown.
-        Please keep it short, max two lines.
-      </p>
+      <Text variant="h4" marginBottom={0} inline={false}>
+        Electric Service
+      </Text>
     </WizardDescription>
     <WizardSlot>
       <p>
-        Slot Component
-        <br />
-        Placeholder area for Wizard content.
+        Account <strong># 01234567891</strong>&nbsp;&nbsp;|&nbsp;&nbsp;ZIP Code:{" "}
+        <strong>01001</strong>
       </p>
     </WizardSlot>
-    <WizardBtnGrp>This is a button group</WizardBtnGrp>
     <WizardSlotBtm>
-      <p>Slot Component Success Bottom (Optional)</p>
+      <center>
+        <Text variant="h4" marginBottom={3} inline={false}>
+          Do you have another gas or electric account to add?
+        </Text>
+        <div style={{ "margin-bottom": "22px", width: "500px" }}>
+          <InlineNotification
+            kind="warning"
+            subtitle="Each of your services at Eversource has its own account number"
+            hideCloseButton={true}
+          />
+        </div>
+      </center>
+      <ButtonSet>
+        <Button kind="tertiary" label="No" />
+        <Button kind="tertiary" label="Yes" />
+      </ButtonSet>
     </WizardSlotBtm>
   </>
 );
@@ -88,7 +106,7 @@ const errorContent = (
         persists, please <a href="#">contact us</a> for assistance.
       </p>
     </WizardDescription>
-    <ButtonSet align="right">
+    <ButtonSet align="right" fixedSize={false}>
       <Button kind="ghost--subtle" label="Cancel" />
       <Button kind="tertiary" label="Try Again" />
     </ButtonSet>
@@ -130,6 +148,47 @@ const letsContinueContent = (
   </>
 );
 
+const accountInformationContent = (
+  <>
+    <WizardSlot>
+      <TextInput
+        labelText="Account Number"
+        invalidText="Must be 11 digits"
+        inline={false}
+        maxCount={11}
+        helperText="Account numbers are 11 digits"
+        placeholder=""
+        size="lg"
+        type="number"
+        id="test-id"
+      />
+    </WizardSlot>
+    <div style={{ "margin-bottom": "8px" }}>
+      <Accordion title="Where do I find my account number?" icon={<HelpIcon />}>
+        <>
+          <p>
+            Account numbers are on your bill. Contact{" "}
+            <a href="#">customer service</a> for help if you don&#apos;t yet
+            have a bill.
+          </p>
+          <br />
+          <img src={image} />
+        </>
+      </Accordion>
+    </div>
+    <div style={{ "margin-bottom": "24px" }}>
+      <Accordion
+        title="Which ID # are you looking for?"
+        icon={<ContactMailIcon />}
+      />
+    </div>
+    <ButtonSet align="right" fixedSize={false}>
+      <Button kind="ghost--subtle" label="Back" />
+      <Button kind="tertiary" label="Continue" />
+    </ButtonSet>
+  </>
+);
+
 export const Default = {
   args: {
     ...defaultArgs,
@@ -137,15 +196,16 @@ export const Default = {
   }
 };
 
-export const Success = {
+export const SetupComplete = {
   args: {
     ...defaultArgs,
+    headerTitle: "Set Up Complete",
     state: "success",
-    children: successContent
+    children: setupCompleteContent
   }
 };
 
-export const Error = {
+export const ThereWasAProblem = {
   args: {
     ...defaultArgs,
     headerTitle: "There Was A Problem",
@@ -168,5 +228,14 @@ export const LetsContinue = {
     headerTitle: "Let's Continue Your Online Set Up",
     state: "default",
     children: letsContinueContent
+  }
+};
+
+export const AccountInformation = {
+  args: {
+    ...defaultArgs,
+    headerTitle: "Account Information",
+    state: "default",
+    children: accountInformationContent
   }
 };

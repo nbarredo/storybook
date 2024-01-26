@@ -39,3 +39,12 @@ $font-variants: ("light", "reg", "semi", "bold");
     }
   }
 }
+
+b,
+strong {
+  font-weight: 700;
+}
+
+h4 {
+  @extend %font-size-3-semi;
+}
