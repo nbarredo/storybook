@@ -63,24 +63,29 @@ const defaultContent = (
   </>
 );
 
-const successContent = (
+const setupCompleteContent = (
   <>
     <WizardDescription>
-      <p>
-        Area reserved to give the user context of what is being asked, or shown.
-        Please keep it short, max two lines.
-      </p>
+      <Text variant="h4" marginBottom={0} inline={false}>
+        Electric Service
+      </Text>
     </WizardDescription>
     <WizardSlot>
       <p>
-        Slot Component
-        <br />
-        Placeholder area for Wizard content.
+        Account <strong># 01234567891</strong>&nbsp;&nbsp;|&nbsp;&nbsp;ZIP Code:{" "}
+        <strong>01001</strong>
       </p>
     </WizardSlot>
-    <WizardBtnGrp>This is a button group</WizardBtnGrp>
     <WizardSlotBtm>
-      <p>Slot Component Success Bottom (Optional)</p>
+      <center>
+        <Text variant="h4" marginBottom={4} inline={false}>
+          Do you have another gas or electric account to add?
+        </Text>
+      </center>
+      <ButtonSet>
+        <Button kind="tertiary" label="No" />
+        <Button kind="tertiary" label="Yes" />
+      </ButtonSet>
     </WizardSlotBtm>
   </>
 );
@@ -93,7 +98,7 @@ const errorContent = (
         persists, please <a href="#">contact us</a> for assistance.
       </p>
     </WizardDescription>
-    <ButtonSet align="right">
+    <ButtonSet align="right" fixedSize={false}>
       <Button kind="ghost--subtle" label="Cancel" />
       <Button kind="tertiary" label="Try Again" />
     </ButtonSet>
@@ -168,7 +173,7 @@ const accountInformationContent = (
       icon={<ContactMailIcon />}
     />
     <ButtonSet align="right" fixedSize={false}>
-      <Button kind="ghost" label="Back" />
+      <Button kind="ghost--subtle" label="Back" />
       <Button kind="tertiary" label="Continue" />
     </ButtonSet>
   </>
@@ -181,11 +186,12 @@ export const Default = {
   }
 };
 
-export const Success = {
+export const SetupComplete = {
   args: {
     ...defaultArgs,
+    headerTitle: "Set Up Complete",
     state: "success",
-    children: successContent
+    children: setupCompleteContent
   }
 };
 

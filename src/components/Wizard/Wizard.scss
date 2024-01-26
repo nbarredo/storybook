@@ -15,15 +15,15 @@
     .cds--modal-container-body {
       &::before {
         background-color: var(--white);
-        border-radius: 12px;
+        border-radius: g.$border-radius-large;
         content: "";
-        height: calc(100% - 24px);
+        height: calc(100% - g.$space-4);
         left: 12px;
         opacity: 0.8;
         pointer-events: none;
         position: absolute;
         top: 12px;
-        width: calc(100% - 24px);
+        width: calc(100% - g.$space-4);
         z-index: 2;
       }
     }
@@ -35,7 +35,7 @@
   .cds--modal-container {
     background: rgb(45, 101, 125);
     background: linear-gradient(90deg, #2d657d 0%, #368b70 100%);
-    border-radius: 12px;
+    border-radius: g.$border-radius-large;
     box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.35);
     height: auto;
     padding: 12px;
@@ -54,12 +54,12 @@
   }
 
   .cds--modal-header {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-top-left-radius: g.$border-radius-large;
+    border-top-right-radius: g.$border-radius-large;
     box-shadow: 0px 2px 2px rgba(33, 56, 72, 0.1);
     padding: 40px 32px 24px;
     position: relative;
-    z-index: 1; // allows box shadow to showxl
+    z-index: 1; // allows box shadow to show
 
     @include do-this-above(md) {
       padding: 24px 32px;
@@ -68,8 +68,8 @@
 
   .cds--modal-content {
     background-color: var(--white);
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: g.$border-radius-large;
+    border-bottom-right-radius: g.$border-radius-large;
     padding: 32px 16px 40px;
 
     @include do-this-above(md) {
@@ -111,8 +111,23 @@
     background: linear-gradient(90deg, #007749 0%, #5ca88b 100%);
   }
 
+  .c-wizard__slot {
+    background-color: var(--bright-green-00);
+    p {
+      @extend %font-size-2-reg;
+    }
+  }
+
   .c-wizard__header__heading {
     color: var(--bright-green-70);
+  }
+
+  .c-wizard__description {
+    margin-bottom: g.$space-2;
+  }
+
+  h4 {
+    color: var(--gray-80);
   }
 
   .cds--modal-header {
@@ -127,8 +142,8 @@
 
   .c-wizard__success-slot-btm {
     background-color: var(--gray-10);
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: g.$border-radius;
+    border-bottom-right-radius: g.$border-radius;
     color: var(--gray-100);
     display: block;
     margin-bottom: -40px;
@@ -151,10 +166,10 @@
   }
   .c-wizard__description {
     background-color: var(--gray-00);
-    border-radius: 8px;
+    border-radius: g.$border-radius;
     color: var(--gray-70);
     font-size: 16px;
-    padding: 16px;
+    padding: g.$space-3;
   }
 
   /* stylelint-disable-next-line no-descending-specificity */
@@ -172,7 +187,7 @@
 // Generic slot component
 .c-wizard__slot {
   background-color: var(--gray-00);
-  border-radius: 8px;
+  border-radius: g.$border-radius;
   color: var(--gray-100);
   margin-bottom: 24px;
   padding: 24px 16px;
