@@ -337,7 +337,7 @@ stages:
             deploy:
               steps:
               - task: DownloadPipelineArtifact@2
-                enabled: false
+                enabled: true
                 displayName: Download Artifact
                 inputs:
                    targetPath: $(System.DefaultWorkingDirectory)/build
@@ -389,7 +389,7 @@ stages:
             deploy:
               steps:      
               - task: DownloadPipelineArtifact@2
-                enabled: false
+                enabled: true
                 displayName: Download Artifact
                 inputs:
                    targetPath: $(System.DefaultWorkingDirectory)/build
