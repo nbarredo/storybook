@@ -1,7 +1,7 @@
 import { TextInput } from "./TextInput";
 
 const meta = {
-  title: "In Progress/TextInput",
+  title: "Approved for Use/TextInput",
   component: TextInput,
   parameters: {
     design: {
