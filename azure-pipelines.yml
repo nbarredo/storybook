@@ -427,7 +427,7 @@ stages:
 
 - stage: CleanupBuildServerWorkingDirectory
   displayName: Cleanup working directory
-  condition: and(succeeded('Build'), and(succeeded('DeploytoNonProdNetstorage'),succeeded('DeploytoProdNetstorage')))
+  condition: and(succeeded('Build'), or(succeeded('DeploytoNonProdNetstorage'),succeeded('DeploytoProdNetstorage')))
   jobs:
   - job: CleanupJob
     pool:
