@@ -25,12 +25,31 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:ci": "cross-env CI=true react-scripts test --watchAll=false --watch=false --no-watchman --coverage --env=jsdom --testPathIgnorePatterns=assets --reporters=default --reporters=jest-junit --coverageReporters=cobertura --forceExit --passWithNoTests",
+    "test:coverage": "npm test -- --coverage --watchAll=false",
     "storybook": "storybook dev --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem -p 6006",
     "lint:scss": "stylelint \"**/*.scss\"",
     "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
     "lint:js": "npx eslint \"./**/*.js\" --cache --cache-strategy content",
     "lint:js:fix": "npx eslint \"./**/*.js\" --cache --cache-strategy content --fix",
     "publish:ci": "npm publish"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "./src/**/*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/src/App.js",
+      "/src/index.js",
+      "/src/reportWebVitals.js",
+      "/src/components/Wizard/children.js",
+      ".stories.js",
+      "/src/stories/story_samples"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 90
+      }
+    }
   },
   "browserslist": {
     "production": [
