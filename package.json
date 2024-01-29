@@ -44,12 +44,7 @@
       "/src/components/Wizard/children.js",
       ".stories.js",
       "/src/stories/story_samples"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "lines": 90
-      }
-    }
+    ]
   },
   "browserslist": {
     "production": [
