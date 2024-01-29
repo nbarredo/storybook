@@ -64,7 +64,7 @@ jobs:
 
       - task: Npm@1
         displayName: NPM Run Unit Tests with code coverage
-        enabled: false
+        enabled: true
         inputs:
           command: "custom"
           workingDir: "$(System.DefaultWorkingDirectory)"
@@ -78,7 +78,7 @@ jobs:
           customCommand: "run build"
 
       - task: PublishTestResults@2
-        enabled: false #as requested by Leo
+        enabled: true
         displayName: "Publish Unit Test Results"
         condition: succeededOrFailed()
         inputs:
@@ -89,7 +89,7 @@ jobs:
           testRunTitle: "React App Test"
 
       - task: PublishCodeCoverageResults@1
-        enabled: false #as requested by Leo
+        enabled: true
         displayName: "Publish code coverage"
         inputs:
           codeCoverageTool: Cobertura
