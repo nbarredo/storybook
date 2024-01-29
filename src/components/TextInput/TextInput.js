@@ -34,7 +34,7 @@ TextInput.propTypes = {
   /** Provide the text that is displayed when the control is in an invalid state */
   invalidText: PropTypes.node,
   /** Provide the text that will be read by a screen reader when visiting this control */
-  labelText: PropTypes.node,
+  labelText: PropTypes.node.isRequired,
   /** Max character count allowed for the input. This is needed in order for enableCounter to display */
   maxCount: PropTypes.number,
   /** Optionally provide an `onChange` handler that is called whenever `<input>` is updated */

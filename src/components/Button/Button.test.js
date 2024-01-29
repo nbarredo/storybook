@@ -47,4 +47,10 @@ describe("Accordion component functions properly", () => {
     expect(buttonElement).toHaveAttribute("type", "submit");
     expect(buttonElement).toHaveClass("eureka");
   });
+
+  test("renders the correct css classname for 'ghost-subtle' button variation", () => {
+    render(<Button size="sm" kind="ghost--subtle" type="submit" />);
+    const buttonElement = screen.getByRole("button");
+    expect(buttonElement).toHaveClass("es--btn--ghost--subtle");
+  });
 });
