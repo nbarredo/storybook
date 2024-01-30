@@ -146,12 +146,6 @@ stages:
             workingDir: '$(System.DefaultWorkingDirectory)'
             customCommand: 'run build'
       
-      - task: CopyFiles@2
-        enabled: false
-        inputs:
-          Contents: package.json
-          TargetFolder: '$(System.DefaultWorkingDirectory)/build'
-  
       - task: PublishTestResults@2
         enabled: false #as requested by Leo
         displayName: 'Publish Unit Test Results'
@@ -284,7 +278,7 @@ stages:
         artifactName: build
   
     - task: npmAuthenticate@0
-      enabled: false  
+      enabled: true  
       inputs:
         workingFile: '$(System.DefaultWorkingDirectory)/.npmrc'
 
@@ -334,7 +328,7 @@ stages:
                    
               - task: FtpUpload@2
                 displayName: Publish NonProd Versioned for review
-                enabled: false
+                enabled: true
                 inputs:
                    credentialsOption: 'serviceEndpoint'
                    serverEndpoint: 'cdn-nonprod-sb'
@@ -349,7 +343,7 @@ stages:
                    
               - task: FtpUpload@2
                 displayName: Publish NonProd to Latest for review
-                enabled: false
+                enabled: true
                 # condition: and(succeeded(), eq('${{ parameters.isDesignReviewRequired }}', true))
                 inputs:
                    credentialsOption: 'serviceEndpoint'
@@ -422,12 +416,9 @@ stages:
   condition: and(succeeded('Build'), or(succeeded('DeploytoNonProdNetstorage'),succeeded('DeploytoProdNetstorage')))
   jobs:
   - job: CleanupJob
-    pool:
-      vmImage: ubuntu-latest        
-
     steps:
     - task: DeleteFiles@1
-      enabled: false
+      enabled: true
       inputs:
         sourceFolder: '$(System.DefaultWorkingDirectory)'
         contents: '**'
