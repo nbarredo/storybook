@@ -1,1 +1,5 @@
+# Ignore all files and directories by default
+*
+
+# Include specific files or directories
 !/storybook-static
