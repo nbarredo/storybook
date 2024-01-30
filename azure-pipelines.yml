@@ -192,7 +192,7 @@ stages:
         condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
         inputs:
           command: 'custom'
-          workingDir: $(System.DefaultWorkingDirectory)
+          workingDir: $(System.DefaultWorkingDirectory)/storybook-static/
           customCommand: 'run publish:ci'
           customRegistry: 'useFeed'
           customFeed: $(feedId)
