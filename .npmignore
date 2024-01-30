@@ -1,1 +1,19 @@
-#!storybook-static/
+# Exclude specific files or directories
+.storybook/
+.cert/
+.public/
+.src/
+.eslintrc.js
+.gitignore
+.npmrc
+.npmignore
+.prettierrc.js
+.stylelintrc.json
+azure-pipelines.yml
+package-lock.json
+package.json
+README.md
+
+
+# Include specific files or directories
+!storybook-static/

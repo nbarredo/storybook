@@ -32,9 +32,6 @@
     "lint:js:fix": "npx eslint \"./**/*.js\" --cache --cache-strategy content --fix",
     "publish:ci": "npm publish"
   },
-  "files": [
-    "storybook-static/"
-  ],
   "jest": {
     "collectCoverageFrom": [
       "./src/**/*.js"
