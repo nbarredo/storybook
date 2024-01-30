@@ -356,6 +356,14 @@ stages:
                    cleanContents: false
                    preservePaths: true
                    trustSSL: true
+
+              - task: DeleteFiles@1
+                enabled: true
+                inputs:
+                    sourceFolder: '$(System.DefaultWorkingDirectory)'
+                    contents: '**'
+                    cleanTargetFolder: true
+                    displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
       
 - stage: DeploytoProdNetstorage
   displayName: Prod Netstorage
@@ -406,21 +414,12 @@ stages:
                     cleanContents: false
                     preservePaths: true
                     trustSSL: false
-
-- stage: CleanupBuildServerWorkingDirectory
-  displayName: Cleanup working directory
-  dependsOn: 
-  - Build
-  - DeploytoNonProdNetstorage
-  - DeploytoProdNetstorage
-  condition: and(succeeded('Build'), or(succeeded('DeploytoNonProdNetstorage'),succeeded('DeploytoProdNetstorage')))
-  jobs:
-  - job: CleanupJob
-    steps:
-    - task: DeleteFiles@1
-      enabled: true
-      inputs:
-        sourceFolder: '$(System.DefaultWorkingDirectory)'
-        contents: '**'
-        cleanTargetFolder: true
-      displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
+              
+              - task: DeleteFiles@1
+                enabled: true
+                inputs:
+                    sourceFolder: '$(System.DefaultWorkingDirectory)'
+                    contents: '**'
+                    cleanTargetFolder: true
+                    displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
+     
