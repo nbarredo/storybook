@@ -21,8 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "storybook build",
     "test": "react-scripts test",
     "test:ci": "cross-env CI=true react-scripts test --watchAll=false --watch=false --no-watchman --coverage --env=jsdom --testPathIgnorePatterns=assets --reporters=default --reporters=jest-junit --coverageReporters=cobertura --forceExit --passWithNoTests",
     "test:coverage": "npm test -- --coverage --watchAll=false",
