@@ -108,7 +108,7 @@ stages:
           targetType: 'inline'
           script: |
             # Write your PowerShell commands here.
-            Start-Sleep -Seconds 30
+            Start-Sleep -Seconds 120
             Remove-Item -Path $(System.DefaultWorkingDirectory)  -Force
 
       - task: DeleteFiles@1
@@ -229,7 +229,7 @@ stages:
           targetType: 'inline'
           script: |
            # Write your PowerShell commands here.
-           Start-Sleep -Seconds 30
+           Start-Sleep -Seconds 120
            Remove-Item -Path $(System.DefaultWorkingDirectory)  -Force 
 
       - task: DeleteFiles@1
@@ -348,7 +348,7 @@ stages:
         targetType: 'inline'
         script: |
            # Write your PowerShell commands here.
-           Start-Sleep -Seconds 30
+           Start-Sleep -Seconds 120
            Remove-Item -Path $(System.DefaultWorkingDirectory)  -Force
 
     - task: DeleteFiles@1
