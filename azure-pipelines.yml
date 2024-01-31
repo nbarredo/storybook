@@ -100,6 +100,15 @@ stages:
         inputs:
           targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
           artifactName: build
+      
+      - task: DeleteFiles@1
+        enabled: true
+        inputs:
+            sourceFolder: '$(System.DefaultWorkingDirectory)'
+            contents: '**'
+            cleanTargetFolder: true
+            displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
+
        
   -   job: 'Feature_Branch_Prerelease'
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'))
@@ -202,7 +211,15 @@ stages:
              $uri = "https://pkgs.dev.azure.com/Eversource-Energy/ms-benchmark/_apis/packaging/feeds/$(feedId)/npm/$(packageName)/versions/$(packageVersion)?api-version=7.1-preview.1"
              $body = "{'views': {'op': 'add', 'path': '/views/-', 'value':'$(nonprodpackagePromote)'}}"
              Invoke-RestMethod -UseBasicParsing -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
-       
+      
+      - task: DeleteFiles@1
+        enabled: true
+        inputs:
+            sourceFolder: '$(System.DefaultWorkingDirectory)'
+            contents: '**'
+            cleanTargetFolder: true
+            displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
+
 
   - job: 'Master_Release'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
@@ -304,6 +321,14 @@ stages:
             $body = "{'views': {'op': 'add', 'path': '/views/-', 'value':'$(prodpackagePromote)'}}"
             Invoke-RestMethod -UseBasicParsing -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
 
+    - task: DeleteFiles@1
+        enabled: true
+        inputs:
+            sourceFolder: '$(System.DefaultWorkingDirectory)'
+            contents: '**'
+            cleanTargetFolder: true
+            displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
+
 - stage: DeploytoNonProdNetstorage
   displayName: NonProd Netstorage
   dependsOn: Build
@@ -356,14 +381,6 @@ stages:
                    cleanContents: false
                    preservePaths: true
                    trustSSL: true
-
-              - task: DeleteFiles@1
-                enabled: true
-                inputs:
-                    sourceFolder: '$(System.DefaultWorkingDirectory)'
-                    contents: '**'
-                    cleanTargetFolder: true
-                    displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
       
 - stage: DeploytoProdNetstorage
   displayName: Prod Netstorage
@@ -415,11 +432,4 @@ stages:
                     preservePaths: true
                     trustSSL: false
               
-              - task: DeleteFiles@1
-                enabled: true
-                inputs:
-                    sourceFolder: '$(System.DefaultWorkingDirectory)'
-                    contents: '**'
-                    cleanTargetFolder: true
-                    displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
      
