@@ -1,1 +1,2 @@
-!/storybook-static
+# Include specific files or directories
+#!storybook-static/
