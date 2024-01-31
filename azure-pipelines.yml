@@ -108,6 +108,7 @@ stages:
           sourceFolder: '$(System.DefaultWorkingDirectory)'
           contents: '*'
           RemoveSourceFolder: true
+          RemoveDotFiles: true
        
   -   job: 'Feature_Branch_Prerelease'
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'))
@@ -218,7 +219,7 @@ stages:
           sourceFolder: '$(System.DefaultWorkingDirectory)'
           contents: '*'
           RemoveSourceFolder: true 
-
+          RemoveDotFiles: true
 
   - job: 'Master_Release'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
@@ -327,6 +328,7 @@ stages:
         sourceFolder: '$(System.DefaultWorkingDirectory)'
         contents: '*'
         RemoveSourceFolder: true
+        RemoveDotFiles: true
 
 - stage: DeploytoNonProdNetstorage
   displayName: NonProd Netstorage
