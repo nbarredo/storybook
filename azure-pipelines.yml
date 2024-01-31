@@ -322,11 +322,11 @@ stages:
 
     - task: DeleteFiles@1
       displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
-        enabled: true
-        inputs:
-          sourceFolder: '$(System.DefaultWorkingDirectory)'
-          contents: '*'
-          RemoveSourceFolder: true
+      enabled: true
+      inputs:
+        sourceFolder: '$(System.DefaultWorkingDirectory)'
+        contents: '*'
+        RemoveSourceFolder: true
 
 - stage: DeploytoNonProdNetstorage
   displayName: NonProd Netstorage
