@@ -341,12 +341,12 @@ stages:
             $body = "{'views': {'op': 'add', 'path': '/views/-', 'value':'$(prodpackagePromote)'}}"
             Invoke-RestMethod -UseBasicParsing -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
 
-   - task: PowerShell@2
-     displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
-     enabled: true
-     inputs:
-       targetType: 'inline'
-       script: |
+    - task: PowerShell@2
+      displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
+      enabled: true
+      inputs:
+        targetType: 'inline'
+        script: |
            # Write your PowerShell commands here.
            Start-Sleep -Seconds 30
            Remove-Item -Path $(System.DefaultWorkingDirectory)  -Force
