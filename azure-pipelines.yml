@@ -104,10 +104,10 @@ stages:
       - task: DeleteFiles@1
         enabled: true
         inputs:
-            sourceFolder: '$(System.DefaultWorkingDirectory)'
-            contents: '**'
-            cleanTargetFolder: true
-            displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
+          sourceFolder: '$(System.DefaultWorkingDirectory)'
+          contents: '**'
+          cleanTargetFolder: true
+          displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
 
        
   -   job: 'Feature_Branch_Prerelease'
@@ -215,10 +215,10 @@ stages:
       - task: DeleteFiles@1
         enabled: true
         inputs:
-            sourceFolder: '$(System.DefaultWorkingDirectory)'
-            contents: '**'
-            cleanTargetFolder: true
-            displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
+          sourceFolder: '$(System.DefaultWorkingDirectory)'
+          contents: '**'
+          cleanTargetFolder: true
+          displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
 
 
   - job: 'Master_Release'
@@ -322,12 +322,12 @@ stages:
             Invoke-RestMethod -UseBasicParsing -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
 
     - task: DeleteFiles@1
-        enabled: true
-        inputs:
-            sourceFolder: '$(System.DefaultWorkingDirectory)'
-            contents: '**'
-            cleanTargetFolder: true
-            displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
+      enabled: true
+      inputs:
+        sourceFolder: '$(System.DefaultWorkingDirectory)'
+        contents: '**'
+        cleanTargetFolder: true
+        displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
 
 - stage: DeploytoNonProdNetstorage
   displayName: NonProd Netstorage
