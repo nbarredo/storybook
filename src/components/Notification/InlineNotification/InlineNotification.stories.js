@@ -13,6 +13,6 @@ export const Default = {
     title: "Notification Title",
     subtitle: "Notification Subtitle",
     role: "status",
-    hideCloseButton: "true"
+    hideCloseButton: true
   }
 };
