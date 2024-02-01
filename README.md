@@ -1,3 +1,8 @@
+# Published Location
+
+https://cdn.eversource.me/nonprod/storybook/latest/index.html
+
+
 ## How to import and use the new storybook npm package on another repo:
 
 1. Add .npmrc file on the root with this content:
