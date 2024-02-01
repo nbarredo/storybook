@@ -15,10 +15,14 @@ function TotalBalance(props) {
       actionButtonLabel={null}
       kind="warning"
       inline={true}
-      // onActionButtonClick={}
-      {...props}
+      subtitle={props.subtitle}
+      title={props.title}
     >
-      <Button label={props.buttonLabel} size="md" />
+      <Button
+        label={` ${props.buttonLabel} `}
+        size="md"
+        onClick={props.onClick}
+      />
     </CarbonActionableNotification>
   );
 }
@@ -26,44 +30,8 @@ function TotalBalance(props) {
 export { TotalBalance };
 
 TotalBalance.propTypes = {
-  /** Provide a description for "close" icon button that can be read by screen readers */
-  "aria-label": PropTypes.string,
-
-  /** Specify the content */
-  children: PropTypes.node,
-
   /** Specify an optional className to be applied to the notification box */
   className: PropTypes.string,
-
-  /** Specify the close button should be disabled, or not */
-  hideCloseButton: PropTypes.bool,
-
-  /** Specify what state the notification represents */
-  kind: PropTypes.oneOf(["warning"]),
-  /* TODO: These kinds will eventually be available once we have completed designs for them 
-  kind: PropTypes.oneOf([
-    "error",
-    "info",
-    "info-square",
-    "success",
-    "warning",
-    "warning-alt"
-  ]), */
-
-  /** Specify whether you are using the low contrast variant of the InlineNotification. */
-  lowContrast: PropTypes.bool,
-
-  /** Provide a function that is called when menu is closed */
-  onClose: PropTypes.func,
-
-  /** Provide a function that is called when the close button is clicked */
-  onCloseButtonClick: PropTypes.func,
-
-  /** By default, this value is "status". You can also provide an alternate role if it makes sense from the accessibility-side. */
-  role: PropTypes.oneOf(["alert", "log", "status"]),
-
-  /** Provide a description for "status" icon that can be read by screen readers */
-  statusIconDescription: PropTypes.string,
 
   /** Specify the subtitle */
   subtitle: PropTypes.string,
@@ -72,5 +40,8 @@ TotalBalance.propTypes = {
   title: PropTypes.string,
 
   /** The label that will appear on the action button. */
-  buttonLabel: PropTypes.string
+  buttonLabel: PropTypes.string,
+
+  /** Specify what will happen when the action button is clicked */
+  onClick: PropTypes.func
 };
