@@ -3,6 +3,7 @@
 
 $minimum-height: 80px;
 .ev-total-balance.cds--actionable-notification {
+  display: block;
   max-inline-size: fit-content;
   min-block-size: $minimum-height;
   &.cds--actionable-notification--warning {
