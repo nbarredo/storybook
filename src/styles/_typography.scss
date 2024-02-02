@@ -37,6 +37,9 @@ $font-variants: ("light", "reg", "semi", "bold");
     %font-#{$key}-#{$variant} {
       font: #{map.get($font-weights, $variant) $size $primary-font-stack};
     }
+    .font-#{$key}-#{$variant} {
+      font: #{map.get($font-weights, $variant) $size $primary-font-stack};
+    }
   }
 }
 
