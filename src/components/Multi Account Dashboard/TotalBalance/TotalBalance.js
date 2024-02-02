@@ -40,7 +40,7 @@ TotalBalance.propTypes = {
   title: PropTypes.string,
 
   /** The label that will appear on the action button. */
-  buttonLabel: PropTypes.string,
+  buttonLabel: PropTypes.string.isRequired,
 
   /** Specify what will happen when the action button is clicked */
   onClick: PropTypes.func

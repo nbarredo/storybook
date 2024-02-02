@@ -57,10 +57,12 @@ $minimum-height: 80px;
         }
         button {
           inline-size: 100%;
+          margin-top: g.$space-2;
           max-inline-size: 100%;
           text-align: center;
           @include do-this-above(md) {
             inline-size: max-content;
+            margin-top: 0;
             max-inline-size: 20rem;
           }
         }
