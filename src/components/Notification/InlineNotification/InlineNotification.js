@@ -26,11 +26,9 @@ InlineNotification.propTypes = {
   hideCloseButton: PropTypes.bool,
 
   /** Specify what state the notification represents */
-  kind: PropTypes.oneOf(["warning"]),
+  kind: PropTypes.oneOf(["warning", "info", "error"]),
   /* TODO: These kinds will eventually be available once we have completed designs for them 
   kind: PropTypes.oneOf([
-    "error",
-    "info",
     "info-square",
     "success",
     "warning",

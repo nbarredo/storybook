@@ -2,38 +2,93 @@
 @use "../../../styles/global" as g;
 
 $warning-bkgd: var(--orange-00);
+$info-bkgd: var(--gray-60);
+$error-bkgd: var(--red-00);
 $minimum-height: 37px;
 
 .cds--inline-notification {
+  border-radius: g.$border-radius;
   min-block-size: $minimum-height;
-  &.cds--inline-notification--warning {
-    background-color: var(--orange-00);
-    border: 1px solid var(--orange-10);
-    border-radius: g.$border-radius;
-    .cds--inline-notification__icon {
-      fill: var(--orange-60);
-      margin-top: g.$space-2;
-      path[opacity="0"] {
-        fill: $warning-bkgd;
-      }
-    }
+  .cds--inline-notification__icon {
+    margin-top: g.$space-2;
   }
-
   .cds--inline-notification__close-button {
     block-size: $minimum-height;
-    .cds--inline-notification__close-icon {
-      fill: var(--gray-80);
-    }
   }
+
   .cds--inline-notification__text-wrapper {
     padding: g.$space-2 0;
     .cds--inline-notification__subtitle {
       @extend %font-size-1-reg;
-      color: var(--gray-80);
     }
     .cds--inline-notification__title {
       @extend %font-size-1-semi;
+    }
+  }
+
+  // WARNING
+  &.cds--inline-notification--warning {
+    background-color: $warning-bkgd;
+    border: 1px solid var(--orange-10);
+
+    .cds--inline-notification__icon {
+      fill: var(--orange-60);
+      path[opacity="0"] {
+        fill: $warning-bkgd;
+      }
+    }
+    .cds--inline-notification__subtitle,
+    .cds--inline-notification__title {
       color: var(--gray-80);
+    }
+
+    .cds--inline-notification__close-icon {
+      fill: var(--gray-80);
+    }
+  }
+
+  // INFO
+  &.cds--inline-notification--info {
+    background-color: $info-bkgd;
+    border: 1px solid $info-bkgd;
+
+    .cds--inline-notification__icon {
+      fill: var(--white);
+      path[opacity="0"] {
+        fill: $info-bkgd;
+      }
+    }
+
+    .cds--inline-notification__subtitle,
+    .cds--inline-notification__title {
+      color: var(--white);
+    }
+
+    .cds--inline-notification__close-icon {
+      fill: var(--black);
+    }
+  }
+
+  // ERROR
+  &.cds--inline-notification--error {
+    background-color: $error-bkgd;
+    border: 1px solid var(--red-10);
+
+    .cds--inline-notification__icon {
+      fill: var(--red-70);
+      rotate: 135deg;
+      path[opacity="0"] {
+        fill: $error-bkgd;
+      }
+    }
+
+    .cds--inline-notification__subtitle,
+    .cds--inline-notification__title {
+      color: var(--gray-80);
+    }
+
+    .cds--inline-notification__close-icon {
+      fill: var(--gray-80);
     }
   }
 }
