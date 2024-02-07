@@ -2,6 +2,8 @@
   "name": "@eversource/storybook",
   "version": "0.1.0",
   "private": false,
+  "homepage": "https://dev.azure.com/Eversource-Energy/ms-benchmark/_git/storybook?path=/README.md",
+  "main": "index.js",
   "engines": {
     "node": ">=20.0.0 <21.0.0"
   },
@@ -32,9 +34,6 @@
     "lint:js:fix": "npx eslint \"./**/*.js\" --cache --cache-strategy content --fix",
     "publish:ci": "npm publish"
   },
-  "files": [
-    "storybook-static/"
-  ],
   "jest": {
     "collectCoverageFrom": [
       "./src/**/*.js"
