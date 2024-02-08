@@ -1,5 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import resolve from '@rollup/plugin-node-resolve';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postscss from 'rollup-plugin-postcss';
 import {terser} from 'rollup-plugin-terser';
@@ -24,13 +24,15 @@ export default [
             }
         ],
         plugins: [
-            postscss(),
+            peerDepsExternal(),
+            postscss({
+                extract: true,
+            }),
             babel({
                exclude: 'node_modules/**',
                presets: ['@babel/preset-react'] 
             }),
-            peerDepsExternal(),
-            resolve(),
+            nodeResolve(),
             commonjs(),
             terser(),
             image()
