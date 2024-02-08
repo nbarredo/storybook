@@ -27,6 +27,8 @@ export default [
             peerDepsExternal(),
             postscss({
                 extract: true,
+                modules: true,
+                use: ["sass"]
             }),
             babel({
                exclude: 'node_modules/**',

@@ -1,3 +1,5 @@
+import "./index.scss";
+
 export * from "./components/Accordion/Accordion";
 export * from "./components/Button/Button";
 export * from "./components/ButtonSet/ButtonSet";
