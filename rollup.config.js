@@ -21,10 +21,9 @@ export default [
         ],
         plugins: [
             scss({
-                name: 'output.css',
+                extract: true,
                 sourceMap: true,
-                failOnError: true,
-                outputStyle: 'compressed',
+                minimize: true,
               }),
             babel({
                exclude: 'node_modules/**',

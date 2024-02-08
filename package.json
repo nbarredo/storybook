@@ -21,7 +21,7 @@
   },
   "scripts": {
     "build-storybook": "storybook build",
-    "build": "rollup -c",
+    "build": "rollup -c  --inlineDynamicImports",
     "test": "react-scripts test",
     "test:ci": "cross-env CI=true react-scripts test --watchAll=false --watch=false --no-watchman --coverage --env=jsdom --testPathIgnorePatterns=assets --reporters=default --reporters=jest-junit --coverageReporters=cobertura --forceExit --passWithNoTests",
     "test:coverage": "npm test -- --coverage --watchAll=false",
