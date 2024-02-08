@@ -28,98 +28,7 @@ variables:
 name: '$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:-r)' 
 stages:
 - stage: Build
-  jobs:
-  -   job: 'User_Branch_Commit'
-      condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/users/'))
-  
-      steps:
-      - checkout: self
-        fetchDepth: 1
-
-      - script: |
-            git config user.email "pipeline@eversource.com" 
-            git config user.name "Azure DevOps"
-  
-      - task: Npm@1
-        displayName: 'Set NPM package version'
-        condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-        inputs:
-            command: 'custom'
-            workingDir: '$(System.DefaultWorkingDirectory)'
-            customCommand: 'version $(packageVersion) --force' 
-
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '20.10.0'  # Specify the Node.js version you want
-          checkLatest: true
-        
-      - task: Npm@1
-        displayName: NPM Install
-        inputs:
-            command: 'ci'
-            workingDir: '$(System.DefaultWorkingDirectory)'        
-  
-      - task: Npm@1
-        displayName: NPM Run Unit Tests with code coverage
-        enabled: false #as requested by Leo
-        inputs:
-            command: 'custom'
-            workingDir: '$(System.DefaultWorkingDirectory)'
-            customCommand: 'run test:ci'
-
-      - task: Npm@1
-        displayName: NPM Build
-        inputs:
-            command: 'custom'
-            workingDir: '$(System.DefaultWorkingDirectory)'
-            customCommand: 'run build'
-  
-      - task: PublishTestResults@2
-        enabled: false #as requested by Leo
-        displayName: 'Publish Unit Test Results'
-        condition: succeededOrFailed()
-        inputs:
-            testResultsFormat: 'JUnit'
-            testResultsFiles: '$(System.DefaultWorkingDirectory)/**/junit.xml'
-            mergeTestResults: true
-            failTaskOnFailedTests: true
-            testRunTitle: 'React App Test'
-
-      - task: PublishCodeCoverageResults@1
-        enabled: false #as requested by Leo
-        displayName: "Publish code coverage"
-        inputs:
-            codeCoverageTool: Cobertura
-            summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/coverage/cobertura-coverage.xml"
-            reportDirectory: "$(System.DefaultWorkingDirectory)/coverage"
-            failIfCoverageEmpty: false
-    
-      - task: PublishPipelineArtifact@1
-        displayName: Publish Artifact
-        condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
-        inputs:
-          targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
-          artifactName: build
-      
-      - task: PowerShell@2
-        displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
-        enabled: false
-        inputs:
-          targetType: 'inline'
-          script: |
-            # Write your PowerShell commands here.
-            Start-Sleep -Seconds 120
-            Get-ChildItem $(System.DefaultWorkingDirectory) -Recurse | Remove-Item -Force -Confirm:$false
-
-      - task: DeleteFiles@1
-        displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
-        enabled: true
-        inputs:
-          sourceFolder: '$(System.DefaultWorkingDirectory)'
-          contents: '*'
-          RemoveSourceFolder: true
-          #RemoveDotFiles: true
-       
+  jobs:     
   -   job: 'Feature_Branch_Prerelease'
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'))
   
@@ -159,12 +68,19 @@ stages:
             customCommand: 'run test:ci'
 
       - task: Npm@1
-        displayName: NPM Build
+        displayName: NPM build package
         inputs:
             command: 'custom'
             workingDir: '$(System.DefaultWorkingDirectory)'
-            customCommand: 'run build'
-      
+            customCommand: 'run build-npm-package'
+
+      - task: Npm@1
+        displayName: NPM build storybook
+        inputs:
+            command: 'custom'
+            workingDir: '$(System.DefaultWorkingDirectory)'
+            customCommand: 'run build-storybook'
+
       - task: PublishTestResults@2
         enabled: false #as requested by Leo
         displayName: 'Publish Unit Test Results'
@@ -185,14 +101,19 @@ stages:
             reportDirectory: "$(System.DefaultWorkingDirectory)/coverage"
             failIfCoverageEmpty: false
             
-   
-    # Promotion to prerelease of the feature/* commit 
       - task: PublishPipelineArtifact@1
-        displayName: Publish Artifact
+        displayName: Publish build package Artifact
         condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
         inputs:
           targetPath: $(System.DefaultWorkingDirectory)/dist/
-          artifactName: build
+          artifactName: npmbuild
+        
+      - task: PublishPipelineArtifact@1
+        displayName: Publish build storybook Artifact
+        condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
+        inputs:
+          targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
+          artifactName: npmstorybook
 
       - task: npmAuthenticate@0
         enabled: true  
@@ -209,7 +130,8 @@ stages:
           customCommand: 'run publish:ci'
           customRegistry: 'useFeed'
           customFeed: $(feedId)
-
+    
+      # Promotion to prerelease of the feature/* commit 
       - task: PowerShell@2
         displayName: "Promote package to prerelease view"
         enabled: true
@@ -271,19 +193,26 @@ stages:
         workingDir: '$(System.DefaultWorkingDirectory)'
 
     - task: Npm@1
-      displayName: NPM Build
-      inputs:
-        command: 'custom'
-        workingDir: '$(System.DefaultWorkingDirectory)'
-        customCommand: 'run build'
-
-    - task: Npm@1
       enabled: false #as requested by Leo
       displayName: NPM Run Unit Tests with code coverage
       inputs:
         command: 'custom'
         workingDir: '$(System.DefaultWorkingDirectory)'
         customCommand: 'run test:ci'
+
+    - task: Npm@1
+        displayName: NPM build package
+        inputs:
+            command: 'custom'
+            workingDir: '$(System.DefaultWorkingDirectory)'
+            customCommand: 'run build-npm-package'
+
+      - task: Npm@1
+        displayName: NPM build storybook
+        inputs:
+            command: 'custom'
+            workingDir: '$(System.DefaultWorkingDirectory)'
+            customCommand: 'run build-storybook'
 
     - task: PublishTestResults@2
       enabled: false #as requested by Leo
@@ -305,14 +234,19 @@ stages:
         reportDirectory: "$(System.DefaultWorkingDirectory)/coverage"
         failIfCoverageEmpty: false
   
-# Promotion to release of the master commit
-  
     - task: PublishPipelineArtifact@1
-      displayName: Publish Artifact
-      #condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
-      inputs:
-        targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
-        artifactName: build
+        displayName: Publish build package Artifact
+        condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
+        inputs:
+          targetPath: $(System.DefaultWorkingDirectory)/dist/
+          artifactName: npmbuild
+        
+      - task: PublishPipelineArtifact@1
+        displayName: Publish build storybook Artifact
+        condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
+        inputs:
+          targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
+          artifactName: npmstorybook
   
     - task: npmAuthenticate@0
       enabled: true  
@@ -324,11 +258,12 @@ stages:
       condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
       inputs:
         command: 'custom'
-        workingDir: $(System.DefaultWorkingDirectory)/storybook-static/
+        workingDir: $(System.DefaultWorkingDirectory)/dist/
         customCommand: 'run publish:ci'
         customRegistry: 'useFeed'
         customFeed: $(feedId)
-  
+
+    # Promotion to release of the master commit  
     - task: PowerShell@2
       displayName: "Promote package to release view"
       enabled: true
@@ -380,7 +315,7 @@ stages:
                 displayName: Download Artifact
                 inputs:
                    targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
-                   artifactName: build
+                   artifactName: npmstorybook
                    
               - task: FtpUpload@2
                 displayName: Publish NonProd Versioned for review
@@ -399,7 +334,7 @@ stages:
                    
               - task: FtpUpload@2
                 displayName: Publish NonProd to Latest for review
-                enabled: true
+                enabled: false
                 # condition: and(succeeded(), eq('${{ parameters.isDesignReviewRequired }}', true))
                 inputs:
                    credentialsOption: 'serviceEndpoint'
@@ -433,7 +368,7 @@ stages:
                 displayName: Download Artifact
                 inputs:
                    targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
-                   artifactName: build
+                   artifactName: npmstorybook
 
               - task: FtpUpload@2
                 displayName: Publish Prod Versioned
