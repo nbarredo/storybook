@@ -1,38 +1,41 @@
 import babel from 'rollup-plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
-import external from 'rollup-plugin-peer-deps-external';
-import scss from 'rollup-plugin-postcss';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import postscss from 'rollup-plugin-postcss';
 import {terser} from 'rollup-plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
+import pkg from "./package.json";
+import image from '@rollup/plugin-image';
+
 
 export default [
     {
-        input: './src/index.js',
+        input: 'src/index.js',
         output: [
             {
-                file: 'storybook-static/index.js',
+                file: pkg.main,
                 format: 'cjs',
+                sourcemap: true,
             },
             {
-                file: 'storybook-static/index.es.js',
-                format: 'es',
-                exports: 'named',
+                file: pkg.module,
+                format: 'esm',
+                sourcemap: true,                
             }
         ],
         plugins: [
-            scss({
-                extract: true,
-                sourceMap: true,
-                minimize: true,
-              }),
+            postscss(),
             babel({
                exclude: 'node_modules/**',
                presets: ['@babel/preset-react'] 
             }),
-            external(),
+            peerDepsExternal(),
             resolve(),
             commonjs(),
-            terser()
+            terser(),
+            image()
         ]
     }
 ]
+
+

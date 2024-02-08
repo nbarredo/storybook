@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": false,
   "homepage": "https://dev.azure.com/Eversource-Energy/ms-benchmark/_git/storybook?path=/README.md",
-  "main": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=20.0.0 <21.0.0"
   },
@@ -13,6 +17,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.2",
     "@mui/material": "^5.15.2",
+    "@rollup/plugin-image": "^3.0.3",
     "@storybook/addon-a11y": "^7.6.6",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -21,7 +26,7 @@
   },
   "scripts": {
     "build-storybook": "storybook build",
-    "build": "rollup -c  --inlineDynamicImports",
+    "build": "rollup -c",
     "test": "react-scripts test",
     "test:ci": "cross-env CI=true react-scripts test --watchAll=false --watch=false --no-watchman --coverage --env=jsdom --testPathIgnorePatterns=assets --reporters=default --reporters=jest-junit --coverageReporters=cobertura --forceExit --passWithNoTests",
     "test:coverage": "npm test -- --coverage --watchAll=false",
