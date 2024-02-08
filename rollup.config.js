@@ -10,11 +10,11 @@ export default [
         input: './src/index.js',
         output: [
             {
-                file: 'dist/index.js',
+                file: 'storybook-static/index.js',
                 format: 'cjs',
             },
             {
-                file: 'dist/index.es.js',
+                file: 'storybook-static/index.es.js',
                 format: 'es',
                 exports: 'named',
             }

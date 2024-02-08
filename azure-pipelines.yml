@@ -98,7 +98,7 @@ stages:
         displayName: Publish Artifact
         condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
         inputs:
-          targetPath: $(System.DefaultWorkingDirectory)/dist/
+          targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
           artifactName: build
       
       - task: PowerShell@2
@@ -191,7 +191,7 @@ stages:
         displayName: Publish Artifact
         condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
         inputs:
-          targetPath: $(System.DefaultWorkingDirectory)/dist/
+          targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
           artifactName: build
 
       - task: npmAuthenticate@0
@@ -205,7 +205,7 @@ stages:
         condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
         inputs:
           command: 'custom'
-          workingDir: $(System.DefaultWorkingDirectory)/dist/
+          workingDir: $(System.DefaultWorkingDirectory)/storybook-static/
           customCommand: 'run publish:ci'
           customRegistry: 'useFeed'
           customFeed: $(feedId)
@@ -311,7 +311,7 @@ stages:
       displayName: Publish Artifact
       #condition: and(succeeded(),ne(variables['Build.Reason'], 'PullRequest'))
       inputs:
-        targetPath: $(System.DefaultWorkingDirectory)/dist/
+        targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
         artifactName: build
   
     - task: npmAuthenticate@0
@@ -324,7 +324,7 @@ stages:
       condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
       inputs:
         command: 'custom'
-        workingDir: $(System.DefaultWorkingDirectory)/dist/
+        workingDir: $(System.DefaultWorkingDirectory)/storybook-static/
         customCommand: 'run publish:ci'
         customRegistry: 'useFeed'
         customFeed: $(feedId)
@@ -379,7 +379,7 @@ stages:
                 enabled: true
                 displayName: Download Artifact
                 inputs:
-                   targetPath: $(System.DefaultWorkingDirectory)/dist/
+                   targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
                    artifactName: build
                    
               - task: FtpUpload@2
@@ -388,7 +388,7 @@ stages:
                 inputs:
                    credentialsOption: 'serviceEndpoint'
                    serverEndpoint: 'cdn-nonprod-sb'
-                   rootDirectory: '$(System.DefaultWorkingDirectory)/dist/'
+                   rootDirectory: '$(System.DefaultWorkingDirectory)/storybook-static/'
                    filePatterns: |
                        **
                    remoteDirectory: '/597761/nonprod/storybook/review/$(packageVersion)'
@@ -404,7 +404,7 @@ stages:
                 inputs:
                    credentialsOption: 'serviceEndpoint'
                    serverEndpoint: 'cdn-nonprod-sb'
-                   rootDirectory: '$(System.DefaultWorkingDirectory)/dist/'
+                   rootDirectory: '$(System.DefaultWorkingDirectory)/storybook-static/'
                    filePatterns: |
                        **
                    remoteDirectory: '/597761/nonprod/storybook/latest'
@@ -432,7 +432,7 @@ stages:
                 enabled: true
                 displayName: Download Artifact
                 inputs:
-                   targetPath: $(System.DefaultWorkingDirectory)/dist/
+                   targetPath: $(System.DefaultWorkingDirectory)/storybook-static/
                    artifactName: build
 
               - task: FtpUpload@2
@@ -440,7 +440,7 @@ stages:
                 inputs:
                     credentialsOption: 'serviceEndpoint'
                     serverEndpoint: 'cdn-prod-sb'
-                    rootDirectory: '$(System.DefaultWorkingDirectory)/dist/'
+                    rootDirectory: '$(System.DefaultWorkingDirectory)/storybook-static/'
                     filePatterns: |
                         **
                     remoteDirectory: '/597761/prod/storybook/$(packageVersion)'
@@ -454,7 +454,7 @@ stages:
                 inputs:
                     credentialsOption: 'serviceEndpoint'
                     serverEndpoint: 'cdn-prod-sb'
-                    rootDirectory: '$(System.DefaultWorkingDirectory)/dist/'
+                    rootDirectory: '$(System.DefaultWorkingDirectory)/storybook-static/'
                     filePatterns: |
                         **
                     remoteDirectory: '/597761/prod/storybook/latest'
