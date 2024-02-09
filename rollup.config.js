@@ -7,6 +7,8 @@ import postscss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 import pkg from "./package.json";
 
+// delete this comment
+
 export default [
   {
     input: "src/index.js",
