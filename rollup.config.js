@@ -24,16 +24,16 @@ export default [
     ],
     plugins: [
       peerDepsExternal(),
-      postscss({
-        modules: true,
-        use: ["sass"]
-      }),
       babel({
         exclude: "node_modules/**",
         presets: ["@babel/preset-react"]
       }),
       nodeResolve(),
       commonjs(),
+      postscss({
+        modules: true,
+        use: ["sass"]
+      }),
       terser(),
       image()
     ]
