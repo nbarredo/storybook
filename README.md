@@ -11,16 +11,19 @@ registry=https://pkgs.dev.azure.com/Eversource-Energy/Eversource-Digital/_packag
 
 always-auth=true
 
-2. Remove the package "@eversource/mf-storybook" from package.json file
+2. Run the command `npm uninstall @eversource/storybook` to remove any previous version of Storybook that you might have installed
 
-3. Run the command npm i @eversource/storybook to install the latest version of the new storybook npm package
+3. Run the command npm i @eversource/storybook to install the latest version of the new storybook npm package.  You can install a specific version by first looking up the list of available versions here:  https://dev.azure.com/Eversource-Energy/ms-benchmark/_artifacts/feed/Benchmark/Npm/@eversource%2Fstorybook/versions
 
-4. Replace the package name on the decs.d.ts to use the new storybook package
+4. If you are using Typescript, verify that the package name/path in the decs.d.ts is correct:
 
-declare module "@eversource/storybook";
+`declare module "@eversource/storybook";`
 
-5. Make sure all the components used are the ones from Storybook
+5. In your app's scss/css entry point file (usually something like index.scss or app.css), import Storybook's styles accordingly:
 
+ * If your entry point is a SASS/SCSS file: `@use "../node_modules/@eversource/storybook/dist/esm/index.css";`
+ * If your entry point is a CSS file: `@import url("../node_modules/@eversource/storybook/dist/esm/index.css");` or
+ * `@import "../node_modules/@eversource/storybook/dist/esm/index.css";`
 
 ## How to Contribute to Eversource Storybook (draft)
 
