@@ -34,7 +34,9 @@ export default [
       nodeResolve(),
       commonjs(),
       postscss({
-        modules: true,
+        extract: true,
+        autoModules: true,
+        sourceMap: true,
         use: ["sass"]
       }),
       terser(),
