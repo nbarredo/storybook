@@ -25,6 +25,7 @@ variables:
   value: 'Prerelease'
 - name: prodpackagePromote
   value: 'Release'
+  
 name: '$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:-r)' 
 stages:
 - stage: Build
@@ -57,7 +58,8 @@ stages:
         displayName: NPM Install
         inputs:
             command: 'ci'
-            workingDir: '$(System.DefaultWorkingDirectory)'        
+            workingDir: '$(System.DefaultWorkingDirectory)'
+            verbose: true
   
       - task: Npm@1
         displayName: NPM Run Unit Tests with code coverage
