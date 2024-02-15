@@ -13,18 +13,34 @@ html {
 
 /* prettier-ignore */
 $spacing: (
-  space-1: $spacer * 0.25, //4px
-  space-2: $spacer * 0.5, //8px
-  space-3: $spacer,       //16px
-  space-4: $spacer * 1.5, //24px
-  space-5: $spacer * 3,   //48px
+  space-1: $spacer * 0.125, //2px
+  space-2: $spacer * 0.25, //4px
+  space-3: $spacer * 0.5, //8px
+  space-4: $spacer * 0.75, //12px
+  space-5: $spacer, //16px
+  space-6: $spacer * 1.5, //24px
+  space-7: $spacer * 2, //32px
+  space-8: $spacer * 2.5, //40px
+  space-9: $spacer * 3, //48px
+  space-10: $spacer * 4, //64px
+  space-11: $spacer * 5, //80px
+  space-12: $spacer * 6, //96px
+  space-13: $spacer * 10, //160px
 );
 
-$space-1: $spacer * 0.25; //4px
-$space-2: $spacer * 0.5; //8px
-$space-3: $spacer; //16px
-$space-4: $spacer * 1.5; //24px
-$space-5: $spacer * 3; //48px
+$space-1: $spacer * 0.125; //2px
+$space-2: $spacer * 0.25; //4px
+$space-3: $spacer * 0.5; //8px
+$space-4: $spacer * 0.75; //12px
+$space-5: $spacer; //16px
+$space-6: $spacer * 1.5; //24px
+$space-7: $spacer * 2; //32px
+$space-8: $spacer * 2.5; //40px
+$space-9: $spacer * 3; //48px
+$space-10: $spacer * 4; //64px
+$space-11: $spacer * 5; //80px
+$space-12: $spacer * 6; //96px
+$space-13: $spacer * 10; //160px
 
 /* stylelint-disable */
 

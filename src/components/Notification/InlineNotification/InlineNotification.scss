@@ -10,14 +10,14 @@ $minimum-height: 37px;
   border-radius: g.$border-radius;
   min-block-size: $minimum-height;
   .cds--inline-notification__icon {
-    margin-top: g.$space-2;
+    margin-top: g.$space-3;
   }
   .cds--inline-notification__close-button {
     block-size: $minimum-height;
   }
 
   .cds--inline-notification__text-wrapper {
-    padding: g.$space-2 0;
+    padding: g.$space-3 0;
     .cds--inline-notification__subtitle {
       @extend %font-size-1-reg;
     }

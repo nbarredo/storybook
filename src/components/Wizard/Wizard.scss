@@ -17,13 +17,13 @@
         background-color: var(--white);
         border-radius: g.$border-radius-large;
         content: "";
-        height: calc(100% - g.$space-4);
+        height: calc(100% - g.$space-6);
         left: 12px;
         opacity: 0.8;
         pointer-events: none;
         position: absolute;
         top: 12px;
-        width: calc(100% - g.$space-4);
+        width: calc(100% - g.$space-6);
         z-index: 2;
       }
     }
@@ -130,7 +130,7 @@
   }
 
   .c-wizard__description {
-    margin-bottom: g.$space-2;
+    margin-bottom: g.$space-3;
   }
 
   h4 {
@@ -174,7 +174,7 @@
     border-radius: g.$border-radius;
     color: var(--gray-70);
     font-size: 16px;
-    padding: g.$space-3;
+    padding: g.$space-5;
   }
 
   /* stylelint-disable-next-line no-descending-specificity */

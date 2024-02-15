@@ -30,7 +30,7 @@ $minimum-height: 80px;
       align-content: center;
 
       .cds--actionable-notification__content {
-        column-gap: g.$space-2;
+        column-gap: g.$space-3;
         justify-content: center;
         .cds--actionable-notification__title {
           @extend %font-size-0-semi;
@@ -41,7 +41,7 @@ $minimum-height: 80px;
           @include do-this-above(md) {
             font: #{map.get(t.$font-weights, semi)
               map.get(t.$font-sizes, size-1) t.$primary-font-stack};
-            margin-inline-end: g.$space-3;
+            margin-inline-end: g.$space-5;
           }
         }
         .cds--actionable-notification__subtitle {
@@ -52,12 +52,12 @@ $minimum-height: 80px;
           @include do-this-above(md) {
             font: #{map.get(t.$font-weights, bold)
               map.get(t.$font-sizes, size-6) t.$primary-font-stack};
-            margin-inline-end: g.$space-4;
+            margin-inline-end: g.$space-6;
           }
         }
         button {
           inline-size: 100%;
-          margin-top: g.$space-2;
+          margin-top: g.$space-3;
           max-inline-size: 100%;
           text-align: center;
           @include do-this-above(md) {
@@ -73,7 +73,7 @@ $minimum-height: 80px;
       }
     }
     @include do-this-above(md) {
-      margin-inline: 12px g.$space-3;
+      margin-inline: 12px g.$space-5;
     }
   }
 }
