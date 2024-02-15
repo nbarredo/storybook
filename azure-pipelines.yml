@@ -40,7 +40,11 @@ stages:
       - script: |
             git config user.email "pipeline@eversource.com" 
             git config user.name "Azure DevOps"
-  
+      
+      - script: |
+          npm cache clean --force
+        displayName: 'Clean npm cache'
+          
       - task: Npm@1
         displayName: 'Set NPM package version'
         condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
@@ -59,7 +63,6 @@ stages:
         inputs:
             command: 'ci'
             workingDir: '$(System.DefaultWorkingDirectory)'
-            verbose: true
   
       - task: Npm@1
         displayName: NPM Run Unit Tests with code coverage
