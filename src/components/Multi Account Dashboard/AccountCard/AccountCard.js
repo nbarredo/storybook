@@ -2,14 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 // import { Button } from "../../Button/Button";
 import { InlineNotification } from "../../Notification/InlineNotification/InlineNotification";
-import "./AccountCard.scss";
+import styles from "./AccountCard.module.scss";
+import { ReactComponent as IconElectric } from "./icon_electric.svg";
+import { ReactComponent as IconGas } from "./icon_gas.svg";
 
 /**
- * Inline notifications show up in task flows, to notify users of the status of an action or system. They usually appear at the top of the primary content area or close to the item needing attention.  Other "kinds" will eventually be available once we have completed designs for them.
+ * Descriptive text here.
  */
 function AccountCard({ className, acctType = "electric" }) {
   return (
-    <section className={`ev-account-card ${className}`}>
+    <section className={`${styles.root} ${className}`}>
       <InlineNotification
         hideCloseButton
         kind="warning"
@@ -19,12 +21,11 @@ function AccountCard({ className, acctType = "electric" }) {
         subtitle="Notification Subtitle"
         title="Notification Title"
       />
-      <figure>
-        {acctType}
-        <img src="hello.gif" />
+      <figure className={`${styles["icon-container"]} ${styles[acctType]}`}>
+        {acctType === "electric" ? <IconElectric /> : <IconGas />}
       </figure>
       <header>
-        <h2>gas| acct # 1245345</h2>
+        <h2>{acctType}| acct # 1245345</h2>
         <h4>address here</h4>
       </header>
       <ul className="actions">
