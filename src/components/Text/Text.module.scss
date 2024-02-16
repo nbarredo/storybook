@@ -1,14 +1,15 @@
 // @use '../../../styles/colors.scss' as *;
-@use "../../styles/global.scss" as g;
+@use "../../styles/global" as g;
+@use "../../styles/typography" as t;
+@use "sass:map";
 
-.root {
-  .inline {
-    display: inline;
-  }
-  .block {
-    display: block;
-  }
-  /*
+.inline {
+  display: inline;
+}
+.block {
+  display: block;
+}
+/*
   a {
     color: $link;
     text-decoration: underline;
@@ -24,46 +25,32 @@
     }
   }
   */
-  .mb-0 {
-    margin-bottom: 0;
+
+// Generate Margin Styles
+@for $i from 0 through 13 {
+  .mb-#{$i} {
+    margin-bottom: map.get(g.$spacing, "space-#{$i}");
   }
-  .mb-1 {
-    margin-bottom: g.$space-1;
+  .mt-#{$i} {
+    margin-top: map.get(g.$spacing, "space-#{$i}");
   }
-  .mb-2 {
-    margin-bottom: g.$space-3;
+}
+
+// Generate typography classes
+.size-00 {
+  @extend %font-size-00-reg;
+}
+
+@for $i from 0 through 11 {
+  .font-size-#{$i}-reg {
+    @extend %font-size-#{$i}-reg;
   }
-  .mb-3 {
-    margin-bottom: g.$space-5;
-  }
-  .mb-4 {
-    margin-bottom: g.$space-6;
-  }
-  .mb-5 {
-    margin-bottom: g.$space-5;
-  }
-  .mt-0 {
-    margin-top: 0;
-  }
-  .mt-1 {
-    margin-top: g.$space-1;
-  }
-  .mt-2 {
-    margin-top: g.$space-3;
-  }
-  .mt-3 {
-    margin-top: g.$space-5;
-  }
-  .mt-4 {
-    margin-top: g.$space-6;
-  }
-  .mt-5 {
-    margin-top: g.$space-5;
-  }
-  .error {
-    color: var(--red-60);
-  }
-  /*
+}
+
+.error {
+  color: var(--red-60);
+}
+/*
   .title {
     color: $title;
   }
@@ -87,4 +74,3 @@
     color: $secondary;
   }
 */
-}

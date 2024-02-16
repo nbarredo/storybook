@@ -13,6 +13,7 @@ html {
 
 /* prettier-ignore */
 $spacing: (
+  space-0: 0,  
   space-1: $spacer * 0.125, //2px
   space-2: $spacer * 0.25, //4px
   space-3: $spacer * 0.5, //8px
@@ -28,6 +29,7 @@ $spacing: (
   space-13: $spacer * 10, //160px
 );
 
+$space-0: 0;
 $space-1: $spacer * 0.125; //2px
 $space-2: $spacer * 0.25; //4px
 $space-3: $spacer * 0.5; //8px

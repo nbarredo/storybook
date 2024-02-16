@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import "./TextInput.scss";
 
 /**
- * This components helps to properly organize a group of buttons
+ * This component is used to collect text-based information from the user.
  */
 function TextInput(props) {
   return <CarbonTextInput {...props} />;
