@@ -1,6 +1,8 @@
+@use "../../styles/global" as g;
+
 .cds--btn-set {
   flex-wrap: wrap;
-  gap: 12px;
+  gap: g.$space-4;
   &.left {
     justify-content: flex-start;
   }

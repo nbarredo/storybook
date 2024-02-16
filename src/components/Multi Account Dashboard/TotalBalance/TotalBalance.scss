@@ -24,7 +24,7 @@ $minimum-height: 80px;
     display: none;
   }
   .cds--actionable-notification__details {
-    margin-inline: 12px;
+    margin-inline: g.$space-4;
 
     .cds--actionable-notification__text-wrapper {
       align-content: center;
@@ -73,7 +73,7 @@ $minimum-height: 80px;
       }
     }
     @include do-this-above(md) {
-      margin-inline: 12px g.$space-5;
+      margin-inline: g.$space-4 g.$space-5;
     }
   }
 }

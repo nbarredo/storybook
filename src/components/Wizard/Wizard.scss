@@ -41,7 +41,7 @@
     height: auto;
     inline-size: 84%;
     max-block-size: 90%;
-    padding: 12px;
+    padding: g.$space-4;
     position: static;
 
     @include do-this-above(lg) {
@@ -86,7 +86,7 @@
     cursor: pointer;
     height: 32px;
     overflow: hidden;
-    padding: 12px;
+    padding: g.$space-4;
     position: absolute;
     right: 0px;
     top: 0px;
@@ -220,7 +220,7 @@
 .c-wizard__btn-group {
   .cds--btn-set {
     align-items: center;
-    gap: 12px;
+    gap: g.$space-4;
     justify-content: center;
   }
 }
@@ -229,7 +229,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: g.$space-4;
   justify-content: flex-end;
 
   // margin-bottom: 40px;
