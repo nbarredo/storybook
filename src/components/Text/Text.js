@@ -9,20 +9,18 @@ import styles from "./Text.module.scss";
 function Text({
   weight = "reg",
   id,
-  inline,
+  inline = false,
   children,
   marginTop,
   marginBottom,
-  color,
+  color = "gray-70",
   // ariaHeadingLevel,
   ariaHidden,
   size = "2"
 }) {
-  const marginTopClass =
-    marginTop || marginTop === 0 ? `mt-${marginTop}` : undefined;
+  const marginTopClass = marginTop ? `mt-${marginTop}` : undefined;
 
-  const marginBottomClass =
-    marginBottom || marginBottom === 0 ? `mb-${marginBottom}` : undefined;
+  const marginBottomClass = marginBottom ? `mb-${marginBottom}` : undefined;
 
   return (
     <span
