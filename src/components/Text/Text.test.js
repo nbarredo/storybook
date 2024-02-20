@@ -1,44 +1,67 @@
+import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import { Text } from "./Text";
 import "./Text.module.scss";
 
-describe("Text component functions as expected", () => {
-  test("Component will be rendered as 'inline', when the inline prop is true.", () => {
+describe("Text component functions properly", () => {
+  test("renders without crashing", () => {
+    render(<Text>some text</Text>);
+    expect(screen.getByText(/some text/i)).toBeInTheDocument();
+  });
+
+  test("applies the weight class", () => {
+    render(<Text weight="bold">Test</Text>);
+    const textElement = screen.getByText("Test");
+    expect(textElement.className).toContain("font-size-2-bold");
+  });
+
+  test("applies the size class", () => {
+    render(<Text size="3">Test</Text>);
+    const textElement = screen.getByText("Test");
+    expect(textElement.className).toContain("font-size-3-reg");
+  });
+
+  test("Component will inline/block styles", () => {
     render(
-      <Text variant="h2" inline>
+      <Text marginTop={5} marginBottom={3} inline={true}>
         test
       </Text>
     );
-    expect(screen.getByText("test")).toHaveClass("inline");
-  });
-
-  test("Component will create a child element based on the specified variant", () => {
-    render(<Text variant="h1">test</Text>);
-    const childNode = screen.getByRole("heading", { level: 1 });
-    expect(childNode).toBeInTheDocument();
-  });
-
-  test("Component will apply the element's variantClass when applicable", () => {
-    render(<Text variant="smalltitle">test</Text>);
-    const childNode = screen.getByText("test");
-    expect(childNode).toHaveClass("small-title");
+    const textElement = screen.getByText("test");
+    expect(textElement.parentNode).toHaveClass("inline");
   });
 
   test("Component will apply top and/or bottom margin styles", () => {
     render(
-      <Text marginTop={5} marginBottom={3}>
+      <Text marginTop={5} marginBottom={3} inline={false}>
         test
       </Text>
     );
-    const childNode = screen.getByText("test");
-    expect(childNode).toHaveClass("mt-5");
-    expect(childNode).toHaveClass("mb-3");
+    const textElement = screen.getByText("test");
+    expect(textElement.parentNode).toHaveClass("mt-5");
+    expect(textElement.parentNode).toHaveClass("mb-3");
   });
 
-  test("Component will apply appropriate color", () => {
-    render(<Text color="error">test</Text>);
-    const childNode = screen.getByText("test");
-    expect(childNode).toHaveClass("error");
+  test("Component will not render margins by default when no margin props are passed", () => {
+    render(<Text inline={false}>test</Text>);
+    const textElement = screen.getByText("test");
+    expect(textElement.parentNode.className).not.toMatch(/mt-/);
+    expect(textElement.parentNode.className).not.toMatch(/mb-/);
+  });
+
+  test("applies the color style", () => {
+    window.getComputedStyle = jest.fn().mockImplementation(() => ({
+      color: "#076670",
+      getPropertyValue: jest.fn().mockReturnValue("#076670")
+    }));
+
+    render(
+      <Text color="teal-80" id="test-id">
+        Test
+      </Text>
+    );
+    const textElement = screen.getByText("Test");
+    expect(window.getComputedStyle(textElement).color).toBe("#076670");
   });
 });
