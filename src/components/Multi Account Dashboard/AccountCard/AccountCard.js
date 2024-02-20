@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import { Button } from "../../Button/Button";
 import { InlineNotification } from "../../Notification/InlineNotification/InlineNotification";
+// import { Button } from "../../Button/Button";
+import { Text } from "../../Text/Text";
 import styles from "./AccountCard.module.scss";
 import { ReactComponent as IconElectric } from "./icon_electric.svg";
 import { ReactComponent as IconGas } from "./icon_gas.svg";
@@ -25,8 +26,12 @@ function AccountCard({ className, acctType = "electric" }) {
         {acctType === "electric" ? <IconElectric /> : <IconGas />}
       </figure>
       <header>
-        <h2>{acctType}| acct # 1245345</h2>
-        <h4>address here</h4>
+        <Text size="3" weight="semi" inline={true}>
+          {acctType}&nbsp;|&nbsp;acct # 1245345
+        </Text>
+        <Text color="gray-60" size="1" weight="reg">
+          124 Main Street NH 120384
+        </Text>
       </header>
       <ul className="actions">
         <li>
