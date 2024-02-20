@@ -14,8 +14,8 @@ export default {
   },
   parameters: {
     design: {
-      type: "link",
-      url: "https://zeroheight.com/95a80ce17/p/277096-typography/b/25d187"
+      type: "figma",
+      url: "https://www.figma.com/file/l9Q7DtqQtkUePUraGXaUmK/One-Source-Foundations?type=design&node-id=842-2221&mode=design&t=Ewf8yIlxUvXLEFih-0"
     }
   }
 };
@@ -23,10 +23,6 @@ export default {
 export const Default = {
   args: {
     children: "Sample Text",
-    inline: true,
-    size: "2",
-    weight: "reg",
-    color: "gray-70",
     ariaHidden: false
   }
 };
