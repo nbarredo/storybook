@@ -23,6 +23,7 @@ export default {
 export const Default = {
   args: {
     children: "Sample Text",
-    ariaHidden: false
+    ariaHidden: false,
+    weight: "reg"
   }
 };
