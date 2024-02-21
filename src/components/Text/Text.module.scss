@@ -3,6 +3,9 @@
 @use "../../styles/typography" as t;
 @use "sass:map";
 
+.ev-text {
+  display: inherit;
+}
 .inline {
   display: inline;
 }
