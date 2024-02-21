@@ -5,7 +5,7 @@ import { Button } from "../../Button/Button";
 import "./TotalBalance.scss";
 
 /**
- * Inline notifications show up in task flows, to notify users of the status of an action or system. They usually appear at the top of the primary content area or close to the item needing attention.  Other "kinds" will eventually be available once we have completed designs for them.
+ * This component is used to display balance information on the account dashboard screen.
  */
 function TotalBalance(props) {
   return (

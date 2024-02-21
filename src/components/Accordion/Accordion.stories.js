@@ -1,5 +1,6 @@
 import React from "react";
 import HelpIcon from "@mui/icons-material/Help";
+import { Text } from "../Text/Text";
 import { Accordion } from "./Accordion";
 import image from "./art_acct_number.png";
 
@@ -16,12 +17,11 @@ export const Default = {
     open: false,
     children: (
       <>
-        <p>
+        <Text size="1" weight="semi" marginBottom={5} inline={false}>
           Account numbers are on your bill. Contact{" "}
-          <a href="#">customer service</a> for help if you don&#apos;t yet have
-          a bill.
-        </p>
-        <br />
+          <a href="#">customer service</a> for help if you don&apos;t yet have a
+          bill.
+        </Text>
         <img src={image} />
       </>
     )

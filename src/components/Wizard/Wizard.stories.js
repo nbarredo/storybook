@@ -101,10 +101,10 @@ const setupCompleteContent = (
 const errorContent = (
   <>
     <WizardDescription>
-      <p>
+      <Text marginBottom={4} inline={false}>
         We are unable to process your request. Please try again. If the problem
         persists, please <a href="#">contact us</a> for assistance.
-      </p>
+      </Text>
     </WizardDescription>
     <ButtonSet align="right" fixedSize={false}>
       <Button kind="ghost--subtle" label="Cancel" />
@@ -136,7 +136,7 @@ const letsContinueContent = (
   <>
     <WizardSlot>
       <center>
-        <Text variant="p" marginBottom={4} inline={false} className="test">
+        <Text marginBottom={6}>
           Do you (or did you) have electric or gas service with Eversource?
         </Text>
       </center>
@@ -163,15 +163,14 @@ const accountInformationContent = (
         id="test-id"
       />
     </WizardSlot>
-    <div style={{ "margin-bottom": "8px" }}>
+    <div style={{ marginBottom: "8px" }}>
       <Accordion title="Where do I find my account number?" icon={<HelpIcon />}>
         <>
-          <p>
+          <Text size="1" weight="semi" marginBottom={5} inline={false}>
             Account numbers are on your bill. Contact{" "}
-            <a href="#">customer service</a> for help if you don&#apos;t yet
-            have a bill.
-          </p>
-          <br />
+            <a href="#">customer service</a> for help if you don&apos;t yet have
+            a bill.
+          </Text>
           <img src={image} />
         </>
       </Accordion>
