@@ -12,6 +12,36 @@ $min-height-compact: 40px;
   border-radius: g.$border-radius-large;
   box-shadow: 0px 6px 8px 0px rgba(233, 246, 252, 0.7);
   min-height: $min-height;
+  .pipe {
+    color: var(--gray-40);
+  }
+  .alert {
+    border: 0;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    max-inline-size: 100%;
+    svg {
+      display: none;
+    }
+  }
+  .payment-area {
+    .total-due {
+      background-color: var(--gray-00);
+      border-radius: g.$border-radius-small;
+      display: inline-block;
+      margin-right: g.$space-5;
+      padding: 4px 8px;
+      vertical-align: middle;
+      strong {
+        color: var(--gray-70);
+        margin-right: g.$space-4;
+      }
+    }
+    .button-container {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
   .icon-container {
     border: 1px solid var(--white);
     border-radius: 100%;
