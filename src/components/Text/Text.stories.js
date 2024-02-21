@@ -9,7 +9,42 @@ export default {
       options: Object.keys(ColorPalette),
       mapping: Object.keys(ColorPalette),
       control: { type: "select" }, // The input type we want to use for our control
-      description: "Color of logos to be displayed" // A descripton of what this control does
+      description: "The color in which the text will be displayed" // A description of what this control does
+    },
+    size: {
+      options: [
+        "00",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      control: {
+        type: "select",
+        labels: {
+          "00": "00 (10px)",
+          0: "0 (12px)",
+          1: "1 (14px)",
+          2: "2 (16px)",
+          3: "3 (18px)",
+          4: "4 (20px)",
+          5: "5 (24px)",
+          6: "6 (28px)",
+          7: "7 (32px)",
+          8: "8 (36px)",
+          9: "9 (42px)",
+          10: "10 (48px)",
+          11: "11 (54px)"
+        }
+      }
     }
   },
   parameters: {
