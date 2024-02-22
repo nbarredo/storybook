@@ -6,12 +6,23 @@
 ///////////////////
 ///
 .cds--btn {
-  @extend %font-size-3-bold;
   border-radius: g.$border-radius;
   color: var(--black);
   display: inline-block;
   letter-spacing: 0.16px;
   padding-inline-end: 15px;
+
+  &.cds--layout--size-sm {
+    @extend %font-size-0-semi;
+  }
+
+  &.cds--layout--size-md {
+    @extend %font-size-1-semi;
+  }
+
+  &.cds--layout--size-lg {
+    @extend %font-size-2-semi;
+  }
 
   .label-container {
     display: inline-block;

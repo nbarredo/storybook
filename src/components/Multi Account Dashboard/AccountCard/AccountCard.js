@@ -1,10 +1,15 @@
 import React from "react";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PropTypes from "prop-types";
-// import { Button } from "../../Button/Button";
+import { Button } from "../../Button/Button";
 import { InlineNotification } from "../../Notification/InlineNotification/InlineNotification";
+import { Text } from "../../Text/Text";
 import styles from "./AccountCard.module.scss";
 import { ReactComponent as IconElectric } from "./icon_electric.svg";
 import { ReactComponent as IconGas } from "./icon_gas.svg";
+
+// import { ReactComponent as IconAttentionFilled } from "./icon_attention_filled.svg";
+// import { ReactComponent as IconWarningFilled } from "./icon_warning_filled.svg";
 
 /**
  * Descriptive text here.
@@ -12,21 +17,19 @@ import { ReactComponent as IconGas } from "./icon_gas.svg";
 function AccountCard({ className, acctType = "electric" }) {
   return (
     <section className={`${styles.root} ${className}`}>
-      <InlineNotification
-        hideCloseButton
-        kind="warning"
-        onClose={() => {}}
-        onCloseButtonClick={() => {}}
-        role="status"
-        subtitle="Notification Subtitle"
-        title="Notification Title"
-      />
       <figure className={`${styles["icon-container"]} ${styles[acctType]}`}>
         {acctType === "electric" ? <IconElectric /> : <IconGas />}
       </figure>
       <header>
-        <h2>{acctType}| acct # 1245345</h2>
-        <h4>address here</h4>
+        <Text size="3" weight="semi" inline={true}>
+          {acctType}&nbsp;<span className={styles.pipe}>|</span>&nbsp;acct #
+          1245345
+        </Text>
+        <address>
+          <Text color="gray-60" size="1" weight="reg">
+            124 Main Street NH 120384
+          </Text>
+        </address>
       </header>
       <ul className="actions">
         <li>
@@ -36,11 +39,33 @@ function AccountCard({ className, acctType = "electric" }) {
           <button>Set Up Autopay</button>
         </li>
       </ul>
-      <div className="total-due">
-        <strong>1245</strong>
-        <button>Pay Bill</button>
-      </div>
-      <a href="#">Acct Details</a>
+      <aside className={styles["payment-area"]}>
+        <div className={styles["total-due"]}>
+          <Text color="gray-60" size="2" weight="semi" inline={true}>
+            <strong>1245</strong>
+            Due 02/06/23
+          </Text>
+        </div>
+        <div className={styles["button-container"]}>
+          <Button kind="tertiary" label="Pay Bill" size="sm" type="button" />
+        </div>
+      </aside>
+      <Button
+        kind="ghost"
+        label="Acct Details"
+        size="sm"
+        type="button"
+        renderIcon={ArrowForwardIcon}
+      />
+      <InlineNotification
+        hideCloseButton
+        kind="warning"
+        onClose={() => {}}
+        onCloseButtonClick={() => {}}
+        role="status"
+        title="This acct requires your immediate attention"
+        className={styles.alert}
+      />
     </section>
   );
 }

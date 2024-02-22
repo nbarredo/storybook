@@ -31,7 +31,7 @@ function Text({
     `}
     >
       <p
-        className={`font-size-${size}-${weight}`}
+        className={`${styles["ev-text"]} font-size-${size}-${weight}`}
         style={{ color: `var(--${color})` }}
         id={id ?? null}
         aria-hidden={ariaHidden?.toString()}
