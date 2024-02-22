@@ -17,8 +17,7 @@ $min-height-compact: 40px;
   }
   .alert {
     border: 0;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+    border-radius: 0 0 g.$border-radius-large g.$border-radius-large;
     max-inline-size: 100%;
     svg {
       display: none;
