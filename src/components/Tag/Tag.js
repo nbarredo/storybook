@@ -24,7 +24,7 @@ export { Tag };
 Tag.propTypes = {
   /** The text content of the tag */
   text: PropTypes.string,
-  /** Specify the size of the Text Input. Currently supports the following: */
+  /** Specify the theme of the Text Input. Currently supports the following: */
   theme: PropTypes.oneOf(["default", "important", "green", "pink", "purple"]),
   /** Add a Material-UI icon to the button.  Search for an icon here:  https://mui.com/material-ui/material-icons/   */
   renderIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
