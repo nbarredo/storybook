@@ -10,7 +10,7 @@ function Tag({ text, theme = "default", ...props }) {
   const themeName = `theme-${theme}`;
   return (
     <CarbonTag
-      className={`${styles.tag} ${styles[themeName]}`}
+      className={`${styles.tag} ${styles[themeName]} ${props.renderIcon ? styles.icon : ""}`}
       as="div"
       {...props}
     >

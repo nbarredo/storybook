@@ -8,6 +8,9 @@
   margin: 0;
   min-height: 28px;
   padding: g.$space-2 g.$space-3;
+  &.icon {
+    padding: g.$space-2 g.$space-3 g.$space-2 g.$space-2;
+  }
 
   &.theme-default {
     background-color: var(--gray-10);
