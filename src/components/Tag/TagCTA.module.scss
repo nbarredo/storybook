@@ -1,0 +1,92 @@
+/* stylelint-disable scss/at-extend-no-missing-placeholder */
+@use "../../styles/typography";
+@use "../../styles/global" as g;
+
+.gradient-border {
+  border-radius: g.$border-radius;
+  max-width: fit-content;
+  padding: 1px;
+  position: relative;
+  &.theme-default {
+    background: linear-gradient(
+      90.5deg,
+      #ccf3f3 -21.61%,
+      #23969f 44.97%,
+      #ccf3f3 120.42%
+    );
+  }
+  &.theme-blue {
+    background: linear-gradient(
+      90.55deg,
+      #a4e3ff -9.62%,
+      #068bdb 49.86%,
+      #a4e3ff 104.57%
+    );
+  }
+}
+
+.tag-cta {
+  @extend %font-size-1-semi;
+  border: none;
+  border-radius: g.$border-radius;
+  margin: 0;
+  min-height: 28px;
+  padding: g.$space-3 g.$space-4;
+  &.icon {
+    padding: g.$space-3 g.$space-4 g.$space-3 g.$space-3;
+  }
+
+  &.theme-default {
+    background-color: var(--teal-00);
+    color: var(--teal-80);
+    &:hover {
+      background-color: var(--teal-10);
+      color: var(--teal-90);
+      text-decoration: underline;
+    }
+    &:active {
+      background-color: var(--teal-20);
+      color: var(--teal-100);
+      text-decoration: underline;
+    }
+    &:focus {
+      box-shadow:
+        0px 0px 1px 0px #0024404f,
+        0px 0px 6px 3px #006db333;
+      outline: 2px solid var(--blue-70);
+      outline-offset: 1px;
+    }
+  }
+
+  &.theme-blue {
+    background-color: var(--blue-00);
+    color: var(--blue-80);
+    &:hover {
+      background-color: var(--blue-10);
+      color: var(--blue-90);
+      text-decoration: underline;
+    }
+    &:active {
+      background-color: var(--blue-20);
+      color: var(--blue-100);
+      text-decoration: underline;
+    }
+    &:focus {
+      box-shadow:
+        0px 0px 1px 0px #0024404f,
+        0px 0px 6px 3px #006db333;
+      outline: 2px solid var(--blue-70);
+      outline-offset: 1px;
+    }
+  }
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global .cds--tag__custom-icon {
+  block-size: 20px;
+  inline-size: 20px;
+  svg {
+    height: 20px;
+    width: 20px;
+  }
+}

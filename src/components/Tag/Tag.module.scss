@@ -1,0 +1,61 @@
+/* stylelint-disable scss/at-extend-no-missing-placeholder */
+@use "../../styles/typography";
+@use "../../styles/global" as g;
+
+.tag {
+  @extend %font-size-0-reg;
+  border-radius: g.$border-radius;
+  margin: 0;
+  min-height: 28px;
+  padding: g.$space-2 g.$space-3;
+  &.icon {
+    padding: g.$space-2 g.$space-3 g.$space-2 g.$space-2;
+  }
+
+  &.theme-default {
+    background-color: var(--gray-10);
+    &:hover {
+      background-color: var(--gray-10);
+      cursor: default;
+    }
+  }
+  &.theme-important {
+    background-color: var(--gray-60);
+    color: var(--white);
+    &:hover {
+      background-color: var(--gray-60);
+      cursor: default;
+    }
+  }
+  &.theme-green {
+    background-color: var(--green-10);
+    &:hover {
+      background-color: var(--green-10);
+      cursor: default;
+    }
+  }
+  &.theme-pink {
+    background-color: var(--pink-10);
+    &:hover {
+      background-color: var(--pink-10);
+      cursor: default;
+    }
+  }
+  &.theme-purple {
+    background-color: var(--purple-10);
+    &:hover {
+      background-color: var(--purple-10);
+      cursor: default;
+    }
+  }
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global .cds--tag__custom-icon {
+  block-size: 20px;
+  inline-size: 20px;
+  svg {
+    height: 20px;
+    width: 20px;
+  }
+}
