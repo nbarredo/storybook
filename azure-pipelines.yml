@@ -32,7 +32,12 @@ stages:
   jobs:     
   -   job: 'Feature_Branch_Prerelease'
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'))
-  
+      pool:
+          #vmImage: ubuntu-latest
+          name: $(agentpool)
+          demands:
+            - Agent.ComputerName -equals e2vwa-adevops4
+
       steps:
       - checkout: self
         fetchDepth: 1
@@ -41,9 +46,9 @@ stages:
             git config user.email "pipeline@eversource.com" 
             git config user.name "Azure DevOps"
       
-      # - script: |
-      #     npm cache clean --force
-      #   displayName: 'Clean npm cache'
+      - script: |
+           npm cache clean --force
+        displayName: 'Clean npm cache'
           
       - task: Npm@1
         displayName: 'Set NPM package version'
