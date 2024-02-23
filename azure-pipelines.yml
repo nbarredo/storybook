@@ -41,9 +41,9 @@ stages:
             git config user.email "pipeline@eversource.com" 
             git config user.name "Azure DevOps"
       
-      # - script: |
-      #     npm cache clean --force
-      #   displayName: 'Clean npm cache'
+      - script: |
+           npm cache clean --force
+        displayName: 'Clean npm cache'
           
       - task: Npm@1
         displayName: 'Set NPM package version'
