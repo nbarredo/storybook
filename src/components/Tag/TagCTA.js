@@ -11,7 +11,7 @@ function TagCTA({ text, theme = "default", ...props }) {
   return (
     <div className={`${styles["gradient-border"]} ${styles[themeName]}`}>
       <CarbonTag
-        className={`${styles["tag-cta"]} ${styles[themeName]}`}
+        className={`${styles["tag-cta"]} ${styles[themeName]} ${props.renderIcon ? styles.icon : ""}`}
         {...props}
       >
         {text}
