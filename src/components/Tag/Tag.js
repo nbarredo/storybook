@@ -1,59 +1,31 @@
 import React from "react";
 import { Tag as CarbonTag } from "@carbon/react";
 import PropTypes from "prop-types";
-import "./Tag.module.scss";
+import styles from "./Tag.module.scss";
 
 /**
- * This component is used to collect text-based information from the user.
+ * This tag is used to provide information or important details to the user. It is not clickable/interactive.
  */
-function Tag({ text }) {
-  return <CarbonTag>{text}</CarbonTag>;
+function Tag({ text, theme = "default", ...props }) {
+  const themeName = `theme-${theme}`;
+  return (
+    <CarbonTag
+      className={`${styles.tag} ${styles[themeName]}`}
+      as="div"
+      {...props}
+    >
+      {text}
+    </CarbonTag>
+  );
 }
 
 export { Tag };
 
 Tag.propTypes = {
+  /** The text content of the tag */
   text: PropTypes.string,
-
-  /** Specify an optional className to be applied to the `<input>` node */
-  className: PropTypes.string,
-  /** Optionally provide the default value of the `<input>` */
-  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Specify whether the `<input>` should be disabled */
-  disabled: PropTypes.bool,
-  /** Specify whether to display the character counter. Note: You must specify a maxCount in order for the counter to appear. */
-  enableCounter: PropTypes.bool,
-  /** Provide text that is used alongside the control label for additional help */
-  helperText: PropTypes.node,
-  /** Specify whether you want to hide the form field's label */
-  hideLabel: PropTypes.bool,
-  /** Specify a custom `id` for the `<input>` */
-  id: PropTypes.string.isRequired,
-  /** `true` to use the inline version. */
-  inline: PropTypes.bool,
-  /** Specify whether the control is currently invalid */
-  invalid: PropTypes.bool,
-  /** Provide the text that is displayed when the control is in an invalid state */
-  invalidText: PropTypes.node,
-  /** Provide the text that will be read by a screen reader when visiting this control */
-  labelText: PropTypes.node.isRequired,
-  /** Max character count allowed for the input. This is needed in order for enableCounter to display */
-  maxCount: PropTypes.number,
-  /** Optionally provide an `onChange` handler that is called whenever `<input>` is updated */
-  onChange: PropTypes.func,
-  /**
-   * Optionally provide an `onClick` handler that is called whenever the
-   * `<input>` is clicked
-   */
-  onClick: PropTypes.func,
-  /** Specify the placeholder attribute for the `<input>` */
-  placeholder: PropTypes.string,
-  /** Whether the input should be read-only */
-  readOnly: PropTypes.bool,
   /** Specify the size of the Text Input. Currently supports the following: */
-  size: PropTypes.oneOf(["sm", "md", "lg"]),
-  /** Specify the type of the `<input>` */
-  type: PropTypes.string,
-  /** Specify the value of the `<input>` (for controlled forms only) */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  theme: PropTypes.oneOf(["default", "important", "green", "pink", "purple"]),
+  /** Add a Material-UI icon to the button.  Search for an icon here:  https://mui.com/material-ui/material-icons/   */
+  renderIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
 };

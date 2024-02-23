@@ -2,77 +2,57 @@
 @use "../../styles/typography";
 @use "../../styles/global" as g;
 
-$placeholder-color: var(--gray-60);
-$field-label-color: var(--gray-80);
-$field-text-color: var(--gray-70);
+.tag {
+  @extend %font-size-0-reg;
+  border-radius: g.$border-radius;
+  margin: 0;
+  min-height: 28px;
+  padding: g.$space-2 g.$space-3;
 
-.cds--form-item.cds--text-input-wrapper {
-  .cds--text-input__field-outer-wrapper {
-    .cds--text-input {
-      @extend %font-size-1-reg;
-      background-color: var(--white);
-      border: 1px solid var(--gray-40);
-      border-radius: g.$border-radius;
-      box-shadow: inset 2px 7px 0px -3px var(--gray-10);
-      color: $field-text-color;
-      padding-bottom: 2px;
-      position: relative;
-
-      &.cds--text-input--invalid {
-        box-shadow: inset 2px 7px 0px -3px var(--red-00);
-        outline: 2px solid var(--red-80);
-      }
-
-      &::placeholder {
-        @extend %font-size-1-reg;
-        color: $placeholder-color;
-      }
-
-      &:hover {
-        background-color: var(--blue-00);
-        box-shadow: inset 2px 7px 0px -3px var(--blue-10);
-      }
-
-      &:focus {
-        outline: 2px solid var(--blue-60);
-      }
-
-      &:disabled {
-        background-color: var(--gray-10);
-        border: 1px solid var(--gray-20);
-        box-shadow: none;
-      }
-    }
-    .cds--text-input__invalid-icon {
-      fill: var(--red-70);
-      height: 24px;
-      width: 24px;
-      z-index: 1;
-    }
-    .cds--form__helper-text {
-      @extend %font-size-0-reg;
-      color: var(--gray-60);
-      margin-top: 8px;
-      padding-left: 4px;
-      &.cds--form__helper-text--disabled {
-        display: none;
-      }
-    }
-    .cds--form-requirement {
-      @extend %font-size-0-semi;
-      color: var(--red-80);
-      margin-top: 8px;
-      padding-left: 4px;
+  &.theme-default {
+    background-color: var(--gray-10);
+    &:hover {
+      background-color: var(--gray-10);
+      cursor: default;
     }
   }
-  .cds--text-input__label-wrapper {
-    .cds--label {
-      @extend %font-size-1-reg;
-      color: $field-label-color;
-      padding-left: 4px;
-      &.cds--label--disabled {
-        color: var(--gray-30);
-      }
+  &.theme-important {
+    background-color: var(--gray-60);
+    color: var(--white);
+    &:hover {
+      background-color: var(--gray-60);
+      cursor: default;
     }
+  }
+  &.theme-green {
+    background-color: var(--green-10);
+    &:hover {
+      background-color: var(--green-10);
+      cursor: default;
+    }
+  }
+  &.theme-pink {
+    background-color: var(--pink-10);
+    &:hover {
+      background-color: var(--pink-10);
+      cursor: default;
+    }
+  }
+  &.theme-purple {
+    background-color: var(--purple-10);
+    &:hover {
+      background-color: var(--purple-10);
+      cursor: default;
+    }
+  }
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global .cds--tag__custom-icon {
+  block-size: 20px;
+  inline-size: 20px;
+  svg {
+    height: 20px;
+    width: 20px;
   }
 }

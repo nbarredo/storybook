@@ -1,7 +1,8 @@
+import AddIcon from "@mui/icons-material/Add";
 import { Tag } from "./Tag";
 
 const meta = {
-  title: "Approved for Use/Tag",
+  title: "Approved for Use/Tags/Simple Tag",
   component: Tag,
   parameters: {
     design: {
@@ -15,14 +16,14 @@ export default meta;
 
 export const Default = {
   args: {
-    placeholder: "Placeholder Text",
-    labelText: "Input Field Label",
-    defaultValue: "Delete this text to view the placeholder",
-    size: "md",
-    id: "test-id",
-    helperText: "Helper text goes here",
-    invalid: false,
-    invalidText: "Please enter a valid zip code",
-    disabled: false
+    text: "ernesto borgnino",
+    theme: "default"
+  }
+};
+
+export const WithIcon = {
+  args: {
+    ...Default.args,
+    renderIcon: AddIcon
   }
 };
