@@ -4,6 +4,9 @@ import { TagCTA } from "./TagCTA";
 const meta = {
   title: "Approved for Use/Tags/Interactive Tag",
   component: TagCTA,
+  argTypes: {
+    onClick: { action: "clicked" }
+  },
   parameters: {
     design: {
       type: "figma",
@@ -16,7 +19,7 @@ export default meta;
 
 export const Default = {
   args: {
-    text: "ernesto borgnino",
+    text: "Lorem ipsum",
     theme: "default"
   }
 };

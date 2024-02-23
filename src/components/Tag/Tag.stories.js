@@ -16,7 +16,7 @@ export default meta;
 
 export const Default = {
   args: {
-    text: "ernesto borgnino",
+    text: "Lorem ipsum",
     theme: "default"
   }
 };
