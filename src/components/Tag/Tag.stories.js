@@ -1,4 +1,4 @@
-import AddIcon from "@mui/icons-material/Add";
+import CircleIcon from "@mui/icons-material/Circle";
 import { Tag } from "./Tag";
 
 const meta = {
@@ -24,6 +24,6 @@ export const Default = {
 export const WithIcon = {
   args: {
     ...Default.args,
-    renderIcon: AddIcon
+    renderIcon: CircleIcon
   }
 };
