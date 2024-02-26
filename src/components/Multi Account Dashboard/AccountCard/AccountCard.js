@@ -3,6 +3,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PropTypes from "prop-types";
 import { Button } from "../../Button/Button";
 import { InlineNotification } from "../../Notification/InlineNotification/InlineNotification";
+import { TagCTA } from "../../Tag/TagCTA";
 import { Text } from "../../Text/Text";
 import styles from "./AccountCard.module.scss";
 import { ReactComponent as IconElectric } from "./icon_electric.svg";
@@ -33,7 +34,7 @@ function AccountCard({ className, acctType = "electric" }) {
       </header>
       <ul className="actions">
         <li>
-          <button>Go Paperless</button>
+          <TagCTA onClick={() => {}} text="Lorem ipsum" theme="default" />
         </li>
         <li>
           <button>Set Up Autopay</button>
