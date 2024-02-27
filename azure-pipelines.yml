@@ -35,9 +35,8 @@ stages:
       
       steps:
       - checkout: self
-        fetchDepth: 1
         path_exclude: 
-        - 'package-lock.json'
+          - 'package-lock.json'
 
       - script: |
             git config user.email "pipeline@eversource.com" 
