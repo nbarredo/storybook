@@ -28,6 +28,3 @@ yarn-error.log*
 /.vs
 /.vscode
 junit.xml
-
-# Ignore all files with the specified name.
-package-lock.json
