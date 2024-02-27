@@ -1,4 +1,3 @@
-import CircleIcon from "@mui/icons-material/Circle";
 import { Tag } from "./Tag";
 
 const meta = {
@@ -17,13 +16,14 @@ export default meta;
 export const Default = {
   args: {
     text: "Lorem ipsum",
-    theme: "default"
+    theme: "default",
+    icon: false
   }
 };
 
 export const WithIcon = {
   args: {
     ...Default.args,
-    renderIcon: CircleIcon
+    icon: true
   }
 };
