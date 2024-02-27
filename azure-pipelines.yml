@@ -36,6 +36,7 @@ stages:
       steps:
       - checkout: self
         fetchDepth: 1
+        clean: true
 
       - script: |
             git config user.email "pipeline@eversource.com" 
@@ -167,6 +168,12 @@ stages:
           contents: '*'
           RemoveSourceFolder: true 
           #RemoveDotFiles: true
+      
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: '$(System.DefaultWorkingDirectory)'
+          Contents: '**/.*/**'
+          RemoveSourceFolder: false
 
   - job: 'Master_Release'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
