@@ -16,7 +16,7 @@ variables:
 - group: devops_config
 - group: nuget-Eversource.Storybook
 - name: feedId
-  value: '920b2c70-c890-4c92-a66a-c53cd39cf05b/96cdb231-7ea1-40a0-b861-b71056a9a44e'
+  value: '96cdb231-7ea1-40a0-b861-b71056a9a44e'
 - name: packageName
   value: '@eversource/storybook'
 - name: packageVersion
@@ -41,9 +41,9 @@ stages:
             git config user.email "pipeline@eversource.com" 
             git config user.name "Azure DevOps"
       
-      #- script: |
-      #     npm cache clean --force
-      #  displayName: 'Clean npm cache'
+      - script: |
+           npm cache clean --force
+        displayName: 'Clean npm cache'
           
       - task: Npm@1
         displayName: 'Set NPM package version'
@@ -134,7 +134,7 @@ stages:
           workingDir: $(System.DefaultWorkingDirectory)/dist/
           customCommand: 'run publish:ci'
           customRegistry: 'useFeed'
-          customFeed: $(feedId)
+          customFeed: '920b2c70-c890-4c92-a66a-c53cd39cf05b/96cdb231-7ea1-40a0-b861-b71056a9a44e'
     
       # Promotion to prerelease of the feature/* commit 
       - task: PowerShell@2
