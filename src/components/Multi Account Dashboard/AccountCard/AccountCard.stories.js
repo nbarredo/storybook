@@ -16,6 +16,8 @@ export default meta;
 
 export const Default = {
   args: {
-    acctType: "electric"
+    acctType: "electric",
+    status: "default",
+    alertText: "Warning message appears here"
   }
 };

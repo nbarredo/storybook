@@ -12,6 +12,12 @@ $min-height-compact: 40px;
   border-radius: g.$border-radius-large;
   box-shadow: 0px 6px 8px 0px rgba(233, 246, 252, 0.7);
   min-height: $min-height;
+  &.warning {
+    border-color: var(--orange-20);
+  }
+  &.error {
+    border-color: var(--red-60);
+  }
   .content-container {
     display: flex;
     gap: 50px;
@@ -40,6 +46,22 @@ $min-height-compact: 40px;
       display: flex;
       flex: 1 329px;
       justify-content: flex-end;
+      .total-due {
+        background-color: var(--gray-00);
+        border-radius: g.$border-radius-small;
+        display: inline-block;
+        margin-right: g.$space-5;
+        padding: 4px 8px;
+        vertical-align: middle;
+        strong {
+          color: var(--gray-70);
+          margin-right: g.$space-4;
+        }
+      }
+      .button-container {
+        display: inline-block;
+        vertical-align: middle;
+      }
     }
     .link {
       @extend %font-size-0-semi;
@@ -75,24 +97,6 @@ $min-height-compact: 40px;
       display: none;
     }
   }
-  .payment-area {
-    .total-due {
-      background-color: var(--gray-00);
-      border-radius: g.$border-radius-small;
-      display: inline-block;
-      margin-right: g.$space-5;
-      padding: 4px 8px;
-      vertical-align: middle;
-      strong {
-        color: var(--gray-70);
-        margin-right: g.$space-4;
-      }
-    }
-    .button-container {
-      display: inline-block;
-      vertical-align: middle;
-    }
-  }
 
   .icon-container {
     border: 1px solid var(--white);
@@ -126,6 +130,20 @@ $min-height-compact: 40px;
         path {
           fill: var(--purple-80);
         }
+        height: 16px;
+        width: 12px;
+      }
+    }
+    &.warning {
+      background-color: var(--orange-00);
+      svg {
+        height: 16px;
+        width: 12px;
+      }
+    }
+    &.error {
+      background-color: var(--red-00);
+      svg {
         height: 16px;
         width: 12px;
       }
