@@ -14,11 +14,14 @@ $min-height-compact: 40px;
   min-height: $min-height;
   .content-container {
     display: flex;
+    gap: 50px;
     padding: 24px 24px 16px 24px;
     header {
       align-self: center;
       border: 1px solid red;
       flex: 1 290px;
+      padding-left: g.$space-9;
+      position: relative;
     }
     .actions {
       align-self: center;
@@ -39,11 +42,18 @@ $min-height-compact: 40px;
       justify-content: flex-end;
     }
     .link {
+      @extend %font-size-0-semi;
       align-self: center;
       border: 1px solid red;
+      color: var(--blue-70);
       display: flex;
       flex: 1 92px;
       justify-content: flex-end;
+      text-decoration: none;
+      white-space: nowrap;
+      &:hover {
+        text-decoration: underline;
+      }
 
       /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
       :global .cds--link__icon {
@@ -84,22 +94,15 @@ $min-height-compact: 40px;
     }
   }
 
-  .link {
-    @extend %font-size-0-semi;
-    color: var(--blue-70);
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
   .icon-container {
     border: 1px solid var(--white);
     border-radius: 100%;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.07);
-    display: inline-block;
     height: 32px;
-    position: relative;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     width: 32px;
     svg {
       left: 50%;

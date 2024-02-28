@@ -48,7 +48,7 @@ function AccountCard({ className, acctType = "electric" }) {
         <aside className={styles["payment-area"]}>
           <div className={styles["total-due"]}>
             <Text color="gray-60" size="2" weight="semi" inline={true}>
-              <strong>1245</strong>
+              <strong>$9,900,853.02</strong>
               Due 02/06/23
             </Text>
           </div>
