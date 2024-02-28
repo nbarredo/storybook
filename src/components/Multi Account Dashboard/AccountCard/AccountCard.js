@@ -45,7 +45,9 @@ function AccountCard({ className, acctType = "electric", alertText, status }) {
         </ul>
 
         <aside className={styles["payment-area"]}>
-          <div className={styles["total-due"]}>
+          <div
+            className={`${styles["total-due"]} ${status === "error" ? styles.error : ""}`}
+          >
             <Text color="gray-60" size="2" weight="semi" inline={true}>
               <strong>$9,900,853.02</strong>
               Due 02/06/23
@@ -59,7 +61,7 @@ function AccountCard({ className, acctType = "electric", alertText, status }) {
         <Link
           href="#"
           renderIcon={() => (
-            <ArrowForwardIcon sx={{ fontSize: 20 }} aria-label="Arrow Right" />
+            <ArrowForwardIcon sx={{ fontSize: 19 }} aria-label="Arrow Right" />
           )}
           className={styles.link}
         >
