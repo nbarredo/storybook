@@ -24,7 +24,7 @@ function AccountCard({ className, acctType = "electric", alertText, status }) {
         <header>
           {getIcon(acctType, status)}
 
-          <Text size="3" weight="semi" inline={true}>
+          <Text size="3" weight="semi" inline={true} className={styles.clamp}>
             {ToTitleCase(acctType)}&nbsp;<span className={styles.pipe}>|</span>
             &nbsp;acct # 1245345
           </Text>

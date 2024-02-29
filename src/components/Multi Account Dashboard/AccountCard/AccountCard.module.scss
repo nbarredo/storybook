@@ -22,13 +22,19 @@ $min-height-compact: 40px;
     display: flex;
     gap: 4%;
     justify-content: space-between;
-    padding: 24px 24px 16px 24px;
+    padding: g.$space-5;
     header {
       align-self: center;
       border: 1px solid red;
-      flex: 1 290px;
-      padding-left: g.$space-9;
+      flex: 1;
+      max-width: 65%;
+      padding-left: g.$space-7;
       position: relative;
+      @include do-this-above(md) {
+        flex: 1 290px;
+        max-width: none;
+        padding-left: g.$space-9;
+      }
     }
     .actions {
       align-self: center;
@@ -49,8 +55,9 @@ $min-height-compact: 40px;
       align-self: center;
       border: 1px solid red;
       display: flex;
-      flex: 1 329px;
+      flex: 1;
       justify-content: flex-end;
+      max-width: 35%;
       .total-due {
         background-color: var(--gray-00);
         border-radius: g.$border-radius-small;
@@ -59,7 +66,11 @@ $min-height-compact: 40px;
         vertical-align: middle;
         strong {
           color: var(--gray-70);
+          display: block;
           margin-right: g.$space-4;
+          @include do-this-above(md) {
+            display: inline;
+          }
         }
         &.error {
           border: 1px solid var(--red-60);
@@ -74,6 +85,10 @@ $min-height-compact: 40px;
         @include do-this-above(md) {
           display: inline-block;
         }
+      }
+      @include do-this-above(md) {
+        flex: 1 329px;
+        max-width: none;
       }
     }
     .link {
@@ -101,6 +116,9 @@ $min-height-compact: 40px;
         flex: 1 92px;
       }
     }
+    @include do-this-above(md) {
+      padding: 24px 24px 16px 24px;
+    }
   }
 
   .pipe {
@@ -119,12 +137,12 @@ $min-height-compact: 40px;
     border: 1px solid var(--white);
     border-radius: 100%;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.07);
-    height: 32px;
+    height: 24px;
     left: 0;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 32px;
+    width: 24px;
     svg {
       left: 50%;
       position: absolute;
@@ -165,5 +183,18 @@ $min-height-compact: 40px;
         width: 20px;
       }
     }
+    @include do-this-above(md) {
+      height: 32px;
+      width: 32px;
+    }
   }
+}
+
+.clamp {
+  background-color: red !important;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 98%;
 }
