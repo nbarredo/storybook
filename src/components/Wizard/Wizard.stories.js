@@ -17,7 +17,7 @@ import {
 } from "./children";
 
 export default {
-  title: "Approved for Use/Wizard",
+  title: "Approved for Use/Add Account/Wizard",
   component: Wizard,
   parameters: {
     design: {
@@ -179,7 +179,21 @@ const accountInformationContent = (
       <Accordion
         title="Which ID # are you looking for?"
         icon={<ContactMailIcon />}
-      />
+      >
+        <>
+          <Text size="1" weight="reg">
+            When you started service, you provided a primary ID which could be
+            your:
+            <ul>
+              <li>Social Security Number</li>
+              <li>Driver’s license</li>
+              <li>Passport Military ID</li>
+              <li>Other government-issued ID</li>
+            </ul>
+            Please enter the last 4 digits of this ID
+          </Text>
+        </>
+      </Accordion>
     </div>
     <ButtonSet align="right" fixedSize={false}>
       <Button kind="ghost--subtle" label="Back" />
