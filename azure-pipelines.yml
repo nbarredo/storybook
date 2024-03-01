@@ -159,16 +159,7 @@ stages:
              $body = "{'views': {'op': 'add', 'path': '/views/-', 'value':'$(nonprodpackagePromote)'}}"
              Invoke-RestMethod -UseBasicParsing -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
       
-      - task: PowerShell@2
-        displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
-        enabled: false
-        inputs:
-          targetType: 'inline'
-          script: |
-           # Write your PowerShell commands here.
-           Start-Sleep -Seconds 120
-           Get-ChildItem $(System.DefaultWorkingDirectory) -Recurse | Remove-Item -Force -Confirm:$false 
-
+      
       - task: DeleteFiles@1
         displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
         enabled: true
@@ -301,16 +292,7 @@ stages:
             $body = "{'views': {'op': 'add', 'path': '/views/-', 'value':'$(prodpackagePromote)'}}"
             Invoke-RestMethod -UseBasicParsing -Uri $uri -Headers @{Authorization= "Basic $base64AuthInfo"} -Method Patch -Body $body -ContentType "application/json"
 
-    - task: PowerShell@2
-      displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
-      enabled: false
-      inputs:
-        targetType: 'inline'
-        script: |
-           # Write your PowerShell commands here.
-           Start-Sleep -Seconds 120
-           Get-ChildItem $(System.DefaultWorkingDirectory) -Recurse | Remove-Item -Force -Confirm:$false 
-
+    
     - task: DeleteFiles@1
       displayName: 'Clean up $(System.DefaultWorkingDirectory)'  
       enabled: true
