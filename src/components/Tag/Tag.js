@@ -29,5 +29,3 @@ Tag.propTypes = {
   /** Add a Material-UI icon to the button.  Search for an icon here:  https://mui.com/material-ui/material-icons/   */
   renderIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
 };
-
-// added to test build
