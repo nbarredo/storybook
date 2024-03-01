@@ -7,7 +7,7 @@ trigger:
     include:
       - master
       - feature/*
-      - users/*
+
   paths:
     exclude:
       - README.md
@@ -35,21 +35,26 @@ stages:
       pool:
           #vmImage: ubuntu-latest
           name: $(agentpool)
-          demands:
-            - Agent.ComputerName -equals e2vwa-adevops4
+          # demands:
+          #   - Agent.ComputerName -equals e2vwa-adevops4
 
       steps:
       - checkout: self
         fetchDepth: 1
+        clean: true
 
       - script: |
             git config user.email "pipeline@eversource.com" 
             git config user.name "Azure DevOps"
       
       - script: |
+            del /f /q $(System.DefaultWorkingDirectory)\package-lock.json
+        displayName: 'Delete package-lock.json file'
+
+      - script: |
            npm cache clean --force
-        displayName: 'Clean npm cache'
-          
+        displayName: 'Clean npm cache'    
+
       - task: Npm@1
         displayName: 'Set NPM package version'
         condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
@@ -66,7 +71,7 @@ stages:
       - task: Npm@1
         displayName: NPM Install
         inputs:
-            command: 'ci'
+            command: 'install'
             workingDir: '$(System.DefaultWorkingDirectory)'
   
       - task: Npm@1
@@ -139,7 +144,7 @@ stages:
           workingDir: $(System.DefaultWorkingDirectory)/dist/
           customCommand: 'run publish:ci'
           customRegistry: 'useFeed'
-          customFeed: $(feedId)
+          customFeed: '920b2c70-c890-4c92-a66a-c53cd39cf05b/96cdb231-7ea1-40a0-b861-b71056a9a44e'
     
       # Promotion to prerelease of the feature/* commit 
       - task: PowerShell@2
@@ -179,10 +184,19 @@ stages:
     steps:
     - checkout: self
       fetchDepth: 1
+      clean: true
 
     - script: |
         git config user.email "pipeline@eversource.com" 
         git config user.name "Azure DevOps"
+
+    - script: |
+        del /f /q $(System.DefaultWorkingDirectory)\package-lock.json
+      displayName: 'Delete package-lock.json file'
+
+    - script: |
+        npm cache clean --force
+      displayName: 'Clean npm cache'    
 
     - task: Npm@1
       displayName: 'Set NPM package version'
@@ -200,7 +214,7 @@ stages:
     - task: Npm@1
       displayName: NPM Install
       inputs:
-        command: 'ci'
+        command: 'install'
         workingDir: '$(System.DefaultWorkingDirectory)'
 
     - task: Npm@1
@@ -272,7 +286,7 @@ stages:
         workingDir: $(System.DefaultWorkingDirectory)/dist/
         customCommand: 'run publish:ci'
         customRegistry: 'useFeed'
-        customFeed: $(feedId)
+        customFeed: '920b2c70-c890-4c92-a66a-c53cd39cf05b/96cdb231-7ea1-40a0-b861-b71056a9a44e'
 
     # Promotion to release of the master commit  
     - task: PowerShell@2
