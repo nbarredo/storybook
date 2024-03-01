@@ -11,7 +11,7 @@ function Button({
   onClick,
   label,
   kind,
-  size,
+  size = "md",
   type,
   renderIcon,
   className
