@@ -5,6 +5,13 @@
 
 .ev-text {
   display: inherit;
+  ul {
+    display: block;
+    list-style-type: disc;
+    margin-block: 1em;
+    margin-inline: 0px;
+    padding-inline-start: 30px;
+  }
 }
 .inline {
   display: inline;
@@ -36,17 +43,6 @@
   }
   .mt-#{$i} {
     margin-top: map.get(g.$spacing, "space-#{$i}");
-  }
-}
-
-// Generate typography classes
-.size-00 {
-  @extend %font-size-00-reg;
-}
-
-@for $i from 0 through 11 {
-  .font-size-#{$i}-reg {
-    @extend %font-size-#{$i}-reg;
   }
 }
 
