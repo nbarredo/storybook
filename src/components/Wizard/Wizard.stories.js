@@ -161,6 +161,7 @@ const accountInformationContent = (
         size="lg"
         type="number"
         id="test-id"
+        data-modal-primary-focus
       />
     </WizardSlot>
     <div style={{ marginBottom: "8px" }}>
@@ -250,5 +251,62 @@ export const AccountInformation = {
     headerTitle: "Account Information",
     state: "default",
     children: accountInformationContent
+  }
+};
+
+export const ScrollTest = {
+  args: {
+    ...defaultArgs,
+    headerTitle: "Scrolling Behaviour Test",
+    state: "default",
+    children: (
+      <>
+        <p>test</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>Lorem Ipsum</p>
+      </>
+    )
   }
 };
