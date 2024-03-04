@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
 import React from "react";
 import { ComposedModal, ModalBody, ModalHeader } from "@carbon/react";
+import PropTypes from "prop-types";
 import { Loading } from "../Loading/Loading";
 import "./Wizard.scss";
 
@@ -16,6 +16,7 @@ function Wizard({
   open,
   state,
   isLoading,
+  selectorPrimaryFocus = "[data-modal-primary-focus]",
   ...props
 }) {
   return (
@@ -60,4 +61,6 @@ Wizard.propTypes = {
   hasCloseButton: PropTypes.bool,
   /** Determines whether the component should display its loading state */
   isLoading: PropTypes.bool,
+  /**  Specify a CSS selector that matches the DOM element that should be focused when the Modal opens */
+  selectorPrimaryFocus: PropTypes.string
 };
