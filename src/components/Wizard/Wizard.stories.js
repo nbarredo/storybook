@@ -163,6 +163,48 @@ const accountInformationContent = (
         id="test-id"
         data-modal-primary-focus
       />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </WizardSlot>
     <div style={{ marginBottom: "8px" }}>
       <Accordion title="Where do I find my account number?" icon={<HelpIcon />}>

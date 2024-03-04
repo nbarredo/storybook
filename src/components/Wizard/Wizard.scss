@@ -2,6 +2,11 @@
 @use "../../styles/typography" as t;
 @use "../../styles/global" as g;
 
+// Override modal default scroll behaviour
+body.cds--body--with-modal-open {
+  //overflow: visible;
+}
+
 .cds--modal {
   &.loading {
     user-select: none;
@@ -32,22 +37,28 @@
 
 .c-wizard {
   background-color: rgba(33, 56, 72, 0.8);
+  border: 1px solid red;
+  overflow-y: scroll;
+  position: fixed;
   .cds--modal-container {
     background: linear-gradient(90deg, #2d657d 0%, #368b70 100%);
     background: rgb(45, 101, 125);
     block-size: auto;
     border-radius: g.$border-radius-large;
+    border: 1px solid blue;
     box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.35);
     height: auto;
     inline-size: 84%;
-    max-block-size: 90%;
+    max-block-size: none;
     max-inline-size: 742px;
     padding: g.$space-4;
-    position: static;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) !important;
 
     @include do-this-above(lg) {
       inline-size: 60%;
-      max-block-size: 84%;
+      max-block-size: none;
     }
   }
   .cds--modal-header,
@@ -73,6 +84,7 @@
     background-color: var(--white);
     border-bottom-left-radius: g.$border-radius-large;
     border-bottom-right-radius: g.$border-radius-large;
+    overflow: visible;
     padding: 32px 16px 40px;
 
     @include do-this-above(md) {
