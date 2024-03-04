@@ -161,6 +161,7 @@ const accountInformationContent = (
         size="lg"
         type="number"
         id="test-id"
+        data-modal-primary-focus
       />
     </WizardSlot>
     <div style={{ marginBottom: "8px" }}>
