@@ -37,7 +37,6 @@ body.cds--body--with-modal-open {
 
 .c-wizard {
   background-color: rgba(33, 56, 72, 0.8);
-  border: 1px solid red;
   overflow-y: scroll;
   position: fixed;
   .cds--modal-container {
@@ -45,20 +44,23 @@ body.cds--body--with-modal-open {
     background: rgb(45, 101, 125);
     block-size: auto;
     border-radius: g.$border-radius-large;
-    border: 1px solid blue;
     box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.35);
     height: auto;
-    inline-size: 84%;
+    inline-size: 93%;
     max-block-size: none;
     max-inline-size: 742px;
     padding: g.$space-4;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%) !important;
+    top: 2%;
+
+    @include do-this-above(md) {
+      inline-size: 88%;
+      top: 5%;
+    }
 
     @include do-this-above(lg) {
       inline-size: 60%;
-      max-block-size: none;
+      top: 8%;
     }
   }
   .cds--modal-header,
