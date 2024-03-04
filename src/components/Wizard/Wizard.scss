@@ -51,16 +51,16 @@ body.cds--body--with-modal-open {
     max-inline-size: 742px;
     padding: g.$space-4;
     position: absolute;
-    top: 2%;
+    top: 64px;
 
     @include do-this-above(md) {
       inline-size: 88%;
-      top: 5%;
+      top: 190px;
     }
 
     @include do-this-above(lg) {
       inline-size: 60%;
-      top: 8%;
+      top: 190px;
     }
   }
   .cds--modal-header,
