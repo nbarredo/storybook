@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
-import { Link } from "@carbon/react";
+import { Column, Grid, Link } from "@carbon/react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PropTypes from "prop-types";
 import { ToTitleCase } from "../../../utils";
@@ -21,52 +22,40 @@ function AccountCard({ className, acctType = "electric", alertText, status }) {
   return (
     <section className={`${styles.root} ${styles[status]} ${className || ""}`}>
       <article className={styles["content-container"]}>
-        <header>
-          {getIcon(acctType, status)}
-
-          <Text size="3" weight="semi" inline={true} className={styles.clamp}>
-            {ToTitleCase(acctType)}&nbsp;<span className={styles.pipe}>|</span>
-            &nbsp;acct # 1245345
-          </Text>
-          <address>
-            <Text color="gray-60" size="1" weight="reg">
-              124 Main Street NH 120384
-            </Text>
-          </address>
-        </header>
-
-        <ul className={styles.actions}>
-          <li>
-            <TagCTA onClick={() => {}} text="Go Paperless" theme="default" />
-          </li>
-          <li>
-            <Tag icon text="Set Up Autopay" theme="default" />
-          </li>
-        </ul>
-
-        <aside className={styles["payment-area"]}>
-          <div
-            className={`${styles["total-due"]} ${status === "error" ? styles.error : ""}`}
+        <Grid className={styles.grid}>
+          <Column
+            sm={2}
+            md={2}
+            lg={4}
+            className={`${styles.column} ${styles.header}`}
           >
-            <Text color="gray-60" size="2" weight="semi" inline={true}>
-              <strong>$9,900,853.02</strong>
-              Due 02/06/23
-            </Text>
-          </div>
-          <div className={styles["button-container"]}>
-            <Button kind="tertiary" label="Pay Bill" size="sm" type="button" />
-          </div>
-        </aside>
-
-        <Link
-          href="#"
-          renderIcon={() => (
-            <ArrowForwardIcon sx={{ fontSize: 19 }} aria-label="Arrow Right" />
-          )}
-          className={styles.link}
-        >
-          Acct Details
-        </Link>
+            <p>header</p>
+          </Column>
+          <Column
+            sm={2}
+            md={2}
+            lg={4}
+            className={`${styles.column} ${styles.actions}`}
+          >
+            <p>actions</p>
+          </Column>
+          <Column
+            sm={2}
+            md={2}
+            lg={4}
+            className={`${styles.column} ${styles.payment}`}
+          >
+            <p>payment</p>
+          </Column>
+          <Column
+            sm={2}
+            md={2}
+            lg={4}
+            className={`${styles.column} ${styles.cta}`}
+          >
+            <p>cta</p>
+          </Column>
+        </Grid>
       </article>
       {status === "warning" && (
         <InlineNotification
