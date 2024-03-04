@@ -163,48 +163,6 @@ const accountInformationContent = (
         id="test-id"
         data-modal-primary-focus
       />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </WizardSlot>
     <div style={{ marginBottom: "8px" }}>
       <Accordion title="Where do I find my account number?" icon={<HelpIcon />}>
@@ -293,5 +251,62 @@ export const AccountInformation = {
     headerTitle: "Account Information",
     state: "default",
     children: accountInformationContent
+  }
+};
+
+export const ScrollTest = {
+  args: {
+    ...defaultArgs,
+    headerTitle: "Scrolling Behaviour Test",
+    state: "default",
+    children: (
+      <>
+        <p>test</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>Lorem Ipsum</p>
+      </>
+    )
   }
 };
