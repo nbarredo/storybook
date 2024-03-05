@@ -6,7 +6,7 @@ const customViewports = {
   small: {
     name: "Smallest viewport size that we support",
     styles: {
-      width: "475px",
+      width: "375px",
       height: "963px"
     }
   },
