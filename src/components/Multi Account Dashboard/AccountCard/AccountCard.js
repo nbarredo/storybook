@@ -32,7 +32,11 @@ function AccountCard({
             lg={4}
             className={`${styles.column} ${styles.header}`}
           >
-            <Header acctType={acctType} status={status} />
+            <Header
+              acctType={acctType}
+              status={status}
+              acctNumber={data.acctNumber}
+            />
           </Column>
           <Column
             sm={2}
@@ -115,6 +119,7 @@ AccountCard.propTypes = {
   /** The data object that must be passed to the AccountCard */
   data: PropTypes.exact({
     totalDue: PropTypes.string,
-    dateDue: PropTypes.string
+    dateDue: PropTypes.string,
+    acctNumber: PropTypes.number
   }).isRequired
 };

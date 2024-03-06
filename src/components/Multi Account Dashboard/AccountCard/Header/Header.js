@@ -12,14 +12,14 @@ import { ReactComponent as IconWarning } from "./icon_warning_filled.svg";
 /**
  * Descriptive text here.
  */
-export default function Header({ status, acctType }) {
+export default function Header({ status, acctType, acctNumber }) {
   return (
     <header>
       {getIcon(acctType, status)}
 
       <Text size="3" weight="semi" inline={true} className={styles.clamp}>
         {ToTitleCase(acctType)}&nbsp;<span className={styles.pipe}>|</span>
-        &nbsp;acct # 1245345
+        &nbsp;acct # {acctNumber}
       </Text>
       <address>
         <Text color="gray-60" size="1" weight="reg">
@@ -36,7 +36,9 @@ Header.propTypes = {
   /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
   status: PropTypes.oneOf(["default", "warning", "error"]).isRequired,
   /** Specify which type of account (gas or electric) the card is displaying */
-  acctType: PropTypes.oneOf(["electric", "gas"]).isRequired
+  acctType: PropTypes.oneOf(["electric", "gas"]).isRequired,
+  /** The number of the account displayed in the card */
+  acctNumber: PropTypes.number.isRequired
 };
 
 export const getIcon = (acctType, status) => {
