@@ -172,7 +172,7 @@ const accountInformationContent = (
             <a href="#">customer service</a> for help if you don&apos;t yet have
             a bill.
           </Text>
-          <img src={image} />
+          <img src={image} alt="some image" />
         </>
       </Accordion>
     </div>
