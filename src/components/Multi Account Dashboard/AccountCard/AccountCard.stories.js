@@ -18,6 +18,10 @@ export const Default = {
   args: {
     acctType: "electric",
     status: "default",
-    alertText: "Warning message appears here"
+    alertText: "Warning message appears here",
+    data: {
+      totalDue: "$9,900,853.02",
+      dateDue: "02/06/23"
+    }
   }
 };

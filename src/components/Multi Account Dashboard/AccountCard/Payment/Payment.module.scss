@@ -1,0 +1,40 @@
+@use "../../../../styles/global" as g;
+@use "../../../../styles/mixins" as *;
+
+.payment-area {
+  align-self: center;
+  border: 1px solid orange;
+  display: flex;
+  flex: 1 329px;
+  justify-content: flex-end;
+  .total-due {
+    background-color: var(--gray-00);
+    border: 1px solid var(--gray-00);
+    border-radius: g.$border-radius-small;
+    display: inline-block;
+    margin-right: 0;
+    padding: 4px 8px;
+    vertical-align: middle;
+    &.error {
+      border: 1px solid var(--red-60);
+    }
+    strong {
+      color: var(--gray-70);
+      display: block;
+      margin-right: g.$space-4;
+      @include do-this-above(md) {
+        display: inline;
+      }
+    }
+    @include do-this-above(md) {
+      margin-right: g.$space-5;
+    }
+  }
+  .button-container {
+    display: none;
+    vertical-align: middle;
+    @include do-this-above(md) {
+      display: inline-block;
+    }
+  }
+}

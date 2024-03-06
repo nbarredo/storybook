@@ -1,0 +1,65 @@
+@use "../../../../styles/global" as g;
+@use "../../../../styles/mixins" as *;
+
+header {
+  align-self: center;
+  border: 1px solid red;
+  flex: 1 290px;
+  padding-left: g.$space-9;
+  position: relative;
+  .pipe {
+    color: var(--gray-40);
+  }
+}
+
+.icon-container {
+  border: 1px solid var(--white);
+  border-radius: 100%;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.07);
+  height: 32px;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  svg {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &.electric {
+    background-color: var(--blue-00);
+    svg {
+      path {
+        fill: var(--blue-70);
+      }
+      height: 16px;
+      width: 8px;
+    }
+  }
+  &.gas {
+    background-color: var(--purple-00);
+    svg {
+      path {
+        fill: var(--purple-80);
+      }
+      height: 16px;
+      width: 12px;
+    }
+  }
+  &.warning {
+    background-color: var(--orange-00);
+    svg {
+      height: 21px;
+      width: 21px;
+    }
+  }
+  &.error {
+    background-color: var(--red-00);
+    svg {
+      height: 21px;
+      width: 21px;
+    }
+  }
+}
