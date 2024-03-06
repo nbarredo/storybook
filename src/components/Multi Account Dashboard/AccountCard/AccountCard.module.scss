@@ -91,5 +91,19 @@ $min-height-compact: 40px;
     svg {
       display: none;
     }
+    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+    :global .cds--inline-notification__details {
+      margin-inline: g.$space-5;
+      @include do-this-above(md) {
+        margin-inline: 0.8125rem 3rem;
+      }
+    }
+    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+    :global .cds--inline-notification__title {
+      margin-inline-end: 0;
+      @include do-this-above(md) {
+        margin-inline-end: g.$space-2;
+      }
+    }
   }
 }

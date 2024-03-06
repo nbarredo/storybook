@@ -10,6 +10,13 @@ header {
   .pipe {
     color: var(--gray-40);
   }
+  .clamp {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 98%;
+  }
 }
 
 .icon-container {
