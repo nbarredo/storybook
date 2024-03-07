@@ -169,8 +169,10 @@ const accountInformationContent = (
         <>
           <Text size="1" weight="semi" marginBottom={5} inline={false}>
             Account numbers are on your bill. Contact{" "}
-            <a href="#">customer service</a> for help if you don&apos;t yet have
-            a bill.
+            <a href="#" tabIndex={-1}>
+              customer service
+            </a>{" "}
+            for help if you don&apos;t yet have a bill.
           </Text>
           <img src={image} alt="some image" />
         </>
@@ -198,7 +200,7 @@ const accountInformationContent = (
     </div>
     <ButtonSet align="right" fixedSize={false}>
       <Button kind="ghost--subtle" label="Back" />
-      <Button kind="tertiary" label="Continue" />
+      <Button disabled={true} kind="tertiary" label="Continue" />
     </ButtonSet>
   </>
 );
