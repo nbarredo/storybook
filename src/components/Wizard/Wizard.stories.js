@@ -180,7 +180,7 @@ const accountInformationContent = (
     </div>
     <div style={{ "margin-bottom": "24px" }}>
       <Accordion
-        title="Which ID # are you looking for?"
+        title="Which ID number do you need?"
         icon={<ContactMailIcon />}
       >
         <>
@@ -189,7 +189,7 @@ const accountInformationContent = (
             your:
             <ul>
               <li>Social Security Number</li>
-              <li>Driver’s license</li>
+              <li>{"Driver's license"}</li>
               <li>Passport Military ID</li>
               <li>Other government-issued ID</li>
             </ul>

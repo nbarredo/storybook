@@ -22,7 +22,7 @@ export const Default = {
           <a href="#">customer service</a> for help if you don&apos;t yet have a
           bill.
         </Text>
-        <img src={image} />
+        <img src={image} alt="some image" />
       </>
     )
   }
@@ -41,7 +41,7 @@ export const WithIcon = {
           a bill.
         </p>
         <br />
-        <img src={image} />
+        <img src={image} alt="some image" />
       </>
     )
   }
