@@ -25,6 +25,25 @@ function AccountCard({
   return (
     <section className={`${styles.root} ${styles[status]} ${className || ""}`}>
       <article className={styles["content-container"]}>
+        <div className={styles.testgrid}>
+          <div className={`${styles.column} ${styles.header}`}>
+            <Header
+              acctType={acctType}
+              status={status}
+              acctNumber={data.acctNumber}
+            />
+          </div>
+          <div className={`${styles.column} ${styles.actions}`}>two</div>
+          <div className={`${styles.column} ${styles.payment}`}>
+            <Payment
+              status={status}
+              totalDue={data.totalDue}
+              dateDue={data.dateDue}
+            />
+          </div>
+          <div className={`${styles.column} ${styles.cta}`}>four</div>
+        </div>
+        {/*
         <Grid className={styles.grid}>
           <Column
             sm={3}
@@ -77,7 +96,7 @@ function AccountCard({
               Acct Details
             </Link>
           </Column>
-        </Grid>
+              </Grid> */}
       </article>
       {status === "warning" && (
         <InlineNotification

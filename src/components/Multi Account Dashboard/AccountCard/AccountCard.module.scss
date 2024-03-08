@@ -22,8 +22,9 @@ $min-height-compact: 40px;
     display: flex;
     gap: 50px;
     padding: g.$space-4 g.$space-4;
-
+    /*
     .grid {
+      align-items: center;
       border: 1px solid green;
       .column {
         border: 1px solid red;
@@ -43,6 +44,32 @@ $min-height-compact: 40px;
       }
       @include do-this-above(md) {
         padding: 0;
+      }
+    } */
+
+    .testgrid {
+      align-items: center;
+      display: grid;
+      gap: 16px;
+      grid-template-columns: minmax(225px, 2fr) minmax(113px, 1fr);
+      width: 100%;
+      .column {
+        border: 1px solid blue;
+        &.actions {
+          display: none;
+          @include do-this-above(md) {
+            display: block;
+          }
+        }
+        &.cta {
+          display: none;
+          @include do-this-above(md) {
+            display: block;
+          }
+        }
+      }
+      @include do-this-above(md) {
+        grid-template-columns: repeat(4, 1fr);
       }
     }
 

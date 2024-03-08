@@ -5,15 +5,16 @@
   align-self: center;
   border: 1px solid orange;
   display: flex;
-  flex: 1 329px;
   justify-content: flex-end;
+  overflow: hidden;
+  text-align: right;
   .total-due {
     background-color: var(--gray-00);
     border: 1px solid var(--gray-00);
     border-radius: g.$border-radius-small;
     display: inline-block;
     margin-right: 0;
-    padding: 4px 8px;
+    padding: 0;
     vertical-align: middle;
     &.error {
       border: 1px solid var(--red-60);
@@ -21,13 +22,15 @@
     strong {
       color: var(--gray-70);
       display: block;
-      margin-right: g.$space-4;
+      margin-right: 0;
       @include do-this-above(md) {
         display: inline;
+        margin-right: g.$space-4;
       }
     }
     @include do-this-above(md) {
       margin-right: g.$space-5;
+      padding: 4px 8px;
     }
   }
   .button-container {

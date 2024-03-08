@@ -18,11 +18,14 @@ export default function Header({ status, acctType, acctNumber }) {
       {getIcon(acctType, status)}
 
       <Text size="3" weight="semi" inline={true} className={styles.clamp}>
-        {ToTitleCase(acctType)}&nbsp;<span className={styles.pipe}>|</span>
-        &nbsp;acct # {acctNumber}
+        {ToTitleCase(acctType)}
+        <span className={styles.acctNumber}>
+          &nbsp;<span className={styles.pipe}>|</span>
+          &nbsp;acct # {acctNumber}
+        </span>
       </Text>
       <address>
-        <Text color="gray-60" size="1" weight="reg">
+        <Text color="gray-60" size="1" weight="reg" className={styles.clamp}>
           124 Main Street NH 120384
         </Text>
       </address>

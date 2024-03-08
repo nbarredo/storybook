@@ -17,6 +17,12 @@ header {
     white-space: nowrap;
     width: 98%;
   }
+  .acctNumber {
+    display: none;
+    @include do-this-above(md) {
+      display: inline;
+    }
+  }
 }
 
 .icon-container {
