@@ -36,7 +36,6 @@ function Button({
     <>
       <CarbonButton
         className={className || ""}
-        // disabled={disabled}
         aria-disabled={disabled}
         iconDescription="Icon Description"
         kind={buttonType}
