@@ -23,19 +23,30 @@ function Button({
   } else {
     buttonType = kind;
   }
+
+  const handleClick = (evt) => {
+    if (disabled) {
+      evt.preventDefault();
+      return false;
+    }
+    return onClick(evt);
+  };
+
   return (
-    <CarbonButton
-      className={className || ""}
-      disabled={disabled}
-      iconDescription="Icon Description"
-      kind={buttonType}
-      onClick={(evt) => onClick(evt)}
-      renderIcon={renderIcon}
-      size={size}
-      type={type}
-    >
-      <span className="label-container">{label}</span>
-    </CarbonButton>
+    <>
+      <CarbonButton
+        className={className || ""}
+        aria-disabled={disabled}
+        iconDescription="Icon Description"
+        kind={buttonType}
+        onClick={(evt) => handleClick(evt)}
+        renderIcon={renderIcon}
+        size={size}
+        type={type}
+      >
+        <span className="label-container">{label}</span>
+      </CarbonButton>
+    </>
   );
 }
 
