@@ -26,6 +26,7 @@ function Wizard({
       id={id}
       className={`c-wizard c-wizard--${state} ${className || ""} ${isLoading ? "loading" : ""}`}
       open={open}
+      aria-label={headerTitle}
       {...props}
     >
       {isLoading && (

@@ -169,16 +169,18 @@ const accountInformationContent = (
         <>
           <Text size="1" weight="semi" marginBottom={5} inline={false}>
             Account numbers are on your bill. Contact{" "}
-            <a href="#">customer service</a> for help if you don&apos;t yet have
-            a bill.
+            <a href="#" tabIndex={-1}>
+              customer service
+            </a>{" "}
+            for help if you don&apos;t yet have a bill.
           </Text>
-          <img src={image} />
+          <img src={image} alt="some image" />
         </>
       </Accordion>
     </div>
     <div style={{ "margin-bottom": "24px" }}>
       <Accordion
-        title="Which ID # are you looking for?"
+        title="Which ID number do you need?"
         icon={<ContactMailIcon />}
       >
         <>
@@ -187,7 +189,7 @@ const accountInformationContent = (
             your:
             <ul>
               <li>Social Security Number</li>
-              <li>Driver’s license</li>
+              <li>{"Driver's license"}</li>
               <li>Passport Military ID</li>
               <li>Other government-issued ID</li>
             </ul>
@@ -198,7 +200,7 @@ const accountInformationContent = (
     </div>
     <ButtonSet align="right" fixedSize={false}>
       <Button kind="ghost--subtle" label="Back" />
-      <Button kind="tertiary" label="Continue" />
+      <Button disabled={true} kind="tertiary" label="Continue" />
     </ButtonSet>
   </>
 );

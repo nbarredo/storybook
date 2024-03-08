@@ -1,6 +1,6 @@
 # Published Location
 
-https://cdn.eversource.me/nonprod/storybook/latest/index.html
+https://cdn.eversource.com/prod/storybook/latest/
 
 
 ## How to import and use the new storybook npm package on another repo:

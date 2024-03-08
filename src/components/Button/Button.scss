@@ -62,10 +62,12 @@
       outline: 2px solid var(--blue-60);
     }
 
-    &:disabled {
+    &:disabled,
+    &[aria-disabled="true"] {
       background-color: var(--gray-20);
       border: none;
       color: var(--gray-30);
+      cursor: not-allowed;
     }
   }
   &.cds--btn--secondary {
@@ -89,10 +91,12 @@
         0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
     }
-    &:disabled {
+    &:disabled,
+    &[aria-disabled="true"] {
       background-color: var(--gray-20);
       border: none;
       color: var(--gray-30);
+      cursor: not-allowed;
     }
   }
   &.cds--btn--tertiary {
@@ -114,10 +118,12 @@
         0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
     }
-    &:disabled {
+    &:disabled,
+    &[aria-disabled="true"] {
       background-color: var(--white);
       border: 1px solid var(--gray-30);
       color: var(--gray-20);
+      cursor: not-allowed;
     }
   }
   &.cds--btn--ghost {
@@ -136,8 +142,10 @@
         0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
     }
-    &:disabled {
+    &:disabled,
+    &[aria-disabled="true"] {
       color: var(--gray-20);
+      cursor: not-allowed;
     }
   }
 
@@ -160,8 +168,10 @@
       color: var(--gray-70);
       outline: 2px solid var(--blue-60);
     }
-    &:disabled {
+    &:disabled,
+    &[aria-disabled="true"] {
       color: var(--gray-20);
+      cursor: not-allowed;
     }
   }
 
@@ -189,10 +199,12 @@
       outline: 2px solid var(--blue-60);
     }
 
-    &:disabled {
+    &:disabled,
+    &[aria-disabled="true"] {
       background-color: var(--gray-20);
       border: none;
       color: var(--gray-30);
+      cursor: not-allowed;
     }
   }
   &.cds--btn--danger--tertiary {
@@ -214,10 +226,12 @@
         0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
     }
-    &:disabled {
+    &:disabled,
+    &[aria-disabled="true"] {
       background-color: var(--white);
       border: 1px solid var(--gray-30);
       color: var(--gray-20);
+      cursor: not-allowed;
     }
   }
   &.cds--btn--danger--ghost {
@@ -237,8 +251,10 @@
         0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
     }
-    &:disabled {
+    &:disabled,
+    &[aria-disabled="true"] {
       color: var(--gray-20);
+      cursor: not-allowed;
     }
   }
 }

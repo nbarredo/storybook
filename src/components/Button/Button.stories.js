@@ -40,10 +40,13 @@ export const WithIcon = {
     renderIcon: AddIcon
   }
 };
-/*
-export const Path = {
+
+export const Disabled = {
   args: {
     ...Default.args,
-    kind: "path"
+    disabled: true,
+    onClick: () => {
+      window.alert("Button was clicked.");
+    }
   }
-}; */
+};

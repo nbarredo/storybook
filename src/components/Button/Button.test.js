@@ -23,7 +23,7 @@ describe("Accordion component functions properly", () => {
   test("checks if button is disabled when rendered with disabled prop", () => {
     render(<Button label="Click me" disabled={true} />);
     const buttonElement = screen.getByRole("button");
-    expect(buttonElement).toHaveClass("cds--btn--disabled");
+    expect(buttonElement).toHaveAttribute("aria-disabled", "true");
   });
 
   test("renders the correct icon", () => {
