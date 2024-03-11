@@ -51,7 +51,7 @@ $min-height-compact: 40px;
     .grid {
       align-items: center;
       display: grid;
-      gap: 16px;
+      gap: g.$space-4;
       grid-template-columns: minmax(225px, 2fr) minmax(113px, 1fr);
       width: 100%;
       .column {
@@ -70,6 +70,7 @@ $min-height-compact: 40px;
         }
       }
       @include do-this-above(md) {
+        gap: g.$space-5;
         grid-template-columns: repeat(4, 1fr);
       }
       @include do-this-above(lg) {
