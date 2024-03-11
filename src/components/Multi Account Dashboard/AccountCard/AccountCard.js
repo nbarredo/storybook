@@ -1,13 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { Column, Grid, Link } from "@carbon/react";
+import { Link } from "@carbon/react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PropTypes from "prop-types";
-import { Button } from "../../Button/Button";
 import { InlineNotification } from "../../Notification/InlineNotification/InlineNotification";
 import { Tag } from "../../Tag/Tag";
 import { TagCTA } from "../../Tag/TagCTA";
-import { Text } from "../../Text/Text";
 import styles from "./AccountCard.module.scss";
 import Header from "./Header/Header";
 import Payment from "./Payment/Payment";
@@ -31,6 +29,7 @@ function AccountCard({
               acctType={acctType}
               status={status}
               acctNumber={data.acctNumber}
+              address={data.address}
             />
           </div>
           <div className={`${styles.column} ${styles.actions}`}>
@@ -69,60 +68,6 @@ function AccountCard({
             </Link>
           </div>
         </div>
-        {/*
-        <Grid className={styles.grid}>
-          <Column
-            sm={3}
-            md={2}
-            lg={4}
-            className={`${styles.column} ${styles.header}`}
-          >
-            <Header
-              acctType={acctType}
-              status={status}
-              acctNumber={data.acctNumber}
-            />
-          </Column>
-          <Column
-            sm={2}
-            md={2}
-            lg={4}
-            className={`${styles.column} ${styles.actions}`}
-          >
-            <p>actions</p>
-          </Column>
-          <Column
-            sm={1}
-            md={2}
-            lg={4}
-            className={`${styles.column} ${styles.payment}`}
-          >
-            <Payment
-              status={status}
-              totalDue={data.totalDue}
-              dateDue={data.dateDue}
-            />
-          </Column>
-          <Column
-            sm={2}
-            md={2}
-            lg={4}
-            className={`${styles.column} ${styles.cta}`}
-          >
-            <Link
-              href="#"
-              renderIcon={() => (
-                <ArrowForwardIcon
-                  sx={{ fontSize: 19 }}
-                  aria-label="Arrow Right"
-                />
-              )}
-              className={styles.link}
-            >
-              Acct Details
-            </Link>
-          </Column>
-              </Grid> */}
       </article>
       {status === "warning" && (
         <InlineNotification
@@ -165,6 +110,7 @@ AccountCard.propTypes = {
   data: PropTypes.exact({
     totalDue: PropTypes.string,
     dateDue: PropTypes.string,
-    acctNumber: PropTypes.number
+    acctNumber: PropTypes.number,
+    address: PropTypes.string
   }).isRequired
 };

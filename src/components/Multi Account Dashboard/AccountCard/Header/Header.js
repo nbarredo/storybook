@@ -12,7 +12,7 @@ import { ReactComponent as IconWarning } from "./icon_warning_filled.svg";
 /**
  * Descriptive text here.
  */
-export default function Header({ status, acctType, acctNumber }) {
+export default function Header({ status, acctType, acctNumber, address }) {
   return (
     <header>
       {getIcon(acctType, status)}
@@ -26,7 +26,7 @@ export default function Header({ status, acctType, acctNumber }) {
       </Text>
       <address>
         <Text color="gray-60" size="1" weight="reg" className={styles.clamp}>
-          124 Main Street NH 120384
+          {address}
         </Text>
       </address>
     </header>
@@ -41,7 +41,9 @@ Header.propTypes = {
   /** Specify which type of account (gas or electric) the card is displaying */
   acctType: PropTypes.oneOf(["electric", "gas"]).isRequired,
   /** The number of the account displayed in the card */
-  acctNumber: PropTypes.number.isRequired
+  acctNumber: PropTypes.number.isRequired,
+  /** The mailing address of the account displayed in the card */
+  address: PropTypes.string.isRequired
 };
 
 export const getIcon = (acctType, status) => {
