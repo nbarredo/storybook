@@ -61,6 +61,14 @@ export const getIcon = (acctType, status) => {
       </figure>
     );
   }
+  if (status === "closed") {
+    return (
+      <figure className={`${styles["icon-container"]} ${styles.closed}`}>
+        {acctType === "electric" && <IconElectric />}
+        {acctType === "gas" && <IconGas />}
+      </figure>
+    );
+  }
   if (acctType === "electric" && status === "default") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.electric}`}>

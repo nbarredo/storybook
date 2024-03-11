@@ -103,7 +103,7 @@ AccountCard.propTypes = {
   /** Specify which type of account (gas or electric) the card is displaying */
   acctType: PropTypes.oneOf(["electric", "gas"]),
   /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
-  status: PropTypes.oneOf(["default", "warning", "error"]),
+  status: PropTypes.oneOf(["default", "warning", "error", "closed"]),
   /** The text of the card's warning/error message   */
   alertText: PropTypes.string,
   /** The data object that must be passed to the AccountCard */

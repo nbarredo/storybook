@@ -18,35 +18,13 @@ $min-height-compact: 40px;
   &.error {
     border-color: var(--red-60);
   }
+  &.closed {
+    border: 1px dashed var(--gray-40);
+  }
   .content-container {
     display: flex;
     gap: 50px;
     padding: g.$space-4 g.$space-4;
-
-    /*
-    .grid {
-      align-items: center;
-      border: 1px solid green;
-      .column {
-        border: 1px solid red;
-        margin: 0;
-        &.actions {
-          display: none;
-          @include do-this-above(md) {
-            display: block;
-          }
-        }
-        &.cta {
-          display: none;
-          @include do-this-above(md) {
-            display: block;
-          }
-        }
-      }
-      @include do-this-above(md) {
-        padding: 0;
-      }
-    } */
 
     .grid {
       align-items: center;
