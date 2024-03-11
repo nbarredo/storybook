@@ -22,6 +22,7 @@ $min-height-compact: 40px;
     display: flex;
     gap: 50px;
     padding: g.$space-4 g.$space-4;
+
     /*
     .grid {
       align-items: center;
@@ -47,7 +48,7 @@ $min-height-compact: 40px;
       }
     } */
 
-    .testgrid {
+    .grid {
       align-items: center;
       display: grid;
       gap: 16px;
@@ -57,7 +58,7 @@ $min-height-compact: 40px;
         border: 1px solid blue;
         &.actions {
           display: none;
-          @include do-this-above(md) {
+          @include do-this-above(lg) {
             display: block;
           }
         }
@@ -71,12 +72,14 @@ $min-height-compact: 40px;
       @include do-this-above(md) {
         grid-template-columns: repeat(4, 1fr);
       }
+      @include do-this-above(lg) {
+        grid-template-columns:
+          minmax(290px, 100vw) minmax(260px, 260px) minmax(329px, 100vw)
+          minmax(92px, 100vw);
+      }
     }
 
     .actions {
-      align-self: center;
-      border: 1px solid red;
-      flex: 1 260px;
       li {
         display: inline-block;
         &:first-child {
@@ -107,6 +110,9 @@ $min-height-compact: 40px;
       }
     }
     @include do-this-above(md) {
+      padding: g.$space-6 g.$space-4;
+    }
+    @include do-this-above(lg) {
       padding: g.$space-7 g.$space-6;
     }
   }

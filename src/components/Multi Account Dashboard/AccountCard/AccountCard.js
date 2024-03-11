@@ -25,7 +25,7 @@ function AccountCard({
   return (
     <section className={`${styles.root} ${styles[status]} ${className || ""}`}>
       <article className={styles["content-container"]}>
-        <div className={styles.testgrid}>
+        <div className={styles.grid}>
           <div className={`${styles.column} ${styles.header}`}>
             <Header
               acctType={acctType}
@@ -33,7 +33,20 @@ function AccountCard({
               acctNumber={data.acctNumber}
             />
           </div>
-          <div className={`${styles.column} ${styles.actions}`}>two</div>
+          <div className={`${styles.column} ${styles.actions}`}>
+            <ul className={styles.actions}>
+              <li>
+                <TagCTA
+                  onClick={() => {}}
+                  text="Go Paperless"
+                  theme="default"
+                />
+              </li>
+              <li>
+                <Tag icon text="Set Up Autopay" theme="default" />
+              </li>
+            </ul>
+          </div>
           <div className={`${styles.column} ${styles.payment}`}>
             <Payment
               status={status}
@@ -41,7 +54,20 @@ function AccountCard({
               dateDue={data.dateDue}
             />
           </div>
-          <div className={`${styles.column} ${styles.cta}`}>four</div>
+          <div className={`${styles.column} ${styles.cta}`}>
+            <Link
+              href="#"
+              renderIcon={() => (
+                <ArrowForwardIcon
+                  sx={{ fontSize: 19 }}
+                  aria-label="Arrow Right"
+                />
+              )}
+              className={styles.link}
+            >
+              Acct Details
+            </Link>
+          </div>
         </div>
         {/*
         <Grid className={styles.grid}>
