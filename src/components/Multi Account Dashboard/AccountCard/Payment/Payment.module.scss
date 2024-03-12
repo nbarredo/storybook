@@ -12,7 +12,7 @@
     border-radius: g.$border-radius-small;
     display: inline-block;
     margin-right: 0;
-    padding: 0px 12px;
+    padding: 0px g.$space-4;
     vertical-align: middle;
     &.error {
       border: 1px solid var(--red-60);
@@ -31,7 +31,7 @@
     }
     @include do-this-above(md) {
       margin-right: g.$space-5;
-      padding: 4px 8px;
+      padding: g.$space-2 g.$space-3;
     }
   }
   .button-container {
