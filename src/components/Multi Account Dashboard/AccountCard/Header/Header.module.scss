@@ -10,6 +10,9 @@ header {
   .pipe {
     color: var(--gray-40);
   }
+  .closed {
+    color: var(--gray-60) !important;
+  }
   .clamp {
     display: block;
     overflow: hidden;

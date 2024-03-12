@@ -13,11 +13,18 @@ import { ReactComponent as IconWarning } from "./icon_warning_filled.svg";
  * Descriptive text here.
  */
 export default function Header({ status, acctType, acctNumber, address }) {
+  const isClosed = () => {
+    return status === "closed";
+  };
   return (
     <header>
       {getIcon(acctType, status)}
-
-      <Text size="3" weight="semi" inline={true} className={styles.clamp}>
+      <Text
+        size="3"
+        weight="semi"
+        inline={true}
+        className={`${styles.clamp} ${isClosed() ? styles.closed : ""}`}
+      >
         {ToTitleCase(acctType)}
         <span className={styles.acctNumber}>
           &nbsp;<span className={styles.pipe}>|</span>
@@ -25,7 +32,12 @@ export default function Header({ status, acctType, acctNumber, address }) {
         </span>
       </Text>
       <address>
-        <Text color="gray-60" size="1" weight="reg" className={styles.clamp}>
+        <Text
+          color="gray-60"
+          size="1"
+          weight="reg"
+          className={`${styles.clamp} ${isClosed() ? styles.closed : ""}`}
+        >
           {address}
         </Text>
       </address>

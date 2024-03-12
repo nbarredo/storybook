@@ -20,6 +20,71 @@ function AccountCard({
   status = "default",
   data
 }) {
+  const renderActiveContent = () => {
+    return (
+      <>
+        <div className={`${styles.column} ${styles.actions}`}>
+          <ul className={styles.actions}>
+            <li>
+              <TagCTA onClick={() => {}} text="Go Paperless" theme="default" />
+            </li>
+            <li>
+              <Tag icon text="Set Up Autopay" theme="default" />
+            </li>
+          </ul>
+        </div>
+        <div className={`${styles.column} ${styles.payment}`}>
+          <Payment
+            status={status}
+            totalDue={data.totalDue}
+            dateDue={data.dateDue}
+          />
+        </div>
+        <div className={`${styles.column} ${styles.cta}`}>
+          <Link
+            href="#"
+            renderIcon={() => (
+              <ArrowForwardIcon
+                sx={{ fontSize: 19 }}
+                aria-label="Arrow Right"
+              />
+            )}
+            className={styles.link}
+          >
+            Acct Details
+          </Link>
+        </div>
+      </>
+    );
+  };
+  const renderInactiveContent = () => {
+    return (
+      <>
+        <div className={`${styles.column} ${styles.actions}`}>
+          <ul className={styles.actions}>
+            <li>
+              <Tag icon text="Account Closed" theme="important" />
+            </li>
+          </ul>
+        </div>
+        <div className={`${styles.column} ${styles.cta}`}>
+          <Link
+            href="#"
+            renderIcon={() => (
+              <ArrowForwardIcon
+                sx={{ fontSize: 19 }}
+                aria-label="Arrow Right"
+              />
+            )}
+            className={styles.link}
+          >
+            Past Bills & Payments
+          </Link>
+        </div>
+      </>
+    );
+  };
+
   return (
     <section className={`${styles.root} ${styles[status]} ${className || ""}`}>
       <article className={styles["content-container"]}>
@@ -32,41 +97,9 @@ function AccountCard({
               address={data.address}
             />
           </div>
-          <div className={`${styles.column} ${styles.actions}`}>
-            <ul className={styles.actions}>
-              <li>
-                <TagCTA
-                  onClick={() => {}}
-                  text="Go Paperless"
-                  theme="default"
-                />
-              </li>
-              <li>
-                <Tag icon text="Set Up Autopay" theme="default" />
-              </li>
-            </ul>
-          </div>
-          <div className={`${styles.column} ${styles.payment}`}>
-            <Payment
-              status={status}
-              totalDue={data.totalDue}
-              dateDue={data.dateDue}
-            />
-          </div>
-          <div className={`${styles.column} ${styles.cta}`}>
-            <Link
-              href="#"
-              renderIcon={() => (
-                <ArrowForwardIcon
-                  sx={{ fontSize: 19 }}
-                  aria-label="Arrow Right"
-                />
-              )}
-              className={styles.link}
-            >
-              Acct Details
-            </Link>
-          </div>
+          {status === "closed"
+            ? renderInactiveContent()
+            : renderActiveContent()}
         </div>
       </article>
       {status === "warning" && (
