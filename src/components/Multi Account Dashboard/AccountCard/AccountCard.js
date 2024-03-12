@@ -33,7 +33,7 @@ function AccountCard({
             </li>
           </ul>
         </div>
-        <div className={`${styles.column} ${styles.payment}`}>
+        <div className={styles.column}>
           <Payment
             status={status}
             totalDue={data.totalDue}

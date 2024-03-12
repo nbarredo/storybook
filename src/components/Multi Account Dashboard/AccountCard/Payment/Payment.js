@@ -16,7 +16,7 @@ export default function Payment({ status, totalDue, dateDue }) {
       >
         <Text color="gray-60" size="2" weight="semi" inline={true}>
           <strong>{totalDue}</strong>
-          Due {dateDue}
+          <span className={styles["due-date"]}>Due {dateDue}</span>
         </Text>
       </div>
       <div className={styles["button-container"]}>

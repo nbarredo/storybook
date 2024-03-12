@@ -2,8 +2,6 @@
 @use "../../../../styles/mixins" as *;
 
 .payment-area {
-  align-self: center;
-  border: 1px solid orange;
   display: flex;
   justify-content: flex-end;
   overflow: hidden;
@@ -14,7 +12,7 @@
     border-radius: g.$border-radius-small;
     display: inline-block;
     margin-right: 0;
-    padding: 0;
+    padding: 0px 12px;
     vertical-align: middle;
     &.error {
       border: 1px solid var(--red-60);
@@ -28,6 +26,9 @@
         margin-right: g.$space-4;
       }
     }
+    .due-date {
+      white-space: nowrap;
+    }
     @include do-this-above(md) {
       margin-right: g.$space-5;
       padding: 4px 8px;
@@ -35,7 +36,10 @@
   }
   .button-container {
     display: none;
-    vertical-align: middle;
+    button {
+      top: 50%;
+      transform: translateY(-50%);
+    }
     @include do-this-above(md) {
       display: inline-block;
     }

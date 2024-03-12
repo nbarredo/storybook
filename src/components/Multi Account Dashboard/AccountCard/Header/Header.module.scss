@@ -2,9 +2,6 @@
 @use "../../../../styles/mixins" as *;
 
 header {
-  align-self: center;
-  border: 1px solid red;
-  flex: 1 290px;
   padding-left: g.$space-9;
   position: relative;
   .pipe {

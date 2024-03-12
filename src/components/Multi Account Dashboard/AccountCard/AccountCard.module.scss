@@ -28,10 +28,9 @@ $min-height-compact: 40px;
       align-items: center;
       display: grid;
       gap: g.$space-4;
-      grid-template-columns: minmax(225px, 2fr) minmax(113px, 1fr);
+      grid-template-columns: minmax(225px, 2fr) minmax(130px, 1fr);
       width: 100%;
       .column {
-        border: 1px solid blue;
         &.actions {
           display: none;
           @include do-this-above(lg) {
@@ -67,11 +66,8 @@ $min-height-compact: 40px;
 
     .link {
       @extend %font-size-0-semi;
-      align-self: center;
-      border: 1px solid red;
       color: var(--blue-70);
       display: flex;
-      flex: 1 92px;
       justify-content: flex-end;
       text-decoration: none;
       white-space: nowrap;
@@ -100,7 +96,6 @@ $min-height-compact: 40px;
       .grid {
         grid-template-columns: minmax(196px, 2fr) minmax(125px, 1fr);
         .column.actions {
-          border: 1px solid red;
           display: block;
           li {
             display: inline-block;
