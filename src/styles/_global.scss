@@ -7,6 +7,20 @@ $spacer: 1rem;
 
 $base-font-size: 16px;
 
+$breakpoints: (
+  md: 672px,
+  lg: 1056px,
+  xl: 1272px
+);
+
+/* stylelint-disable */
+:export {
+  @each $key, $value in $breakpoints {
+    #{unquote($key)}: $value;
+  }
+}
+/* stylelint-enable */
+
 html {
   font-size: $base-font-size;
 }
