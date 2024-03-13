@@ -49,7 +49,7 @@ export { Header };
 
 Header.propTypes = {
   /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
-  status: PropTypes.oneOf(["default", "warning", "error"]).isRequired,
+  status: PropTypes.oneOf(["default", "warning", "error", "closed"]).isRequired,
   /** Specify which type of account (gas or electric) the card is displaying */
   acctType: PropTypes.oneOf(["electric", "gas"]).isRequired,
   /** The number of the account displayed in the card */
