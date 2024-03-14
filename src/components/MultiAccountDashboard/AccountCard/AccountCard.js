@@ -8,6 +8,7 @@ import { Tag } from "../../Tag/Tag";
 import { TagCTA } from "../../Tag/TagCTA";
 import styles from "./AccountCard.module.scss";
 import Header from "./Header/Header";
+import MobileCTA from "./MobileCTA/MobileCTA";
 import Payment from "./Payment/Payment";
 
 /**
@@ -124,15 +125,7 @@ function AccountCard({
           className={styles.alert}
         />
       )}
-      <InlineNotification
-        hideCloseButton
-        kind="info"
-        onClose={() => {}}
-        onCloseButtonClick={() => {}}
-        role="status"
-        title="Go Paperless"
-        className={`${styles.alert} ${styles.cta}`}
-      />
+      <MobileCTA theme="paperless" text="Set Up Autopay" onClick={() => {}} />
     </section>
   );
 }

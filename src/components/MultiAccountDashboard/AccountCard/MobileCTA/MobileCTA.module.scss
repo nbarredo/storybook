@@ -1,0 +1,33 @@
+@use "../../../../styles/global" as g;
+@use "../../../../styles/mixins" as *;
+
+.mobile-cta {
+  border-radius: 0 0 g.$border-radius-large g.$border-radius-large;
+  max-width: none;
+
+  button {
+    border-radius: 0 0 g.$border-radius-large g.$border-radius-large;
+    height: 36px;
+    width: 100%;
+    span::before {
+      background-position: 50%;
+      content: "";
+      display: inline-block;
+      height: 20px;
+      margin-right: g.$space-2;
+      vertical-align: sub;
+      width: 20px;
+    }
+  }
+  padding: 0px 0px 1px 0px;
+  &.autopay {
+    button > span::before {
+      background-image: url("./currency_exchange.svg");
+    }
+  }
+  &.paperless {
+    button > span::before {
+      background-image: url("./leaf.svg");
+    }
+  }
+}
