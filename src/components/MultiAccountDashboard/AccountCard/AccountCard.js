@@ -11,7 +11,7 @@ import Header from "./Header/Header";
 import Payment from "./Payment/Payment";
 
 /**
- * Descriptive text here.
+ * The account card is a compact way to display key information about a customer's account.  This component should not be used in any other context except on the multi-account dashboard.
  */
 function AccountCard({
   className,
@@ -124,6 +124,15 @@ function AccountCard({
           className={styles.alert}
         />
       )}
+      <InlineNotification
+        hideCloseButton
+        kind="info"
+        onClose={() => {}}
+        onCloseButtonClick={() => {}}
+        role="status"
+        title="Go Paperless"
+        className={`${styles.alert} ${styles.cta}`}
+      />
     </section>
   );
 }

@@ -118,6 +118,29 @@ $min-height-compact: 40px;
     svg {
       display: none;
     }
+    &.cta {
+      background-color: var(--teal-00);
+      border-bottom: 1px solid blue;
+      /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+      :global .cds--inline-notification__text-wrapper {
+        justify-content: center;
+        width: 100%;
+      }
+      /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+      :global .cds--inline-notification__title {
+        color: var(--teal-80);
+        &::before {
+          background-image: url("./leaf.svg");
+          background-position: 50%;
+          border: 1px solid black;
+          content: "";
+          display: inline-block;
+          height: 20px;
+          vertical-align: sub;
+          width: 20px;
+        }
+      }
+    }
     /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
     :global .cds--inline-notification__details {
       margin-inline: g.$space-5;
