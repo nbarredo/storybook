@@ -3,7 +3,9 @@
 
 .mobile-cta {
   border-radius: 0 0 g.$border-radius-large g.$border-radius-large;
+  margin: 0 -1px -1px -1px;
   max-width: none;
+  padding: 0px 1px 1px 1px;
 
   button {
     border-radius: 0 0 g.$border-radius-large g.$border-radius-large;
@@ -19,7 +21,7 @@
       width: 20px;
     }
   }
-  padding: 0px 0px 1px 0px;
+
   &.autopay {
     button > span::before {
       background-image: url("./currency_exchange.svg");
