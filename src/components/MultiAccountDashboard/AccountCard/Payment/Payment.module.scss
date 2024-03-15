@@ -4,7 +4,6 @@
 .payment-area {
   display: flex;
   justify-content: flex-end;
-  overflow: hidden;
   text-align: right;
   .total-due {
     background-color: var(--gray-00);
@@ -37,6 +36,9 @@
   .button-container {
     display: none;
     button {
+      line-height: 14px;
+      max-block-size: 30px;
+      min-block-size: 30px;
       top: 50%;
       transform: translateY(-50%);
     }
