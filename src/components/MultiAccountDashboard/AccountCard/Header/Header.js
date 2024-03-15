@@ -5,7 +5,7 @@ import { ToTitleCase } from "../../../../utils";
 import { Text } from "../../../Text/Text";
 import styles from "./Header.module.scss";
 import { ReactComponent as IconElectric } from "./icon_electric.svg";
-import { ReactComponent as IconError } from "./icon_error_filled.svg";
+import { ReactComponent as IconDanger } from "./icon_error_filled.svg";
 import { ReactComponent as IconGas } from "./icon_gas.svg";
 import { ReactComponent as IconWarning } from "./icon_warning_filled.svg";
 
@@ -49,7 +49,8 @@ export { Header };
 
 Header.propTypes = {
   /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
-  status: PropTypes.oneOf(["default", "warning", "error", "closed"]).isRequired,
+  status: PropTypes.oneOf(["default", "warning", "danger", "closed"])
+    .isRequired,
   /** Specify which type of account (gas or electric) the card is displaying */
   acctType: PropTypes.oneOf(["electric", "gas"]).isRequired,
   /** The number or nickname of the account displayed in the card */
@@ -66,10 +67,10 @@ export const getIcon = (acctType, status) => {
       </figure>
     );
   }
-  if (status === "error") {
+  if (status === "danger") {
     return (
-      <figure className={`${styles["icon-container"]} ${styles.error}`}>
-        <IconError />
+      <figure className={`${styles["icon-container"]} ${styles.danger}`}>
+        <IconDanger />
       </figure>
     );
   }
