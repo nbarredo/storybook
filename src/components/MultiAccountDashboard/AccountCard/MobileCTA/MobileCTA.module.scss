@@ -30,4 +30,7 @@
       background-image: url("./leaf.svg");
     }
   }
+  @include do-this-above(md) {
+    display: none;
+  }
 }
