@@ -20,6 +20,7 @@ export const Default = {
     acctType: "electric",
     status: "default",
     alertText: "Warning message appears here",
+    mobileCTAType: "paperless",
     data: {
       totalDue: "$9,900,853.02",
       dateDue: "02/06/23",

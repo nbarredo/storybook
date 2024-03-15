@@ -23,24 +23,27 @@ function AccountCard({
   onClickAutopay,
   onClickPayBill,
   acctDetailsURL,
+  mobileCTAType = "paperless",
   data
 }) {
   const renderActiveContent = () => {
     return (
       <>
         <div className={`${styles.column} ${styles.actions}`}>
-          <ul className={styles.actions}>
-            <li>
-              <TagCTA
-                onClick={onClickPaperless}
-                text="Go Paperless"
-                theme="default"
-              />
-            </li>
-            <li>
-              <Tag icon text="Set Up Autopay" theme="default" />
-            </li>
-          </ul>
+          {status !== "danger" && (
+            <ul className={styles.actions}>
+              <li>
+                <TagCTA
+                  onClick={onClickPaperless}
+                  text="Go Paperless"
+                  theme="default"
+                />
+              </li>
+              <li>
+                <Tag icon text="Set Up Autopay" theme="default" />
+              </li>
+            </ul>
+          )}
         </div>
         <div className={styles.column}>
           <Payment
@@ -96,7 +99,9 @@ function AccountCard({
   };
 
   return (
-    <section className={`${styles.root} ${styles[status]} ${className || ""}`}>
+    <section
+      className={`${styles.root} ${status !== "default" ? styles[status] : ""} ${className ?? ""}`}
+    >
       <article className={styles["content-container"]}>
         <div className={styles.grid}>
           <div className={`${styles.column} ${styles.header}`}>
@@ -134,11 +139,24 @@ function AccountCard({
           className={styles.alert}
         />
       )}
-      <MobileCTA
-        theme="paperless"
-        text="Set Up Autopay"
-        onClick={onClickPaperless}
-      />
+      {status === "default" && mobileCTAType !== "none" && (
+        <>
+          {mobileCTAType === "paperless" && (
+            <MobileCTA
+              theme="paperless"
+              text="Go Paperless"
+              onClick={onClickPaperless}
+            />
+          )}
+          {mobileCTAType === "autopay" && (
+            <MobileCTA
+              theme="autopay"
+              text="Set Up Auto Pay"
+              onClick={onClickAutopay}
+            />
+          )}
+        </>
+      )}
     </section>
   );
 }
@@ -158,6 +176,8 @@ AccountCard.propTypes = {
   className: PropTypes.string,
   /** Specify which type of account (gas or electric) the card is displaying */
   acctType: PropTypes.oneOf(["electric", "gas"]),
+  /** Specify which CTA should be shown at the bottom of the card in mobile viewports.  Paperless is the default, but if the account is already enrolled in paperless billing, the autopay CTA must show instead. If the account is already enrolled in both programs, select 'none' to hide the mobile CTA */
+  mobileCTAType: PropTypes.oneOf(["none", "paperless", "autopay"]),
   /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
   status: PropTypes.oneOf(["default", "warning", "danger", "closed"]),
   /** The text of the card's warning/danger message   */
