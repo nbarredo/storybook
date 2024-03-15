@@ -23,8 +23,18 @@ export const Default = {
     data: {
       totalDue: "$9,900,853.02",
       dateDue: "02/06/23",
-      acctNumber: 12345678987,
+      acctID: "Acct # 12345678987",
       address: "124 Main Street NH 120384"
+    }
+  }
+};
+
+export const WithNickname = {
+  args: {
+    ...Default.args,
+    data: {
+      ...Default.args.data,
+      acctID: "Condominium"
     }
   }
 };

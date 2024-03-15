@@ -19,6 +19,10 @@ function AccountCard({
   acctType = "electric",
   alertText,
   status = "default",
+  onClickPaperless,
+  onClickAutopay,
+  onClickPayBill,
+  acctDetailsURL,
   data
 }) {
   const renderActiveContent = () => {
@@ -27,7 +31,11 @@ function AccountCard({
         <div className={`${styles.column} ${styles.actions}`}>
           <ul className={styles.actions}>
             <li>
-              <TagCTA onClick={() => {}} text="Go Paperless" theme="default" />
+              <TagCTA
+                onClick={onClickPaperless}
+                text="Go Paperless"
+                theme="default"
+              />
             </li>
             <li>
               <Tag icon text="Set Up Autopay" theme="default" />
@@ -39,11 +47,12 @@ function AccountCard({
             status={status}
             totalDue={data.totalDue}
             dateDue={data.dateDue}
+            onClickPayBill={onClickPayBill}
           />
         </div>
         <div className={`${styles.column} ${styles.cta}`}>
           <Link
-            href="#"
+            href={acctDetailsURL}
             renderIcon={() => (
               <ArrowForwardIcon
                 sx={{ fontSize: 19 }}
@@ -70,7 +79,7 @@ function AccountCard({
         </div>
         <div className={`${styles.column} ${styles.cta}`}>
           <Link
-            href="#"
+            href={acctDetailsURL}
             renderIcon={() => (
               <ArrowForwardIcon
                 sx={{ fontSize: 19 }}
@@ -94,7 +103,7 @@ function AccountCard({
             <Header
               acctType={acctType}
               status={status}
-              acctNumber={data.acctNumber}
+              acctID={data.acctID}
               address={data.address}
             />
           </div>
@@ -125,7 +134,11 @@ function AccountCard({
           className={styles.alert}
         />
       )}
-      <MobileCTA theme="paperless" text="Set Up Autopay" onClick={() => {}} />
+      <MobileCTA
+        theme="paperless"
+        text="Set Up Autopay"
+        onClick={onClickPaperless}
+      />
     </section>
   );
 }
@@ -133,6 +146,14 @@ function AccountCard({
 export { AccountCard };
 
 AccountCard.propTypes = {
+  /** Specify what should occur when the "Go Paperless" tag is clicked */
+  onClickPaperless: PropTypes.func,
+  /** Specify what should occur when the "Set Up Autopay" tag is clicked */
+  onClickAutopay: PropTypes.func,
+  /** Specify what should occur when the "Pay Bill" button is clicked */
+  onClickPayBill: PropTypes.func,
+  /** The URL of the card's corresponding details page */
+  acctDetailsURL: PropTypes.string,
   /** Specify an optional className to be applied to the AccountCard */
   className: PropTypes.string,
   /** Specify which type of account (gas or electric) the card is displaying */
@@ -145,7 +166,7 @@ AccountCard.propTypes = {
   data: PropTypes.exact({
     totalDue: PropTypes.string,
     dateDue: PropTypes.string,
-    acctNumber: PropTypes.number,
+    acctID: PropTypes.string,
     address: PropTypes.string
   }).isRequired
 };

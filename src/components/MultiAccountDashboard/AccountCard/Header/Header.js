@@ -12,7 +12,7 @@ import { ReactComponent as IconWarning } from "./icon_warning_filled.svg";
 /**
  * Descriptive text here.
  */
-export default function Header({ status, acctType, acctNumber, address }) {
+export default function Header({ status, acctType, acctID, address }) {
   const isClosed = () => {
     return status === "closed";
   };
@@ -28,7 +28,7 @@ export default function Header({ status, acctType, acctNumber, address }) {
         {ToTitleCase(acctType)}
         <span className={styles.acctNumber}>
           &nbsp;<span className={styles.pipe}>|</span>
-          &nbsp;acct # {acctNumber}
+          &nbsp;{acctID}
         </span>
       </Text>
       <address>
@@ -52,8 +52,8 @@ Header.propTypes = {
   status: PropTypes.oneOf(["default", "warning", "error", "closed"]).isRequired,
   /** Specify which type of account (gas or electric) the card is displaying */
   acctType: PropTypes.oneOf(["electric", "gas"]).isRequired,
-  /** The number of the account displayed in the card */
-  acctNumber: PropTypes.number.isRequired,
+  /** The number or nickname of the account displayed in the card */
+  acctID: PropTypes.number.isRequired,
   /** The mailing address of the account displayed in the card */
   address: PropTypes.string.isRequired
 };
