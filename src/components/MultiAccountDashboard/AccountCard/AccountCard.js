@@ -16,6 +16,7 @@ import Payment from "./Payment/Payment";
  */
 function AccountCard({
   className,
+  compact,
   acctType = "electric",
   alertText,
   hasAutopay = false,
@@ -114,7 +115,7 @@ function AccountCard({
 
   return (
     <section
-      className={`${styles.root} ${status !== "default" ? styles[status] : ""} ${className ?? ""}`}
+      className={`${styles.root} ${status !== "default" ? styles[status] : ""} ${className ?? ""} ${compact ? styles.compact : ""}`}
     >
       <article className={styles["content-container"]}>
         <div className={styles.grid}>
@@ -178,6 +179,8 @@ function AccountCard({
 export { AccountCard };
 
 AccountCard.propTypes = {
+  /** "Compact" mode should be used when the active user has more than five accounts to display.  This mode allows more information to fit on the screen at once, reducing the amount of scrolling the user might need to do to locate a specific account. */
+  compact: PropTypes.bool,
   /** Specify whether or not the current account is enrolled in Autopay */
   hasAutopay: PropTypes.bool,
   /** Specify whether or not the current account is enrolled in Paperless Billing */
@@ -194,7 +197,7 @@ AccountCard.propTypes = {
   className: PropTypes.string,
   /** Specify which type of account (gas or electric) the card is displaying */
   acctType: PropTypes.oneOf(["electric", "gas"]),
-  /** Specify which CTA should be shown at the bottom of the card in mobile viewports.  Paperless is the default, but if the account is already enrolled in paperless billing, the autopay CTA must show instead. If the account is already enrolled in both programs, select 'none' to hide the mobile CTA */
+  /** Specify which CTA should be shown at the bottom of the card in mobile viewports.  Paperless is the default, but if the account is already enrolled in paperless billing, the autopay CTA must show instead. If the account is already enrolled in both programs, select 'none' to hide the mobile CTA entirely. */
   mobileCTAType: PropTypes.oneOf(["none", "paperless", "autopay"]),
   /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
   status: PropTypes.oneOf(["default", "warning", "danger", "closed"]),

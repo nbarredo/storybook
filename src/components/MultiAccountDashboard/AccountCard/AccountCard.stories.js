@@ -3,7 +3,9 @@ import { AccountCard } from "./AccountCard";
 const meta = {
   title: "In Progress/Multi-Account Dashboard/AccountCard",
   component: AccountCard,
-  argTypes: { onClick: { action: "clicked" } },
+  argTypes: {
+    onClick: { action: "clicked" }
+  },
   parameters: {
     layout: "fullscreen",
     design: {
@@ -22,6 +24,9 @@ export const Default = {
     alertText: "Warning message appears here",
     mobileCTAType: "paperless",
     acctDetailsURL: "http://www.yahoo.com",
+    compact: false,
+    hasAutopay: true,
+    hasPaperless: false,
     data: {
       totalDue: "$9,900,853.02",
       dateDue: "02/06/23",
