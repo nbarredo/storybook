@@ -2,6 +2,7 @@ import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import image from "@rollup/plugin-image";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
+import svgr from "@svgr/rollup";
 import copy from "rollup-plugin-copy";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postscss from "rollup-plugin-postcss";
@@ -26,6 +27,7 @@ export default [
       }
     ],
     plugins: [
+      svgr(),
       peerDepsExternal(),
       babel({
         exclude: "node_modules/**",
