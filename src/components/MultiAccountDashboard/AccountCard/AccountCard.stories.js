@@ -21,6 +21,7 @@ export const Default = {
     status: "default",
     alertText: "Warning message appears here",
     mobileCTAType: "paperless",
+    acctDetailsURL: "http://www.yahoo.com",
     data: {
       totalDue: "$9,900,853.02",
       dateDue: "02/06/23",
@@ -37,5 +38,12 @@ export const WithNickname = {
       ...Default.args.data,
       acctID: "Condominium"
     }
+  }
+};
+
+export const AccountClosed = {
+  args: {
+    ...Default.args,
+    status: "closed"
   }
 };

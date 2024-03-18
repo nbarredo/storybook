@@ -50,7 +50,7 @@ $min-height-compact: 40px;
       }
       @include do-this-above(lg) {
         grid-template-columns:
-          minmax(290px, 100vw) minmax(260px, 260px) minmax(329px, 100vw)
+          minmax(260px, 100vw) minmax(272px, 280px) minmax(317px, 100vw)
           minmax(92px, 100vw);
       }
     }

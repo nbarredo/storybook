@@ -18,6 +18,8 @@ function AccountCard({
   className,
   acctType = "electric",
   alertText,
+  hasAutopay = false,
+  hasPaperless = false,
   status = "default",
   onClickPaperless,
   onClickAutopay,
@@ -33,14 +35,26 @@ function AccountCard({
           {status !== "danger" && (
             <ul className={styles.actions}>
               <li>
-                <TagCTA
-                  onClick={onClickPaperless}
-                  text="Go Paperless"
-                  theme="default"
-                />
+                {hasPaperless ? (
+                  <Tag icon text="Paperless is On" theme="default" />
+                ) : (
+                  <TagCTA
+                    onClick={onClickPaperless}
+                    text="Go Paperless"
+                    theme="default"
+                  />
+                )}
               </li>
               <li>
-                <Tag icon text="Set Up Autopay" theme="default" />
+                {hasAutopay ? (
+                  <Tag icon text="Autopay is On" theme="default" />
+                ) : (
+                  <TagCTA
+                    onClick={onClickPaperless}
+                    text="Set Up Auto Pay"
+                    theme="blue"
+                  />
+                )}
               </li>
             </ul>
           )}
@@ -104,7 +118,7 @@ function AccountCard({
     >
       <article className={styles["content-container"]}>
         <div className={styles.grid}>
-          <div className={`${styles.column} ${styles.header}`}>
+          <div className={`${styles.column}`}>
             <Header
               acctType={acctType}
               status={status}
@@ -164,6 +178,10 @@ function AccountCard({
 export { AccountCard };
 
 AccountCard.propTypes = {
+  /** Specify whether or not the current account is enrolled in Autopay */
+  hasAutopay: PropTypes.bool,
+  /** Specify whether or not the current account is enrolled in Paperless Billing */
+  hasPaperless: PropTypes.bool,
   /** Specify what should occur when the "Go Paperless" tag is clicked */
   onClickPaperless: PropTypes.func,
   /** Specify what should occur when the "Set Up Autopay" tag is clicked */
