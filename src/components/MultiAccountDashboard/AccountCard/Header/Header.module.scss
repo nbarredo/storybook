@@ -2,7 +2,7 @@
 @use "../../../../styles/mixins" as *;
 
 header {
-  padding-left: g.$space-9;
+  padding-left: 30px;
   position: relative;
   .pipe {
     color: var(--gray-40);
@@ -23,18 +23,25 @@ header {
       display: inline;
     }
   }
+  address {
+    margin-left: -30px;
+    @include do-this-above(md) {
+      margin-left: 0;
+    }
+  }
+  @include do-this-above(md) {
+    padding-left: g.$space-9;
+  }
 }
 
 .icon-container {
   border: 1px solid var(--white);
   border-radius: 100%;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.07);
-  height: 32px;
+  height: 24px;
   left: 0;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
+  width: 24px;
   svg {
     left: 50%;
     position: absolute;
@@ -64,15 +71,23 @@ header {
   &.warning {
     background-color: var(--orange-00);
     svg {
-      height: 21px;
-      width: 21px;
+      height: 16px;
+      width: 16px;
+      @include do-this-above(md) {
+        height: 21px;
+        width: 21px;
+      }
     }
   }
   &.danger {
     background-color: var(--red-00);
     svg {
-      height: 21px;
-      width: 21px;
+      height: 16px;
+      width: 16px;
+      @include do-this-above(md) {
+        height: 21px;
+        width: 21px;
+      }
     }
   }
   &.closed {
@@ -83,5 +98,11 @@ header {
         fill: var(--gray-40);
       }
     }
+  }
+  @include do-this-above(md) {
+    height: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
   }
 }
