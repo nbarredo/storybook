@@ -7,9 +7,10 @@ import styles from "./MobileCTA.module.scss";
 /**
  * Descriptive text here.
  */
-export default function MobileCTA({ onClick, text, theme }) {
+export default function MobileCTA({ onClick, text, theme, ...props }) {
   return (
     <TagCTA
+      {...props}
       onClick={onClick}
       text={text}
       theme={theme === "paperless" ? "default" : "blue"}
