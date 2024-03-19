@@ -2,60 +2,71 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { AccountCard } from "./AccountCard";
 
 describe("Account Card component functions correctly", () => {
+  const basicData = {
+    totalDue: "100",
+    dateDue: "2023-01-01",
+    acctID: "123",
+    address: "123 Main St"
+  };
   test("renders AccountCard with default props", () => {
-    const data = {
-      totalDue: "100",
-      dateDue: "2023-01-01",
-      acctID: "123",
-      address: "123 Main St"
-    };
-    render(<AccountCard data={data} />);
+    render(<AccountCard data={basicData} />);
     expect(screen.getByText(/Acct Details/i)).toBeInTheDocument();
   });
 
   test("renders in compact mode", () => {
-    const data = {
-      totalDue: "100",
-      dateDue: "2023-01-01",
-      acctID: "123",
-      address: "123 Main St"
-    };
-    render(<AccountCard compact data={data} />);
+    render(<AccountCard compact data={basicData} />);
     expect(screen.getByText(/Acct Details/i).closest("section")).toHaveClass(
       "compact"
     );
   });
 
-  test("renders with warning status and displays alert text", () => {
-    const data = {
-      totalDue: "100",
-      dateDue: "2023-01-01",
-      acctID: "123",
-      address: "123 Main St"
-    };
-    render(
+  test("renders properly in warning or danger status and displays alert text", () => {
+    const { rerender } = render(
       <AccountCard
         status="warning"
         alertText="Check your account"
-        data={data}
+        data={basicData}
+      />
+    );
+    expect(screen.getByText(/Check your account/i)).toBeInTheDocument();
+    rerender(
+      <AccountCard
+        status="danger"
+        alertText="Check your account"
+        data={basicData}
       />
     );
     expect(screen.getByText(/Check your account/i)).toBeInTheDocument();
   });
 
+  it('displays "Paperless is On" when hasPaperless is true', () => {
+    render(
+      <AccountCard
+        hasPaperless={true}
+        data={{ totalDue: "", dateDue: "", acctID: "", address: "" }}
+      />
+    );
+    expect(screen.getByText("Paperless is On")).toBeInTheDocument();
+  });
+
+  it('displays "Autopay is On" when hasAutopay is true', () => {
+    render(
+      <AccountCard
+        hasAutopay={true}
+        data={{ totalDue: "", dateDue: "", acctID: "", address: "" }}
+      />
+    );
+    expect(screen.getByText("Autopay is On")).toBeInTheDocument();
+  });
+
   test("calls onClickPaperless when the paperless CTA is clicked", () => {
     const onClickPaperless = jest.fn();
-    const data = {
-      totalDue: "100",
-      dateDue: "2023-01-01",
-      acctID: "123",
-      address: "123 Main St"
-    };
+
     render(
       <AccountCard
         onClickPaperless={onClickPaperless}
         mobileCTAType="none"
-        data={data}
+        data={basicData}
       />
     );
 
@@ -65,17 +76,11 @@ describe("Account Card component functions correctly", () => {
 
   test("renders mobile CTA for autopay", () => {
     const onClickAutopay = jest.fn();
-    const data = {
-      totalDue: "100",
-      dateDue: "2023-01-01",
-      acctID: "123",
-      address: "123 Main St"
-    };
     render(
       <AccountCard
         mobileCTAType="autopay"
         onClickAutopay={onClickAutopay}
-        data={data}
+        data={basicData}
       />
     );
 
@@ -83,17 +88,20 @@ describe("Account Card component functions correctly", () => {
   });
 
   test("applies custom class name", () => {
-    const data = {
-      totalDue: "100",
-      dateDue: "2023-01-01",
-      acctID: "123",
-      address: "123 Main St"
-    };
     const className = "my-custom-class";
-    render(<AccountCard className={className} data={data} />);
+    render(<AccountCard className={className} data={basicData} />);
 
     expect(screen.getByText(/Acct Details/i).closest("section")).toHaveClass(
       className
     );
+  });
+
+  test('renders inactive content when status is "closed"', () => {
+    const { getByText } = render(
+      <AccountCard status="closed" data={basicData} />
+    );
+
+    expect(getByText("Account Closed")).toBeInTheDocument();
+    expect(getByText("Past Bills & Payments")).toBeInTheDocument();
   });
 });

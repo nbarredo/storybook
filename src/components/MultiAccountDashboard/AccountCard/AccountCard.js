@@ -136,8 +136,6 @@ function AccountCard({
         <InlineNotification
           hideCloseButton
           kind="warning"
-          onClose={() => {}}
-          onCloseButtonClick={() => {}}
           role="status"
           title={alertText}
           className={styles.alert}
@@ -147,8 +145,6 @@ function AccountCard({
         <InlineNotification
           hideCloseButton
           kind="error"
-          onClose={() => {}}
-          onCloseButtonClick={() => {}}
           role="status"
           title={alertText}
           className={styles.alert}
