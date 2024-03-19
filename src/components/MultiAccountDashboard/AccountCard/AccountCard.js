@@ -158,6 +158,7 @@ function AccountCard({
         <>
           {mobileCTAType === "paperless" && (
             <MobileCTA
+              data-testid="mobile-cta-paperless"
               theme="paperless"
               text="Go Paperless"
               onClick={onClickPaperless}
@@ -165,6 +166,7 @@ function AccountCard({
           )}
           {mobileCTAType === "autopay" && (
             <MobileCTA
+              data-testid="mobile-cta-autopay"
               theme="autopay"
               text="Set Up Auto Pay"
               onClick={onClickAutopay}

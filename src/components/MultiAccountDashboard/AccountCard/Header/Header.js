@@ -54,7 +54,7 @@ Header.propTypes = {
   /** Specify which type of account (gas or electric) the card is displaying */
   acctType: PropTypes.oneOf(["electric", "gas"]).isRequired,
   /** The number or nickname of the account displayed in the card */
-  acctID: PropTypes.number.isRequired,
+  acctID: PropTypes.string.isRequired,
   /** The mailing address of the account displayed in the card */
   address: PropTypes.string.isRequired
 };
@@ -63,36 +63,38 @@ export const getIcon = (acctType, status) => {
   if (status === "warning") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.warning}`}>
-        <IconWarning />
+        <IconWarning data-testid="icon-warning" />
       </figure>
     );
   }
   if (status === "danger") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.danger}`}>
-        <IconDanger />
+        <IconDanger data-testid="icon-danger" />
       </figure>
     );
   }
   if (status === "closed") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.closed}`}>
-        {acctType === "electric" && <IconElectric />}
-        {acctType === "gas" && <IconGas />}
+        {acctType === "electric" && (
+          <IconElectric data-testid="icon-electric" />
+        )}
+        {acctType === "gas" && <IconGas data-testid="icon-gas" />}
       </figure>
     );
   }
   if (acctType === "electric" && status === "default") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.electric}`}>
-        <IconElectric />
+        <IconElectric data-testid="icon-electric" />
       </figure>
     );
   }
   if (acctType === "gas" && status === "default") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.gas}`}>
-        <IconGas />
+        <IconGas data-testid="icon-gas" />
       </figure>
     );
   }
