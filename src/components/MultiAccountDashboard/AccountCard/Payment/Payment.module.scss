@@ -13,7 +13,7 @@
     margin-right: 0;
     padding: 0px g.$space-4;
     vertical-align: middle;
-    &.error {
+    &.danger {
       border: 1px solid var(--red-60);
     }
     strong {
