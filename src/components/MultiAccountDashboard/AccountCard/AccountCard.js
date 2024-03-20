@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "@carbon/react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -78,6 +77,7 @@ function AccountCard({
               />
             )}
             className={styles.link}
+            aria-label="Account Details"
           >
             Acct Details
           </Link>

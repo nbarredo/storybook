@@ -1,13 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "../../../Button/Button";
 import { Text } from "../../../Text/Text";
 import styles from "./Payment.module.scss";
 
-/**
- * Descriptive text here.
- */
 export default function Payment({
   status = "default",
   totalDue,

@@ -9,9 +9,6 @@ import { ReactComponent as IconDanger } from "./icon_error_filled.svg";
 import { ReactComponent as IconGas } from "./icon_gas.svg";
 import { ReactComponent as IconWarning } from "./icon_warning_filled.svg";
 
-/**
- * Descriptive text here.
- */
 export default function Header({ status, acctType, acctID, address }) {
   const isClosed = () => {
     return status === "closed";
@@ -86,8 +83,11 @@ export const getIcon = (acctType, status) => {
   }
   if (acctType === "electric" && status === "default") {
     return (
-      <figure className={`${styles["icon-container"]} ${styles.electric}`}>
-        <IconElectric data-testid="icon-electric" />
+      <figure
+        role="presentation"
+        className={`${styles["icon-container"]} ${styles.electric}`}
+      >
+        <IconElectric role="presentation" data-testid="icon-electric" />
       </figure>
     );
   }
