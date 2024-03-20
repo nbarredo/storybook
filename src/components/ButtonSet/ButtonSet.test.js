@@ -44,7 +44,7 @@ describe("ButtonSet component functions properly", () => {
   });
 
   test("button width is adjusted based on the fixedSize prop", () => {
-    render(
+    const { rerender } = render(
       <ButtonSet align="left" fixedSize={true}>
         {buttonsData.map((buttonData, index) => (
           <Button
@@ -58,6 +58,19 @@ describe("ButtonSet component functions properly", () => {
 
     const buttonSetElement = screen.getByTestId("ev-button-set");
     expect(buttonSetElement).toHaveClass("fixed-size");
+
+    rerender(
+      <ButtonSet align="left" fixedSize={false}>
+        {buttonsData.map((buttonData, index) => (
+          <Button
+            key={index}
+            label={buttonData.label}
+            onClick={buttonData.onClick}
+          />
+        ))}
+      </ButtonSet>
+    );
+    expect(buttonSetElement).not.toHaveClass("fixed-size");
   });
 
   test("renders stacked layout when stacked prop is true", () => {
