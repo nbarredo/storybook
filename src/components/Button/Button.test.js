@@ -20,7 +20,7 @@ describe("Accordion component functions properly", () => {
     expect(onClick).toHaveBeenCalled();
   });
 
-  test("checks if onClick is preventede when button is disabled", () => {
+  test("checks if onClick is prevented when button is disabled", () => {
     const onClick = jest.fn();
     const { getByText } = render(
       <Button label="Click me" disabled={true} onClick={onClick} />
