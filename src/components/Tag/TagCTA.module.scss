@@ -31,7 +31,17 @@
   border-radius: g.$border-radius;
   margin: 0;
   min-height: 28px;
-  padding: g.$space-3 g.$space-4;
+  padding: g.$space-2 g.$space-4;
+
+  > div {
+    block-size: 20px;
+    inline-size: 20px;
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
   &.icon {
     padding: g.$space-3 g.$space-4 g.$space-3 g.$space-3;
   }
@@ -78,15 +88,5 @@
       outline: 2px solid var(--blue-70);
       outline-offset: 1px;
     }
-  }
-}
-
-/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-:global .cds--tag__custom-icon {
-  block-size: 20px;
-  inline-size: 20px;
-  svg {
-    height: 20px;
-    width: 20px;
   }
 }

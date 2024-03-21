@@ -29,8 +29,8 @@ describe("Tag component functions properly", () => {
 
   test("renders the icon when the renderIcon prop is provided", () => {
     const Icon = () => <div data-testid="icon" />;
-    render(<Tag text="Test" renderIcon={Icon} />);
-    const icon = screen.getByTestId("icon");
+    render(<Tag text="Test" icon={true} />);
+    const icon = screen.getByTestId("CircleIcon");
     expect(icon).toBeInTheDocument();
   });
 });

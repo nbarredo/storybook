@@ -8,4 +8,5 @@ export * from "./components/Notification/InlineNotification/InlineNotification";
 export * from "./components/TextInput/TextInput";
 export * from "./components/Wizard/Wizard";
 export * from "./components/Wizard/children";
-export * from "./components/Multi Account Dashboard/TotalBalance/TotalBalance";
+export * from "./components/MultiAccountDashboard/TotalBalance/TotalBalance";
+export * from "./components/MultiAccountDashboard/AccountCard/AccountCard";

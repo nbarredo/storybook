@@ -11,6 +11,7 @@ function Text({
   id,
   inline = false,
   children,
+  className,
   marginTop,
   marginBottom,
   color = "gray-70",
@@ -31,7 +32,7 @@ function Text({
     `}
     >
       <p
-        className={`${styles["ev-text"]} font-size-${size}-${weight}`}
+        className={`${styles["ev-text"]} font-size-${size}-${weight} ${className || ""}`}
         style={{ color: `var(--${color})` }}
         id={id ?? null}
         aria-hidden={ariaHidden?.toString()}
@@ -63,6 +64,8 @@ Text.propTypes = {
     "11"
   ]),
   children: PropTypes.node,
+  /** Specify an optional className to be applied to the Text */
+  className: PropTypes.string,
   /** Determines whether the generated text will be inline or block */
   inline: PropTypes.bool,
   /** Specify a margin to apply above the text. This only applies if inline=false. */

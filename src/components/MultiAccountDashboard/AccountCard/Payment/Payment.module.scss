@@ -1,0 +1,49 @@
+@use "../../../../styles/global" as g;
+@use "../../../../styles/mixins" as *;
+
+.payment-area {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  .total-due {
+    background-color: var(--gray-00);
+    border: 1px solid var(--gray-00);
+    border-radius: g.$border-radius-small;
+    display: inline-block;
+    margin-right: 0;
+    padding: 0px g.$space-4;
+    vertical-align: middle;
+    &.danger {
+      border: 1px solid var(--red-60);
+    }
+    strong {
+      color: var(--gray-70);
+      display: block;
+      margin-right: 0;
+      @include do-this-above(md) {
+        display: inline;
+        margin-right: g.$space-4;
+      }
+    }
+    .due-date {
+      white-space: nowrap;
+    }
+    @include do-this-above(md) {
+      margin-right: g.$space-5;
+      padding: g.$space-2 g.$space-3;
+    }
+  }
+  .button-container {
+    display: none;
+    button {
+      line-height: 14px;
+      max-block-size: 30px;
+      min-block-size: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    @include do-this-above(md) {
+      display: inline-block;
+    }
+  }
+}
