@@ -13,7 +13,7 @@ always-auth=true
 
 2. Run the command `npm uninstall @eversource/storybook` to remove any previous version of Storybook that you might have installed
 
-3. Run the command npm i @eversource/storybook to install the latest version of the new storybook npm package.  You can install a specific version by first looking up the list of available versions here:  https://dev.azure.com/Eversource-Energy/ms-benchmark/_artifacts/feed/Benchmark/Npm/@eversource%2Fstorybook/versions
+3. Run the command npm i @eversource/storybook to install the latest version of the new storybook npm package.  You can install a specific version by first looking up the list of available versions here:  https://dev.azure.com/Eversource-Energy/ms-benchmark/_artifacts/feed/Benchmark/Npm/@eversource%2Fstorybook/versions. If you get an authentication error, please follow the "Project Setup" steps here: https://dev.azure.com/Eversource-Energy/ms-benchmark/_artifacts/feed/Benchmark/connect
 
 4. If you are using Typescript, verify that the package name/path in the decs.d.ts is correct:
 
