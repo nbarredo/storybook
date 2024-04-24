@@ -41,20 +41,17 @@
   }
 
   &.cds--btn--primary {
-    background-color: var(--blue-50);
-    border-bottom: 2px solid var(--blue-60);
+    background-color: var(--blue-60);
+    border-bottom: 2px solid var(--blue-80);
+    color: var(--white);
 
     &:hover {
-      background-color: var(--blue-60);
-      border-bottom: 2px solid var(--blue-80);
-    }
-    &:active {
-      background-color: var(--blue-70);
-      border-bottom: 2px solid var(--blue-90);
-      color: var(--white);
-    }
-    &:focus {
       background-color: var(--blue-50);
+      border-bottom: 2px solid var(--blue-60);
+    }
+
+    &:focus {
+      background-color: var(--blue-60);
       border: 2px solid var(--white);
       box-shadow:
         0px 0px 1px 0px rgba(0, 36, 64, 0.31),
@@ -62,14 +59,23 @@
       outline: 2px solid var(--blue-60);
     }
 
+    &:active {
+      background-color: var(--blue-70);
+      border: none;
+      border-bottom: 2px solid var(--blue-90);
+      box-shadow: none;
+      outline: none;
+    }
+
     &:disabled,
     &[aria-disabled="true"] {
-      background-color: var(--gray-20);
+      background-color: var(--gray-10);
       border: none;
       color: var(--gray-30);
       cursor: not-allowed;
     }
   }
+
   &.cds--btn--secondary {
     background-color: var(--blue-60);
     border-bottom: 2px solid var(--blue-80);

@@ -17,7 +17,7 @@ const meta = {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/XV5UEMIBTZvKb1xg3YUyuM/Design-System---External?type=design&node-id=1%3A4388&mode=dev"
+      url: "https://www.figma.com/file/JewKs8uC7fp1AFHY5kApSG/One-Source-Components?type=design&node-id=361%3A5989&mode=design&t=QGTtgyV204Ro5R1a-1"
     }
   }
 };
