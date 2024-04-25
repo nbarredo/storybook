@@ -10,7 +10,7 @@
   color: var(--black);
   display: inline-block;
   letter-spacing: 0.16px;
-  padding-inline-end: 15px;
+  padding-inline: 24px;
 
   .cds--btn__icon {
     display: inline-block;
@@ -53,7 +53,6 @@
 
   .label-container {
     display: inline-block;
-    vertical-align: middle;
   }
 
   &.cds--btn--primary {
