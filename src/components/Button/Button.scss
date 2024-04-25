@@ -22,24 +22,28 @@
   // handle paddings for each size variation when an icon is being displayed
   &.with-icon {
     &.cds--layout--size-sm {
-      padding-inline: 24px 30px;
+      padding-inline: 8px;
     }
 
     &.cds--layout--size-md {
-      padding-inline: 24px 44px;
+      padding-inline: 16px;
     }
 
     &.cds--layout--size-lg {
-      padding-inline: 24px 58px;
+      padding-inline: 24px;
     }
   }
 
+  .label-container {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
   .cds--btn__icon {
+    display: inline-block;
     margin-block-start: 0;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    position: static;
+    vertical-align: middle;
   }
 
   &.cds--layout--size-sm {
@@ -48,7 +52,7 @@
     .cds--btn__icon {
       block-size: 16px;
       inline-size: 16px;
-      right: 8px;
+      margin-left: 8px;
     }
   }
 
@@ -59,7 +63,7 @@
     .cds--btn__icon {
       block-size: 20px;
       inline-size: 20px;
-      right: 14px;
+      margin-left: 12px;
     }
   }
 
@@ -70,12 +74,8 @@
     .cds--btn__icon {
       block-size: 24px;
       inline-size: 24px;
-      right: 22px;
+      margin-left: 12px;
     }
-  }
-
-  .label-container {
-    display: inline-block;
   }
 
   &.cds--btn--primary {
