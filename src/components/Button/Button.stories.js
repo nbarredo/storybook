@@ -30,7 +30,8 @@ export const Default = {
     disabled: false,
     label: "Button",
     kind: "primary",
-    type: "button"
+    type: "button",
+    fullWidth: false
   }
 };
 

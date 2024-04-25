@@ -11,13 +11,35 @@
   display: inline-block;
   letter-spacing: 0.16px;
   padding-inline: 24px;
+  position: relative;
+
+  &.full-width {
+    max-inline-size: none;
+    text-align: center;
+    width: 100%;
+  }
+
+  // handle paddings for each size variation when an icon is being displayed
+  &.with-icon {
+    &.cds--layout--size-sm {
+      padding-inline: 24px 30px;
+    }
+
+    &.cds--layout--size-md {
+      padding-inline: 24px 44px;
+    }
+
+    &.cds--layout--size-lg {
+      padding-inline: 24px 58px;
+    }
+  }
 
   .cds--btn__icon {
-    display: inline-block;
-    inset-block: 0;
-    inset-inline: 0;
-    position: relative;
-    vertical-align: middle;
+    margin-block-start: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &.cds--layout--size-sm {
@@ -26,7 +48,7 @@
     .cds--btn__icon {
       block-size: 16px;
       inline-size: 16px;
-      margin-left: g.$space-3;
+      right: 8px;
     }
   }
 
@@ -37,17 +59,18 @@
     .cds--btn__icon {
       block-size: 20px;
       inline-size: 20px;
-      margin-left: g.$space-4;
+      right: 14px;
     }
   }
 
   &.cds--layout--size-lg {
+    height: 48px;
     line-height: 18px;
     @extend %font-size-3-bold;
     .cds--btn__icon {
       block-size: 24px;
       inline-size: 24px;
-      margin-left: g.$space-4;
+      right: 22px;
     }
   }
 
