@@ -12,20 +12,43 @@
   letter-spacing: 0.16px;
   padding-inline-end: 15px;
 
+  .cds--btn__icon {
+    display: inline-block;
+    inset-block: 0;
+    inset-inline: 0;
+    position: relative;
+    vertical-align: middle;
+  }
+
   &.cds--layout--size-sm {
     line-height: 14px;
     @extend %font-size-1-bold;
+    .cds--btn__icon {
+      block-size: 16px;
+      inline-size: 16px;
+      margin-left: g.$space-3;
+    }
   }
 
   &.cds--layout--size-md {
     height: 44px;
     line-height: 16px;
     @extend %font-size-2-bold;
+    .cds--btn__icon {
+      block-size: 20px;
+      inline-size: 20px;
+      margin-left: g.$space-4;
+    }
   }
 
   &.cds--layout--size-lg {
     line-height: 18px;
     @extend %font-size-3-bold;
+    .cds--btn__icon {
+      block-size: 24px;
+      inline-size: 24px;
+      margin-left: g.$space-4;
+    }
   }
 
   .label-container {
@@ -33,20 +56,10 @@
     vertical-align: middle;
   }
 
-  .cds--btn__icon {
-    block-size: 24px;
-    display: inline-block;
-    inline-size: 24px;
-    inset-block: 0;
-    inset-inline: 0;
-    margin-left: g.$space-4;
-    position: relative;
-    vertical-align: middle;
-  }
-
   &.cds--btn--primary {
     background-color: var(--blue-60);
     border-bottom: 2px solid var(--blue-80);
+    border-width: 2px;
     color: var(--white);
 
     &:hover {
@@ -65,8 +78,10 @@
 
     &:active {
       background-color: var(--blue-70);
-      border: none;
       border-bottom: 2px solid var(--blue-90);
+      border-left: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-top: 2px solid transparent;
       box-shadow: none;
       outline: none;
     }
