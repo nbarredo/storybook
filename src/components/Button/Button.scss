@@ -13,15 +13,19 @@
   padding-inline-end: 15px;
 
   &.cds--layout--size-sm {
-    @extend %font-size-0-semi;
+    line-height: 14px;
+    @extend %font-size-1-bold;
   }
 
   &.cds--layout--size-md {
-    @extend %font-size-1-semi;
+    height: 44px;
+    line-height: 16px;
+    @extend %font-size-2-bold;
   }
 
   &.cds--layout--size-lg {
-    @extend %font-size-2-semi;
+    line-height: 18px;
+    @extend %font-size-3-bold;
   }
 
   .label-container {
