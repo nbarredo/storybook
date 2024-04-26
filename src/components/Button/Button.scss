@@ -12,6 +12,7 @@
   letter-spacing: 0.16px;
   padding-inline: 24px;
   position: relative;
+  transition: all 300ms ease-out;
 
   &.full-width {
     max-inline-size: none;
