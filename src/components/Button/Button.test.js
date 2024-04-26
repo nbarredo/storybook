@@ -65,4 +65,12 @@ describe("Accordion component functions properly", () => {
     const buttonElement = screen.getByRole("button");
     expect(buttonElement).toHaveClass("es--btn--ghost--subtle");
   });
+
+  test("should apply full-width class when fullWidth prop is true", () => {
+    const { container } = render(
+      <Button label="Test Button" fullWidth={true} />
+    );
+    const button = container.querySelector("button");
+    expect(button.className).toContain("full-width");
+  });
 });
