@@ -161,17 +161,11 @@
     border: 1px solid var(--blue-30);
     color: var(--blue-70);
     .cds--btn__icon {
-      color: var(--blue-30);
+      color: var(--blue-60);
       transition: all 300ms ease-out;
     }
     &:hover {
       background-color: var(--blue-00);
-      .cds--btn__icon {
-        color: var(--blue-70);
-      }
-    }
-    &:active {
-      background-color: var(--blue-10);
       .cds--btn__icon {
         color: var(--blue-70);
       }
@@ -183,6 +177,15 @@
         0px 0px 1px 0px rgba(0, 36, 64, 0.31),
         0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
+      .cds--btn__icon {
+        color: var(--blue-70);
+      }
+    }
+    &:active {
+      background-color: var(--blue-10);
+      border: 1px solid var(--blue-30);
+      box-shadow: none;
+      outline: none;
       .cds--btn__icon {
         color: var(--blue-70);
       }
@@ -200,11 +203,16 @@
   }
   &.cds--btn--ghost {
     color: var(--blue-70);
-    &:hover {
-      background-color: var(--gray-10);
+    /* stylelint-disable-next-line no-descending-specificity */
+    .cds--btn__icon {
+      color: var(--blue-60);
+      transition: all 300ms ease-out;
     }
-    &:active {
-      background-color: var(--gray-20);
+    &:hover {
+      background-color: var(--blue-00);
+      .cds--btn__icon {
+        color: var(--blue-70);
+      }
     }
     &:focus {
       background-color: var(--white);
@@ -213,11 +221,28 @@
         0px 0px 1px 0px rgba(0, 36, 64, 0.31),
         0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
+      .cds--btn__icon {
+        color: var(--blue-70);
+      }
     }
+    &:active {
+      background-color: var(--blue-10);
+      border: 1px solid var(--blue-10);
+      box-shadow: none;
+      color: var(--blue-80);
+      outline: none;
+      .cds--btn__icon {
+        color: var(--blue-70);
+      }
+    }
+
     &:disabled,
     &[aria-disabled="true"] {
       color: var(--gray-20);
       cursor: not-allowed;
+      .cds--btn__icon {
+        color: var(--gray-20);
+      }
     }
   }
 
