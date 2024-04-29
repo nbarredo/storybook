@@ -346,10 +346,6 @@
     &:hover {
       background-color: var(--red-00);
     }
-    &:active {
-      background-color: var(--red-10);
-      border: 1px solid var(--red-80);
-    }
     &:focus {
       background-color: var(--white);
       border: 1px solid var(--white);
@@ -358,14 +354,24 @@
         0px 0px 6px 3px rgba(0, 109, 179, 0.2);
       outline: 2px solid var(--blue-60);
     }
+
+    &:active {
+      background-color: var(--red-10);
+      border: 1px solid var(--red-80);
+      box-shadow: none;
+      color: var(--red-80);
+      outline: none;
+    }
+
     &:disabled,
     &[aria-disabled="true"] {
-      background-color: var(--white);
-      border: 1px solid var(--gray-30);
-      color: var(--gray-20);
+      background-color: var(--gray-10);
+      border: 1px solid var(--gray-10);
+      color: var(--gray-30);
       cursor: not-allowed;
     }
   }
+
   &.cds--btn--danger--ghost {
     color: var(--red-70);
     &:hover {
