@@ -240,6 +240,9 @@
     &[aria-disabled="true"] {
       color: var(--gray-20);
       cursor: not-allowed;
+      &:hover {
+        background-color: var(--white);
+      }
       .cds--btn__icon {
         color: var(--gray-20);
       }
@@ -247,14 +250,17 @@
   }
 
   &.es--btn--ghost--subtle {
-    color: var(--gray-60);
+    color: var(--gray-70);
+    /* stylelint-disable-next-line no-descending-specificity */
+    .cds--btn__icon {
+      color: var(--gray-50);
+      transition: all 300ms ease-out;
+    }
     &:hover {
       background-color: var(--gray-10);
-      color: var(--gray-70);
-    }
-    &:active {
-      background-color: var(--gray-20);
-      color: var(--gray-80);
+      .cds--btn__icon {
+        color: var(--gray-70);
+      }
     }
     &:focus {
       background-color: var(--white);
@@ -262,13 +268,32 @@
       box-shadow:
         0px 0px 1px 0px rgba(0, 36, 64, 0.31),
         0px 0px 6px 3px rgba(0, 109, 179, 0.2);
-      color: var(--gray-70);
       outline: 2px solid var(--blue-60);
+      .cds--btn__icon {
+        color: var(--gray-70);
+      }
     }
+    &:active {
+      background-color: var(--gray-20);
+      border: 1px solid var(--gray-20);
+      box-shadow: none;
+      color: var(--gray-80);
+      outline: none;
+      .cds--btn__icon {
+        color: var(--gray-80);
+      }
+    }
+
     &:disabled,
     &[aria-disabled="true"] {
       color: var(--gray-20);
       cursor: not-allowed;
+      &:hover {
+        background-color: var(--white);
+      }
+      .cds--btn__icon {
+        color: var(--gray-20);
+      }
     }
   }
 
