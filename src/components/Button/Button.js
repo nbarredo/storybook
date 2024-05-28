@@ -28,8 +28,6 @@ function Button({
   if (renderIcon) className += " with-icon";
   if (fullWidth) className += " full-width";
 
-  console.log("className", className, renderIcon);
-
   const handleClick = (evt) => {
     if (disabled) {
       evt.preventDefault();
