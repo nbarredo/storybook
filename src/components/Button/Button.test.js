@@ -101,7 +101,7 @@ describe("Accordion component functions properly", () => {
         />
       </>
     );
-    screen.debug(container);
+
     const button = container.querySelector("button");
     expect(button).toHaveAccessibleName("One Two Three");
   });
