@@ -31,7 +31,9 @@ export const Default = {
     label: "Button",
     kind: "primary",
     type: "button",
-    fullWidth: false
+    fullWidth: false,
+    id: "test",
+    ariaLabelledBy: ""
   }
 };
 
