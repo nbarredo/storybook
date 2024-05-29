@@ -73,4 +73,36 @@ describe("Accordion component functions properly", () => {
     const button = container.querySelector("button");
     expect(button.className).toContain("full-width");
   });
+
+  test("should take on the accessible name of the element id passed to the component's ariaLabelledBy prop", () => {
+    const { container } = render(
+      <>
+        <p id="test-label">Good afternoon</p>
+        <Button
+          label="Test Button"
+          ariaLabelledBy="test-label"
+          fullWidth={true}
+        />
+      </>
+    );
+    const button = container.querySelector("button");
+    expect(button).toHaveAccessibleName("Good afternoon");
+  });
+
+  test("Can use its own label as part of a composite aria-labelledby", () => {
+    const { container } = render(
+      <>
+        <p id="test-label">One Two</p>
+        <Button
+          id="test-button"
+          label="Three"
+          ariaLabelledBy="test-label test-button"
+          fullWidth={true}
+        />
+      </>
+    );
+    screen.debug(container);
+    const button = container.querySelector("button");
+    expect(button).toHaveAccessibleName("One Two Three");
+  });
 });

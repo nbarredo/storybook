@@ -15,7 +15,9 @@ function Button({
   type,
   renderIcon,
   className = "",
-  fullWidth = false
+  fullWidth = false,
+  id,
+  ariaLabelledBy
 }) {
   let buttonType;
   if (kind === "ghost--subtle") {
@@ -47,6 +49,8 @@ function Button({
         renderIcon={renderIcon}
         size={size}
         type={type}
+        id={id}
+        aria-labelledby={ariaLabelledBy}
       >
         <span className="label-container">{label}</span>
       </CarbonButton>
@@ -83,5 +87,9 @@ Button.propTypes = {
   /** Specify the size of the button */
   size: PropTypes.oneOf(["sm", "md", "lg"]),
   /** Optional prop to specify the type of the Button */
-  type: PropTypes.oneOf(["button", "reset", "submit"])
+  type: PropTypes.oneOf(["button", "reset", "submit"]),
+  /** A unique ID for the Button */
+  id: PropTypes.string,
+  /** For a11y purposes, if you need to button's accessible name to come from another DOM element instead of from the button's own text.  This value must be a valid 'id' or series of 'ids' (separated by spaces) from some other DOM element(s).   */
+  ariaLabelledBy: PropTypes.string
 };
