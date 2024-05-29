@@ -90,6 +90,6 @@ Button.propTypes = {
   type: PropTypes.oneOf(["button", "reset", "submit"]),
   /** A unique ID for the Button */
   id: PropTypes.string,
-  /** For a11y purposes, if you need to button's accessible name to come from another DOM element instead of from the button's own text.  This value must be a valid 'id' or series of 'ids' (separated by spaces) from some other DOM element(s).   */
+  /** For a11y purposes, if you need the button's accessible name to come from another DOM element instead of from the button's own text.  This value must be a valid 'id' or series of 'ids' (separated by spaces) from some other DOM element(s).   */
   ariaLabelledBy: PropTypes.string
 };
