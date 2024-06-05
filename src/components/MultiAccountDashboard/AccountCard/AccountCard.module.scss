@@ -8,17 +8,19 @@ $min-height-compact: 40px;
 
 .root {
   background-color: var(--white);
-  border: 1px solid var(--gray-20);
+  border: 1px solid transparent;
   border-radius: g.$border-radius-large;
-  box-shadow: 0px 6px 8px 0px rgba(233, 246, 252, 0.7);
+  box-shadow:
+    0px 1px 2px 0px rgba(0, 109, 179, 0.2),
+    0px 0px 1px 0px rgba(0, 109, 179, 0.25);
   max-width: 1156px;
   min-height: $min-height;
 
   &.warning {
-    border-color: var(--orange-20);
+    border-color: var(--orange-10);
   }
   &.danger {
-    border-color: var(--red-60);
+    border-color: var(--red-30);
   }
 
   .content-container {
