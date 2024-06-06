@@ -4,14 +4,25 @@ import PropTypes from "prop-types";
 import { ToTitleCase } from "../../../../utils";
 import { Text } from "../../../Text/Text";
 import styles from "./Header.module.scss";
-import { ReactComponent as IconElectric } from "./icon_electric.svg";
-import { ReactComponent as IconDanger } from "./icon_error_filled.svg";
-import { ReactComponent as IconGas } from "./icon_gas.svg";
-import { ReactComponent as IconWarning } from "./icon_warning_filled.svg";
+import { ReactComponent as IconElectric } from "./icon_acct_type_electric.svg";
+import { ReactComponent as IconGas } from "./icon_acct_type_gas.svg";
+import { ReactComponent as IconMerged } from "./icon_acct_type_merged.svg";
+import { ReactComponent as IconUnknown } from "./icon_acct_type_unknown.svg";
+import { ReactComponent as IconDanger } from "./icon_status_danger.svg";
+import { ReactComponent as IconWarning } from "./icon_status_warning.svg";
+import { ReactComponent as Separator } from "./separator.svg";
 
 export default function Header({ status, acctType, acctID, address }) {
   const isClosed = () => {
     return status === "closed";
+  };
+  const getTextColor = () => {
+    switch (acctType) {
+      case "electric":
+        return "teal-90";
+      case "gas":
+        return "purple-90";
+    }
   };
   return (
     <header>
@@ -20,14 +31,23 @@ export default function Header({ status, acctType, acctID, address }) {
         size="3"
         weight="semi"
         inline={true}
+        color={getTextColor()}
         className={`${styles.clamp} ${isClosed() ? styles.closed : ""}`}
       >
         {ToTitleCase(acctType)}
-        <span className={styles.acctNumber}>
-          &nbsp;<span className={styles.pipe}>|</span>
-          &nbsp;{acctID}
-        </span>
       </Text>
+      <span className={styles.acctNumber}>
+        <Separator data-testid="separator" />
+        <Text
+          inline={true}
+          color="gray-70"
+          size="2"
+          weight="reg"
+          className={`${styles.clamp} ${isClosed() ? styles.closed : ""}`}
+        >
+          {acctID}
+        </Text>
+      </span>
       <address>
         <Text
           color="gray-60"
