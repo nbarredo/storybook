@@ -7,13 +7,23 @@ import styles from "./Tag.module.scss";
 /**
  * This tag is used to provide information or important details to the user. It is not clickable/interactive.
  */
-function Tag({ text, theme = "default", icon = false, ...props }) {
+function Tag({
+  text,
+  theme = "default",
+  showIcon = false,
+  renderIcon,
+  ...props
+}) {
   const themeName = `theme-${theme}`;
+  const getIcon = () => {
+    if (renderIcon) return renderIcon;
+    return CircleIcon;
+  };
   return (
     <CarbonTag
-      className={`${styles.tag} ${styles[themeName]}`}
+      className={`${styles.tag} ${styles[themeName]} ${renderIcon ? styles["render-icon"] : styles["default-icon"]}`}
       as="div"
-      renderIcon={icon ? CircleIcon : null}
+      renderIcon={showIcon ? getIcon() : null}
       {...props}
     >
       {text}
@@ -28,6 +38,8 @@ Tag.propTypes = {
   text: PropTypes.string,
   /** Specify the theme of the Text Input. Currently supports the following: */
   theme: PropTypes.oneOf(["default", "important", "green", "pink", "purple"]),
-  /** Add a Material-UI icon to the button.  Search for an icon here:  https://mui.com/material-ui/material-icons/   */
-  icon: PropTypes.bool
+  /** Toggle whether or not an icon will appear inside the tag. */
+  showIcon: PropTypes.bool,
+  /** Add a custom Material-UI icon to the button.  Search for an icon here:  https://mui.com/material-ui/material-icons/ .  If showIcon is `true`, and no renderIcon is provided, a default "dot" icon will be used.  */
+  renderIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
 };

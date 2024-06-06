@@ -1,3 +1,4 @@
+import ChildCareIcon from "@mui/icons-material/ChildCare";
 import { Tag } from "./Tag";
 
 const meta = {
@@ -17,13 +18,21 @@ export const Default = {
   args: {
     text: "Lorem ipsum",
     theme: "default",
-    icon: false
+    showIcon: false
   }
 };
 
-export const WithIcon = {
+export const WithDefaultIcon = {
   args: {
     ...Default.args,
-    icon: true
+    showIcon: true
+  }
+};
+
+export const WithCustomIcon = {
+  args: {
+    ...Default.args,
+    showIcon: true,
+    renderIcon: ChildCareIcon
   }
 };
