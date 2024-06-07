@@ -1,4 +1,5 @@
 import React from "react";
+import ChildCareIcon from "@mui/icons-material/ChildCare";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import { Tag } from "./Tag";
@@ -27,10 +28,16 @@ describe("Tag component functions properly", () => {
     expect(tag).toBeInTheDocument();
   });
 
-  test("renders the icon when the renderIcon prop is provided", () => {
-    const Icon = () => <div data-testid="icon" />;
-    render(<Tag text="Test" icon={true} />);
+  test("renders the default icon when showIcon is true", () => {
+    render(<Tag text="Test" showIcon={true} />);
     const icon = screen.getByTestId("CircleIcon");
+    expect(icon).toBeInTheDocument();
+  });
+
+  test("renders a custom icon when one is passed to it via the 'renderIcon' prop", () => {
+    render(<Tag text="Test" showIcon={true} renderIcon={ChildCareIcon} />);
+    const icon = screen.getByTestId("ChildCareIcon");
+    screen.debug();
     expect(icon).toBeInTheDocument();
   });
 });

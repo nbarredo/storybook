@@ -9,13 +9,38 @@
   min-height: 28px;
   padding: g.$space-2 g.$space-3;
 
-  > div {
-    block-size: 14px;
-    inline-size: 12px;
-    svg {
-      color: var(--green-70);
-      height: 100%;
-      width: 100%;
+  &.default-icon {
+    > div {
+      block-size: 14px;
+      inline-size: 12px;
+      svg {
+        color: var(--green-70);
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &.theme-important {
+      svg {
+        color: var(--red-50);
+      }
+    }
+  }
+
+  &.render-icon {
+    > div {
+      block-size: 16px;
+      inline-size: 16px;
+      /* stylelint-disable-next-line no-descending-specificity */
+      svg {
+        color: var(--gray-80);
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &.theme-important {
+      svg {
+        color: var(--white);
+      }
     }
   }
 
@@ -32,9 +57,6 @@
     &:hover {
       background-color: var(--gray-60);
       cursor: default;
-    }
-    svg {
-      color: var(--red-50);
     }
   }
   &.theme-green {

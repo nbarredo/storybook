@@ -4,9 +4,6 @@
 header {
   padding-left: 30px;
   position: relative;
-  .pipe {
-    color: var(--gray-40);
-  }
   .closed {
     color: var(--gray-60) !important;
   }
@@ -35,9 +32,7 @@ header {
 }
 
 .icon-container {
-  border: 1px solid var(--white);
-  border-radius: 100%;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.07);
+  border-radius: 4px;
   height: 24px;
   left: 0;
   position: absolute;
@@ -49,20 +44,20 @@ header {
     transform: translate(-50%, -50%);
   }
   &.electric {
-    background-color: var(--blue-00);
+    background-color: var(--teal-10);
     svg {
       path {
-        fill: var(--blue-70);
+        fill: var(--teal-70);
       }
       height: 16px;
       width: 8px;
     }
   }
   &.gas {
-    background-color: var(--purple-00);
+    background-color: var(--purple-10);
     svg {
       path {
-        fill: var(--purple-80);
+        fill: var(--purple-90);
       }
       height: 16px;
       width: 12px;
