@@ -3,7 +3,7 @@ import { Button } from "../Button/Button";
 import { ButtonSet } from "./ButtonSet";
 
 const meta = {
-  title: "Approved for Use/ButtonSet",
+  title: "Design System/ButtonSet",
   component: ButtonSet
 };
 
