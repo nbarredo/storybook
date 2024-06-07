@@ -17,7 +17,7 @@ import {
 } from "./children";
 
 export default {
-  title: "Approved for Use/Add Account/Wizard",
+  title: "Design System/Add Account/Wizard",
   component: Wizard,
   parameters: {
     design: {

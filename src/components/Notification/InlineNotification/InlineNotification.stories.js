@@ -1,7 +1,7 @@
 import { InlineNotification } from "./InlineNotification";
 
 const meta = {
-  title: "Approved for Use/Notification/InlineNotification",
+  title: "Design System/Notification/InlineNotification",
   component: InlineNotification
 };
 

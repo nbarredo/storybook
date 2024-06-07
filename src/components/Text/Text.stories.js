@@ -2,7 +2,7 @@ import { ColorPalette } from "../../utils/ColorPalette";
 import { Text } from "./Text";
 
 export default {
-  title: "Approved for Use/Text",
+  title: "Design System/Text",
   component: Text,
   argTypes: {
     color: {

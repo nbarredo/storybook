@@ -1,7 +1,7 @@
 import { AccountCard } from "./AccountCard";
 
 const meta = {
-  title: "In Progress/Multi-Account Dashboard/AccountCard",
+  title: "In Progress (do not use)/Multi-Account Dashboard/AccountCard",
   component: AccountCard,
   argTypes: {
     onClick: { action: "clicked" }

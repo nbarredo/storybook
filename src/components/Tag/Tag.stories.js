@@ -2,7 +2,7 @@ import ChildCareIcon from "@mui/icons-material/ChildCare";
 import { Tag } from "./Tag";
 
 const meta = {
-  title: "Approved for Use/Tags/Simple Tag",
+  title: "Design System/Tags/Simple Tag",
   component: Tag,
   parameters: {
     design: {

@@ -2,7 +2,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { TagCTA } from "./TagCTA";
 
 const meta = {
-  title: "Approved for Use/Tags/Interactive Tag",
+  title: "Design System/Tags/Interactive Tag",
   component: TagCTA,
   argTypes: {
     onClick: { action: "clicked" }
