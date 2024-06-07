@@ -22,6 +22,8 @@ export default function Header({ status, acctType, acctID, address }) {
         return "teal-90";
       case "gas":
         return "purple-90";
+      default:
+        return "gray-70";
     }
   };
   return (
@@ -32,22 +34,22 @@ export default function Header({ status, acctType, acctID, address }) {
         weight="semi"
         inline={true}
         color={getTextColor()}
-        className={`${styles.clamp} ${isClosed() ? styles.closed : ""}`}
+        className={`${isClosed() ? styles.closed : ""}`}
       >
         {ToTitleCase(acctType)}
       </Text>
-      <span className={styles.acctNumber}>
+      <div role="presentation" className={styles.separator}>
         <Separator data-testid="separator" />
-        <Text
-          inline={true}
-          color="gray-70"
-          size="2"
-          weight="reg"
-          className={`${styles.clamp} ${isClosed() ? styles.closed : ""}`}
-        >
-          {acctID}
-        </Text>
-      </span>
+      </div>
+      <Text
+        inline={true}
+        color="gray-70"
+        size="2"
+        weight="reg"
+        className={`${styles.acctNumber} ${isClosed() ? styles.closed : ""}`}
+      >
+        {acctID}
+      </Text>
       <address>
         <Text
           color="gray-60"
@@ -69,7 +71,8 @@ Header.propTypes = {
   status: PropTypes.oneOf(["default", "warning", "danger", "closed"])
     .isRequired,
   /** Specify which type of account (gas or electric) the card is displaying */
-  acctType: PropTypes.oneOf(["electric", "gas"]).isRequired,
+  acctType: PropTypes.oneOf(["electric", "gas", "unknown", "merged"])
+    .isRequired,
   /** The number or nickname of the account displayed in the card */
   acctID: PropTypes.string.isRequired,
   /** The mailing address of the account displayed in the card */
@@ -115,6 +118,13 @@ export const getIcon = (acctType, status) => {
     return (
       <figure className={`${styles["icon-container"]} ${styles.gas}`}>
         <IconGas data-testid="icon-gas" />
+      </figure>
+    );
+  }
+  if (acctType === "unknown" && status === "default") {
+    return (
+      <figure className={`${styles["icon-container"]} ${styles.unknown}`}>
+        <IconUnknown data-testid="icon-unknown" />
       </figure>
     );
   }

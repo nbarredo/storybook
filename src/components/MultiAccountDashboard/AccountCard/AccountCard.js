@@ -194,7 +194,7 @@ AccountCard.propTypes = {
   /** Specify an optional className to be applied to the AccountCard */
   className: PropTypes.string,
   /** Specify which type of account (gas or electric) the card is displaying */
-  acctType: PropTypes.oneOf(["electric", "gas"]),
+  acctType: PropTypes.oneOf(["electric", "gas", "unknown", "merged"]),
   /** Specify which CTA should be shown at the bottom of the card in mobile viewports.  Paperless is the default, but if the account is already enrolled in paperless billing, the autopay CTA must show instead. If the account is already enrolled in both programs, select 'none' to hide the mobile CTA entirely. */
   mobileCTAType: PropTypes.oneOf(["none", "paperless", "autopay"]),
   /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
@@ -205,7 +205,7 @@ AccountCard.propTypes = {
   data: PropTypes.exact({
     totalDue: PropTypes.string,
     dateDue: PropTypes.string,
-    acctID: PropTypes.string,
+    acctID: PropTypes.number,
     address: PropTypes.string
   }).isRequired
 };
