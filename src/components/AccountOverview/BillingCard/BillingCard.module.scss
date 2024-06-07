@@ -1,0 +1,354 @@
+$primary-font-stack: "Open Sans", "Segoe UI", tahoma, sans-serif;
+
+.billing-card {
+  border-radius: 12px;
+  box-shadow: 0px 0px 1px 0px #006db340, 0px 1px 2px 0px #006db333;
+  box-sizing: border-box;
+  min-height: 289px;
+  min-width: 390px;
+  width: 100%;
+  &.electric {
+    border: 1px solid var(--teal-00);
+    h4 {
+      color: var(--teal-80);
+    }
+  }
+  &.gas {
+    border: 1px solid var(--purple-10);
+    h4 {
+      color: var(--purple-90);
+    }
+  }
+
+  &.unknown {
+    border: 1px solid var(--gray-10);
+    h4 {
+      color: var(--teal-80);
+    }
+  }
+
+  .last-month {
+    align-items: flex-end;
+    border-bottom: 1px dashed var(--teal-20);
+    display: flex;
+    gap: 20px;
+    padding: 16px;
+    .col-info {
+      flex-basis: 167px;
+      flex-grow: 1;
+      flex-shrink: 1;
+      min-width: 167px;
+      p {
+        color: var(--gray-70);
+        font: 400 16px/20px $primary-font-stack;
+      }
+    }
+    .col-cta {
+      flex-basis: 162px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      white-space: nowrap;
+      .tagcta {
+        padding: 0;
+        button {
+          border-radius: 6px;
+          color: var(--blue-70);
+          cursor: pointer;
+          min-height: 0;
+          padding: 4px 8px;
+          div {
+            display: none;
+            @media screen and (min-width: 672px) {
+              display: block;
+            }
+          }
+          span {
+            line-height: 14px;
+          }
+        }
+      }
+    }
+    h4 {
+      font: 600 16px/20px $primary-font-stack;
+      margin-bottom: 12px;
+    }
+    @media screen and (min-width: 672px) {
+      padding: 16px 24px;
+    }
+  }
+
+  .this-month {
+    padding: 24px 16px 12px 16px;
+    &.hasAutoPay {
+      grid-template-columns: 386px 1fr;
+      aside {
+        .auto-pay-cta {
+          margin: 16px 0 0 0;
+          max-width: none;
+          button {
+            cursor: pointer;
+            justify-content: flex-start;
+            max-width: none;
+            width: 100%;
+            &:hover {
+              color: var(--blue-70);
+            }
+          }
+        }
+        @media screen and (min-width: 672px) {
+          grid-row: none;
+          margin-bottom: 0;
+
+          data {
+            margin-bottom: 8px;
+          }
+        }
+      }
+      .payment-options {
+        @media screen and (min-width: 672px) {
+          align-items: flex-end;
+          height: auto;
+          grid-template-columns: 1fr;
+          margin-top: 0;
+          row-gap: 12px;
+          button:nth-child(1) {
+            order: 1;
+          }
+        }
+      }
+      .autopay-message {
+        grid-column: 1/3;
+      }
+    }
+    &.hasPmtPlan {
+      align-items: flex-end;
+      grid-template-rows: auto auto 43px;
+      aside {
+        @media screen and (min-width: 672px) {
+          margin-bottom: 0;
+        }
+      }
+      .payment-options {
+        @media screen and (min-width: 672px) {
+          margin-top: 0;
+          margin-bottom: 12px;
+        }
+      }
+    }
+
+    aside {
+      border-radius: 8px;
+      color: var(--gray-80);
+      margin-bottom: 16px;
+      padding: 8px 16px 16px 16px;
+      text-align: center;
+      &.pmtDue {
+        background-color: var(--teal-00);
+        font: 600 18px/20px $primary-font-stack;
+        data {
+          color: var(--gray-80);
+        }
+        @media screen and (min-width: 672px) {
+          font: 600 16px/20px $primary-font-stack;
+        }
+      }
+      &.pmtOverdue {
+        background-color: var(--red-00);
+        font: 600 18px/20px $primary-font-stack;
+        data {
+          color: var(--red-80);
+        }
+        @media screen and (min-width: 672px) {
+          font: 600 16px/20px $primary-font-stack;
+        }
+      }
+      &.finalBill {
+        background-color: var(--orange-00);
+        font: 400 14px/21px $primary-font-stack;
+        data {
+          color: var(--gray-70);
+        }
+      }
+      &.nothingDue {
+        background-color: var(--gray-00);
+        color: var(--gray-70);
+        font: 600 14px/21px $primary-font-stack;
+        data {
+          color: var(--gray-60);
+        }
+      }
+      &.credit {
+        background-color: var(--green-00);
+        font: 400 14px/21px $primary-font-stack;
+        data {
+          color: var(--bright-green-80);
+        }
+      }
+      &.hasAutoPay {
+        background-color: var(--gray-00);
+        color: var(--gray-70);
+        font: 400 16px/21px $primary-font-stack;
+        data {
+          color: var(--gray-80);
+        }
+      }
+      &.hasPmtPlan {
+        background-color: var(--gray-00);
+        color: var(--gray-70);
+        font: 400 16px/21px $primary-font-stack;
+        data {
+          color: var(--gray-70);
+        }
+      }
+      @media screen and (min-width: 672px) {
+        grid-row: 2/4;
+      }
+    }
+    h4 {
+      font: 600 16px/20px $primary-font-stack;
+      margin-bottom: 8px;
+      @media screen and (min-width: 672px) {
+        grid-column: 1 / 3;
+      }
+    }
+    data {
+      display: block;
+      margin-bottom: 12px;
+      white-space: nowrap;
+      &.credit {
+        &::before {
+          content: "+";
+          display: inline-block;
+          font: 600 45px/56px $primary-font-stack;
+          letter-spacing: -2px;
+          margin-right: 12px;
+          vertical-align: super;
+        }
+      }
+      .symbol {
+        display: inline-block;
+        font: 300 45px/56px $primary-font-stack;
+        letter-spacing: -2px;
+        margin-right: 4px;
+        vertical-align: super;
+      }
+      strong {
+        font: 400 60px/75px $primary-font-stack;
+        letter-spacing: -2px;
+      }
+      small {
+        font: 300 45px/75px $primary-font-stack;
+        letter-spacing: -2px;
+      }
+    }
+    .auto-pay-cta {
+      margin: 16px auto 0 auto;
+      padding: 0;
+      button {
+        background-color: var(--gray-10);
+        min-height: 0;
+        padding: 2px 8px;
+        span {
+          color: var(--blue-70);
+          font: 600 16px/24px $primary-font-stack;
+        }
+        div {
+          margin-right: 8px;
+        }
+      }
+    }
+
+    .pmt-plan-cta {
+      margin: 16px auto 0 auto;
+      max-width: 100%;
+      padding: 0;
+      button {
+        background-color: var(--orange-00);
+        border: 1px solid var(--orange-10);
+        cursor: pointer;
+        display: block;
+        max-inline-size: 100%;
+        min-height: 0;
+        padding: 2px 8px;
+        width: 100%;
+        span {
+          color: var(--gray-80);
+          font: 600 14px/18px $primary-font-stack;
+        }
+        div {
+          margin-right: 8px;
+        }
+      }
+      @media screen and (min-width: 672px) {
+        margin-top: 8px;
+      }
+    }
+    .payment-options {
+      column-gap: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 48px;
+
+      &.hasAutoPay {
+        grid-template-rows: 1fr;
+      }
+
+      button {
+        text-align: center;
+        width: 100%;
+        @media screen and (min-width: 672px) {
+          padding: 14px 16px;
+        }
+      }
+
+      .provider-label {
+        color: var(--gray-70);
+        font: 400 12px/12px $primary-font-stack;
+        padding-top: 4px;
+        text-align: center;
+      }
+      @media screen and (min-width: 672px) {
+        grid-template-rows: 44px 12px;
+        height: 60px;
+        margin-top: 27px;
+      }
+    }
+    .autopay-message {
+      color: var(--gray-70);
+      font: 400 14px/21px $primary-font-stack;
+      margin-top: 24px;
+    }
+
+    .view-bill-button {
+      background-color: var(--blue-00);
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border: none;
+      color: var(--blue-70);
+      font: 700 14px/14px $primary-font-stack;
+      max-height: 40px;
+      @media screen and (min-width: 672px) {
+        background-color: transparent;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        grid-column: 2 / 3;
+        margin: 0 auto;
+        width: fit-content;
+        &:hover {
+          background-color: var(--blue-00);
+        }
+      }
+    }
+
+    @media screen and (min-width: 672px) {
+      column-gap: 24px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      padding: 24px;
+    }
+  }
+
+  @media screen and (min-width: 672px) {
+    width: 664px;
+  }
+}
