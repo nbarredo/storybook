@@ -38,9 +38,7 @@ $primary-font-stack: "Open Sans", "Segoe UI", tahoma, sans-serif;
     gap: 20px;
     padding: 16px;
     .col-info {
-      flex-basis: 167px;
-      flex-grow: 1;
-      flex-shrink: 1;
+      flex: 1 1 167px;
       min-width: 167px;
       p {
         color: var(--gray-70);
@@ -48,9 +46,7 @@ $primary-font-stack: "Open Sans", "Segoe UI", tahoma, sans-serif;
       }
     }
     .col-cta {
-      flex-basis: 162px;
-      flex-grow: 0;
-      flex-shrink: 0;
+      flex: 0 0 162px;
       white-space: nowrap;
       .tagcta {
         padding: 0;
@@ -114,8 +110,8 @@ $primary-font-stack: "Open Sans", "Segoe UI", tahoma, sans-serif;
       .payment-options {
         @include do-this-above(md) {
           align-items: flex-end;
-          height: auto;
           grid-template-columns: 1fr;
+          height: auto;
           margin-top: 0;
           row-gap: 12px;
           button:nth-child(1) {
@@ -137,8 +133,8 @@ $primary-font-stack: "Open Sans", "Segoe UI", tahoma, sans-serif;
       }
       .payment-options {
         @include do-this-above(md) {
-          margin-top: 0;
           margin-bottom: 12px;
+          margin-top: 0;
         }
       }
     }
@@ -188,9 +184,9 @@ $primary-font-stack: "Open Sans", "Segoe UI", tahoma, sans-serif;
       }
       &.credit {
         background-color: var(--green-00);
+        font: 400 14px/21px $primary-font-stack;
         padding-left: 8px;
         padding-right: 8px;
-        font: 400 14px/21px $primary-font-stack;
         data {
           color: var(--bright-green-80);
         }
@@ -337,9 +333,9 @@ $primary-font-stack: "Open Sans", "Segoe UI", tahoma, sans-serif;
 
     .view-bill-button {
       background-color: var(--blue-00);
+      border: none;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
-      border: none;
       color: var(--blue-70);
       font: 700 14px/14px $primary-font-stack;
       max-height: 40px;
