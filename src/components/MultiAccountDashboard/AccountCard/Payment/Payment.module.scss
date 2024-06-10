@@ -1,3 +1,4 @@
+@use "../../../../styles/typography" as t;
 @use "../../../../styles/global" as g;
 @use "../../../../styles/mixins" as *;
 
@@ -11,14 +12,16 @@
     border-radius: g.$border-radius;
     display: inline-block;
     margin-right: 0;
-    padding: 0px g.$space-4;
+    padding: g.$space-3 g.$space-4;
     vertical-align: middle;
     &.danger {
       border: 1px solid var(--red-60);
     }
     strong {
-      color: var(--gray-70);
+      @extend %font-size-2-semi;
+      color: var(--blue-70);
       display: block;
+      line-height: 20px;
       margin-right: 0;
       @include do-this-above(md) {
         display: inline;
@@ -26,6 +29,9 @@
       }
     }
     .due-date {
+      @extend %font-size-1-reg;
+      color: var(--gray-60);
+      line-height: 17px;
       white-space: nowrap;
     }
     @include do-this-above(md) {

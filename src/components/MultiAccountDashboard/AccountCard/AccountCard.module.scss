@@ -26,13 +26,13 @@ $min-height-compact: 40px;
   .content-container {
     display: flex;
     gap: 50px;
-    padding: g.$space-6 g.$space-5;
+    padding: g.$space-4;
 
     .grid {
       align-items: center;
       display: grid;
-      gap: g.$space-4;
-      grid-template-columns: minmax(225px, 2fr) minmax(130px, 1fr);
+      gap: g.$space-5;
+      grid-template-columns: 231px 116px;
       width: 100%;
       .column {
         &.actions {

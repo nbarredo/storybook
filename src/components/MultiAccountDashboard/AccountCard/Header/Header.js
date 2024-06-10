@@ -128,4 +128,11 @@ export const getIcon = (acctType, status) => {
       </figure>
     );
   }
+  if (acctType === "merged" && status === "default") {
+    return (
+      <figure className={`${styles["icon-container"]} ${styles.merged}`}>
+        <IconMerged data-testid="icon-unknown" />
+      </figure>
+    );
+  }
 };

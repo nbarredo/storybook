@@ -28,7 +28,7 @@ export const Default = {
     hasAutopay: true,
     hasPaperless: false,
     data: {
-      totalDue: "$9,900,853.02",
+      totalDue: "$900,853.02",
       dateDue: "02/06/23",
       acctID: "12345678987",
       address: "124 Main Street NH 120384"

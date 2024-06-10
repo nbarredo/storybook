@@ -71,7 +71,8 @@ header {
       width: 12px;
     }
   }
-  &.unknown {
+  &.unknown,
+  &.merged {
     background-color: var(--gray-10);
     svg {
       path {
