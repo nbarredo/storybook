@@ -26,6 +26,16 @@ export default function Header({ status, acctType, acctID, address }) {
         return "gray-70";
     }
   };
+  const getAccountTitle = () => {
+    switch (acctType) {
+      case "unknown":
+        return "Acct ";
+      case "merged":
+        return "Merged Account ";
+      default:
+        return ToTitleCase(acctType);
+    }
+  };
   return (
     <header>
       {getIcon(acctType, status)}
@@ -36,20 +46,24 @@ export default function Header({ status, acctType, acctID, address }) {
         color={getTextColor()}
         className={`${isClosed() ? styles.closed : ""}`}
       >
-        {ToTitleCase(acctType)}
+        {getAccountTitle()}
       </Text>
-      <div role="presentation" className={styles.separator}>
-        <Separator data-testid="separator" />
-      </div>
-      <Text
-        inline={true}
-        color="gray-70"
-        size="2"
-        weight="reg"
-        className={`${styles.acctNumber} ${isClosed() ? styles.closed : ""}`}
-      >
-        {acctID}
-      </Text>
+      {!["unknown", "merged"].includes(acctType) && (
+        <div role="presentation" className={styles.separator}>
+          <Separator data-testid="separator" />
+        </div>
+      )}
+      {acctType !== "merged" && (
+        <Text
+          inline={true}
+          color="gray-70"
+          size="2"
+          weight="reg"
+          className={`${styles.acctNumber} ${isClosed() ? styles.closed : ""}`}
+        >
+          {acctID}
+        </Text>
+      )}
       <address>
         <Text
           color="gray-60"
@@ -57,7 +71,7 @@ export default function Header({ status, acctType, acctID, address }) {
           weight="reg"
           className={`${styles.clamp} ${isClosed() ? styles.closed : ""}`}
         >
-          {address}
+          {acctType === "merged" ? "(Parent Account)" : address}
         </Text>
       </address>
     </header>
@@ -106,10 +120,7 @@ export const getIcon = (acctType, status) => {
   }
   if (acctType === "electric" && status === "default") {
     return (
-      <figure
-        role="presentation"
-        className={`${styles["icon-container"]} ${styles.electric}`}
-      >
+      <figure className={`${styles["icon-container"]} ${styles.electric}`}>
         <IconElectric role="presentation" data-testid="icon-electric" />
       </figure>
     );
