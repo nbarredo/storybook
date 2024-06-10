@@ -105,7 +105,7 @@ $min-height-compact: 40px;
 
   &.compact {
     .content-container {
-      &info,
+      &.info,
       &.warning,
       &.danger {
         padding: g.$space-4 g.$space-4 g.$space-5 g.$space-4;
