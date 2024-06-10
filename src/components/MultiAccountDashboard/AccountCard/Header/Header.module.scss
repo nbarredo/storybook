@@ -105,8 +105,8 @@ header {
     }
   }
   &.closed {
-    background-color: var(--gray-20);
-    border: 1px dashed var(--gray-50);
+    background-color: var(--gray-00);
+    border: 1px dashed var(--gray-40);
     svg {
       path {
         fill: var(--gray-40);

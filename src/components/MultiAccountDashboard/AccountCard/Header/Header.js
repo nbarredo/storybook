@@ -115,6 +115,8 @@ export const getIcon = (acctType, status) => {
           <IconElectric data-testid="icon-electric" />
         )}
         {acctType === "gas" && <IconGas data-testid="icon-gas" />}
+        {acctType === "unknown" && <IconUnknown data-testid="icon-unknown" />}
+        {acctType === "merged" && <IconMerged data-testid="icon-merged" />}
       </figure>
     );
   }
@@ -142,7 +144,7 @@ export const getIcon = (acctType, status) => {
   if (acctType === "merged" && status === "default") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.merged}`}>
-        <IconMerged data-testid="icon-unknown" />
+        <IconMerged data-testid="icon-merged" />
       </figure>
     );
   }

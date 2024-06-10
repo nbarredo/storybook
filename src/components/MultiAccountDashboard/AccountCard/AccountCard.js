@@ -91,7 +91,7 @@ function AccountCard({
         <div className={`${styles.column} ${styles.actions}`}>
           <ul className={styles.actions}>
             <li>
-              <Tag icon text="Account Closed" theme="important" />
+              <Tag showIcon text="Account Closed" theme="important" />
             </li>
           </ul>
         </div>

@@ -3,7 +3,6 @@
 @use "../../../styles/global" as g;
 @use "sass:map";
 
-$min-height: 83px;
 $min-height-compact: 40px;
 
 .root {
@@ -13,7 +12,6 @@ $min-height-compact: 40px;
   box-shadow:
     0px 0px 1px 0px #006db340,
     0px 1px 2px 0px #006db333;
-  min-height: $min-height;
 
   &.warning {
     border: 1px solid var(--orange-10);
@@ -108,7 +106,8 @@ $min-height-compact: 40px;
     border: 1px dashed var(--gray-40);
     .content-container {
       .grid {
-        grid-template-columns: minmax(196px, 2fr) minmax(125px, 1fr);
+        gap: g.$space-4;
+        grid-template-columns: 229px 123px;
         .column.actions {
           display: block;
           li {
