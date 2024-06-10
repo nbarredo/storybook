@@ -83,10 +83,13 @@ header {
     }
   }
   &.warning {
-    background-color: var(--orange-00);
+    background-color: var(--orange-10);
     svg {
-      height: 16px;
-      width: 16px;
+      height: 17px;
+      width: 17px;
+      path {
+        fill: var(--orange-70);
+      }
       @include do-this-above(md) {
         height: 21px;
         width: 21px;
@@ -96,8 +99,11 @@ header {
   &.danger {
     background-color: var(--red-00);
     svg {
-      height: 16px;
-      width: 16px;
+      height: 17px;
+      width: 17px;
+      path {
+        fill: var(--red-80);
+      }
       @include do-this-above(md) {
         height: 21px;
         width: 21px;
