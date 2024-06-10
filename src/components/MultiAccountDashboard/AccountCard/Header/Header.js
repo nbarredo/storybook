@@ -82,7 +82,7 @@ export { Header };
 
 Header.propTypes = {
   /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
-  status: PropTypes.oneOf(["default", "warning", "danger", "closed"])
+  status: PropTypes.oneOf(["default", "info", "warning", "danger", "closed"])
     .isRequired,
   /** Specify which type of account (gas or electric) the card is displaying */
   acctType: PropTypes.oneOf(["electric", "gas", "unknown", "merged"])
@@ -120,28 +120,28 @@ export const getIcon = (acctType, status) => {
       </figure>
     );
   }
-  if (acctType === "electric" && status === "default") {
+  if (acctType === "electric" && ["default", "info"].includes(status)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.electric}`}>
         <IconElectric role="presentation" data-testid="icon-electric" />
       </figure>
     );
   }
-  if (acctType === "gas" && status === "default") {
+  if (acctType === "gas" && ["default", "info"].includes(status)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.gas}`}>
         <IconGas data-testid="icon-gas" />
       </figure>
     );
   }
-  if (acctType === "unknown" && status === "default") {
+  if (acctType === "unknown" && ["default", "info"].includes(status)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.unknown}`}>
         <IconUnknown data-testid="icon-unknown" />
       </figure>
     );
   }
-  if (acctType === "merged" && status === "default") {
+  if (acctType === "merged" && ["default", "info"].includes(status)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.merged}`}>
         <IconMerged data-testid="icon-merged" />

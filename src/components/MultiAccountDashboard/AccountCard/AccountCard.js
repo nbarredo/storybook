@@ -152,6 +152,15 @@ function AccountCard({
           className={styles.alert}
         />
       )}
+      {status === "info" && (
+        <InlineNotification
+          hideCloseButton
+          kind="info"
+          role="status"
+          title={alertText}
+          className={`${styles.alert} ${styles.info}`}
+        />
+      )}
       {status === "default" && mobileCTAType !== "none" && (
         <>
           {mobileCTAType === "paperless" && (
@@ -200,7 +209,7 @@ AccountCard.propTypes = {
   /** Specify which CTA should be shown at the bottom of the card in mobile viewports.  Paperless is the default, but if the account is already enrolled in paperless billing, the autopay CTA must show instead. If the account is already enrolled in both programs, select 'none' to hide the mobile CTA entirely. */
   mobileCTAType: PropTypes.oneOf(["none", "paperless", "autopay"]),
   /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
-  status: PropTypes.oneOf(["default", "warning", "danger", "closed"]),
+  status: PropTypes.oneOf(["default", "info", "warning", "danger", "closed"]),
   /** The text of the card's warning/danger message   */
   alertText: PropTypes.string,
   /** The data object that must be passed to the AccountCard */
