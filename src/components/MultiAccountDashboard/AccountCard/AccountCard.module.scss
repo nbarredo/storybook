@@ -36,6 +36,9 @@ $min-height-compact: 40px;
     &.danger,
     &.mobile-cta {
       padding: g.$space-4 g.$space-4 g.$space-5 g.$space-4;
+      @include do-this-above(lg) {
+        padding: g.$space-6 g.$space-6 g.$space-5 g.$space-6;
+      }
     }
 
     .grid {
@@ -108,6 +111,9 @@ $min-height-compact: 40px;
     }
     @include do-this-above(lg) {
       padding: g.$space-7 g.$space-6;
+    }
+    @include do-this-above(xl) {
+      padding: g.$space-6;
     }
   }
 
