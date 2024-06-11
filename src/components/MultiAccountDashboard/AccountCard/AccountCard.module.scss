@@ -46,20 +46,20 @@ $min-height-compact: 40px;
       .column {
         &.actions {
           display: none;
-          @include do-this-above(lg) {
+          @include do-this-above(md) {
             display: block;
           }
         }
         &.cta {
           display: none;
-          @include do-this-above(md) {
+          @include do-this-above(lg) {
             display: block;
           }
         }
       }
       @include do-this-above(md) {
-        gap: g.$space-5;
-        grid-template-columns: repeat(4, 1fr);
+        gap: g.$space-7;
+        grid-template-columns: minmax(224px, 244px) 118px minmax(205px, 220px);
       }
       @include do-this-above(lg) {
         grid-template-columns:
@@ -73,6 +73,9 @@ $min-height-compact: 40px;
         display: inline-block;
         &:first-child {
           margin-right: g.$space-5;
+          @include do-this-above(md) {
+            margin-right: 0;
+          }
         }
       }
     }

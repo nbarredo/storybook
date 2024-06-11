@@ -39,7 +39,7 @@
         color: var(--red-80);
       }
     }
-    @include do-this-above(md) {
+    @include do-this-above(lg) {
       margin-right: g.$space-5;
       padding: g.$space-2 g.$space-3;
     }
@@ -53,7 +53,7 @@
       top: 50%;
       transform: translateY(-50%);
     }
-    @include do-this-above(md) {
+    @include do-this-above(lg) {
       display: inline-block;
     }
   }

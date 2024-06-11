@@ -36,7 +36,7 @@ function AccountCard({
             <ul className={styles.actions}>
               <li>
                 {hasPaperless ? (
-                  <Tag icon text="Paperless is On" theme="default" />
+                  <Tag showIcon text="Paperless is On" theme="default" />
                 ) : (
                   <TagCTA
                     onClick={onClickPaperless}
@@ -47,7 +47,7 @@ function AccountCard({
               </li>
               <li>
                 {hasAutopay ? (
-                  <Tag icon text="Autopay is On" theme="default" />
+                  <Tag showIcon text="Autopay is On" theme="default" />
                 ) : (
                   <TagCTA
                     onClick={onClickPaperless}
