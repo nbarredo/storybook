@@ -62,9 +62,7 @@ $min-height-compact: 40px;
         grid-template-columns: minmax(224px, 244px) 118px minmax(205px, 220px);
       }
       @include do-this-above(lg) {
-        grid-template-columns:
-          minmax(260px, 100vw) minmax(272px, 280px) minmax(317px, 100vw)
-          minmax(92px, 100vw);
+        grid-template-columns: minmax(264px, 290px) minmax(252px, 274px) 217px 128px;
       }
     }
 
@@ -72,9 +70,9 @@ $min-height-compact: 40px;
       li {
         display: inline-block;
         &:first-child {
-          margin-right: g.$space-5;
-          @include do-this-above(md) {
-            margin-right: 0;
+          margin-right: 0;
+          @include do-this-above(lg) {
+            margin-right: g.$space-3;
           }
         }
       }
