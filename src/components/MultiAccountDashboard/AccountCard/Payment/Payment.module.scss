@@ -14,9 +14,7 @@
     margin-right: 0;
     padding: g.$space-3 g.$space-4;
     vertical-align: middle;
-    &.danger {
-      border: 1px solid var(--red-60);
-    }
+
     strong {
       @extend %font-size-2-semi;
       color: var(--blue-70);
@@ -28,11 +26,18 @@
         margin-right: g.$space-4;
       }
     }
+
     .due-date {
       @extend %font-size-1-reg;
       color: var(--gray-60);
       line-height: 17px;
       white-space: nowrap;
+    }
+    &.danger {
+      border: 1px solid var(--red-40);
+      strong {
+        color: var(--red-80);
+      }
     }
     @include do-this-above(md) {
       margin-right: g.$space-5;
