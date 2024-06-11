@@ -118,7 +118,7 @@ function AccountCard({
       className={`${styles.root} ${status !== "default" ? styles[status] : ""} ${className ?? ""} ${compact ? styles.compact : ""}`}
     >
       <article
-        className={`${styles["content-container"]} ${status !== "default" ? styles[status] : ""}`}
+        className={`${styles["content-container"]} ${status !== "default" ? styles[status] : ""} ${mobileCTAType !== "none" ? styles["mobile-cta"] : ""}`}
       >
         <div className={styles.grid}>
           <div className={`${styles.column}`}>

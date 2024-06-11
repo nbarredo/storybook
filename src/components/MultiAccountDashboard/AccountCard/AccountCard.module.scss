@@ -32,7 +32,8 @@ $min-height-compact: 40px;
 
     &.info,
     &.warning,
-    &.danger {
+    &.danger,
+    &.mobile-cta {
       padding: g.$space-4 g.$space-4 g.$space-5 g.$space-4;
     }
 
