@@ -10,10 +10,15 @@
     background-color: var(--gray-00);
     border: 1px solid var(--blue-20);
     border-radius: g.$border-radius;
+    cursor: pointer;
     display: inline-block;
     margin-right: 0;
     padding: g.$space-3 g.$space-4;
     vertical-align: middle;
+
+    &:hover {
+      background-color: var(--blue-10);
+    }
 
     p {
       @include do-this-above(md) {
@@ -32,6 +37,10 @@
         line-height: 14px;
         margin-right: g.$space-4;
       }
+      @include do-this-above(xl) {
+        color: var(--gray-70);
+        font: 700 16px/20px t.$primary-font-stack;
+      }
     }
 
     .due-date {
@@ -41,6 +50,10 @@
       white-space: nowrap;
       @include do-this-above(md) {
         line-height: 14px;
+      }
+      @include do-this-above(xl) {
+        color: var(--gray-60);
+        font: 600 16px/20px t.$primary-font-stack;
       }
     }
     &.danger {
@@ -54,7 +67,11 @@
     }
 
     @include do-this-above(xl) {
+      border-color: var(--gray-00);
+      cursor: default;
       margin-right: g.$space-5;
+      padding: g.$space-2 g.$space-3;
+      pointer-events: none;
     }
   }
   .button-container {

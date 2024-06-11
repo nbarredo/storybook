@@ -12,6 +12,7 @@ $min-height-compact: 40px;
   box-shadow:
     0px 0px 1px 0px #006db340,
     0px 1px 2px 0px #006db333;
+  max-width: 1176px;
 
   &.warning {
     border: 1px solid var(--orange-10);
@@ -63,6 +64,11 @@ $min-height-compact: 40px;
       }
       @include do-this-above(lg) {
         grid-template-columns: minmax(264px, 290px) minmax(252px, 274px) 217px 128px;
+      }
+      @include do-this-above(xl) {
+        grid-template-columns:
+          minmax(316px, 316px) minmax(256px, 256px) minmax(325px, 329px)
+          minmax(128px, 128px);
       }
     }
 

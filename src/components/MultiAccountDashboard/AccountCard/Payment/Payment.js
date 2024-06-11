@@ -14,6 +14,7 @@ export default function Payment({
     <aside className={styles["payment-area"]}>
       <div
         className={`${styles["total-due"]} ${status === "danger" ? styles.danger : ""}`}
+        onClick={onClickPayBill}
       >
         <Text color="gray-60" size="2" weight="semi" inline={true}>
           <strong>{totalDue}</strong>
