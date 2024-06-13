@@ -88,7 +88,7 @@ Header.propTypes = {
   acctType: PropTypes.oneOf(["electric", "gas", "unknown", "merged"])
     .isRequired,
   /** The number or nickname of the account displayed in the card */
-  acctID: PropTypes.string.isRequired,
+  acctID: PropTypes.number.isRequired,
   /** The mailing address of the account displayed in the card */
   address: PropTypes.string.isRequired
 };

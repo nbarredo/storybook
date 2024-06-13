@@ -8,7 +8,7 @@ describe("Header component functions properly", () => {
   const defaultProps = {
     status: "default",
     acctType: "electric",
-    acctID: "12345",
+    acctID: 12345,
     address: "123 Main St"
   };
 

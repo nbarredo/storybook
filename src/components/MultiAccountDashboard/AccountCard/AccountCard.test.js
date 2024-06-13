@@ -5,7 +5,7 @@ describe("Account Card component functions correctly", () => {
   const basicData = {
     totalDue: "100",
     dateDue: "2023-01-01",
-    acctID: "123",
+    acctID: 123,
     address: "123 Main St"
   };
   test("renders AccountCard with default props", () => {
@@ -43,7 +43,7 @@ describe("Account Card component functions correctly", () => {
     render(
       <AccountCard
         hasPaperless={true}
-        data={{ totalDue: "", dateDue: "", acctID: "", address: "" }}
+        data={{ totalDue: "", dateDue: "", acctID: 123, address: "" }}
       />
     );
     expect(screen.getByText("Paperless is On")).toBeInTheDocument();
@@ -53,7 +53,7 @@ describe("Account Card component functions correctly", () => {
     render(
       <AccountCard
         hasAutopay={true}
-        data={{ totalDue: "", dateDue: "", acctID: "", address: "" }}
+        data={{ totalDue: "", dateDue: "", acctID: 123, address: "" }}
       />
     );
     expect(screen.getByText("Autopay is On")).toBeInTheDocument();
