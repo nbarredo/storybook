@@ -20,6 +20,8 @@ function AccountCard({
   alertText,
   hasAutopay = false,
   hasPaperless = false,
+  showAutopayBtn = true,
+  showPaperlessBtn = true,
   status = "default",
   onClickPaperless,
   onClickAutopay,
@@ -34,28 +36,32 @@ function AccountCard({
         <div className={`${styles.column} ${styles.actions}`}>
           {status !== "danger" && (
             <ul className={styles.actions}>
-              <li>
-                {hasPaperless ? (
-                  <Tag showIcon text="Paperless is On" theme="default" />
-                ) : (
-                  <TagCTA
-                    onClick={onClickPaperless}
-                    text="Go Paperless"
-                    theme="default"
-                  />
-                )}
-              </li>
-              <li>
-                {hasAutopay ? (
-                  <Tag showIcon text="Autopay is On" theme="default" />
-                ) : (
-                  <TagCTA
-                    onClick={onClickPaperless}
-                    text="Set Up Auto Pay"
-                    theme="blue"
-                  />
-                )}
-              </li>
+              {showPaperlessBtn && (
+                <li>
+                  {hasPaperless ? (
+                    <Tag showIcon text="Paperless is On" theme="default" />
+                  ) : (
+                    <TagCTA
+                      onClick={onClickPaperless}
+                      text="Go Paperless"
+                      theme="default"
+                    />
+                  )}
+                </li>
+              )}
+              {showAutopayBtn && (
+                <li>
+                  {hasAutopay ? (
+                    <Tag showIcon text="Autopay is On" theme="default" />
+                  ) : (
+                    <TagCTA
+                      onClick={onClickAutopay}
+                      text="Set Up Auto Pay"
+                      theme="blue"
+                    />
+                  )}
+                </li>
+              )}
             </ul>
           )}
         </div>
@@ -194,6 +200,10 @@ AccountCard.propTypes = {
   hasAutopay: PropTypes.bool,
   /** Specify whether or not the current account is enrolled in Paperless Billing */
   hasPaperless: PropTypes.bool,
+  /** Specify whether or not the Autopay button/tag should appear */
+  showAutopayBtn: PropTypes.bool,
+  /** Specify whether or not the Paperless Billing button/tag should appear */
+  showPaperlessBtn: PropTypes.bool,
   /** Specify what should occur when the "Go Paperless" tag is clicked */
   onClickPaperless: PropTypes.func,
   /** Specify what should occur when the "Set Up Autopay" tag is clicked */

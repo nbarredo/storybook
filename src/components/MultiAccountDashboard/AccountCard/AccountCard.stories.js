@@ -27,6 +27,8 @@ export const Default = {
     compact: false,
     hasAutopay: true,
     hasPaperless: false,
+    showAutopayBtn: true,
+    showPaperlessBtn: true,
     data: {
       totalDue: "$900,853.02",
       dateDue: "02/06/23",
@@ -50,5 +52,19 @@ export const AccountClosed = {
   args: {
     ...Default.args,
     status: "closed"
+  }
+};
+
+export const PaperlessButtonHidden = {
+  args: {
+    ...Default.args,
+    showPaperlessBtn: false
+  }
+};
+
+export const AutopayButtonHidden = {
+  args: {
+    ...Default.args,
+    showAutopayBtn: false
   }
 };
