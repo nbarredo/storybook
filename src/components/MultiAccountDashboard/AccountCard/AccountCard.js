@@ -29,7 +29,7 @@ function AccountCard({
   acctDetailsURL,
   mobileCTAType = "paperless",
   data,
-  status = "default"
+  status = "pmtDue"
 }) {
   const renderActiveContent = () => {
     return (

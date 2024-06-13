@@ -8,17 +8,18 @@ export default function Payment({
   cardStyle = "default",
   totalDue,
   dateDue,
-  onClickPayBill
+  onClickPayBill,
+  status
 }) {
   return (
     <aside className={styles["payment-area"]}>
       <div
-        className={`${styles["total-due"]} ${cardStyle === "danger" ? styles.danger : ""}`}
+        className={`${styles["total-due"]} ${cardStyle === "danger" ? styles.danger : ""} ${styles[status]}`}
         onClick={onClickPayBill}
       >
         <Text color="gray-60" size="2" weight="semi" inline={true}>
           <strong>{totalDue}</strong>
-          <span className={styles["due-date"]}>Due {dateDue}</span>
+          {dateDue && <span className={styles["due-date"]}>Due {dateDue}</span>}
         </Text>
       </div>
       <div className={styles["button-container"]}>
@@ -42,5 +43,13 @@ Payment.propTypes = {
   /** Indicates which card style/layout should be used. "Warning" and "danger" styles will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
   cardStyle: PropTypes.oneOf(["default", "warning", "danger"]),
   totalDue: PropTypes.string,
-  dateDue: PropTypes.string
+  dateDue: PropTypes.string,
+  /** Indicates the billing status of the account.  This will control the appearance of the "Payment Due" part of the card. */
+  status: PropTypes.oneOf([
+    "pmtDue",
+    "pmtOverdue",
+    "finalBill",
+    "nothingDue",
+    "credit"
+  ])
 };

@@ -19,6 +19,7 @@ export default meta;
 
 export const Default = {
   args: {
+    status: "nothingDue",
     type: "electric",
     cardStyle: "default",
     alertText: "Warning message appears here",
@@ -70,41 +71,46 @@ export const AutopayButtonHidden = {
 };
 
 export const PaymentDue = {
+  name: "Status: Payment Due",
   args: {
     ...Default.args,
     status: "pmtDue"
   }
 };
-PaymentDue.storyName = "Status: Payment Due";
 
 export const PaymentOverdue = {
+  name: "Status: Payment Overdue",
   args: {
     ...Default.args,
     status: "pmtOverdue"
   }
 };
-PaymentOverdue.storyName = "Status: Payment Overdue";
 
 export const FinalBill = {
+  name: "Status: Final Bill",
   args: {
     ...Default.args,
     status: "finalBill"
   }
 };
-FinalBill.storyName = "Status: Final Bill";
 
 export const NothingDue = {
+  name: "Status: Nothing Due",
   args: {
     ...Default.args,
-    status: "nothingDue"
+    status: "nothingDue",
+    data: {
+      ...Default.args.data,
+      totalDue: "$0.00",
+      dateDue: null
+    }
   }
 };
-NothingDue.storyName = "Status: Nothing Due";
 
 export const Credit = {
+  name: "Status: Credit",
   args: {
     ...Default.args,
     status: "credit"
   }
 };
-Credit.storyName = "Status: Credit";
