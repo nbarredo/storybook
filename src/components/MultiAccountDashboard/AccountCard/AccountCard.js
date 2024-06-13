@@ -16,7 +16,7 @@ import Payment from "./Payment/Payment";
 function AccountCard({
   className,
   compact,
-  acctType = "electric",
+  type = "electric",
   alertText,
   hasAutopay = false,
   hasPaperless = false,
@@ -129,7 +129,7 @@ function AccountCard({
         <div className={styles.grid}>
           <div className={`${styles.column}`}>
             <Header
-              acctType={acctType}
+              type={type}
               status={status}
               acctID={data.acctID}
               address={data.address}
@@ -215,7 +215,7 @@ AccountCard.propTypes = {
   /** Specify an optional className to be applied to the AccountCard */
   className: PropTypes.string,
   /** Specify which type of account (gas or electric) the card is displaying */
-  acctType: PropTypes.oneOf(["electric", "gas", "unknown", "merged"]),
+  type: PropTypes.oneOf(["electric", "gas", "unknown", "merged"]),
   /** Specify which CTA should be shown at the bottom of the card in mobile viewports.  Paperless is the default, but if the account is already enrolled in paperless billing, the autopay CTA must show instead. If the account is already enrolled in both programs, select 'none' to hide the mobile CTA entirely. */
   mobileCTAType: PropTypes.oneOf(["none", "paperless", "autopay"]),
   /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */

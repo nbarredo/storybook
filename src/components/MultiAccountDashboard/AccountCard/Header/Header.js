@@ -12,12 +12,12 @@ import { ReactComponent as IconDanger } from "./icon_status_danger.svg";
 import { ReactComponent as IconWarning } from "./icon_status_warning.svg";
 import { ReactComponent as Separator } from "./separator.svg";
 
-export default function Header({ status, acctType, acctID, address }) {
+export default function Header({ status, type, acctID, address }) {
   const isClosed = () => {
     return status === "closed";
   };
   const getTextColor = () => {
-    switch (acctType) {
+    switch (type) {
       case "electric":
         return "teal-90";
       case "gas":
@@ -27,18 +27,18 @@ export default function Header({ status, acctType, acctID, address }) {
     }
   };
   const getAccountTitle = () => {
-    switch (acctType) {
+    switch (type) {
       case "unknown":
         return "Acct ";
       case "merged":
         return "Merged Account ";
       default:
-        return ToTitleCase(acctType);
+        return ToTitleCase(type);
     }
   };
   return (
     <header>
-      {getIcon(acctType, status)}
+      {getIcon(type, status)}
       <Text
         size="3"
         weight="semi"
@@ -48,12 +48,12 @@ export default function Header({ status, acctType, acctID, address }) {
       >
         {getAccountTitle()}
       </Text>
-      {!["unknown", "merged"].includes(acctType) && (
+      {!["unknown", "merged"].includes(type) && (
         <div role="presentation" className={styles.separator}>
           <Separator data-testid="separator" />
         </div>
       )}
-      {acctType !== "merged" && (
+      {type !== "merged" && (
         <Text
           inline={true}
           color="gray-70"
@@ -71,7 +71,7 @@ export default function Header({ status, acctType, acctID, address }) {
           weight="reg"
           className={`${styles.clamp} ${isClosed() ? styles.closed : ""}`}
         >
-          {acctType === "merged" ? "(Parent Account)" : address}
+          {type === "merged" ? "(Parent Account)" : address}
         </Text>
       </address>
     </header>
@@ -85,15 +85,14 @@ Header.propTypes = {
   status: PropTypes.oneOf(["default", "info", "warning", "danger", "closed"])
     .isRequired,
   /** Specify which type of account (gas or electric) the card is displaying */
-  acctType: PropTypes.oneOf(["electric", "gas", "unknown", "merged"])
-    .isRequired,
+  type: PropTypes.oneOf(["electric", "gas", "unknown", "merged"]).isRequired,
   /** The number or nickname of the account displayed in the card */
   acctID: PropTypes.number.isRequired,
   /** The mailing address of the account displayed in the card */
   address: PropTypes.string.isRequired
 };
 
-export const getIcon = (acctType, status) => {
+export const getIcon = (type, status) => {
   if (status === "warning") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.warning}`}>
@@ -111,37 +110,35 @@ export const getIcon = (acctType, status) => {
   if (status === "closed") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.closed}`}>
-        {acctType === "electric" && (
-          <IconElectric data-testid="icon-electric" />
-        )}
-        {acctType === "gas" && <IconGas data-testid="icon-gas" />}
-        {acctType === "unknown" && <IconUnknown data-testid="icon-unknown" />}
-        {acctType === "merged" && <IconMerged data-testid="icon-merged" />}
+        {type === "electric" && <IconElectric data-testid="icon-electric" />}
+        {type === "gas" && <IconGas data-testid="icon-gas" />}
+        {type === "unknown" && <IconUnknown data-testid="icon-unknown" />}
+        {type === "merged" && <IconMerged data-testid="icon-merged" />}
       </figure>
     );
   }
-  if (acctType === "electric" && ["default", "info"].includes(status)) {
+  if (type === "electric" && ["default", "info"].includes(status)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.electric}`}>
         <IconElectric role="presentation" data-testid="icon-electric" />
       </figure>
     );
   }
-  if (acctType === "gas" && ["default", "info"].includes(status)) {
+  if (type === "gas" && ["default", "info"].includes(status)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.gas}`}>
         <IconGas data-testid="icon-gas" />
       </figure>
     );
   }
-  if (acctType === "unknown" && ["default", "info"].includes(status)) {
+  if (type === "unknown" && ["default", "info"].includes(status)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.unknown}`}>
         <IconUnknown data-testid="icon-unknown" />
       </figure>
     );
   }
-  if (acctType === "merged" && ["default", "info"].includes(status)) {
+  if (type === "merged" && ["default", "info"].includes(status)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.merged}`}>
         <IconMerged data-testid="icon-merged" />

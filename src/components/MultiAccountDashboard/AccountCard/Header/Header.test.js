@@ -7,7 +7,7 @@ import Header from "./Header";
 describe("Header component functions properly", () => {
   const defaultProps = {
     status: "default",
-    acctType: "electric",
+    type: "electric",
     acctID: 12345,
     address: "123 Main St"
   };
@@ -26,19 +26,19 @@ describe("Header component functions properly", () => {
   });
 
   test("renders correct icon for gas account type and default status", () => {
-    const { rerender } = render(<Header {...defaultProps} acctType="gas" />);
+    const { rerender } = render(<Header {...defaultProps} type="gas" />);
     expect(screen.getByTestId("icon-gas")).toBeInTheDocument();
-    rerender(<Header {...defaultProps} acctType="gas" status="closed" />);
+    rerender(<Header {...defaultProps} type="gas" status="closed" />);
     expect(screen.getByTestId("icon-gas")).toBeInTheDocument();
   });
 
   test("renders correct icon for gas account type and warning status", () => {
-    render(<Header {...defaultProps} acctType="gas" status="warning" />);
+    render(<Header {...defaultProps} type="gas" status="warning" />);
     expect(screen.getByTestId("icon-warning")).toBeInTheDocument();
   });
 
   test("renders correct icon for gas account type and danger status", () => {
-    render(<Header {...defaultProps} acctType="gas" status="danger" />);
+    render(<Header {...defaultProps} type="gas" status="danger" />);
     expect(screen.getByTestId("icon-danger")).toBeInTheDocument();
   });
 

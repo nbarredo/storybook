@@ -19,7 +19,7 @@ export default meta;
 
 export const Default = {
   args: {
-    acctType: "electric",
+    type: "electric",
     status: "default",
     alertText: "Warning message appears here",
     mobileCTAType: "paperless",
