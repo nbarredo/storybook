@@ -68,3 +68,43 @@ export const AutopayButtonHidden = {
     showAutopayBtn: false
   }
 };
+
+export const PaymentDue = {
+  args: {
+    ...Default.args,
+    status: "pmtDue"
+  }
+};
+PaymentDue.storyName = "Status: Payment Due";
+
+export const PaymentOverdue = {
+  args: {
+    ...Default.args,
+    status: "pmtOverdue"
+  }
+};
+PaymentOverdue.storyName = "Status: Payment Overdue";
+
+export const FinalBill = {
+  args: {
+    ...Default.args,
+    status: "finalBill"
+  }
+};
+FinalBill.storyName = "Status: Final Bill";
+
+export const NothingDue = {
+  args: {
+    ...Default.args,
+    status: "nothingDue"
+  }
+};
+NothingDue.storyName = "Status: Nothing Due";
+
+export const Credit = {
+  args: {
+    ...Default.args,
+    status: "credit"
+  }
+};
+Credit.storyName = "Status: Credit";

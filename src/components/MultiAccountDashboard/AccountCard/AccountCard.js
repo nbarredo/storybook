@@ -28,7 +28,8 @@ function AccountCard({
   onClickPayBill,
   acctDetailsURL,
   mobileCTAType = "paperless",
-  data
+  data,
+  status = "default"
 }) {
   const renderActiveContent = () => {
     return (
@@ -67,6 +68,7 @@ function AccountCard({
         </div>
         <div className={styles.column}>
           <Payment
+            status={status}
             cardStyle={cardStyle}
             totalDue={data.totalDue}
             dateDue={data.dateDue}
@@ -234,5 +236,13 @@ AccountCard.propTypes = {
     dateDue: PropTypes.string,
     acctID: PropTypes.number,
     address: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  /** Indicates the billing status of the account.  This will control the appearance of the "Payment Due" part of the card. */
+  status: PropTypes.oneOf([
+    "pmtDue",
+    "pmtOverdue",
+    "finalBill",
+    "nothingDue",
+    "credit"
+  ])
 };
