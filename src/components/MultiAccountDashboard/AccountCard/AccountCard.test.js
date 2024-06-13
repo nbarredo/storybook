@@ -20,10 +20,10 @@ describe("Account Card component functions correctly", () => {
     );
   });
 
-  test("renders properly in warning or danger status and displays alert text", () => {
+  test("renders properly in warning or danger cardStyle and displays alert text", () => {
     const { rerender } = render(
       <AccountCard
-        status="warning"
+        cardStyle="warning"
         alertText="Check your account"
         data={basicData}
       />
@@ -31,7 +31,7 @@ describe("Account Card component functions correctly", () => {
     expect(screen.getByText(/Check your account/i)).toBeInTheDocument();
     rerender(
       <AccountCard
-        status="danger"
+        cardStyle="danger"
         alertText="Check your account"
         data={basicData}
       />
@@ -96,9 +96,9 @@ describe("Account Card component functions correctly", () => {
     );
   });
 
-  test('renders inactive content when status is "closed"', () => {
+  test('renders inactive content when cardStyle is "closed"', () => {
     const { getByText } = render(
-      <AccountCard status="closed" data={basicData} />
+      <AccountCard cardStyle="closed" data={basicData} />
     );
 
     expect(getByText("Account Closed")).toBeInTheDocument();

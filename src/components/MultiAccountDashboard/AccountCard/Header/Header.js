@@ -12,9 +12,9 @@ import { ReactComponent as IconDanger } from "./icon_status_danger.svg";
 import { ReactComponent as IconWarning } from "./icon_status_warning.svg";
 import { ReactComponent as Separator } from "./separator.svg";
 
-export default function Header({ status, type, acctID, address }) {
+export default function Header({ cardStyle, type, acctID, address }) {
   const isClosed = () => {
-    return status === "closed";
+    return cardStyle === "closed";
   };
   const getTextColor = () => {
     switch (type) {
@@ -38,7 +38,7 @@ export default function Header({ status, type, acctID, address }) {
   };
   return (
     <header>
-      {getIcon(type, status)}
+      {getIcon(type, cardStyle)}
       <Text
         size="3"
         weight="semi"
@@ -81,8 +81,8 @@ export default function Header({ status, type, acctID, address }) {
 export { Header };
 
 Header.propTypes = {
-  /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
-  status: PropTypes.oneOf(["default", "info", "warning", "danger", "closed"])
+  /** Indicates which card style/layout should be used. "Warning" and "danger" styles will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
+  cardStyle: PropTypes.oneOf(["default", "info", "warning", "danger", "closed"])
     .isRequired,
   /** Specify which type of account (gas or electric) the card is displaying */
   type: PropTypes.oneOf(["electric", "gas", "unknown", "merged"]).isRequired,
@@ -92,22 +92,22 @@ Header.propTypes = {
   address: PropTypes.string.isRequired
 };
 
-export const getIcon = (type, status) => {
-  if (status === "warning") {
+export const getIcon = (type, cardStyle) => {
+  if (cardStyle === "warning") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.warning}`}>
         <IconWarning data-testid="icon-warning" />
       </figure>
     );
   }
-  if (status === "danger") {
+  if (cardStyle === "danger") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.danger}`}>
         <IconDanger data-testid="icon-danger" />
       </figure>
     );
   }
-  if (status === "closed") {
+  if (cardStyle === "closed") {
     return (
       <figure className={`${styles["icon-container"]} ${styles.closed}`}>
         {type === "electric" && <IconElectric data-testid="icon-electric" />}
@@ -117,28 +117,28 @@ export const getIcon = (type, status) => {
       </figure>
     );
   }
-  if (type === "electric" && ["default", "info"].includes(status)) {
+  if (type === "electric" && ["default", "info"].includes(cardStyle)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.electric}`}>
         <IconElectric role="presentation" data-testid="icon-electric" />
       </figure>
     );
   }
-  if (type === "gas" && ["default", "info"].includes(status)) {
+  if (type === "gas" && ["default", "info"].includes(cardStyle)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.gas}`}>
         <IconGas data-testid="icon-gas" />
       </figure>
     );
   }
-  if (type === "unknown" && ["default", "info"].includes(status)) {
+  if (type === "unknown" && ["default", "info"].includes(cardStyle)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.unknown}`}>
         <IconUnknown data-testid="icon-unknown" />
       </figure>
     );
   }
-  if (type === "merged" && ["default", "info"].includes(status)) {
+  if (type === "merged" && ["default", "info"].includes(cardStyle)) {
     return (
       <figure className={`${styles["icon-container"]} ${styles.merged}`}>
         <IconMerged data-testid="icon-merged" />

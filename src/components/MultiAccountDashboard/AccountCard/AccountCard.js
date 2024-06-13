@@ -22,7 +22,7 @@ function AccountCard({
   hasPaperless = false,
   showAutopayBtn = true,
   showPaperlessBtn = true,
-  status = "default",
+  cardStyle = "default",
   onClickPaperless,
   onClickAutopay,
   onClickPayBill,
@@ -34,7 +34,7 @@ function AccountCard({
     return (
       <>
         <div className={`${styles.column} ${styles.actions}`}>
-          {status !== "danger" && (
+          {cardStyle !== "danger" && (
             <ul className={styles.actions}>
               {showPaperlessBtn && (
                 <li>
@@ -67,7 +67,7 @@ function AccountCard({
         </div>
         <div className={styles.column}>
           <Payment
-            status={status}
+            cardStyle={cardStyle}
             totalDue={data.totalDue}
             dateDue={data.dateDue}
             onClickPayBill={onClickPayBill}
@@ -121,26 +121,26 @@ function AccountCard({
 
   return (
     <section
-      className={`${styles.root} ${status !== "default" ? styles[status] : ""} ${className ?? ""} ${compact ? styles.compact : ""}`}
+      className={`${styles.root} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${className ?? ""} ${compact ? styles.compact : ""}`}
     >
       <article
-        className={`${styles["content-container"]} ${status !== "default" ? styles[status] : ""} ${mobileCTAType !== "none" ? styles["mobile-cta"] : ""}`}
+        className={`${styles["content-container"]} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${mobileCTAType !== "none" ? styles["mobile-cta"] : ""}`}
       >
         <div className={styles.grid}>
           <div className={`${styles.column}`}>
             <Header
               type={type}
-              status={status}
+              cardStyle={cardStyle}
               acctID={data.acctID}
               address={data.address}
             />
           </div>
-          {status === "closed"
+          {cardStyle === "closed"
             ? renderInactiveContent()
             : renderActiveContent()}
         </div>
       </article>
-      {status === "warning" && (
+      {cardStyle === "warning" && (
         <InlineNotification
           hideCloseButton
           kind="warning"
@@ -149,7 +149,7 @@ function AccountCard({
           className={styles.alert}
         />
       )}
-      {status === "danger" && (
+      {cardStyle === "danger" && (
         <InlineNotification
           hideCloseButton
           kind="error"
@@ -158,7 +158,7 @@ function AccountCard({
           className={styles.alert}
         />
       )}
-      {status === "info" && (
+      {cardStyle === "info" && (
         <InlineNotification
           hideCloseButton
           kind="info"
@@ -167,7 +167,7 @@ function AccountCard({
           className={`${styles.alert} ${styles.info}`}
         />
       )}
-      {status === "default" && mobileCTAType !== "none" && (
+      {cardStyle === "default" && mobileCTAType !== "none" && (
         <>
           {mobileCTAType === "paperless" && (
             <MobileCTA
@@ -218,8 +218,14 @@ AccountCard.propTypes = {
   type: PropTypes.oneOf(["electric", "gas", "unknown", "merged"]),
   /** Specify which CTA should be shown at the bottom of the card in mobile viewports.  Paperless is the default, but if the account is already enrolled in paperless billing, the autopay CTA must show instead. If the account is already enrolled in both programs, select 'none' to hide the mobile CTA entirely. */
   mobileCTAType: PropTypes.oneOf(["none", "paperless", "autopay"]),
-  /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
-  status: PropTypes.oneOf(["default", "info", "warning", "danger", "closed"]),
+  /** Indicates which card style/layout should be used. "Warning" and "danger" styles will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
+  cardStyle: PropTypes.oneOf([
+    "default",
+    "info",
+    "warning",
+    "danger",
+    "closed"
+  ]),
   /** The text of the card's warning/danger message   */
   alertText: PropTypes.string,
   /** The data object that must be passed to the AccountCard */

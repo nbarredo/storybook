@@ -20,7 +20,7 @@ export default meta;
 export const Default = {
   args: {
     type: "electric",
-    status: "default",
+    cardStyle: "default",
     alertText: "Warning message appears here",
     mobileCTAType: "paperless",
     acctDetailsURL: "http://www.yahoo.com",
@@ -51,7 +51,7 @@ export const WithNickname = {
 export const AccountClosed = {
   args: {
     ...Default.args,
-    status: "closed"
+    cardStyle: "closed"
   }
 };
 
