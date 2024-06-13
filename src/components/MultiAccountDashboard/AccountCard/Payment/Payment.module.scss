@@ -59,15 +59,26 @@
       }
     }
 
-    &.pmtDue {
-      border: 1px solid var(--blue-20);
+    &.pmtOverdue {
+      border: 1px solid var(--red-40);
       cursor: pointer;
       pointer-events: all;
       strong {
-        color: var(--blue-70);
+        color: var(--red-80);
       }
       &:hover {
-        background-color: var(--blue-10);
+        background-color: var(--red-10);
+      }
+    }
+
+    &.credit {
+      strong {
+        color: var(--bright-green-80);
+        &::before {
+          content: "+";
+          display: inline-block;
+          margin-right: g.$space-2;
+        }
       }
     }
 

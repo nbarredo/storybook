@@ -18,7 +18,9 @@ export default function Payment({
         onClick={onClickPayBill}
       >
         <Text color="gray-60" size="2" weight="semi" inline={true}>
-          <strong>{totalDue}</strong>
+          <strong className={status === "credit" ? styles.credit : ""}>
+            {totalDue}
+          </strong>
           {dateDue && <span className={styles["due-date"]}>Due {dateDue}</span>}
         </Text>
       </div>

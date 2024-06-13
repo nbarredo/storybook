@@ -111,6 +111,12 @@ export const Credit = {
   name: "Status: Credit",
   args: {
     ...Default.args,
-    status: "credit"
+    status: "credit",
+    alertText: "The credit for $45.37 will be applied to your next bill.",
+    data: {
+      ...Default.args.data,
+      totalDue: "$45.37",
+      dateDue: null
+    }
   }
 };
