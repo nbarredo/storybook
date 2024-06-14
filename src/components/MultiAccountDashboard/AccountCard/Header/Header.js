@@ -13,9 +13,11 @@ import { ReactComponent as IconWarning } from "./icon_status_warning.svg";
 import { ReactComponent as Separator } from "./separator.svg";
 
 export default function Header({ cardStyle, type, acctID, address }) {
+  const isNumber = typeof acctID === "number";
   const isClosed = () => {
     return cardStyle === "closed";
   };
+
   const getTextColor = () => {
     switch (type) {
       case "electric":
@@ -27,6 +29,16 @@ export default function Header({ cardStyle, type, acctID, address }) {
     }
   };
   const getAccountTitle = () => {
+    switch (type) {
+      case "unknown":
+        return "Acct ";
+      case "merged":
+        return "Merged Account ";
+      default:
+        return ToTitleCase(type);
+    }
+  };
+  const getAccountID = () => {
     switch (type) {
       case "unknown":
         return "Acct ";
@@ -59,7 +71,7 @@ export default function Header({ cardStyle, type, acctID, address }) {
           color="gray-70"
           size="2"
           weight="reg"
-          className={`${styles.acctNumber} ${isClosed() ? styles.closed : ""}`}
+          className={`${isNumber ? styles.acctNumber : ""} ${isClosed() ? styles.closed : ""}`}
         >
           {acctID}
         </Text>
@@ -87,7 +99,7 @@ Header.propTypes = {
   /** Specify which type of account (gas or electric) the card is displaying */
   type: PropTypes.oneOf(["electric", "gas", "unknown", "merged"]).isRequired,
   /** The number or nickname of the account displayed in the card */
-  acctID: PropTypes.number.isRequired,
+  acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   /** The mailing address of the account displayed in the card */
   address: PropTypes.string.isRequired
 };

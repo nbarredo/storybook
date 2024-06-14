@@ -234,7 +234,7 @@ AccountCard.propTypes = {
   data: PropTypes.exact({
     totalDue: PropTypes.string,
     dateDue: PropTypes.string,
-    acctID: PropTypes.number,
+    acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     address: PropTypes.string
   }).isRequired,
   /** Indicates the billing status of the account.  This will control the appearance of the "Payment Due" part of the card. */
