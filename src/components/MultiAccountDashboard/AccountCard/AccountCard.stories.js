@@ -82,7 +82,10 @@ export const PaymentOverdue = {
   name: "Status: Payment Overdue",
   args: {
     ...Default.args,
-    status: "pmtOverdue"
+    alertText:
+      "Our records show that your service has been shut off for nonpayment.  If you are successful in Our records show that your service has been shut off for nonpayment.  If you are successful in Our records show that your service has been shut off for nonpayment.  If you are successful in ",
+    status: "pmtOverdue",
+    cardStyle: "danger"
   }
 };
 
@@ -112,6 +115,7 @@ export const Credit = {
   args: {
     ...Default.args,
     status: "credit",
+    cardStyle: "info",
     alertText: "The credit for $45.37 will be applied to your next bill.",
     data: {
       ...Default.args.data,

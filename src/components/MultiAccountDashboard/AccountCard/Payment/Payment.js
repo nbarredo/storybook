@@ -11,6 +11,10 @@ export default function Payment({
   onClickPayBill,
   status
 }) {
+  const isDisabled = () => {
+    if (status === "nothingDue" || status === "credit") return true;
+    return false;
+  };
   return (
     <aside className={styles["payment-area"]}>
       <div
@@ -26,6 +30,7 @@ export default function Payment({
       </div>
       <div className={styles["button-container"]}>
         <Button
+          disabled={isDisabled()}
           onClick={onClickPayBill}
           kind="tertiary"
           label="Pay Bill"
