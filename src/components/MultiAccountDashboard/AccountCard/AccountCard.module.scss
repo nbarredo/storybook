@@ -98,8 +98,17 @@ $min-height-compact: 40px;
         text-decoration: underline;
       }
 
-      /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-      :global .cds--link__icon {
+      /*
+      & > div {
+        align-self: auto;
+        color: var(--blue-50);
+        display: flex;
+        margin-inline-start: 5px;
+      }
+      */
+
+      :global(.cds--link__icon) {
+        border: 1px solid red;
         align-self: auto;
         color: var(--blue-50);
         display: flex;
