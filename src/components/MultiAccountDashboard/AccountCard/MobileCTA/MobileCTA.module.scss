@@ -10,6 +10,7 @@
   button {
     border-radius: 0 0 g.$border-radius-large g.$border-radius-large;
     height: 44px;
+    max-inline-size: none;
     width: 100%;
     span::before {
       background-position: 50%;
