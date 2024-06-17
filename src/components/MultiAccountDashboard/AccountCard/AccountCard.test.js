@@ -9,12 +9,12 @@ describe("Account Card component functions correctly", () => {
     address: "123 Main St"
   };
   test("renders AccountCard with default props", () => {
-    render(<AccountCard data={basicData} />);
+    render(<AccountCard {...basicData} />);
     expect(screen.getByText(/Acct Details/i)).toBeInTheDocument();
   });
 
   test("renders in compact mode", () => {
-    render(<AccountCard compact data={basicData} />);
+    render(<AccountCard compact {...basicData} />);
     expect(screen.getByText(/Acct Details/i).closest("section")).toHaveClass(
       "compact"
     );
@@ -25,7 +25,7 @@ describe("Account Card component functions correctly", () => {
       <AccountCard
         cardStyle="warning"
         alertText="Check your account"
-        data={basicData}
+        {...basicData}
       />
     );
     expect(screen.getByText(/Check your account/i)).toBeInTheDocument();
@@ -33,7 +33,7 @@ describe("Account Card component functions correctly", () => {
       <AccountCard
         cardStyle="danger"
         alertText="Check your account"
-        data={basicData}
+        {...basicData}
       />
     );
     expect(screen.getByText(/Check your account/i)).toBeInTheDocument();
@@ -43,7 +43,10 @@ describe("Account Card component functions correctly", () => {
     render(
       <AccountCard
         hasPaperless={true}
-        data={{ totalDue: "", dateDue: "", acctID: 123, address: "" }}
+        totalDue=""
+        dateDue=""
+        acctID={123}
+        address=""
       />
     );
     expect(screen.getByText("Paperless is On")).toBeInTheDocument();
@@ -53,7 +56,10 @@ describe("Account Card component functions correctly", () => {
     render(
       <AccountCard
         hasAutopay={true}
-        data={{ totalDue: "", dateDue: "", acctID: 123, address: "" }}
+        totalDue=""
+        dateDue=""
+        acctID={123}
+        address=""
       />
     );
     expect(screen.getByText("Autopay is On")).toBeInTheDocument();
@@ -66,7 +72,7 @@ describe("Account Card component functions correctly", () => {
       <AccountCard
         onClickPaperless={onClickPaperless}
         mobileCTAType="none"
-        data={basicData}
+        {...basicData}
       />
     );
 
@@ -80,7 +86,7 @@ describe("Account Card component functions correctly", () => {
       <AccountCard
         mobileCTAType="autopay"
         onClickAutopay={onClickAutopay}
-        data={basicData}
+        {...basicData}
       />
     );
 
@@ -89,7 +95,7 @@ describe("Account Card component functions correctly", () => {
 
   test("applies custom class name", () => {
     const className = "my-custom-class";
-    render(<AccountCard className={className} data={basicData} />);
+    render(<AccountCard className={className} {...basicData} />);
 
     expect(screen.getByText(/Acct Details/i).closest("section")).toHaveClass(
       className
@@ -98,7 +104,7 @@ describe("Account Card component functions correctly", () => {
 
   test('renders inactive content when cardStyle is "closed"', () => {
     const { getByText } = render(
-      <AccountCard cardStyle="closed" data={basicData} />
+      <AccountCard cardStyle="closed" {...basicData} />
     );
 
     expect(getByText("Account Closed")).toBeInTheDocument();
