@@ -45,7 +45,7 @@ $min-height-compact: 40px;
       align-items: center;
       display: grid;
       gap: g.$space-5;
-      grid-template-columns: 231px 116px;
+      grid-template-columns: minmax(231px, 1fr) minmax(116px, 1fr);
       width: 100%;
       .column {
         &.actions {

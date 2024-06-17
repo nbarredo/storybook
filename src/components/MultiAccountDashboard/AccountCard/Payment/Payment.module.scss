@@ -28,6 +28,7 @@
       display: block;
       line-height: 20px;
       margin-right: 0;
+      white-space: nowrap;
       @include do-this-above(md) {
         display: inline;
         line-height: 14px;
@@ -65,9 +66,19 @@
       pointer-events: all;
       strong {
         color: var(--blue-70);
+        &::before {
+          content: "Pay";
+          display: inline-block;
+          margin-right: g.$space-2;
+        }
       }
       &:hover {
         background-color: var(--blue-10);
+      }
+      @include do-this-above(md) {
+        strong::before {
+          display: none;
+        }
       }
       @include do-this-above(xl) {
         border-color: var(--gray-00);
@@ -87,11 +98,20 @@
       pointer-events: all;
       strong {
         color: var(--red-80);
+        &::before {
+          content: "Pay";
+          display: inline-block;
+          margin-right: g.$space-2;
+        }
       }
       &:hover {
         background-color: var(--red-10);
       }
-
+      @include do-this-above(md) {
+        strong::before {
+          display: none;
+        }
+      }
       @include do-this-above(xl) {
         cursor: default;
         margin-right: g.$space-5;

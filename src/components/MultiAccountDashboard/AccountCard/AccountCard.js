@@ -234,13 +234,13 @@ AccountCard.propTypes = {
   /** The text of the card's warning/danger message   */
   alertText: PropTypes.string,
   /** Total amount due on the account. It must be a string preceded by the relevant currency symbol (e.g. "$250.75") */
-  totalDue: PropTypes.string,
+  totalDue: PropTypes.string.isRequired,
   /** The date the next payment is due in `mm/dd/yy` format.  This should be `null` if no payment is due. */
-  dateDue: PropTypes.string,
+  dateDue: PropTypes.string.isRequired,
   /** The account ID can either be the 11-digit account number (in which case the data type would be `number`), or the account's nickname (data type would be `string` in this case) */
-  acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   /** The address of the account */
-  address: PropTypes.string,
+  address: PropTypes.string.isRequired,
   /** Indicates the billing status of the account.  This will control the appearance of the "Payment Due" part of the card. */
   status: PropTypes.oneOf([
     "pmtDue",
