@@ -28,7 +28,10 @@ function AccountCard({
   onClickPayBill,
   acctDetailsURL,
   mobileCTAType = "paperless",
-  data,
+  totalDue,
+  dateDue,
+  acctID,
+  address,
   status = "pmtDue"
 }) {
   const renderActiveContent = () => {
@@ -70,8 +73,8 @@ function AccountCard({
           <Payment
             status={status}
             cardStyle={cardStyle}
-            totalDue={data.totalDue}
-            dateDue={data.dateDue}
+            totalDue={totalDue}
+            dateDue={dateDue}
             onClickPayBill={onClickPayBill}
           />
         </div>
@@ -133,8 +136,8 @@ function AccountCard({
             <Header
               type={type}
               cardStyle={cardStyle}
-              acctID={data.acctID}
-              address={data.address}
+              acctID={acctID}
+              address={address}
             />
           </div>
           {cardStyle === "closed"
@@ -230,13 +233,14 @@ AccountCard.propTypes = {
   ]),
   /** The text of the card's warning/danger message   */
   alertText: PropTypes.string,
-  /** The data object that must be passed to the AccountCard */
-  data: PropTypes.exact({
-    totalDue: PropTypes.string,
-    dateDue: PropTypes.string,
-    acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    address: PropTypes.string
-  }).isRequired,
+  /** Total amount due on the account. It must be a string preceded by the relevant currency symbol (e.g. "$250.75") */
+  totalDue: PropTypes.string,
+  /** The date the next payment is due in `mm/dd/yy` format.  This should be `null` if no payment is due. */
+  dateDue: PropTypes.string,
+  /** The account ID can either be the 11-digit account number (in which case the data type would be `number`), or the account's nickname (data type would be `string` in this case) */
+  acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /** The address of the account */
+  address: PropTypes.string,
   /** Indicates the billing status of the account.  This will control the appearance of the "Payment Due" part of the card. */
   status: PropTypes.oneOf([
     "pmtDue",

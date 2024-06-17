@@ -30,22 +30,17 @@ export const Default = {
     hasPaperless: false,
     showAutopayBtn: true,
     showPaperlessBtn: true,
-    data: {
-      totalDue: "$900,853.02",
-      dateDue: "02/06/23",
-      acctID: 12345678987,
-      address: "124 Main Street NH 120384"
-    }
+    totalDue: "$900,853.02",
+    dateDue: "02/06/23",
+    acctID: 12345678987,
+    address: "124 Main Street NH 120384"
   }
 };
 
 export const WithNickname = {
   args: {
     ...Default.args,
-    data: {
-      ...Default.args.data,
-      acctID: "Condominium"
-    }
+    acctID: "Condominium"
   }
 };
 
@@ -102,11 +97,8 @@ export const NothingDue = {
   args: {
     ...Default.args,
     status: "nothingDue",
-    data: {
-      ...Default.args.data,
-      totalDue: "$0.00",
-      dateDue: null
-    }
+    totalDue: "$0.00",
+    dateDue: null
   }
 };
 
@@ -117,10 +109,7 @@ export const Credit = {
     status: "credit",
     cardStyle: "info",
     alertText: "The credit for $45.37 will be applied to your next bill.",
-    data: {
-      ...Default.args.data,
-      totalDue: "$45.37",
-      dateDue: null
-    }
+    totalDue: "$45.37",
+    dateDue: null
   }
 };
