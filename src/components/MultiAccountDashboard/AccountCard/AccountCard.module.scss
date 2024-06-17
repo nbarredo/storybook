@@ -63,15 +63,20 @@ $min-height-compact: 40px;
       }
       @include do-this-above(md) {
         gap: g.$space-7;
-        grid-template-columns: minmax(224px, 244px) 118px minmax(205px, 220px);
+        grid-template-columns: minmax(224px, 1fr) minmax(118px, 1fr) minmax(
+            205px,
+            1fr
+          );
       }
       @include do-this-above(lg) {
-        grid-template-columns: minmax(264px, 290px) minmax(252px, 274px) 217px 128px;
+        grid-template-columns:
+          minmax(264px, 2fr) minmax(252px, 2fr) minmax(217px, 2fr)
+          minmax(128px, 1fr);
       }
       @include do-this-above(xl) {
         grid-template-columns:
-          minmax(316px, 316px) minmax(256px, 256px) minmax(325px, 329px)
-          minmax(128px, 128px);
+          minmax(316px, 2fr) minmax(256px, 2fr) minmax(325px, 2fr)
+          minmax(128px, 1fr);
       }
     }
 
