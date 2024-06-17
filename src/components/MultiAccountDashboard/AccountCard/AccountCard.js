@@ -205,9 +205,9 @@ AccountCard.propTypes = {
   hasAutopay: PropTypes.bool,
   /** Specify whether or not the current account is enrolled in Paperless Billing */
   hasPaperless: PropTypes.bool,
-  /** Specify whether or not the Autopay button/tag should appear */
+  /** Specify whether or not the Autopay button/tag should appear. Note that for the medium breakpoint, you must add logic to determine which one of the two buttons should show (see Figma for details) */
   showAutopayBtn: PropTypes.bool,
-  /** Specify whether or not the Paperless Billing button/tag should appear */
+  /** Specify whether or not the Paperless Billing button/tag should appear. Note that for the medium breakpoint, you must add logic to determine which one of the two buttons should show (see Figma for details) */
   showPaperlessBtn: PropTypes.bool,
   /** Specify what should occur when the "Go Paperless" tag is clicked */
   onClickPaperless: PropTypes.func,
