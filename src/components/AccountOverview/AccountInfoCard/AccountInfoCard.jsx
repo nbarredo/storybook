@@ -3,23 +3,53 @@ import PropTypes from "prop-types";
 import { Tag } from "../../Tag/Tag";
 import { TagCTA } from "../../Tag/TagCTA";
 import styles from "./AccountInfoCard.module.scss";
-import { fuelAssistanceIcon, winterProtectionIcon } from "./Icons";
+import {
+  autopayIcon,
+  fuelAssistanceIcon,
+  outageIcon,
+  paperlessIcon,
+  winterProtectionIcon
+} from "./Icons";
 
 function AccountInfoCard({ data }) {
   return (
     <section className={`${styles["account-info-card"]} ${styles[data.type]}`}>
-      <h4>Account Info</h4>
-      <ul className={styles.actions}>
-        <li>
-          <TagCTA onClick={() => {}} text="Go Paperless" theme="default" />
-        </li>
-        <li>
-          <TagCTA onClick={() => {}} text="Outage Alerts" theme="default" />
-        </li>
-        <li>
-          <TagCTA onClick={() => {}} text="Auto Pay" theme="blue" />
-        </li>
-      </ul>
+      <article className={styles.intro}>
+        <header>
+          <h4>Account Info</h4>
+          <ul className={styles.actions}>
+            <li>
+              <TagCTA
+                renderIcon={paperlessIcon}
+                onClick={() => {}}
+                text="Go Paperless"
+                theme="default"
+                className={styles.action}
+              />
+            </li>
+            <li>
+              <TagCTA
+                renderIcon={outageIcon}
+                showIcon
+                onClick={() => {}}
+                text="Outage Alerts"
+                theme="default"
+                className={styles.action}
+              />
+            </li>
+            <li>
+              <TagCTA
+                renderIcon={autopayIcon}
+                showIcon
+                onClick={() => {}}
+                text="Auto Pay"
+                theme="blue"
+                className={styles.action}
+              />
+            </li>
+          </ul>
+        </header>
+      </article>
       <details>
         <summary>Show More Info</summary>
         <article role="presentation">
@@ -48,11 +78,13 @@ function AccountInfoCard({ data }) {
             <dd>&nbsp;</dd>
           </dl>
           <Tag
+            showIcon
             renderIcon={winterProtectionIcon}
             text="Winter Protection"
             theme="purple"
           />
           <Tag
+            showIcon
             renderIcon={fuelAssistanceIcon}
             text="Fuel Assistance"
             theme="purple"
