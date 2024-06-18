@@ -75,11 +75,6 @@
       &:hover {
         background-color: var(--blue-10);
       }
-      @include do-this-above(md) {
-        strong::before {
-          display: none;
-        }
-      }
       @include do-this-above(xl) {
         border-color: var(--gray-00);
         cursor: default;
@@ -88,6 +83,9 @@
         pointer-events: none;
         strong {
           color: var(--gray-60);
+          &::before {
+            display: none;
+          }
         }
       }
     }
@@ -107,16 +105,14 @@
       &:hover {
         background-color: var(--red-10);
       }
-      @include do-this-above(md) {
-        strong::before {
-          display: none;
-        }
-      }
       @include do-this-above(xl) {
         cursor: default;
         margin-right: g.$space-5;
         padding: g.$space-2 g.$space-3;
         pointer-events: none;
+        strong::before {
+          display: none;
+        }
       }
     }
 
