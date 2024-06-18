@@ -14,4 +14,17 @@ describe("Payment component functions correctly", () => {
     );
     expect(screen.getByText(/totalDue/i).closest("div")).toHaveClass("danger");
   });
+
+  test("Applies correct styles for 'credit' status", () => {
+    render(
+      <Payment
+        cardStyle="default"
+        totalDue="totalDue"
+        dateDue="dateDue"
+        status="credit"
+      />
+    );
+    expect(screen.getByText(/totalDue/i).closest("div")).toHaveClass("credit");
+    expect(screen.getByText(/totalDue/i)).toHaveClass("credit");
+  });
 });

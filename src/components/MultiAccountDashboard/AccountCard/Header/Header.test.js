@@ -32,6 +32,18 @@ describe("Header component functions properly", () => {
     expect(screen.getByTestId("icon-gas")).toBeInTheDocument();
   });
 
+  test("renders correct icon for unknown account type and default cardStyle", () => {
+    render(<Header {...defaultProps} type="unknown" />);
+    expect(screen.getByTestId("icon-unknown")).toBeInTheDocument();
+    expect(screen.getByText(/Acct/)).toBeInTheDocument();
+  });
+
+  test("renders correct icon and title for merged account type with default cardStyle", () => {
+    render(<Header {...defaultProps} type="merged" />);
+    expect(screen.getByTestId("icon-merged")).toBeInTheDocument();
+    expect(screen.getByText(/Merged Account/)).toBeInTheDocument();
+  });
+
   test("renders correct icon for gas account type and warning cardStyle", () => {
     render(<Header {...defaultProps} type="gas" cardStyle="warning" />);
     expect(screen.getByTestId("icon-warning")).toBeInTheDocument();
@@ -42,10 +54,28 @@ describe("Header component functions properly", () => {
     expect(screen.getByTestId("icon-danger")).toBeInTheDocument();
   });
 
+  test("Does not apply the number-related styling if the account ID isn't of type=number", () => {
+    render(
+      <Header address="" acctID="nickname" type="gas" cardStyle="default" />
+    );
+    expect(screen.getByText(/nickname/)).not.toHaveClass("acctNumber");
+  });
+
   test("applies closed class when cardStyle is closed", () => {
     render(<Header {...defaultProps} cardStyle="closed" />);
-
     expect(screen.getByRole("figure")).toHaveClass("closed");
+  });
+
+  test("renders correct icon when cardStyle is closed", () => {
+    const { rerender } = render(
+      <Header acctID={123} address="" type="merged" cardStyle="closed" />
+    );
+    expect(screen.getByRole("figure")).toHaveClass("closed");
+    expect(screen.getByTestId("icon-merged")).toBeInTheDocument();
+    rerender(
+      <Header acctID={123} address="" type="unknown" cardStyle="closed" />
+    );
+    expect(screen.getByTestId("icon-unknown")).toBeInTheDocument();
   });
 
   test("renders address in gray-60 color", () => {

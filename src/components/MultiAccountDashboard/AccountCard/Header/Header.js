@@ -38,16 +38,7 @@ export default function Header({ cardStyle, type, acctID, address }) {
         return ToTitleCase(type);
     }
   };
-  const getAccountID = () => {
-    switch (type) {
-      case "unknown":
-        return "Acct ";
-      case "merged":
-        return "Merged Account ";
-      default:
-        return ToTitleCase(type);
-    }
-  };
+
   return (
     <header>
       {getIcon(type, cardStyle)}
