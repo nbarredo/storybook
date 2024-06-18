@@ -16,54 +16,65 @@ import Payment from "./Payment/Payment";
 function AccountCard({
   className,
   compact,
-  acctType = "electric",
+  type = "electric",
   alertText,
   hasAutopay = false,
   hasPaperless = false,
-  status = "default",
+  showAutopayBtn = true,
+  showPaperlessBtn = true,
+  cardStyle = "default",
   onClickPaperless,
   onClickAutopay,
   onClickPayBill,
   acctDetailsURL,
   mobileCTAType = "paperless",
-  data
+  totalDue,
+  dateDue,
+  acctID,
+  address,
+  status = "pmtDue"
 }) {
   const renderActiveContent = () => {
     return (
       <>
         <div className={`${styles.column} ${styles.actions}`}>
-          {status !== "danger" && (
+          {cardStyle !== "danger" && (
             <ul className={styles.actions}>
-              <li>
-                {hasPaperless ? (
-                  <Tag icon text="Paperless is On" theme="default" />
-                ) : (
-                  <TagCTA
-                    onClick={onClickPaperless}
-                    text="Go Paperless"
-                    theme="default"
-                  />
-                )}
-              </li>
-              <li>
-                {hasAutopay ? (
-                  <Tag icon text="Autopay is On" theme="default" />
-                ) : (
-                  <TagCTA
-                    onClick={onClickPaperless}
-                    text="Set Up Auto Pay"
-                    theme="blue"
-                  />
-                )}
-              </li>
+              {showPaperlessBtn && (
+                <li>
+                  {hasPaperless ? (
+                    <Tag showIcon text="Paperless is On" theme="default" />
+                  ) : (
+                    <TagCTA
+                      onClick={onClickPaperless}
+                      text="Go Paperless"
+                      theme="default"
+                    />
+                  )}
+                </li>
+              )}
+              {showAutopayBtn && (
+                <li>
+                  {hasAutopay ? (
+                    <Tag showIcon text="Autopay is On" theme="default" />
+                  ) : (
+                    <TagCTA
+                      onClick={onClickAutopay}
+                      text="Set Up Auto Pay"
+                      theme="blue"
+                    />
+                  )}
+                </li>
+              )}
             </ul>
           )}
         </div>
         <div className={styles.column}>
           <Payment
             status={status}
-            totalDue={data.totalDue}
-            dateDue={data.dateDue}
+            cardStyle={cardStyle}
+            totalDue={totalDue}
+            dateDue={dateDue}
             onClickPayBill={onClickPayBill}
           />
         </div>
@@ -91,7 +102,7 @@ function AccountCard({
         <div className={`${styles.column} ${styles.actions}`}>
           <ul className={styles.actions}>
             <li>
-              <Tag icon text="Account Closed" theme="important" />
+              <Tag showIcon text="Account Closed" theme="important" />
             </li>
           </ul>
         </div>
@@ -115,24 +126,26 @@ function AccountCard({
 
   return (
     <section
-      className={`${styles.root} ${status !== "default" ? styles[status] : ""} ${className ?? ""} ${compact ? styles.compact : ""}`}
+      className={`${styles.root} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${className ?? ""} ${compact ? styles.compact : ""}`}
     >
-      <article className={styles["content-container"]}>
+      <article
+        className={`${styles["content-container"]} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${mobileCTAType !== "none" ? styles["mobile-cta"] : ""}`}
+      >
         <div className={styles.grid}>
           <div className={`${styles.column}`}>
             <Header
-              acctType={acctType}
-              status={status}
-              acctID={data.acctID}
-              address={data.address}
+              type={type}
+              cardStyle={cardStyle}
+              acctID={acctID}
+              address={address}
             />
           </div>
-          {status === "closed"
+          {cardStyle === "closed"
             ? renderInactiveContent()
             : renderActiveContent()}
         </div>
       </article>
-      {status === "warning" && (
+      {cardStyle === "warning" && (
         <InlineNotification
           hideCloseButton
           kind="warning"
@@ -141,7 +154,7 @@ function AccountCard({
           className={styles.alert}
         />
       )}
-      {status === "danger" && (
+      {cardStyle === "danger" && (
         <InlineNotification
           hideCloseButton
           kind="error"
@@ -150,7 +163,16 @@ function AccountCard({
           className={styles.alert}
         />
       )}
-      {status === "default" && mobileCTAType !== "none" && (
+      {cardStyle === "info" && (
+        <InlineNotification
+          hideCloseButton
+          kind="info"
+          role="status"
+          title={alertText}
+          className={`${styles.alert} ${styles.info}`}
+        />
+      )}
+      {cardStyle === "default" && mobileCTAType !== "none" && (
         <>
           {mobileCTAType === "paperless" && (
             <MobileCTA
@@ -183,6 +205,10 @@ AccountCard.propTypes = {
   hasAutopay: PropTypes.bool,
   /** Specify whether or not the current account is enrolled in Paperless Billing */
   hasPaperless: PropTypes.bool,
+  /** Specify whether or not the Autopay button/tag should appear. Note that for the medium breakpoint, you must add logic to determine which one of the two buttons should show (see Figma for details) */
+  showAutopayBtn: PropTypes.bool,
+  /** Specify whether or not the Paperless Billing button/tag should appear. Note that for the medium breakpoint, you must add logic to determine which one of the two buttons should show (see Figma for details) */
+  showPaperlessBtn: PropTypes.bool,
   /** Specify what should occur when the "Go Paperless" tag is clicked */
   onClickPaperless: PropTypes.func,
   /** Specify what should occur when the "Set Up Autopay" tag is clicked */
@@ -194,18 +220,33 @@ AccountCard.propTypes = {
   /** Specify an optional className to be applied to the AccountCard */
   className: PropTypes.string,
   /** Specify which type of account (gas or electric) the card is displaying */
-  acctType: PropTypes.oneOf(["electric", "gas"]),
+  type: PropTypes.oneOf(["electric", "gas", "unknown", "merged"]),
   /** Specify which CTA should be shown at the bottom of the card in mobile viewports.  Paperless is the default, but if the account is already enrolled in paperless billing, the autopay CTA must show instead. If the account is already enrolled in both programs, select 'none' to hide the mobile CTA entirely. */
   mobileCTAType: PropTypes.oneOf(["none", "paperless", "autopay"]),
-  /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
-  status: PropTypes.oneOf(["default", "warning", "danger", "closed"]),
+  /** Indicates which card style/layout should be used. "Warning" and "danger" styles will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
+  cardStyle: PropTypes.oneOf([
+    "default",
+    "info",
+    "warning",
+    "danger",
+    "closed"
+  ]),
   /** The text of the card's warning/danger message   */
   alertText: PropTypes.string,
-  /** The data object that must be passed to the AccountCard */
-  data: PropTypes.exact({
-    totalDue: PropTypes.string,
-    dateDue: PropTypes.string,
-    acctID: PropTypes.string,
-    address: PropTypes.string
-  }).isRequired
+  /** Total amount due on the account. It must be a string preceded by the relevant currency symbol (e.g. "$250.75") */
+  totalDue: PropTypes.string.isRequired,
+  /** The date the next payment is due in `mm/dd/yy` format.  This should be `null` if no payment is due. */
+  dateDue: PropTypes.string.isRequired,
+  /** The account ID can either be the 11-digit account number (in which case the data type would be `number`), or the account's nickname (data type would be `string` in this case) */
+  acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  /** The address of the account */
+  address: PropTypes.string.isRequired,
+  /** Indicates the billing status of the account.  This will control the appearance of the "Payment Due" part of the card. */
+  status: PropTypes.oneOf([
+    "pmtDue",
+    "pmtOverdue",
+    "finalBill",
+    "nothingDue",
+    "credit"
+  ])
 };

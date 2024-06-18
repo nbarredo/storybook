@@ -19,36 +19,97 @@ export default meta;
 
 export const Default = {
   args: {
-    acctType: "electric",
-    status: "default",
+    status: "nothingDue",
+    type: "electric",
+    cardStyle: "default",
     alertText: "Warning message appears here",
     mobileCTAType: "paperless",
     acctDetailsURL: "http://www.yahoo.com",
     compact: false,
     hasAutopay: true,
     hasPaperless: false,
-    data: {
-      totalDue: "$9,900,853.02",
-      dateDue: "02/06/23",
-      acctID: "Acct # 12345678987",
-      address: "124 Main Street NH 120384"
-    }
+    showAutopayBtn: true,
+    showPaperlessBtn: true,
+    totalDue: "$900,853.02",
+    dateDue: "02/06/23",
+    acctID: 12345678987,
+    address: "124 Main Street NH 120384"
   }
 };
 
 export const WithNickname = {
   args: {
     ...Default.args,
-    data: {
-      ...Default.args.data,
-      acctID: "Condominium"
-    }
+    acctID: "Condominium"
   }
 };
 
 export const AccountClosed = {
   args: {
     ...Default.args,
-    status: "closed"
+    cardStyle: "closed"
+  }
+};
+
+export const PaperlessButtonHidden = {
+  args: {
+    ...Default.args,
+    showPaperlessBtn: false
+  }
+};
+
+export const AutopayButtonHidden = {
+  args: {
+    ...Default.args,
+    showAutopayBtn: false
+  }
+};
+
+export const PaymentDue = {
+  name: "Status: Payment Due",
+  args: {
+    ...Default.args,
+    status: "pmtDue"
+  }
+};
+
+export const PaymentOverdue = {
+  name: "Status: Payment Overdue",
+  args: {
+    ...Default.args,
+    alertText:
+      "Our records show that your service has been shut off for nonpayment.  If you are successful in Our records show that your service has been shut off for nonpayment.  If you are successful in Our records show that your service has been shut off for nonpayment.  If you are successful in ",
+    status: "pmtOverdue",
+    cardStyle: "danger"
+  }
+};
+
+export const FinalBill = {
+  name: "Status: Final Bill",
+  args: {
+    ...Default.args,
+    status: "finalBill"
+  }
+};
+
+export const NothingDue = {
+  name: "Status: Nothing Due",
+  args: {
+    ...Default.args,
+    status: "nothingDue",
+    totalDue: "$0.00",
+    dateDue: null
+  }
+};
+
+export const Credit = {
+  name: "Status: Credit",
+  args: {
+    ...Default.args,
+    status: "credit",
+    cardStyle: "info",
+    alertText: "The credit for $45.37 will be applied to your next bill.",
+    totalDue: "$45.37",
+    dateDue: null
   }
 };

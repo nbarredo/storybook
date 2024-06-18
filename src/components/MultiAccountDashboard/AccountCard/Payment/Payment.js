@@ -5,23 +5,32 @@ import { Text } from "../../../Text/Text";
 import styles from "./Payment.module.scss";
 
 export default function Payment({
-  status = "default",
+  cardStyle = "default",
   totalDue,
   dateDue,
-  onClickPayBill
+  onClickPayBill,
+  status
 }) {
+  const isDisabled = () => {
+    if (status === "nothingDue" || status === "credit") return true;
+    return false;
+  };
   return (
     <aside className={styles["payment-area"]}>
       <div
-        className={`${styles["total-due"]} ${status === "danger" ? styles.danger : ""}`}
+        className={`${styles["total-due"]} ${cardStyle === "danger" ? styles.danger : ""} ${styles[status]}`}
+        onClick={onClickPayBill}
       >
         <Text color="gray-60" size="2" weight="semi" inline={true}>
-          <strong>{totalDue}</strong>
-          <span className={styles["due-date"]}>Due {dateDue}</span>
+          <strong className={status === "credit" ? styles.credit : ""}>
+            {totalDue}
+          </strong>
+          {dateDue && <span className={styles["due-date"]}>Due {dateDue}</span>}
         </Text>
       </div>
       <div className={styles["button-container"]}>
         <Button
+          disabled={isDisabled()}
           onClick={onClickPayBill}
           kind="tertiary"
           label="Pay Bill"
@@ -38,8 +47,16 @@ export { Payment };
 Payment.propTypes = {
   /** Specify what should occur when the "Pay Bill" button is clicked */
   onClickPayBill: PropTypes.func,
-  /** Indicates whether the card should display with an elevated status. "Warning" and "danger" statuses will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
-  status: PropTypes.oneOf(["default", "warning", "danger"]),
+  /** Indicates which card style/layout should be used. "Warning" and "danger" styles will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
+  cardStyle: PropTypes.oneOf(["default", "warning", "danger"]),
   totalDue: PropTypes.string,
-  dateDue: PropTypes.string
+  dateDue: PropTypes.string,
+  /** Indicates the billing status of the account.  This will control the appearance of the "Payment Due" part of the card. */
+  status: PropTypes.oneOf([
+    "pmtDue",
+    "pmtOverdue",
+    "finalBill",
+    "nothingDue",
+    "credit"
+  ])
 };
