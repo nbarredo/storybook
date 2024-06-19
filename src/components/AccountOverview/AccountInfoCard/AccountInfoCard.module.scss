@@ -98,10 +98,6 @@
     }
   }
 
-  .test {
-    border: 10px solid red;
-  }
-
   .cta {
     @extend %font-size-1-semi;
     color: var(--blue-70);
@@ -113,7 +109,6 @@
     display: flex;
     gap: 8px;
     justify-content: center;
-    // padding: 8px 12px 4px 12px;
     li {
       flex: 1;
       .action,
@@ -123,6 +118,18 @@
         max-width: none;
         width: 100%;
       }
+    }
+  }
+
+  .programs {
+    column-gap: g.$space-3;
+    display: flex;
+    flex-wrap: wrap;
+    dl {
+      flex: 100% 0 0;
+    }
+    & > div:hover {
+      background-color: var(--purple-20);
     }
   }
 

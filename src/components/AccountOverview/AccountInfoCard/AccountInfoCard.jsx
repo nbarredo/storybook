@@ -75,7 +75,7 @@ function AccountInfoCard({ data }) {
             Manage Supplier and Rates
           </a>
         </article>
-        <article role="presentation">
+        <article role="presentation" className={styles.programs}>
           <dl>
             <dt>Programs</dt>
             <dd>&nbsp;</dd>
