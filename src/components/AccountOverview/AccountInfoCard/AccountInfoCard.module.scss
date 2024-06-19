@@ -111,14 +111,19 @@
     justify-content: center;
     li {
       flex: 1;
-      .action,
-      .action > button {
-        @extend %font-size-0-semi;
-        line-height: 14px;
+      .action {
         max-width: none;
-        width: 100%;
-        svg {
-          //display: none;
+        button {
+          @extend %font-size-0-semi;
+          line-height: 14px;
+          max-width: none;
+          padding: 8px;
+          width: 100%;
+          /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+          :global(.cds--tag__custom-icon) {
+            height: 16px;
+            width: 16px;
+          }
         }
       }
     }
