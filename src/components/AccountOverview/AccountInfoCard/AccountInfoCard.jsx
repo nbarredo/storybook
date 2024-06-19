@@ -51,7 +51,10 @@ function AccountInfoCard({ data }) {
         </header>
       </article>
       <details>
-        <summary>Show More Info</summary>
+        <summary
+          data-open="Show Less Info"
+          data-close="Show More Info"
+        ></summary>
         <article role="presentation">
           <dl>
             <dt>Acct number</dt>
