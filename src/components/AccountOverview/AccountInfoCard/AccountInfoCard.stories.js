@@ -2,7 +2,7 @@ import { fn } from "@storybook/test";
 import { AccountInfoCard } from "./AccountInfoCard";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-export default {
+const meta = {
   title: "Delivery/Account Overview/Account Info Card",
   component: AccountInfoCard,
   parameters: {
@@ -15,6 +15,8 @@ export default {
   args: { onClick: fn() }
 };
 
+export default meta;
+/*
 const viewBillFn = () => {
   window.alert('clicked the "View Bill" button.');
 };
@@ -35,34 +37,16 @@ const autopayFn = () => {
 
 const pmtPlanFn = () => {
   window.alert('clicked the "Payment Plan" button.');
-};
+}; */
 
-export const StatusPaymentDue = {
+export const Default = {
   args: {
-    data: {
-      type: "electric",
-      status: "pmtDue",
-      autoPayMessage: null,
-      autoPayDate: null,
-      prevPaymentAmt: "$271.03",
-      prevPaymentDate: "02/04/23",
-      currPaymentAmt: "$304.14",
-      acctMessage: "Due 03/06/24",
-      onClickViewBill: viewBillFn,
-      onClickPayByBank: payBankFn,
-      onClickPayByCard: payCardFn,
-      onClickPastBills: pastBillsFn,
-      onClickAutopay: autopayFn,
-      onClickPmtPlan: pmtPlanFn
-    }
-  }
-};
-
-export const StatusPaymentOverdue = {
-  args: {
-    data: {
-      ...StatusPaymentDue.args.data,
-      status: "pmtOverdue"
-    }
+    type: "electric",
+    hasAutopay: false,
+    hasPaperless: false,
+    hasOutageAlerts: false,
+    showAutopayBtn: true,
+    showPaperlessBtn: true,
+    showOutageAlertsBtn: true
   }
 };

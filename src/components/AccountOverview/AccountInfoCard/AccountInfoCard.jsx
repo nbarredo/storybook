@@ -1,4 +1,5 @@
 import React from "react";
+import { Tooltip } from "@carbon/react";
 import PropTypes from "prop-types";
 import { Tag } from "../../Tag/Tag";
 import { TagCTA } from "../../Tag/TagCTA";
@@ -11,40 +12,54 @@ import {
   winterProtectionIcon
 } from "./Icons";
 
-function AccountInfoCard({ data }) {
+function AccountInfoCard({
+  hasAutopay,
+  hasPaperless,
+  hasOutageAlerts,
+  showAutopayBtn = true,
+  showPaperlessBtn = true,
+  showOutageAlertsBtn = true,
+  type
+}) {
   return (
-    <section className={`${styles["account-info-card"]} ${styles[data.type]}`}>
+    <section className={`${styles["account-info-card"]} ${styles[type]}`}>
       <article className={styles.intro}>
         <header>
           <h4>Account Info</h4>
           <ul className={styles.actions}>
-            <li>
-              <TagCTA
-                renderIcon={paperlessIcon}
-                onClick={() => {}}
-                text="Go Paperless"
-                theme="default"
-                className={styles.action}
-              />
-            </li>
-            <li>
-              <TagCTA
-                renderIcon={outageIcon}
-                onClick={() => {}}
-                text="Outage Alerts"
-                theme="default"
-                className={styles.action}
-              />
-            </li>
-            <li>
-              <TagCTA
-                renderIcon={autopayIcon}
-                onClick={() => {}}
-                text="Auto Pay"
-                theme="blue"
-                className={styles.action}
-              />
-            </li>
+            {showPaperlessBtn && (
+              <li>
+                <TagCTA
+                  renderIcon={paperlessIcon}
+                  onClick={() => {}}
+                  text="Go Paperless"
+                  theme="default"
+                  className={styles.action}
+                />
+              </li>
+            )}
+            {showOutageAlertsBtn && (
+              <li>
+                <TagCTA
+                  renderIcon={outageIcon}
+                  onClick={() => {}}
+                  text="Outage Alerts"
+                  theme="default"
+                  className={styles.action}
+                />
+              </li>
+            )}
+            {showAutopayBtn && (
+              <li>
+                <TagCTA
+                  renderIcon={autopayIcon}
+                  onClick={() => {}}
+                  text="Auto Pay"
+                  theme="blue"
+                  className={styles.action}
+                />
+              </li>
+            )}
           </ul>
         </header>
       </article>
@@ -78,18 +93,34 @@ function AccountInfoCard({ data }) {
             <dt>Programs</dt>
             <dd>&nbsp;</dd>
           </dl>
-          <Tag
-            showIcon
-            renderIcon={winterProtectionIcon}
-            text="Winter Protection"
-            theme="purple"
-          />
-          <Tag
-            showIcon
-            renderIcon={fuelAssistanceIcon}
-            text="Fuel Assistance"
-            theme="purple"
-          />
+          <Tooltip
+            enterDelayMs={0}
+            leaveDelayMs={0}
+            label="You're in this program which prevents service from being shut off from Nov. 1 to May 1 with no late payment charges."
+            className={styles.tooltip}
+          >
+            <Tag
+              showIcon
+              renderIcon={winterProtectionIcon}
+              text="Winter Protection"
+              theme="purple"
+              tabindex="0"
+            />
+          </Tooltip>
+          <Tooltip
+            enterDelayMs={0}
+            leaveDelayMs={0}
+            label="You’re enrolled in this program that helps pay a portion of your winter heating bills."
+            className={styles.tooltip}
+          >
+            <Tag
+              showIcon
+              renderIcon={fuelAssistanceIcon}
+              text="Fuel Assistance"
+              theme="purple"
+              tabindex="0"
+            />
+          </Tooltip>
         </article>
       </details>
     </section>
@@ -99,30 +130,18 @@ function AccountInfoCard({ data }) {
 export { AccountInfoCard };
 
 AccountInfoCard.propTypes = {
-  /** The data object that must be passed to the AccountInfoCard */
-  data: PropTypes.exact({
-    type: PropTypes.oneOf(["electric", "gas", "unknown"]),
-    status: PropTypes.oneOf([
-      "pmtDue",
-      "pmtOverdue",
-      "finalBill",
-      "nothingDue",
-      "credit",
-      "hasAutoPay",
-      "hasPmtPlan"
-    ]),
-    autoPayMessage: PropTypes.string,
-    autoPayDate: PropTypes.string,
-    pmtPlanMessage: PropTypes.string,
-    prevPaymentAmt: PropTypes.string,
-    prevPaymentDate: PropTypes.string,
-    currPaymentAmt: PropTypes.string,
-    acctMessage: PropTypes.string,
-    onClickViewBill: PropTypes.func,
-    onClickPayByBank: PropTypes.func,
-    onClickPayByCard: PropTypes.func,
-    onClickPastBills: PropTypes.func,
-    onClickAutopay: PropTypes.func,
-    onClickPmtPlan: PropTypes.func
-  }).isRequired
+  /** Specify which type of account (gas or electric) the card is displaying */
+  type: PropTypes.oneOf(["electric", "gas", "unknown", "merged"]),
+  /** Specify whether or not the current account is enrolled in Autopay */
+  hasAutopay: PropTypes.bool,
+  /** Specify whether or not the current account is enrolled in Paperless Billing */
+  hasPaperless: PropTypes.bool,
+  /** Specify whether or not the current account is enrolled in Outage Alerts */
+  hasOutageAlerts: PropTypes.bool,
+  /** Specify whether or not to display the Autopay status */
+  showAutopayBtn: PropTypes.bool,
+  /** Specify whether or not to display the Paperless Billing status */
+  showPaperlessBtn: PropTypes.bool,
+  /** Specify whether or not to display the Outage Alerts status */
+  showOutageAlertsBtn: PropTypes.bool
 };

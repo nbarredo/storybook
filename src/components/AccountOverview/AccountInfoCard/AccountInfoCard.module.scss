@@ -136,9 +136,11 @@
     dl {
       flex: 100% 0 0;
     }
-    & > div:hover {
-      background-color: var(--purple-20);
-    }
+  }
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  .tooltip :global(.cds--tag):hover {
+    background-color: var(--purple-20);
   }
 
   &.electric {
