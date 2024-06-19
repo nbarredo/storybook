@@ -14,17 +14,17 @@ export const winterProtectionIcon = () => {
         width="16"
         height="16"
         fill="white"
-        style={{ "mix-blend-mode": "multiply" }}
+        style={{ mixBlendMode: "multiply" }}
       />
       <rect
         width="16"
         height="16"
         fill="white"
-        style={{ "mix-blend-mode": "multiply" }}
+        style={{ mixBlendMode: "multiply" }}
       />
       <mask
         id="mask0_4910_10474"
-        style={{ "mask-type": "alpha" }}
+        style={{ maskType: "alpha" }}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -57,17 +57,17 @@ export const fuelAssistanceIcon = () => {
         width="16"
         height="16"
         fill="white"
-        style={{ "mix-blend-mode": "multiply" }}
+        style={{ mixBlendMode: "multiply" }}
       />
       <rect
         width="16"
         height="16"
         fill="white"
-        style={{ "mix-blend-mode": "multiply" }}
+        style={{ mixBlendMode: "multiply" }}
       />
       <mask
         id="mask0_4910_10483"
-        style={{ "mask-type": "alpha" }}
+        style={{ maskType: "alpha" }}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"

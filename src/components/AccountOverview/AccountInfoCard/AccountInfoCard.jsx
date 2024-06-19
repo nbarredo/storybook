@@ -30,7 +30,6 @@ function AccountInfoCard({ data }) {
             <li>
               <TagCTA
                 renderIcon={outageIcon}
-                showIcon
                 onClick={() => {}}
                 text="Outage Alerts"
                 theme="default"
@@ -40,7 +39,6 @@ function AccountInfoCard({ data }) {
             <li>
               <TagCTA
                 renderIcon={autopayIcon}
-                showIcon
                 onClick={() => {}}
                 text="Auto Pay"
                 theme="blue"
