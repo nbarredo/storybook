@@ -29,35 +29,47 @@ function AccountInfoCard({
           <ul className={styles.actions}>
             {showPaperlessBtn && (
               <li>
-                <TagCTA
-                  renderIcon={paperlessIcon}
-                  onClick={() => {}}
-                  text="Go Paperless"
-                  theme="default"
-                  className={styles.action}
-                />
+                {hasPaperless ? (
+                  <Tag showIcon text="Paperless is On" theme="default" />
+                ) : (
+                  <TagCTA
+                    renderIcon={paperlessIcon}
+                    onClick={() => {}}
+                    text="Go Paperless"
+                    theme="default"
+                    className={styles.action}
+                  />
+                )}
               </li>
             )}
             {showOutageAlertsBtn && (
               <li>
-                <TagCTA
-                  renderIcon={outageIcon}
-                  onClick={() => {}}
-                  text="Outage Alerts"
-                  theme="default"
-                  className={styles.action}
-                />
+                {hasOutageAlerts ? (
+                  <Tag showIcon text="Outage Alerts On" theme="default" />
+                ) : (
+                  <TagCTA
+                    renderIcon={outageIcon}
+                    onClick={() => {}}
+                    text="Outage Alerts"
+                    theme="default"
+                    className={styles.action}
+                  />
+                )}
               </li>
             )}
             {showAutopayBtn && (
               <li>
-                <TagCTA
-                  renderIcon={autopayIcon}
-                  onClick={() => {}}
-                  text="Auto Pay"
-                  theme="blue"
-                  className={styles.action}
-                />
+                {hasAutopay ? (
+                  <Tag showIcon text="Autopay is On" theme="default" />
+                ) : (
+                  <TagCTA
+                    renderIcon={autopayIcon}
+                    onClick={() => {}}
+                    text="Auto Pay"
+                    theme="blue"
+                    className={styles.action}
+                  />
+                )}
               </li>
             )}
           </ul>
@@ -104,13 +116,13 @@ function AccountInfoCard({
               renderIcon={winterProtectionIcon}
               text="Winter Protection"
               theme="purple"
-              tabindex="0"
+              tabIndex="0"
             />
           </Tooltip>
           <Tooltip
             enterDelayMs={0}
             leaveDelayMs={0}
-            label="You’re enrolled in this program that helps pay a portion of your winter heating bills."
+            label="You're enrolled in this program that helps pay a portion of your winter heating bills."
             className={styles.tooltip}
           >
             <Tag
@@ -118,7 +130,7 @@ function AccountInfoCard({
               renderIcon={fuelAssistanceIcon}
               text="Fuel Assistance"
               theme="purple"
-              tabindex="0"
+              tabIndex="0"
             />
           </Tooltip>
         </article>
