@@ -23,6 +23,14 @@
       #a4e3ff 104.57%
     );
   }
+  &.theme-green {
+    background: linear-gradient(
+      90.5deg,
+      #f2fff2 -21.61%,
+      #09863a 44.97%,
+      #f2fff2 120.42%
+    );
+  }
 }
 
 .tag-cta {
@@ -87,6 +95,28 @@
         0px 0px 1px 0px #0024404f,
         0px 0px 6px 3px #006db333;
       outline: 2px solid var(--blue-70);
+      outline-offset: 1px;
+    }
+  }
+
+  &.theme-green {
+    background-color: var(--green-00);
+    color: var(--green-80);
+    &:hover {
+      background-color: var(--green-10);
+      color: var(--green-90);
+      text-decoration: underline;
+    }
+    &:active {
+      background-color: var(--green-20);
+      color: var(--green-100);
+      text-decoration: underline;
+    }
+    &:focus {
+      box-shadow:
+        0px 0px 1px 0px #0024404f,
+        0px 0px 6px 3px #006db333;
+      outline: 2px solid var(--green-70);
       outline-offset: 1px;
     }
   }
