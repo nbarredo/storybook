@@ -16,6 +16,17 @@ const meta = {
 };
 
 export default meta;
+const outageAlertsFn = () => {
+  window.alert('clicked the "Outage Alerts" button.');
+};
+
+const autopayFn = () => {
+  window.alert('clicked the "Autopay" button.');
+};
+
+const goPaperlessFn = () => {
+  window.alert('clicked the "Go Paperless" button.');
+};
 /*
 const viewBillFn = () => {
   window.alert('clicked the "View Bill" button.');
@@ -27,17 +38,7 @@ const payCardFn = () => {
   window.alert('clicked the "Pay by Card" button.');
 };
 
-const pastBillsFn = () => {
-  window.alert('clicked the "Past BIlls and Payments" button.');
-};
-
-const autopayFn = () => {
-  window.alert('clicked the "Autopay" button.');
-};
-
-const pmtPlanFn = () => {
-  window.alert('clicked the "Payment Plan" button.');
-}; */
+ */
 
 export const Default = {
   args: {
@@ -48,7 +49,10 @@ export const Default = {
     showAutopayBtn: true,
     showPaperlessBtn: true,
     showOutageAlertsBtn: true,
-    addresses: ["124 Main Street NH 120384"]
+    addresses: ["124 Main Street NH 120384"],
+    onClickOutageAlerts: outageAlertsFn,
+    onClickAutopay: autopayFn,
+    onClickPaperless: goPaperlessFn
   }
 };
 

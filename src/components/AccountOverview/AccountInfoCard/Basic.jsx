@@ -14,7 +14,7 @@ function Basic({ acctID, addresses }) {
     }
   };
   return (
-    <article role="presentation">
+    <article role="presentation" className={styles.basic}>
       <dl>
         <dt>Acct number</dt>
         <dd>{acctID}</dd>

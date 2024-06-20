@@ -20,6 +20,9 @@ function AccountInfoCard({
   showAutopayBtn = true,
   showPaperlessBtn = true,
   showOutageAlertsBtn = true,
+  onClickPaperless,
+  onClickAutopay,
+  onClickOutageAlerts,
   type,
   addresses,
   acctID
@@ -37,7 +40,7 @@ function AccountInfoCard({
                 ) : (
                   <TagCTA
                     renderIcon={paperlessIcon}
-                    onClick={() => {}}
+                    onClick={onClickPaperless}
                     text="Go Paperless"
                     theme="green"
                     className={styles.action}
@@ -52,7 +55,7 @@ function AccountInfoCard({
                 ) : (
                   <TagCTA
                     renderIcon={outageIcon}
-                    onClick={() => {}}
+                    onClick={onClickOutageAlerts}
                     text="Outage Alerts"
                     theme="default"
                     className={styles.action}
@@ -67,7 +70,7 @@ function AccountInfoCard({
                 ) : (
                   <TagCTA
                     renderIcon={autopayIcon}
-                    onClick={() => {}}
+                    onClick={onClickAutopay}
                     text="Auto Pay"
                     theme="blue"
                     className={styles.action}
@@ -149,8 +152,14 @@ AccountInfoCard.propTypes = {
   showPaperlessBtn: PropTypes.bool,
   /** Specify whether or not to display the Outage Alerts status */
   showOutageAlertsBtn: PropTypes.bool,
+  /** Specify what should occur when the "Go Paperless" tag is clicked */
+  onClickPaperless: PropTypes.func,
+  /** Specify what should occur when the "Set Up Autopay" tag is clicked */
+  onClickAutopay: PropTypes.func,
+  /** Specify what should occur when the "Outage Alerts" button is clicked */
+  onClickOutageAlerts: PropTypes.func,
   /** The account ID can either be the 11-digit account number (in which case the data type would be `number`), or the account's nickname (data type would be `string` in this case) */
-  acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** An array of addresses associated with the account. */
   addresses: PropTypes.arrayOf(PropTypes.string)
 };

@@ -104,6 +104,9 @@
     color: var(--blue-70);
     line-height: 18px;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .actions {
@@ -112,6 +115,10 @@
     justify-content: center;
     li {
       flex: 1;
+      .tag-cta {
+        border: 10px solid red;
+        min-height: 38px;
+      }
       .action {
         max-width: none;
         button {
