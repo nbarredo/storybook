@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Tag } from "../../Tag/Tag";
 import { TagCTA } from "../../Tag/TagCTA";
 import styles from "./AccountInfoCard.module.scss";
+import { Basic } from "./Basic";
 import {
   autopayIcon,
   fuelAssistanceIcon,
@@ -19,7 +20,9 @@ function AccountInfoCard({
   showAutopayBtn = true,
   showPaperlessBtn = true,
   showOutageAlertsBtn = true,
-  type
+  type,
+  addresses,
+  acctID
 }) {
   return (
     <section className={`${styles["account-info-card"]} ${styles[type]}`}>
@@ -36,7 +39,7 @@ function AccountInfoCard({
                     renderIcon={paperlessIcon}
                     onClick={() => {}}
                     text="Go Paperless"
-                    theme="default"
+                    theme="green"
                     className={styles.action}
                   />
                 )}
@@ -80,17 +83,7 @@ function AccountInfoCard({
           data-open="Show Less Info"
           data-close="Show More Info"
         ></summary>
-        <article role="presentation">
-          <dl>
-            <dt>Acct number</dt>
-            <dd>01234567890</dd>
-            <dt>Address</dt>
-            <dd>124 Main Street NH 120384</dd>
-          </dl>
-          <a className={styles.cta} href="#">
-            Account Settings
-          </a>
-        </article>
+        <Basic acctID={acctID} addresses={addresses} />
         <article role="presentation">
           <dl>
             <dt>Electric supplier</dt>
@@ -155,5 +148,9 @@ AccountInfoCard.propTypes = {
   /** Specify whether or not to display the Paperless Billing status */
   showPaperlessBtn: PropTypes.bool,
   /** Specify whether or not to display the Outage Alerts status */
-  showOutageAlertsBtn: PropTypes.bool
+  showOutageAlertsBtn: PropTypes.bool,
+  /** The account ID can either be the 11-digit account number (in which case the data type would be `number`), or the account's nickname (data type would be `string` in this case) */
+  acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  /** An array of addresses associated with the account. */
+  addresses: PropTypes.arrayOf(PropTypes.string)
 };

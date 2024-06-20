@@ -47,6 +47,17 @@ export const Default = {
     hasOutageAlerts: false,
     showAutopayBtn: true,
     showPaperlessBtn: true,
-    showOutageAlertsBtn: true
+    showOutageAlertsBtn: true,
+    addresses: ["124 Main Street NH 120384"]
+  }
+};
+
+export const MoreThanOneAddress = {
+  args: {
+    ...Default.args,
+    addresses: [
+      "124 Main Street NH 120384",
+      "1600 Pennsylvania Avenue NW, Washington, DC 20500"
+    ]
   }
 };
