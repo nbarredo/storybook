@@ -28,6 +28,39 @@ function AccountInfoCard({
   acctID,
   supplier
 }) {
+  const renderCollapsibleWrapper = (children) => {
+    return (
+      <details className={styles["collapsible-wrapper"]}>
+        <summary
+          data-open="Show Less Info"
+          data-close="Show More Info"
+        ></summary>
+        {children}
+      </details>
+    );
+  };
+
+  const MainContent = () => {
+    return (
+      <div className={styles["main-content"]}>
+        {showBasicInfo && (
+          <Basic
+            onClickBasicCta={onClickBasicCta}
+            acctID={acctID}
+            addresses={addresses}
+          />
+        )}
+        {showSupplierInfo && (
+          <Supplier
+            onClickSupplierCta={onClickSupplierCta}
+            supplier={supplier}
+          />
+        )}
+        {showProgramsInfo && <Programs />}
+      </div>
+    );
+  };
+
   return (
     <section className={`${styles["account-info-card"]} ${styles[type]}`}>
       <article className={styles.intro}>
@@ -97,26 +130,8 @@ function AccountInfoCard({
           </ul>
         </header>
       </article>
-      <details>
-        <summary
-          data-open="Show Less Info"
-          data-close="Show More Info"
-        ></summary>
-        {showBasicInfo && (
-          <Basic
-            onClickBasicCta={onClickBasicCta}
-            acctID={acctID}
-            addresses={addresses}
-          />
-        )}
-        {showSupplierInfo && (
-          <Supplier
-            onClickSupplierCta={onClickSupplierCta}
-            supplier={supplier}
-          />
-        )}
-        {showProgramsInfo && <Programs />}
-      </details>
+      {renderCollapsibleWrapper(<MainContent />)}
+      <MainContent />
     </section>
   );
 }

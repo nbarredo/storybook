@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @use "../../../styles/typography" as t;
 @use "../../../styles/mixins" as *;
 @use "../../../styles/global" as g;
@@ -21,13 +22,31 @@
     margin-bottom: g.$space-5;
   }
 
-  details {
-    background-color: var(--gray-00);
+  .main-content {
+    background-color: var(--white);
     border-bottom-left-radius: g.$border-radius-large;
     border-bottom-right-radius: g.$border-radius-large;
+    padding: 0 g.$space-5 g.$space-4 g.$space-5;
+    article {
+      background-color: var(--gray-00);
+      border-radius: g.$border-radius-large;
+      margin-bottom: g.$space-3;
+      padding: g.$space-5;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  details {
+    .main-content {
+      background-color: var(--gray-00);
+      article {
+        background-color: var(--white);
+      }
+    }
 
     &[open] {
-      padding: 0 g.$space-5 g.$space-4 g.$space-5;
       summary::before {
         content: attr(data-open);
       }
@@ -64,25 +83,17 @@
       text-align: center;
       vertical-align: middle;
     }
-    article {
-      background-color: var(--white);
-      border-radius: g.$border-radius-large;
-      margin-bottom: g.$space-3;
-      padding: g.$space-5;
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
   }
 
   dl {
     display: flex;
     flex-wrap: wrap;
+    gap: 16px;
     margin-bottom: g.$space-5;
     dt {
       @extend %font-size-1-semi;
       color: var(--gray-70);
-      flex: 50% 0 0;
+      flex: 0 1 120px;
       line-height: 18px;
       padding-bottom: g.$space-4;
       &:last-of-type {
@@ -92,7 +103,7 @@
     dd {
       @extend %font-size-1-reg;
       color: var(--gray-60);
-      flex: 50% 0 0;
+      flex: 1 0 180px;
       line-height: 18px;
       padding-bottom: g.$space-4;
       text-align: right;
