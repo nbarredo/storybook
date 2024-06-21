@@ -116,7 +116,7 @@
     li {
       flex: 1;
       .cta-active {
-        min-height: 38px;
+        min-height: 36px;
         width: 100%;
       }
       .cta-inactive {
@@ -125,7 +125,7 @@
           @extend %font-size-0-semi;
           line-height: 14px;
           max-width: none;
-          min-height: 36px;
+          min-height: 34px;
           padding: 8px;
           width: 100%;
           /* stylelint-disable-next-line selector-pseudo-class-no-unknown */

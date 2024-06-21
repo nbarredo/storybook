@@ -12,6 +12,7 @@ import {
   paperlessIcon,
   winterProtectionIcon
 } from "./Icons";
+import { Supplier } from "./Supplier";
 
 function AccountInfoCard({
   hasAutopay,
@@ -23,9 +24,12 @@ function AccountInfoCard({
   onClickPaperless,
   onClickAutopay,
   onClickOutageAlerts,
+  onClickBasicCta,
+  onClickSupplierCta,
   type,
   addresses,
-  acctID
+  acctID,
+  supplier
 }) {
   return (
     <section className={`${styles["account-info-card"]} ${styles[type]}`}>
@@ -101,16 +105,13 @@ function AccountInfoCard({
           data-open="Show Less Info"
           data-close="Show More Info"
         ></summary>
-        <Basic acctID={acctID} addresses={addresses} />
-        <article role="presentation">
-          <dl>
-            <dt>Electric supplier</dt>
-            <dd>Third party supplier</dd>
-          </dl>
-          <a className={styles.cta} href="#">
-            Manage Supplier and Rates
-          </a>
-        </article>
+        <Basic
+          onClickBasicCta={onClickBasicCta}
+          acctID={acctID}
+          addresses={addresses}
+        />
+        <Supplier onClickSupplierCta={onClickSupplierCta} supplier={supplier} />
+
         <article role="presentation" className={styles.programs}>
           <dl>
             <dt>Programs</dt>
@@ -173,8 +174,14 @@ AccountInfoCard.propTypes = {
   onClickAutopay: PropTypes.func,
   /** Specify what should occur when the "Outage Alerts" button is clicked */
   onClickOutageAlerts: PropTypes.func,
+  /** Specify what should occur when the Basic info CTA is clicked */
+  onClickBasicCta: PropTypes.func,
+  /** Specify what should occur when the Supplier CTA is clicked */
+  onClickSupplierCta: PropTypes.func,
   /** The account ID can either be the 11-digit account number (in which case the data type would be `number`), or the account's nickname (data type would be `string` in this case) */
   acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** An array of addresses associated with the account. */
-  addresses: PropTypes.arrayOf(PropTypes.string)
+  addresses: PropTypes.arrayOf(PropTypes.string),
+  /** The name of the account's energy supplier. */
+  supplier: PropTypes.string
 };

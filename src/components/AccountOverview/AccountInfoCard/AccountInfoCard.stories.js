@@ -27,23 +27,21 @@ const autopayFn = () => {
 const goPaperlessFn = () => {
   window.alert('clicked the "Go Paperless" button.');
 };
-/*
-const viewBillFn = () => {
-  window.alert('clicked the "View Bill" button.');
-};
-const payBankFn = () => {
-  window.alert('clicked the "Pay by Bank" button.');
-};
-const payCardFn = () => {
-  window.alert('clicked the "Pay by Card" button.');
-};
 
- */
+const supplierCtaFn = (e) => {
+  e.preventDefault();
+  window.alert("clicked the Supplier CTA.");
+};
+const basicCtaFn = (e) => {
+  e.preventDefault();
+  window.alert("clicked the Basic Info CTA.");
+};
 
 export const Default = {
   args: {
     acctID: 12345678987,
     type: "electric",
+    supplier: "Third party supplier",
     hasAutopay: false,
     hasPaperless: false,
     hasOutageAlerts: false,
@@ -53,7 +51,9 @@ export const Default = {
     addresses: ["124 Main Street NH 120384"],
     onClickOutageAlerts: outageAlertsFn,
     onClickAutopay: autopayFn,
-    onClickPaperless: goPaperlessFn
+    onClickPaperless: goPaperlessFn,
+    onClickSupplierCta: supplierCtaFn,
+    onClickBasicCta: basicCtaFn
   }
 };
 
