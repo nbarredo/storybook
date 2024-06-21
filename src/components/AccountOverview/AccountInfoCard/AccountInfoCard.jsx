@@ -15,6 +15,9 @@ function AccountInfoCard({
   showAutopayBtn = true,
   showPaperlessBtn = true,
   showOutageAlertsBtn = true,
+  showBasicInfo = true,
+  showSupplierInfo = true,
+  showProgramsInfo = true,
   onClickPaperless,
   onClickAutopay,
   onClickOutageAlerts,
@@ -99,13 +102,20 @@ function AccountInfoCard({
           data-open="Show Less Info"
           data-close="Show More Info"
         ></summary>
-        <Basic
-          onClickBasicCta={onClickBasicCta}
-          acctID={acctID}
-          addresses={addresses}
-        />
-        <Supplier onClickSupplierCta={onClickSupplierCta} supplier={supplier} />
-        <Programs />
+        {showBasicInfo && (
+          <Basic
+            onClickBasicCta={onClickBasicCta}
+            acctID={acctID}
+            addresses={addresses}
+          />
+        )}
+        {showSupplierInfo && (
+          <Supplier
+            onClickSupplierCta={onClickSupplierCta}
+            supplier={supplier}
+          />
+        )}
+        {showProgramsInfo && <Programs />}
       </details>
     </section>
   );
@@ -138,6 +148,12 @@ AccountInfoCard.propTypes = {
   onClickBasicCta: PropTypes.func,
   /** Specify what should occur when the Supplier CTA is clicked */
   onClickSupplierCta: PropTypes.func,
+  /** Specify whether or not to display the Basic Information section  */
+  showBasicInfo: PropTypes.bool,
+  /** Specify whether or not to display the Supplier Information section */
+  showSupplierInfo: PropTypes.bool,
+  /** Specify whether or not to display the Programs Information section */
+  showProgramsInfo: PropTypes.bool,
   /** The account ID can either be the 11-digit account number (in which case the data type would be `number`), or the account's nickname (data type would be `string` in this case) */
   acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** An array of addresses associated with the account. */

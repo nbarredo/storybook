@@ -23,6 +23,9 @@
 
   details {
     background-color: var(--gray-00);
+    border-bottom-left-radius: g.$border-radius-large;
+    border-bottom-right-radius: g.$border-radius-large;
+
     &[open] {
       padding: 0 g.$space-5 g.$space-4 g.$space-5;
       summary::before {

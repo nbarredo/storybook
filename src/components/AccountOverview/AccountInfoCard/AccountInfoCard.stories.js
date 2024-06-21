@@ -53,7 +53,10 @@ export const Default = {
     onClickAutopay: autopayFn,
     onClickPaperless: goPaperlessFn,
     onClickSupplierCta: supplierCtaFn,
-    onClickBasicCta: basicCtaFn
+    onClickBasicCta: basicCtaFn,
+    showBasicInfo: true,
+    showSupplierInfo: true,
+    showProgramsInfo: true
   }
 };
 
