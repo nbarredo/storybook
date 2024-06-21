@@ -25,7 +25,7 @@ function TagCTA({ text, theme = "default", className, ...props }) {
 export { TagCTA };
 
 TagCTA.propTypes = {
-  /** Specify an optional className to be applied to the Text */
+  /** Specify an optional className to be applied to the Component */
   className: PropTypes.string,
   /** The text content of the tag */
   text: PropTypes.string,
