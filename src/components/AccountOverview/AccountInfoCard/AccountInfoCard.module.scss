@@ -115,16 +115,17 @@
     justify-content: center;
     li {
       flex: 1;
-      .tag-cta {
-        border: 10px solid red;
+      .cta-active {
         min-height: 38px;
+        width: 100%;
       }
-      .action {
+      .cta-inactive {
         max-width: none;
         button {
           @extend %font-size-0-semi;
           line-height: 14px;
           max-width: none;
+          min-height: 36px;
           padding: 8px;
           width: 100%;
           /* stylelint-disable-next-line selector-pseudo-class-no-unknown */

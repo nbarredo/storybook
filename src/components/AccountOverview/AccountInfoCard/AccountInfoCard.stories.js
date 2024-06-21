@@ -42,6 +42,7 @@ const payCardFn = () => {
 
 export const Default = {
   args: {
+    acctID: 12345678987,
     type: "electric",
     hasAutopay: false,
     hasPaperless: false,

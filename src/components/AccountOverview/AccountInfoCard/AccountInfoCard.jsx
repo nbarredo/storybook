@@ -36,14 +36,19 @@ function AccountInfoCard({
             {showPaperlessBtn && (
               <li>
                 {hasPaperless ? (
-                  <Tag showIcon text="Paperless is On" theme="default" />
+                  <Tag
+                    className={styles["cta-active"]}
+                    showIcon
+                    text="Paperless is On"
+                    theme="default"
+                  />
                 ) : (
                   <TagCTA
                     renderIcon={paperlessIcon}
                     onClick={onClickPaperless}
                     text="Go Paperless"
                     theme="green"
-                    className={styles.action}
+                    className={styles["cta-inactive"]}
                   />
                 )}
               </li>
@@ -51,14 +56,19 @@ function AccountInfoCard({
             {showOutageAlertsBtn && (
               <li>
                 {hasOutageAlerts ? (
-                  <Tag showIcon text="Outage Alerts On" theme="default" />
+                  <Tag
+                    className={styles["cta-active"]}
+                    showIcon
+                    text="Outage Alerts On"
+                    theme="default"
+                  />
                 ) : (
                   <TagCTA
                     renderIcon={outageIcon}
                     onClick={onClickOutageAlerts}
                     text="Outage Alerts"
                     theme="default"
-                    className={styles.action}
+                    className={styles["cta-inactive"]}
                   />
                 )}
               </li>
@@ -66,14 +76,19 @@ function AccountInfoCard({
             {showAutopayBtn && (
               <li>
                 {hasAutopay ? (
-                  <Tag showIcon text="Autopay is On" theme="default" />
+                  <Tag
+                    className={styles["cta-active"]}
+                    showIcon
+                    text="Autopay is On"
+                    theme="default"
+                  />
                 ) : (
                   <TagCTA
                     renderIcon={autopayIcon}
                     onClick={onClickAutopay}
                     text="Auto Pay"
                     theme="blue"
-                    className={styles.action}
+                    className={styles["cta-inactive"]}
                   />
                 )}
               </li>
