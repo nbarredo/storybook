@@ -1,17 +1,11 @@
 import React from "react";
-import { Tooltip } from "@carbon/react";
 import PropTypes from "prop-types";
 import { Tag } from "../../Tag/Tag";
 import { TagCTA } from "../../Tag/TagCTA";
 import styles from "./AccountInfoCard.module.scss";
 import { Basic } from "./Basic";
-import {
-  autopayIcon,
-  fuelAssistanceIcon,
-  outageIcon,
-  paperlessIcon,
-  winterProtectionIcon
-} from "./Icons";
+import { autopayIcon, outageIcon, paperlessIcon } from "./Icons";
+import { Programs } from "./Programs";
 import { Supplier } from "./Supplier";
 
 function AccountInfoCard({
@@ -111,41 +105,7 @@ function AccountInfoCard({
           addresses={addresses}
         />
         <Supplier onClickSupplierCta={onClickSupplierCta} supplier={supplier} />
-
-        <article role="presentation" className={styles.programs}>
-          <dl>
-            <dt>Programs</dt>
-            <dd>&nbsp;</dd>
-          </dl>
-          <Tooltip
-            enterDelayMs={0}
-            leaveDelayMs={0}
-            label="You're in this program which prevents service from being shut off from Nov. 1 to May 1 with no late payment charges."
-            className={styles.tooltip}
-          >
-            <Tag
-              showIcon
-              renderIcon={winterProtectionIcon}
-              text="Winter Protection"
-              theme="purple"
-              tabIndex="0"
-            />
-          </Tooltip>
-          <Tooltip
-            enterDelayMs={0}
-            leaveDelayMs={0}
-            label="You're enrolled in this program that helps pay a portion of your winter heating bills."
-            className={styles.tooltip}
-          >
-            <Tag
-              showIcon
-              renderIcon={fuelAssistanceIcon}
-              text="Fuel Assistance"
-              theme="purple"
-              tabIndex="0"
-            />
-          </Tooltip>
-        </article>
+        <Programs />
       </details>
     </section>
   );
