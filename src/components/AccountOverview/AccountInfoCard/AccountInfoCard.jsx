@@ -58,6 +58,7 @@ function AccountInfoCard({
           <Supplier
             onClickSupplierCta={onClickSupplierCta}
             supplier={supplier}
+            type={type}
           />
         )}
         {showProgramsInfo && <Programs programs={programs} />}
