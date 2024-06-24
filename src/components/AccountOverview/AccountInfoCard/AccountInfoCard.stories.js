@@ -1,5 +1,6 @@
 import { fn } from "@storybook/test";
 import { AccountInfoCard } from "./AccountInfoCard";
+import { fuelAssistanceIcon, winterProtectionIcon } from "./Icons";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -40,23 +41,41 @@ const basicCtaFn = (e) => {
 export const Default = {
   args: {
     acctID: 12345678987,
-    type: "electric",
-    supplier: "Third party supplier",
-    hasAutopay: false,
-    hasPaperless: false,
-    hasOutageAlerts: false,
-    showAutopayBtn: true,
-    showPaperlessBtn: true,
-    showOutageAlertsBtn: true,
     addresses: ["124 Main Street NH 120384"],
-    onClickOutageAlerts: outageAlertsFn,
+    hasAutopay: false,
+    hasOutageAlerts: false,
+    hasPaperless: false,
     onClickAutopay: autopayFn,
+    onClickBasicCta: basicCtaFn,
+    onClickOutageAlerts: outageAlertsFn,
     onClickPaperless: goPaperlessFn,
     onClickSupplierCta: supplierCtaFn,
-    onClickBasicCta: basicCtaFn,
+    programs: [
+      {
+        id: 1,
+        name: "Winter Protection",
+        description:
+          "You're in this program which prevents service from being shut off from Nov. 1 to May 1 with no late payment charges.",
+        icon: winterProtectionIcon,
+        theme: "purple"
+      },
+      {
+        id: 2,
+        name: "Fuel Assistance",
+        description:
+          "You're enrolled in this program that helps pay a portion of your winter heating bills.",
+        icon: fuelAssistanceIcon,
+        theme: "purple"
+      }
+    ],
+    showAutopayBtn: true,
     showBasicInfo: true,
+    showOutageAlertsBtn: true,
+    showPaperlessBtn: true,
+    showProgramsInfo: true,
     showSupplierInfo: true,
-    showProgramsInfo: true
+    supplier: "Third party supplier",
+    type: "electric"
   }
 };
 

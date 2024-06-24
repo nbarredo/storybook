@@ -9,24 +9,25 @@ import { Programs } from "./Programs";
 import { Supplier } from "./Supplier";
 
 function AccountInfoCard({
-  hasAutopay,
-  hasPaperless,
-  hasOutageAlerts,
-  showAutopayBtn = true,
-  showPaperlessBtn = true,
-  showOutageAlertsBtn = true,
-  showBasicInfo = true,
-  showSupplierInfo = true,
-  showProgramsInfo = true,
-  onClickPaperless,
-  onClickAutopay,
-  onClickOutageAlerts,
-  onClickBasicCta,
-  onClickSupplierCta,
-  type,
-  addresses,
   acctID,
-  supplier
+  addresses,
+  hasAutopay,
+  hasOutageAlerts,
+  hasPaperless,
+  onClickAutopay,
+  onClickBasicCta,
+  onClickOutageAlerts,
+  onClickPaperless,
+  onClickSupplierCta,
+  programs,
+  showAutopayBtn = true,
+  showBasicInfo = true,
+  showOutageAlertsBtn = true,
+  showPaperlessBtn = true,
+  showProgramsInfo = true,
+  showSupplierInfo = true,
+  supplier,
+  type
 }) {
   const renderCollapsibleWrapper = (children) => {
     return (
@@ -56,7 +57,7 @@ function AccountInfoCard({
             supplier={supplier}
           />
         )}
-        {showProgramsInfo && <Programs />}
+        {showProgramsInfo && <Programs programs={programs} />}
       </div>
     );
   };
@@ -171,6 +172,16 @@ AccountInfoCard.propTypes = {
   showSupplierInfo: PropTypes.bool,
   /** Specify whether or not to display the Programs Information section */
   showProgramsInfo: PropTypes.bool,
+  /** An array of billing programs associated with the account */
+  programs: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      icon: PropTypes.string,
+      theme: PropTypes.string
+    })
+  ),
   /** The account ID can either be the 11-digit account number (in which case the data type would be `number`), or the account's nickname (data type would be `string` in this case) */
   acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** An array of addresses associated with the account. */
