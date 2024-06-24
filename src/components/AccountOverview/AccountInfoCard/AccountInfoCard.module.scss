@@ -38,7 +38,14 @@
     }
   }
 
-  details {
+  .fixed-wrapper {
+    display: none;
+    @include do-this-above(md) {
+      display: block;
+    }
+  }
+
+  details.collapsible-wrapper {
     summary {
       @extend %font-size-0-bold;
       background-color: var(--gray-00);
@@ -92,6 +99,10 @@
           transition: all 0.2s ease-in-out;
         }
       }
+    }
+    @include do-this-above(md) {
+      border: 1px solid red;
+      display: none;
     }
   }
 

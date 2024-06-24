@@ -131,7 +131,9 @@ function AccountInfoCard({
         </header>
       </article>
       {renderCollapsibleWrapper(<MainContent />)}
-      <MainContent />
+      <div className={styles["fixed-wrapper"]}>
+        <MainContent />
+      </div>
     </section>
   );
 }
