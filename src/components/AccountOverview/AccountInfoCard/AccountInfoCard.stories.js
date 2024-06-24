@@ -51,6 +51,7 @@ export const Default = {
     onClickOutageAlerts: outageAlertsFn,
     onClickPaperless: goPaperlessFn,
     onClickSupplierCta: supplierCtaFn,
+    outageAlertLabel: "Outage Alerts",
     programs: [
       {
         id: 1,
@@ -86,6 +87,22 @@ export const MoreThanOneAddress = {
     addresses: [
       "124 Main Street NH 120384",
       "1600 Pennsylvania Avenue NW, Washington, DC 20500"
+    ]
+  }
+};
+
+export const OnlyOneProgram = {
+  args: {
+    ...Default.args,
+    programs: [
+      {
+        id: 1,
+        name: "Winter Protection",
+        description:
+          "You're in this program which prevents service from being shut off from Nov. 1 to May 1 with no late payment charges.",
+        icon: winterProtectionIcon,
+        theme: "purple"
+      }
     ]
   }
 };

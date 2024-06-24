@@ -43,7 +43,7 @@ Programs.propTypes = {
       id: PropTypes.number,
       name: PropTypes.string,
       description: PropTypes.string,
-      icon: PropTypes.string,
+      icon: PropTypes.func,
       theme: PropTypes.string
     })
   )

@@ -20,6 +20,7 @@ function AccountInfoCard({
   onClickOutageAlerts,
   onClickPaperless,
   onClickSupplierCta,
+  outageAlertLabel = "Outage Alerts",
   programs,
   showAutopayBtn = true,
   showBasicInfo = true,
@@ -98,14 +99,14 @@ function AccountInfoCard({
                   <Tag
                     className={styles["cta-active"]}
                     showIcon
-                    text="Outage Alerts On"
+                    text={`${outageAlertLabel} On`}
                     theme="default"
                   />
                 ) : (
                   <TagCTA
                     renderIcon={outageIcon}
                     onClick={onClickOutageAlerts}
-                    text="Outage Alerts"
+                    text={outageAlertLabel}
                     theme="default"
                     className={styles["cta-inactive"]}
                   />
@@ -174,6 +175,8 @@ AccountInfoCard.propTypes = {
   onClickBasicCta: PropTypes.func,
   /** Specify what should occur when the Supplier CTA is clicked */
   onClickSupplierCta: PropTypes.func,
+  /** Support the case where the term "Outage Alert" might need to vary based on certain criteria */
+  outageAlertLabel: PropTypes.string,
   /** Specify whether or not to display the Basic Information section  */
   showBasicInfo: PropTypes.bool,
   /** Specify whether or not to display the Supplier Information section */
@@ -186,7 +189,7 @@ AccountInfoCard.propTypes = {
       id: PropTypes.number,
       name: PropTypes.string,
       description: PropTypes.string,
-      icon: PropTypes.string,
+      icon: PropTypes.func,
       theme: PropTypes.string
     })
   ),
