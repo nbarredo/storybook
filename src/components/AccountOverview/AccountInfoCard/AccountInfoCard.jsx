@@ -11,6 +11,7 @@ import { Supplier } from "./Supplier";
 function AccountInfoCard({
   acctID,
   addresses,
+  forceCollapsible = false,
   hasAutopay,
   hasOutageAlerts,
   hasPaperless,
@@ -31,7 +32,9 @@ function AccountInfoCard({
 }) {
   const renderCollapsibleWrapper = (children) => {
     return (
-      <details className={styles["collapsible-wrapper"]}>
+      <details
+        className={`${styles["collapsible-wrapper"]} ${forceCollapsible ? styles["force-collapsible"] : ""}`}
+      >
         <summary
           data-open="Show Less Info"
           data-close="Show More Info"
@@ -132,7 +135,9 @@ function AccountInfoCard({
         </header>
       </article>
       {renderCollapsibleWrapper(<MainContent />)}
-      <div className={styles["fixed-wrapper"]}>
+      <div
+        className={`${styles["fixed-wrapper"]}  ${forceCollapsible ? styles["force-collapsible"] : ""}`}
+      >
         <MainContent />
       </div>
     </section>
@@ -144,6 +149,8 @@ export { AccountInfoCard };
 AccountInfoCard.propTypes = {
   /** Specify which type of account (gas or electric) the card is displaying */
   type: PropTypes.oneOf(["electric", "gas", "unknown", "merged"]),
+  /** When set to 'true', the main content area will render as collapsible regardless of viewport.   */
+  forceCollapsible: PropTypes.bool,
   /** Specify whether or not the current account is enrolled in Autopay */
   hasAutopay: PropTypes.bool,
   /** Specify whether or not the current account is enrolled in Paperless Billing */

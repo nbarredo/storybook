@@ -43,6 +43,11 @@
     @include do-this-above(md) {
       display: block;
     }
+    &.force-collapsible {
+      @include do-this-above(md) {
+        display: none;
+      }
+    }
   }
 
   details.collapsible-wrapper {
@@ -100,8 +105,12 @@
         }
       }
     }
+    &.force-collapsible {
+      @include do-this-above(md) {
+        display: block;
+      }
+    }
     @include do-this-above(md) {
-      border: 1px solid red;
       display: none;
     }
   }

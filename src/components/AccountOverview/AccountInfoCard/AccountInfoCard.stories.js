@@ -42,6 +42,7 @@ export const Default = {
   args: {
     acctID: 12345678987,
     addresses: ["124 Main Street NH 120384"],
+    forceCollapsible: false,
     hasAutopay: false,
     hasOutageAlerts: false,
     hasPaperless: false,
