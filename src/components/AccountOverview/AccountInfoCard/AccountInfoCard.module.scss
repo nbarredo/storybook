@@ -13,7 +13,7 @@
   width: 100%;
 
   .intro {
-    padding: g.$space-5;
+    padding: g.$space-5 g.$space-5 0 g.$space-5;
   }
 
   h4 {
@@ -159,6 +159,7 @@
     justify-content: center;
     li {
       flex: 1;
+      margin-bottom: g.$space-5;
       .cta-active {
         min-height: 36px;
         width: 100%;
