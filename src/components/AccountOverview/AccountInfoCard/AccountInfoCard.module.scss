@@ -116,9 +116,9 @@
   }
 
   dl {
+    column-gap: 16px;
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
     margin-bottom: g.$space-5;
     dt {
       @extend %font-size-1-semi;
@@ -177,6 +177,14 @@
           :global(.cds--tag__custom-icon) {
             height: 16px;
             width: 16px;
+          }
+          @include do-this-above(md) {
+            font-size: 14px;
+            /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+            :global(.cds--tag__custom-icon) {
+              height: 20px;
+              width: 20px;
+            }
           }
         }
       }
