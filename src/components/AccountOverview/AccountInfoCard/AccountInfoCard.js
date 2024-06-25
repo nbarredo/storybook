@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { Tag } from "../../Tag/Tag";
 import { TagCTA } from "../../Tag/TagCTA";
 import styles from "./AccountInfoCard.module.scss";
-import { Basic } from "./Basic";
+import { Basic } from "./Basic/Basic";
 import { autopayIcon, outageIcon, paperlessIcon } from "./Icons";
-import { Programs } from "./Programs";
-import { Supplier } from "./Supplier";
+import { Programs } from "./Programs/Programs";
+import { Supplier } from "./Supplier/Supplier";
 
 function AccountInfoCard({
   acctID,
