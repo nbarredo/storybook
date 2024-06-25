@@ -9,6 +9,7 @@ export const winterProtectionIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="presentation"
+      data-testid="WinterProtectionIcon"
     >
       <rect
         width="16"
@@ -52,6 +53,7 @@ export const fuelAssistanceIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="presentation"
+      data-testid="FuelAssistanceIcon"
     >
       <rect
         width="16"
@@ -95,6 +97,7 @@ export const paperlessIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="presentation"
+      data-testid="PaperlessIcon"
     >
       <rect
         width={20}
@@ -142,6 +145,7 @@ export const outageIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="presentation"
+      data-testid="OutageIcon"
     >
       <rect
         width={20}
@@ -187,6 +191,7 @@ export const autopayIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="presentation"
+      data-testid="AutopayIcon"
     >
       <rect
         width={20}

@@ -13,3 +13,4 @@ export * from "./components/Wizard/Wizard";
 export * from "./components/Wizard/children";
 export * from "./components/MultiAccountDashboard/TotalBalance/TotalBalance";
 export * from "./components/MultiAccountDashboard/AccountCard/AccountCard";
+export * from "./components/AccountOverview/AccountInfoCard/AccountInfoCard";

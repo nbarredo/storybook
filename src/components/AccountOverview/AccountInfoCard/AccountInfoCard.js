@@ -35,6 +35,7 @@ function AccountInfoCard({
     return (
       <details
         className={`${styles["collapsible-wrapper"]} ${forceCollapsible ? styles["force-collapsible"] : ""}`}
+        data-testid="collapsible-wrapper"
       >
         <summary
           data-open="Show Less Info"
@@ -139,6 +140,7 @@ function AccountInfoCard({
       {renderCollapsibleWrapper(<MainContent />)}
       <div
         className={`${styles["fixed-wrapper"]}  ${forceCollapsible ? styles["force-collapsible"] : ""}`}
+        data-testid="fixed-wrapper"
       >
         <MainContent />
       </div>
