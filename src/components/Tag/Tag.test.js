@@ -37,7 +37,6 @@ describe("Tag component functions properly", () => {
   test("renders a custom icon when one is passed to it via the 'renderIcon' prop", () => {
     render(<Tag text="Test" showIcon={true} renderIcon={ChildCareIcon} />);
     const icon = screen.getByTestId("ChildCareIcon");
-    screen.debug();
     expect(icon).toBeInTheDocument();
   });
 });

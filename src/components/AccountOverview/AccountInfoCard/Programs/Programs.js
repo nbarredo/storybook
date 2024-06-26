@@ -2,7 +2,7 @@ import React from "react";
 import { Tooltip } from "@carbon/react";
 import PropTypes from "prop-types";
 import { Tag } from "../../../Tag/Tag";
-import styles from "./AccountInfoCard.module.scss";
+import styles from "../AccountInfoCard.module.scss";
 
 function Programs({ programs }) {
   return (

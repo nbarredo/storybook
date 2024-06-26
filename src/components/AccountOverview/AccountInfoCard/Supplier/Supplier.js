@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./AccountInfoCard.module.scss";
+import styles from "../AccountInfoCard.module.scss";
 
 function Supplier({ supplier, onClickSupplierCta, type }) {
   const getSectionTitle = () => {

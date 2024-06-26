@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./AccountInfoCard.module.scss";
+import styles from "../AccountInfoCard.module.scss";
 
 function Basic({ acctID, addresses, onClickBasicCta }) {
   const getAddress = () => {
