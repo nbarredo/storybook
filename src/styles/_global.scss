@@ -23,6 +23,9 @@ $breakpoints: (
 
 html {
   font-size: $base-font-size;
+  * {
+    box-sizing: border-box;
+  }
 }
 
 /* prettier-ignore */

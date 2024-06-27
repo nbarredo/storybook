@@ -1,7 +1,7 @@
 @use "../../../../styles/global" as g;
 @use "../../../../styles/mixins" as *;
 
-header {
+.acct-card-header {
   padding-left: 32px;
   position: relative;
   .closed {

@@ -40,7 +40,7 @@ export default function Header({ cardStyle, type, acctID, address }) {
   };
 
   return (
-    <header>
+    <header className={styles["acct-card-header"]}>
       {getIcon(type, cardStyle)}
       <Text
         size="3"

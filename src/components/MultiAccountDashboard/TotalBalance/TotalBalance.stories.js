@@ -1,7 +1,7 @@
 import { TotalBalance } from "./TotalBalance";
 
 const meta = {
-  title: "In Progress (do not use)/Multi-Account Dashboard/TotalBalance",
+  title: "Delivery/Multi-Account Dashboard/TotalBalance",
   component: TotalBalance,
   argTypes: { onClick: { action: "clicked" } },
   parameters: {

@@ -25,14 +25,14 @@ function TagCTA({ text, theme = "default", className, ...props }) {
 export { TagCTA };
 
 TagCTA.propTypes = {
-  /** Specify an optional className to be applied to the Text */
+  /** Specify an optional className to be applied to the Component */
   className: PropTypes.string,
   /** The text content of the tag */
   text: PropTypes.string,
   /** Specify what should occur when the tag is clicked */
   onClick: PropTypes.func,
-  /** Specify the theme of the Text Input. Currently supports the following: */
-  theme: PropTypes.oneOf(["default", "blue"]),
+  /** Specify the theme of the Text Input. "Default" theme is teal.  The component currently supports the following themes: */
+  theme: PropTypes.oneOf(["default", "blue", "green"]),
   /** Add a Material-UI icon to the button.  Search for an icon here:  https://mui.com/material-ui/material-icons/   */
   renderIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
 };

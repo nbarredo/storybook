@@ -12,6 +12,7 @@ function Tag({
   theme = "default",
   showIcon = false,
   renderIcon,
+  className,
   ...props
 }) {
   const themeName = `theme-${theme}`;
@@ -21,7 +22,7 @@ function Tag({
   };
   return (
     <CarbonTag
-      className={`${styles.tag} ${styles[themeName]} ${renderIcon ? styles["render-icon"] : styles["default-icon"]}`}
+      className={`${styles.tag} ${styles[themeName]} ${renderIcon ? styles["render-icon"] : styles["default-icon"]} ${className}`}
       as="div"
       renderIcon={showIcon ? getIcon() : null}
       {...props}
@@ -34,6 +35,8 @@ function Tag({
 export { Tag };
 
 Tag.propTypes = {
+  /** Specify an optional className to be applied to the Component */
+  className: PropTypes.string,
   /** The text content of the tag */
   text: PropTypes.string,
   /** Specify the theme of the Text Input. Currently supports the following: */

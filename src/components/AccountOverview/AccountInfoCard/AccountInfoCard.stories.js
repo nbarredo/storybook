@@ -1,9 +1,10 @@
 import { fn } from "@storybook/test";
 import { AccountInfoCard } from "./AccountInfoCard";
+import { fuelAssistanceIcon, winterProtectionIcon } from "./Icons";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-export default {
-  title: "In Progress (do not use)/Account Overview/Account Info Card",
+const meta = {
+  title: "Delivery/Account Overview/Account Info Card",
   component: AccountInfoCard,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -15,134 +16,93 @@ export default {
   args: { onClick: fn() }
 };
 
-const viewBillFn = () => {
-  window.alert('clicked the "View Bill" button.');
-};
-const payBankFn = () => {
-  window.alert('clicked the "Pay by Bank" button.');
-};
-const payCardFn = () => {
-  window.alert('clicked the "Pay by Card" button.');
-};
-
-const pastBillsFn = () => {
-  window.alert('clicked the "Past BIlls and Payments" button.');
+export default meta;
+const outageAlertsFn = () => {
+  window.alert('clicked the "Outage Alerts" button.');
 };
 
 const autopayFn = () => {
   window.alert('clicked the "Autopay" button.');
 };
 
-const pmtPlanFn = () => {
-  window.alert('clicked the "Payment Plan" button.');
+const goPaperlessFn = () => {
+  window.alert('clicked the "Go Paperless" button.');
 };
 
-export const StatusPaymentDue = {
+const supplierCtaFn = (e) => {
+  e.preventDefault();
+  window.alert("clicked the Supplier CTA.");
+};
+const basicCtaFn = (e) => {
+  e.preventDefault();
+  window.alert("clicked the Basic Info CTA.");
+};
+
+export const Default = {
   args: {
-    data: {
-      type: "electric",
-      status: "pmtDue",
-      autoPayMessage: null,
-      autoPayDate: null,
-      prevPaymentAmt: "$271.03",
-      prevPaymentDate: "02/04/23",
-      currPaymentAmt: "$304.14",
-      acctMessage: "Due 03/06/24",
-      onClickViewBill: viewBillFn,
-      onClickPayByBank: payBankFn,
-      onClickPayByCard: payCardFn,
-      onClickPastBills: pastBillsFn,
-      onClickAutopay: autopayFn,
-      onClickPmtPlan: pmtPlanFn
-    }
+    acctID: 12345678987,
+    addresses: ["124 Main Street NH 120384"],
+    forceCollapsible: false,
+    hasAutopay: false,
+    hasOutageAlerts: false,
+    hasPaperless: false,
+    onClickAutopay: autopayFn,
+    onClickBasicCta: basicCtaFn,
+    onClickOutageAlerts: outageAlertsFn,
+    onClickPaperless: goPaperlessFn,
+    onClickSupplierCta: supplierCtaFn,
+    outageAlertLabel: "Outage Alerts",
+    programs: [
+      {
+        id: 1,
+        name: "Winter Protection",
+        description:
+          "You're in this program which prevents service from being shut off from Nov. 1 to May 1 with no late payment charges.",
+        icon: winterProtectionIcon,
+        theme: "purple"
+      },
+      {
+        id: 2,
+        name: "Fuel Assistance",
+        description:
+          "You're enrolled in this program that helps pay a portion of your winter heating bills.",
+        icon: fuelAssistanceIcon,
+        theme: "purple"
+      }
+    ],
+    showAutopayBtn: true,
+    showBasicInfo: true,
+    showOutageAlertsBtn: true,
+    showPaperlessBtn: true,
+    showProgramsInfo: true,
+    showSupplierInfo: true,
+    supplier: "Third party supplier",
+    type: "electric"
   }
 };
 
-export const StatusPaymentOverdue = {
+export const MoreThanOneAddress = {
   args: {
-    data: {
-      ...StatusPaymentDue.args.data,
-      status: "pmtOverdue"
-    }
+    ...Default.args,
+    addresses: [
+      "124 Main Street NH 120384",
+      "1600 Pennsylvania Avenue NW, Washington, DC 20500"
+    ]
   }
 };
 
-export const StatusFinalBill = {
+export const OnlyOneProgram = {
   args: {
-    data: {
-      ...StatusPaymentDue.args.data,
-      status: "finalBill",
-      acctMessage: "This balance reflects your final bill"
-    }
-  }
-};
-
-export const StatusNothingDue = {
-  args: {
-    data: {
-      ...StatusPaymentDue.args.data,
-      status: "nothingDue",
-      currPaymentAmt: "$0.00",
-      prevPaymentAmt: "$123.00",
-      acctMessage: "Payment of $123.00 received"
-    }
-  }
-};
-
-export const StatusCredit = {
-  args: {
-    data: {
-      ...StatusPaymentDue.args.data,
-      status: "credit",
-      acctMessage: "Credit applied to next bill, no payment due"
-    }
-  }
-};
-
-export const TypeElectric = {
-  args: {
-    data: {
-      ...StatusPaymentDue.args.data,
-      type: "electric"
-    }
-  }
-};
-
-export const TypeGas = {
-  args: {
-    data: {
-      ...StatusPaymentDue.args.data,
-      type: "gas"
-    }
-  }
-};
-
-export const TypeUnknown = {
-  args: {
-    data: {
-      ...StatusPaymentDue.args.data,
-      type: "unknown"
-    }
-  }
-};
-
-export const HasAutoPay = {
-  args: {
-    data: {
-      ...StatusPaymentDue.args.data,
-      status: "hasAutoPay",
-      autoPayMessage: "scheduled for",
-      autoPayDate: "01/06/24"
-    }
-  }
-};
-
-export const HasPaymentPlan = {
-  args: {
-    data: {
-      ...StatusPaymentDue.args.data,
-      status: "hasPmtPlan",
-      pmtPlanMessage: "On a Payment Plan"
-    }
+    ...Default.args,
+    programs: [
+      {
+        id: 1,
+        name: "Winter Protection",
+        description:
+          "You're in this program which prevents service from being shut off from Nov. 1 to May 1 with no late payment charges.",
+        icon: winterProtectionIcon,
+        theme: "purple"
+      }
+    ]
   }
 };
