@@ -5,7 +5,7 @@ import { Accordion } from "./Accordion";
 import image from "./art_acct_number.png";
 
 const meta = {
-  title: "Approved for Use/Accordion",
+  title: "Design System/Accordion",
   component: Accordion
 };
 
