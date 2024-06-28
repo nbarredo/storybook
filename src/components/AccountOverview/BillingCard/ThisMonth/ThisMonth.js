@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button } from "../../Button/Button";
-import { TagCTA } from "../../Tag/TagCTA";
-import styles from "./BillingCard.module.scss";
-import { PaymentOptions } from "./PaymentOptions";
-import { autoPayIcon } from "./Utils";
+import { Button } from "../../../Button/Button";
+import { TagCTA } from "../../../Tag/TagCTA";
+import styles from "../BillingCard.module.scss";
+import { PaymentOptions } from "../PaymentOptions/PaymentOptions";
+import { autoPayIcon } from "../Utils";
 
 function ThisMonth({
   status,
