@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TagCTA } from "../../Tag/TagCTA";
-import styles from "./BillingCard.module.scss";
-import { billIcon } from "./Utils";
+import { TagCTA } from "../../../Tag/TagCTA";
+import styles from "../BillingCard.module.scss";
+import { billIcon } from "../Utils";
 
 function LastMonth({
   type,

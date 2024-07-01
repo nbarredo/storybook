@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button } from "../../Button/Button";
-import styles from "./BillingCard.module.scss";
+import { Button } from "../../../Button/Button";
+import styles from "../BillingCard.module.scss";
 
 function PaymentOptions(props) {
   const { status, onClickViewBill, onClickPayByBank, onClickPayByCard } = props;

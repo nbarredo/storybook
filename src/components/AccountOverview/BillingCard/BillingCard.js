@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./BillingCard.module.scss";
-import { LastMonth } from "./LastMonth";
-import { ThisMonth } from "./ThisMonth";
+import { LastMonth } from "./LastMonth/LastMonth";
+import { ThisMonth } from "./ThisMonth/ThisMonth";
 
 function BillingCard({ data }) {
   return (
