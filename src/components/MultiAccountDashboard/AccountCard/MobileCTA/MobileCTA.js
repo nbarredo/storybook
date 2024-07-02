@@ -8,13 +8,15 @@ import styles from "./MobileCTA.module.scss";
  */
 export default function MobileCTA({ onClick, text, theme, ...props }) {
   return (
-    <TagCTA
-      {...props}
-      onClick={onClick}
-      text={text}
-      theme={theme === "paperless" ? "default" : "blue"}
-      className={`${styles["mobile-cta"]} ${styles[theme]}`}
-    />
+    <div className={`${styles["mobile-cta"]}`}>
+      <TagCTA
+        {...props}
+        onClick={onClick}
+        text={text}
+        theme={theme === "paperless" ? "default" : "blue"}
+        className={`${styles["gradient-border"]} ${styles[theme]} ${theme}`}
+      />
+    </div>
   );
 }
 

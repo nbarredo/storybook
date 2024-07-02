@@ -2,10 +2,12 @@
 @use "../../../../styles/mixins" as *;
 
 .mobile-cta {
-  border-radius: 0 0 g.$border-radius-large g.$border-radius-large;
-  margin: 0 -1px -1px -1px;
-  max-width: none;
-  padding: 0px 1px 1px 1px;
+  .gradient-border {
+    border-radius: 0 0 g.$border-radius-large g.$border-radius-large;
+    margin: 0 -1px -1px -1px;
+    max-width: none;
+    padding: 0px 1px 1px 1px;
+  }
 
   button {
     border-radius: 0 0 g.$border-radius-large g.$border-radius-large;
@@ -22,17 +24,18 @@
       width: 20px;
     }
   }
-
-  &.autopay {
-    button > span::before {
-      background-image: url("./currency_exchange.svg");
-    }
-  }
-  &.paperless {
-    button > span::before {
+  .paperless {
+    button span::before {
       background-image: url("./leaf.svg");
     }
   }
+
+  .autopay {
+    button span::before {
+      background-image: url("./currency_exchange.svg");
+    }
+  }
+
   @include do-this-above(md) {
     display: none;
   }
