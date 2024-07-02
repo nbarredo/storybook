@@ -23,15 +23,16 @@
       vertical-align: sub;
       width: 20px;
     }
-    &[data-testid="mobile-cta-autopay"] {
-      span::before {
-        background-image: url("./currency_exchange.svg");
-      }
+  }
+  .paperless {
+    button span::before {
+      background-image: url("./leaf.svg");
     }
-    &[data-testid="mobile-cta-paperless"] {
-      span::before {
-        background-image: url("./leaf.svg");
-      }
+  }
+
+  .autopay {
+    button span::before {
+      background-image: url("./currency_exchange.svg");
     }
   }
 

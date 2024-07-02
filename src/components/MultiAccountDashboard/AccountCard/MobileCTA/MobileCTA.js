@@ -14,7 +14,7 @@ export default function MobileCTA({ onClick, text, theme, ...props }) {
         onClick={onClick}
         text={text}
         theme={theme === "paperless" ? "default" : "blue"}
-        className={`${styles["gradient-border"]} ${styles[theme]}`}
+        className={`${styles["gradient-border"]} ${styles[theme]} ${theme}`}
       />
     </div>
   );
