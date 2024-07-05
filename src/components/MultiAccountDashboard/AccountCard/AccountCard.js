@@ -35,17 +35,24 @@ function AccountCard({
   status = "pmtDue"
 }) {
   const paymentRef = useRef();
+  const autoPayBtnRef = useRef();
+  const paperlessBtnRef = useRef();
   const acctDetailRef = useRef();
+
+  const nodesToExcludeFromCardClick = [
+    paymentRef,
+    autoPayBtnRef,
+    paperlessBtnRef
+  ];
 
   const cardAction = (e) => {
     if (acctDetailRef.current.checkVisibility()) return;
-    console.log(acctDetailRef.current);
-    console.log("vis", acctDetailRef.current.checkVisibility());
-    if (paymentRef?.current.contains(e.target)) {
-      console.log("clicked payment area");
-    } else {
-      console.log("clicked card body");
-    }
+
+    const isFiltered = nodesToExcludeFromCardClick.some((node) => {
+      return node?.current.contains(e.target);
+    });
+
+    console.log("isFiltered", isFiltered);
   };
 
   const renderActiveContent = () => {
@@ -55,7 +62,7 @@ function AccountCard({
           {cardStyle !== "danger" && (
             <ul className={styles.actions}>
               {showPaperlessBtn && (
-                <li>
+                <li ref={paperlessBtnRef}>
                   {hasPaperless ? (
                     <Tag showIcon text="Paperless is On" theme="default" />
                   ) : (
@@ -68,7 +75,7 @@ function AccountCard({
                 </li>
               )}
               {showAutopayBtn && (
-                <li>
+                <li ref={autoPayBtnRef}>
                   {hasAutopay ? (
                     <Tag showIcon text="Autopay is On" theme="default" />
                   ) : (

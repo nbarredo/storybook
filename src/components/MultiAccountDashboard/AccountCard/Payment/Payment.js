@@ -49,7 +49,13 @@ Payment.propTypes = {
   /** Specify what should occur when the "Pay Bill" button is clicked */
   onClickPayBill: PropTypes.func,
   /** Indicates which card style/layout should be used. "Warning" and "danger" styles will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
-  cardStyle: PropTypes.oneOf(["default", "warning", "danger"]),
+  cardStyle: PropTypes.oneOf([
+    "default",
+    "info",
+    "warning",
+    "danger",
+    "closed"
+  ]),
   totalDue: PropTypes.string,
   dateDue: PropTypes.string,
   /** Indicates the billing status of the account.  This will control the appearance of the "Payment Due" part of the card. */
