@@ -36,7 +36,17 @@ function AccountCard({
 }) {
   const paymentRef = useRef();
   const cardAction = (e) => {
-    console.log("card click", e.target);
+    // console.log("payment ref is", paymentRef?.current);
+    // console.log("target is", e);
+    // console.log(
+    //  "is whatever was clicked on a child of the ref?",
+    //  paymentRef?.current.contains(e.target)
+    // );
+    if (paymentRef?.current.contains(e.target)) {
+      console.log("clicked payment area");
+    } else {
+      console.log("clicked card body");
+    }
   };
 
   const renderActiveContent = () => {
