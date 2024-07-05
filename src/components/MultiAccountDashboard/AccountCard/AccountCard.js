@@ -35,13 +35,12 @@ function AccountCard({
   status = "pmtDue"
 }) {
   const paymentRef = useRef();
+  const acctDetailRef = useRef();
+
   const cardAction = (e) => {
-    // console.log("payment ref is", paymentRef?.current);
-    // console.log("target is", e);
-    // console.log(
-    //  "is whatever was clicked on a child of the ref?",
-    //  paymentRef?.current.contains(e.target)
-    // );
+    if (acctDetailRef.current.checkVisibility()) return;
+    console.log(acctDetailRef.current);
+    console.log("vis", acctDetailRef.current.checkVisibility());
     if (paymentRef?.current.contains(e.target)) {
       console.log("clicked payment area");
     } else {
@@ -94,7 +93,7 @@ function AccountCard({
             ref={paymentRef}
           />
         </div>
-        <div className={`${styles.column} ${styles.cta}`}>
+        <div className={`${styles.column} ${styles.cta}`} ref={acctDetailRef}>
           <Link
             href={acctDetailsURL}
             renderIcon={() => (
