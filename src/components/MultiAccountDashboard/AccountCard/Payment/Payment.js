@@ -1,22 +1,23 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import { Button } from "../../../Button/Button";
 import { Text } from "../../../Text/Text";
 import styles from "./Payment.module.scss";
 
-export default function Payment({
-  cardStyle = "default",
-  totalDue,
-  dateDue,
-  onClickPayBill,
-  status
-}) {
+const Payment = forwardRef(function Payment(props, ref) {
+  const {
+    cardStyle = "default",
+    totalDue,
+    dateDue,
+    onClickPayBill,
+    status
+  } = props;
   const isDisabled = () => {
     if (status === "nothingDue" || status === "credit") return true;
     return false;
   };
   return (
-    <aside className={styles["payment-area"]}>
+    <aside ref={ref} className={styles["payment-area"]}>
       <div
         className={`${styles["total-due"]} ${cardStyle === "danger" ? styles.danger : ""} ${styles[status]}`}
         onClick={onClickPayBill}
@@ -40,9 +41,9 @@ export default function Payment({
       </div>
     </aside>
   );
-}
+});
 
-export { Payment };
+export default Payment;
 
 Payment.propTypes = {
   /** Specify what should occur when the "Pay Bill" button is clicked */

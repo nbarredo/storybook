@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "@carbon/react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PropTypes from "prop-types";
@@ -34,6 +34,11 @@ function AccountCard({
   address,
   status = "pmtDue"
 }) {
+  const paymentRef = useRef();
+  const cardAction = (e) => {
+    console.log("card click", e.target);
+  };
+
   const renderActiveContent = () => {
     return (
       <>
@@ -76,6 +81,7 @@ function AccountCard({
             totalDue={totalDue}
             dateDue={dateDue}
             onClickPayBill={onClickPayBill}
+            ref={paymentRef}
           />
         </div>
         <div className={`${styles.column} ${styles.cta}`}>
@@ -130,6 +136,7 @@ function AccountCard({
     >
       <article
         className={`${styles["content-container"]} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${mobileCTAType !== "none" ? styles["mobile-cta"] : ""}`}
+        onClick={cardAction}
       >
         <div className={styles.grid}>
           <div className={`${styles.column}`}>
@@ -215,7 +222,9 @@ AccountCard.propTypes = {
   onClickAutopay: PropTypes.func,
   /** Specify what should occur when the "Pay Bill" button is clicked */
   onClickPayBill: PropTypes.func,
-  /** The URL of the card's corresponding details page */
+  /** The URL of the card's corresponding details page. At smaller viewports, the user can click the card body to navigate to the account details screen.  At larger viewports,
+   * an "Acct Details" link will appear on the card, and the users would need to click that link (and not the card body) to navigate to the details page.
+   */
   acctDetailsURL: PropTypes.string,
   /** Specify an optional className to be applied to the AccountCard */
   className: PropTypes.string,
