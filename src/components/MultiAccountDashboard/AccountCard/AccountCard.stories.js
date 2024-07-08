@@ -17,6 +17,19 @@ const meta = {
 
 export default meta;
 
+const cardBodyClickFn = () => {
+  window.alert(
+    "Card body was clicked.  Redirect the user to the account details screen."
+  );
+};
+
+const payBillFn = (e) => {
+  e.stopPropagation();
+  window.alert(
+    "The 'Pay Bill' area/button was clicked.  Make sure that you stop propagation of the click event, otherwise the click will also be triggered on the card body."
+  );
+};
+
 export const Default = {
   args: {
     status: "nothingDue",
@@ -33,7 +46,9 @@ export const Default = {
     totalDue: "$900,853.02",
     dateDue: "02/06/23",
     acctID: 12345678987,
-    address: "124 Main Street NH 120384"
+    address: "124 Main Street NH 120384",
+    onCardBodyClick: cardBodyClickFn,
+    onClickPayBill: payBillFn
   }
 };
 
