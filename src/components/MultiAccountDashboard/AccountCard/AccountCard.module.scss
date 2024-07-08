@@ -27,6 +27,7 @@ $min-height-compact: 40px;
   }
 
   .content-container {
+    cursor: pointer;
     display: flex;
     gap: 50px;
     padding: g.$space-6 g.$space-4;
@@ -115,6 +116,7 @@ $min-height-compact: 40px;
       padding: g.$space-6 g.$space-4;
     }
     @include do-this-above(lg) {
+      cursor: default;
       padding: g.$space-7 g.$space-6;
     }
     @include do-this-above(xl) {

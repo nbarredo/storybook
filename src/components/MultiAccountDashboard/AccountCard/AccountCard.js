@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "@carbon/react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PropTypes from "prop-types";
@@ -23,6 +23,7 @@ function AccountCard({
   showAutopayBtn = true,
   showPaperlessBtn = true,
   cardStyle = "default",
+  onCardBodyClick,
   onClickPaperless,
   onClickAutopay,
   onClickPayBill,
@@ -34,6 +35,30 @@ function AccountCard({
   address,
   status = "pmtDue"
 }) {
+  const paymentRef = useRef();
+  const autoPayBtnRef = useRef();
+  const paperlessBtnRef = useRef();
+  const acctDetailRef = useRef();
+
+  const nodesToExcludeFromCardClick = [
+    paymentRef,
+    autoPayBtnRef,
+    paperlessBtnRef
+  ];
+
+  const cardAction = (e) => {
+    if (acctDetailRef.current.checkVisibility()) return;
+
+    const isFiltered = nodesToExcludeFromCardClick.some((node) => {
+      return node?.current.contains(e.target);
+    });
+
+    if (isFiltered) return;
+
+    e.stopPropagation();
+    onCardBodyClick();
+  };
+
   const renderActiveContent = () => {
     return (
       <>
@@ -41,7 +66,7 @@ function AccountCard({
           {cardStyle !== "danger" && (
             <ul className={styles.actions}>
               {showPaperlessBtn && (
-                <li>
+                <li ref={paperlessBtnRef}>
                   {hasPaperless ? (
                     <Tag showIcon text="Paperless is On" theme="default" />
                   ) : (
@@ -54,7 +79,7 @@ function AccountCard({
                 </li>
               )}
               {showAutopayBtn && (
-                <li>
+                <li ref={autoPayBtnRef}>
                   {hasAutopay ? (
                     <Tag showIcon text="Autopay is On" theme="default" />
                   ) : (
@@ -76,9 +101,10 @@ function AccountCard({
             totalDue={totalDue}
             dateDue={dateDue}
             onClickPayBill={onClickPayBill}
+            ref={paymentRef}
           />
         </div>
-        <div className={`${styles.column} ${styles.cta}`}>
+        <div className={`${styles.column} ${styles.cta}`} ref={acctDetailRef}>
           <Link
             href={acctDetailsURL}
             renderIcon={() => (
@@ -130,6 +156,7 @@ function AccountCard({
     >
       <article
         className={`${styles["content-container"]} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${mobileCTAType !== "none" ? styles["mobile-cta"] : ""}`}
+        onClick={cardAction}
       >
         <div className={styles.grid}>
           <div className={`${styles.column}`}>
@@ -209,14 +236,16 @@ AccountCard.propTypes = {
   showAutopayBtn: PropTypes.bool,
   /** Specify whether or not the Paperless Billing button/tag should appear. Note that for the medium breakpoint, you must add logic to determine which one of the two buttons should show (see Figma for details) */
   showPaperlessBtn: PropTypes.bool,
-  /** Specify what should occur when the "Go Paperless" tag is clicked */
+  /** Specify what should occur when the "Go Paperless" tag is clicked. */
   onClickPaperless: PropTypes.func,
-  /** Specify what should occur when the "Set Up Autopay" tag is clicked */
+  /** Specify what should occur when the "Set Up Autopay" tag is clicked. */
   onClickAutopay: PropTypes.func,
-  /** Specify what should occur when the "Pay Bill" button is clicked */
+  /** Specify what should occur when the "Pay Bill" button is clicked. */
   onClickPayBill: PropTypes.func,
-  /** The URL of the card's corresponding details page */
-  acctDetailsURL: PropTypes.string,
+  /** Specify what should occur when the card body is clicked. Note that action will only occur on viewports where the "Acct Details ->" link is not shown. */
+  onCardBodyClick: PropTypes.func.isRequired,
+  /** The URL of the card's corresponding details page. At smaller viewports, the user can click the card body to navigate to the account details screen.  At larger viewports, an "Acct Details" link will appear on the card, and the users would need to click that link (and not the card body) to navigate to the details page. */
+  acctDetailsURL: PropTypes.string.isRequired,
   /** Specify an optional className to be applied to the AccountCard */
   className: PropTypes.string,
   /** Specify which type of account (gas or electric) the card is displaying */
@@ -236,7 +265,7 @@ AccountCard.propTypes = {
   /** Total amount due on the account. It must be a string preceded by the relevant currency symbol (e.g. "$250.75") */
   totalDue: PropTypes.string.isRequired,
   /** The date the next payment is due in `mm/dd/yy` format.  This should be `null` if no payment is due. */
-  dateDue: PropTypes.string.isRequired,
+  dateDue: PropTypes.string,
   /** The account ID can either be the 11-digit account number (in which case the data type would be `number`), or the account's nickname (data type would be `string` in this case) */
   acctID: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   /** The address of the account */

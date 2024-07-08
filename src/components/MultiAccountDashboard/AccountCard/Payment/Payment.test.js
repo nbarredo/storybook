@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Payment } from "./Payment";
+import Payment from "./Payment";
 
 describe("Payment component functions correctly", () => {
   test("Applies correct styles when default cardStyle is selected", () => {
