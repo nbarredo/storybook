@@ -53,7 +53,7 @@ function AccountCard({
       return node?.current.contains(e.target);
     });
 
-    console.log("isFiltered", isFiltered);
+    if (isFiltered) return;
 
     e.stopPropagation();
     onCardBodyClick();
@@ -236,11 +236,11 @@ AccountCard.propTypes = {
   showAutopayBtn: PropTypes.bool,
   /** Specify whether or not the Paperless Billing button/tag should appear. Note that for the medium breakpoint, you must add logic to determine which one of the two buttons should show (see Figma for details) */
   showPaperlessBtn: PropTypes.bool,
-  /** Specify what should occur when the "Go Paperless" tag is clicked. Make sure that you stop propagation of the click event, otherwise the click will also be triggered on the card body. */
+  /** Specify what should occur when the "Go Paperless" tag is clicked. */
   onClickPaperless: PropTypes.func,
-  /** Specify what should occur when the "Set Up Autopay" tag is clicked. Make sure that you stop propagation of the click event, otherwise the click will also be triggered on the card body. */
+  /** Specify what should occur when the "Set Up Autopay" tag is clicked. */
   onClickAutopay: PropTypes.func,
-  /** Specify what should occur when the "Pay Bill" button is clicked. Make sure that you stop propagation of the click event, otherwise the click will also be triggered on the card body. */
+  /** Specify what should occur when the "Pay Bill" button is clicked. */
   onClickPayBill: PropTypes.func,
   /** Specify what should occur when the card body is clicked. Note that action will only occur on viewports where the "Acct Details ->" link is not shown. */
   onCardBodyClick: PropTypes.func.isRequired,
