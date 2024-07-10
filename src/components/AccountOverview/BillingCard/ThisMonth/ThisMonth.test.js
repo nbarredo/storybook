@@ -31,4 +31,16 @@ describe("ThisMonth Component Functions Properly", () => {
     rerender(<ThisMonth {...defaultProps} status="pmtDue" />);
     expect(screen.getByLabelText("$123.45")).not.toHaveClass("credit");
   });
+
+  test("Renders differently based on companyCode prop", () => {
+    const { rerender } = render(
+      <ThisMonth {...defaultProps} companyCode="CTE" />
+    );
+    expect(screen.getByText(/View & Pay Bill/i)).toBeInTheDocument();
+    rerender(<ThisMonth {...defaultProps} companyCode="ABC" />);
+    screen.debug();
+    expect(screen.queryByText(/View & Pay Bill/i)).not.toBeInTheDocument();
+    expect(screen.getByText(/Pay by Card/i)).toBeInTheDocument();
+    expect(screen.getByText(/View Bill/i)).toBeInTheDocument();
+  });
 });
