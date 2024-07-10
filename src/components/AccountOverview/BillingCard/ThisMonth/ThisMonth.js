@@ -17,7 +17,9 @@ function ThisMonth({
   onClickPayByBank,
   onClickPayByCard,
   onClickAutopay,
-  onClickPmtPlan
+  onClickPmtPlan,
+  onClickCteViewPayBtn,
+  companyCode
 }) {
   const amountDue = () => {
     const symbol = currPaymentAmt.charAt(0);
@@ -67,6 +69,8 @@ function ThisMonth({
         onClickViewBill={onClickViewBill}
         onClickPayByBank={onClickPayByBank}
         onClickPayByCard={onClickPayByCard}
+        onClickCteViewPayBtn={onClickCteViewPayBtn}
+        companyCode={companyCode}
       />
       {status === "hasAutoPay" ? (
         <p className={styles["autopay-message"]}>
@@ -108,5 +112,7 @@ ThisMonth.propTypes = {
   onClickPayByBank: PropTypes.func,
   onClickPayByCard: PropTypes.func,
   onClickAutopay: PropTypes.func,
-  onClickPmtPlan: PropTypes.func
+  onClickPmtPlan: PropTypes.func,
+  onClickCteViewPayBtn: PropTypes.func,
+  companyCode: PropTypes.string
 };
