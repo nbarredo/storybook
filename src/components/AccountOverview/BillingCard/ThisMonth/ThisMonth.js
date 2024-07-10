@@ -72,11 +72,12 @@ function ThisMonth({
         onClickCteViewPayBtn={onClickCteViewPayBtn}
         companyCode={companyCode}
       />
-      {status === "hasAutoPay" ? (
+      {status === "hasAutoPay" && (
         <p className={styles["autopay-message"]}>
           Making another payment now might result in duplicate payment.
         </p>
-      ) : (
+      )}
+      {status !== "hasAutoPay" && companyCode !== "CTE" && (
         <Button
           className={styles["view-bill-button"]}
           kind="ghost"

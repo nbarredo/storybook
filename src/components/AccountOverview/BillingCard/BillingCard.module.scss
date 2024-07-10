@@ -367,6 +367,12 @@
       }
     }
 
+    .view-pay-bill-button {
+      @include do-this-above(md) {
+        margin-top: 43px;
+      }
+    }
+
     @include do-this-above(md) {
       column-gap: g.$space-6;
       display: grid;

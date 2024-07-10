@@ -81,6 +81,7 @@ function PaymentOptions(props) {
   const renderCTEContent = () => {
     return (
       <Button
+        className={styles["view-pay-bill-button"]}
         fullWidth
         kind="primary"
         label="View & Pay Bill"
