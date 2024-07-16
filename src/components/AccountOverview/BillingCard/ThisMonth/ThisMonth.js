@@ -17,7 +17,9 @@ function ThisMonth({
   onClickPayByBank,
   onClickPayByCard,
   onClickAutopay,
-  onClickPmtPlan
+  onClickPmtPlan,
+  onClickCteViewPayBtn,
+  companyCode
 }) {
   const amountDue = () => {
     const symbol = currPaymentAmt.charAt(0);
@@ -39,7 +41,9 @@ function ThisMonth({
   };
 
   return (
-    <div className={`${styles["this-month"]} ${styles[status]}`}>
+    <div
+      className={`${styles["this-month"]} ${styles[status]} ${companyCode === "CTE" ? styles.cte : ""}`}
+    >
       <h4>This Month</h4>
       <aside className={`${styles[status]}`}>
         {amountDue()}
@@ -67,12 +71,15 @@ function ThisMonth({
         onClickViewBill={onClickViewBill}
         onClickPayByBank={onClickPayByBank}
         onClickPayByCard={onClickPayByCard}
+        onClickCteViewPayBtn={onClickCteViewPayBtn}
+        companyCode={companyCode}
       />
-      {status === "hasAutoPay" ? (
+      {status === "hasAutoPay" && (
         <p className={styles["autopay-message"]}>
           Making another payment now might result in duplicate payment.
         </p>
-      ) : (
+      )}
+      {status !== "hasAutoPay" && companyCode !== "CTE" && (
         <Button
           className={styles["view-bill-button"]}
           kind="ghost"
@@ -108,5 +115,7 @@ ThisMonth.propTypes = {
   onClickPayByBank: PropTypes.func,
   onClickPayByCard: PropTypes.func,
   onClickAutopay: PropTypes.func,
-  onClickPmtPlan: PropTypes.func
+  onClickPmtPlan: PropTypes.func,
+  onClickCteViewPayBtn: PropTypes.func,
+  companyCode: PropTypes.string
 };

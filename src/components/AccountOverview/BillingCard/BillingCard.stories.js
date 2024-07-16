@@ -37,6 +37,10 @@ const pmtPlanFn = () => {
   window.alert('clicked the "Payment Plan" button.');
 };
 
+const viewAndPayFn = () => {
+  window.alert('clicked the "View & Pay Bill" button.');
+};
+
 export const StatusPaymentDue = {
   args: {
     data: {
@@ -143,6 +147,16 @@ export const HasPaymentPlan = {
       ...StatusPaymentDue.args.data,
       status: "hasPmtPlan",
       pmtPlanMessage: "On a Payment Plan"
+    }
+  }
+};
+
+export const ConnecticutUser = {
+  args: {
+    data: {
+      ...StatusPaymentDue.args.data,
+      companyCode: "CTE",
+      onClickCteViewPayBtn: viewAndPayFn
     }
   }
 };
