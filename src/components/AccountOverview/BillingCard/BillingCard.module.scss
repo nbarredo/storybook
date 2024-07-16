@@ -83,6 +83,13 @@
 
   .this-month {
     padding: g.$space-6 g.$space-5 g.$space-4 g.$space-5;
+
+    &.cte {
+      @include do-this-above(md) {
+        grid-template-columns: 350px 1fr;
+      }
+    }
+
     &.hasAutoPay {
       grid-template-columns: 386px 1fr;
       aside {

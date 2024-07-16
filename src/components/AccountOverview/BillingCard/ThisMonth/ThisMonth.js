@@ -41,7 +41,9 @@ function ThisMonth({
   };
 
   return (
-    <div className={`${styles["this-month"]} ${styles[status]}`}>
+    <div
+      className={`${styles["this-month"]} ${styles[status]} ${companyCode === "CTE" ? styles.cte : ""}`}
+    >
       <h4>This Month</h4>
       <aside className={`${styles[status]}`}>
         {amountDue()}
