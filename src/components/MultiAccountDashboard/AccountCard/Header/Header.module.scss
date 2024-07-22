@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @use "../../../../styles/global" as g;
 @use "../../../../styles/mixins" as *;
 
@@ -75,7 +76,7 @@
   &.merged {
     background-color: var(--gray-10);
     svg {
-      path {
+      path:last-of-type {
         fill: var(--gray-70);
       }
       height: 17px;
