@@ -8,6 +8,7 @@ import { TagCTA } from "../../Tag/TagCTA";
 import styles from "./AccountCard.module.scss";
 import Header from "./Header/Header";
 import MobileCTA from "./MobileCTA/MobileCTA";
+import { ParentContent } from "./ParentContent";
 import Payment from "./Payment/Payment";
 
 /**
@@ -167,9 +168,9 @@ function AccountCard({
               address={address}
             />
           </div>
-          {cardStyle === "closed"
-            ? renderInactiveContent()
-            : renderActiveContent()}
+          {cardStyle === "closed" && renderInactiveContent()}
+          {cardStyle !== "closed" && type !== "merged" && renderActiveContent()}
+          {cardStyle !== "closed" && type === "merged" && <ParentContent />}
         </div>
       </article>
       {cardStyle === "warning" && (
