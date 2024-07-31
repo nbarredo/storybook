@@ -3,7 +3,6 @@ import { Link } from "@carbon/react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PropTypes from "prop-types";
 import { InlineNotification } from "../../Notification/InlineNotification/InlineNotification";
-import { Tag } from "../../Tag/Tag";
 import styles from "./AccountCard.module.scss";
 import Actions from "./Actions/Actions";
 import Header from "./Header/Header";
@@ -109,13 +108,17 @@ function AccountCard({
   const renderInactiveContent = () => {
     return (
       <>
-        <div className={`${styles.column} ${styles.actions}`}>
-          <ul className={styles.actions}>
-            <li>
-              <Tag showIcon text="Account Closed" theme="important" />
-            </li>
-          </ul>
-        </div>
+        <Actions
+          isClosed={isClosed}
+          hasAutopay={hasAutopay}
+          hasPaperless={hasPaperless}
+          showAutopayBtn={showAutopayBtn}
+          showPaperlessBtn={showPaperlessBtn}
+          onClickPaperless={onClickPaperless}
+          onClickAutopay={onClickAutopay}
+          cardStyle={cardStyle}
+          ref={{ autoPayBtnRef, paperlessBtnRef }}
+        />
         <div className={`${styles.column} ${styles.cta}`} ref={acctDetailRef}>
           <Link
             href={acctDetailsURL}
