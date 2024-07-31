@@ -48,6 +48,16 @@ $min-height-compact: 40px;
       gap: g.$space-5;
       grid-template-columns: minmax(231px, 1fr) minmax(116px, 1fr);
       width: 100%;
+      &.parent {
+        border: 5px solid red;
+        @include do-this-above(xl) {
+          grid-template-columns: minmax(167px, 2fr) minmax(256px, 2fr) minmax(
+              540px,
+              2fr
+            );
+        }
+      }
+
       .column {
         &.actions {
           display: none;

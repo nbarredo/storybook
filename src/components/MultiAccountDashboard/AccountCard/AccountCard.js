@@ -159,7 +159,9 @@ function AccountCard({
         className={`${styles["content-container"]} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${mobileCTAType !== "none" ? styles["mobile-cta"] : ""}`}
         onClick={cardAction}
       >
-        <div className={styles.grid}>
+        <div
+          className={`${styles.grid} ${type === "merged" ? styles.parent : ""}`}
+        >
           <div className={`${styles.column}`}>
             <Header
               type={type}
@@ -170,7 +172,12 @@ function AccountCard({
           </div>
           {cardStyle === "closed" && renderInactiveContent()}
           {cardStyle !== "closed" && type !== "merged" && renderActiveContent()}
-          {cardStyle !== "closed" && type === "merged" && <ParentContent />}
+          {cardStyle !== "closed" && type === "merged" && (
+            <ParentContent
+              showPaperlessBtn={showPaperlessBtn}
+              showAutopayBtn={showAutopayBtn}
+            />
+          )}
         </div>
       </article>
       {cardStyle === "warning" && (
