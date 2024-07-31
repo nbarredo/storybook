@@ -160,8 +160,14 @@ function AccountCard({
           {!isClosed && type !== "merged" && renderActiveContent()}
           {!isClosed && type === "merged" && (
             <ParentContent
+              onClickAutopay={onClickAutopay}
+              cardStyle={cardStyle}
+              isClosed={isClosed}
               showPaperlessBtn={showPaperlessBtn}
               showAutopayBtn={showAutopayBtn}
+              onClickPaperless={onClickPaperless}
+              hasAutopay={hasAutopay}
+              hasPaperless={hasPaperless}
             />
           )}
         </div>
