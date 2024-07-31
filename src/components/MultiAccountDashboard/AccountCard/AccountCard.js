@@ -6,6 +6,7 @@ import { InlineNotification } from "../../Notification/InlineNotification/Inline
 import { Tag } from "../../Tag/Tag";
 import { TagCTA } from "../../Tag/TagCTA";
 import styles from "./AccountCard.module.scss";
+import { Actions } from "./Actions/Actions";
 import Header from "./Header/Header";
 import MobileCTA from "./MobileCTA/MobileCTA";
 import { ParentContent } from "./ParentContent";
@@ -36,6 +37,8 @@ function AccountCard({
   address,
   status = "pmtDue"
 }) {
+  const isClosed = Boolean(cardStyle === "closed");
+
   const paymentRef = useRef();
   const autoPayBtnRef = useRef();
   const paperlessBtnRef = useRef();
@@ -227,6 +230,19 @@ function AccountCard({
           )}
         </>
       )}
+      {isClosed.toString()}
+      <Actions
+        isClosed={isClosed}
+        hasAutopay={hasAutopay}
+        hasPaperless={hasPaperless}
+        showAutopayBtn={showAutopayBtn}
+        showPaperlessBtn={showPaperlessBtn}
+        onClickPaperless={onClickPaperless}
+        onClickAutopay={onClickAutopay}
+        cardStyle={cardStyle}
+        autoPayBtnRef={autoPayBtnRef}
+        paperlessBtnRef={paperlessBtnRef}
+      />
     </section>
   );
 }
