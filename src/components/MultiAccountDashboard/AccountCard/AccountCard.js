@@ -4,9 +4,8 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PropTypes from "prop-types";
 import { InlineNotification } from "../../Notification/InlineNotification/InlineNotification";
 import { Tag } from "../../Tag/Tag";
-import { TagCTA } from "../../Tag/TagCTA";
 import styles from "./AccountCard.module.scss";
-import { Actions } from "./Actions/Actions";
+import Actions from "./Actions/Actions";
 import Header from "./Header/Header";
 import MobileCTA from "./MobileCTA/MobileCTA";
 import { ParentContent } from "./ParentContent";
@@ -44,6 +43,7 @@ function AccountCard({
   const paperlessBtnRef = useRef();
   const acctDetailRef = useRef();
 
+  // eslint-disable-next-line no-unused-vars
   const nodesToExcludeFromCardClick = [
     paymentRef,
     autoPayBtnRef,
@@ -54,7 +54,8 @@ function AccountCard({
     if (acctDetailRef.current.checkVisibility()) return;
 
     const isFiltered = nodesToExcludeFromCardClick.some((node) => {
-      return node?.current.contains(e.target);
+      if (node.current) return node.current.contains(e.target);
+      return false;
     });
 
     if (isFiltered) return;
@@ -66,38 +67,17 @@ function AccountCard({
   const renderActiveContent = () => {
     return (
       <>
-        <div className={`${styles.column} ${styles.actions}`}>
-          {cardStyle !== "danger" && (
-            <ul className={styles.actions}>
-              {showPaperlessBtn && (
-                <li ref={paperlessBtnRef}>
-                  {hasPaperless ? (
-                    <Tag showIcon text="Paperless is On" theme="default" />
-                  ) : (
-                    <TagCTA
-                      onClick={onClickPaperless}
-                      text="Go Paperless"
-                      theme="default"
-                    />
-                  )}
-                </li>
-              )}
-              {showAutopayBtn && (
-                <li ref={autoPayBtnRef}>
-                  {hasAutopay ? (
-                    <Tag showIcon text="Autopay is On" theme="default" />
-                  ) : (
-                    <TagCTA
-                      onClick={onClickAutopay}
-                      text="Set Up Auto Pay"
-                      theme="blue"
-                    />
-                  )}
-                </li>
-              )}
-            </ul>
-          )}
-        </div>
+        <Actions
+          isClosed={isClosed}
+          hasAutopay={hasAutopay}
+          hasPaperless={hasPaperless}
+          showAutopayBtn={showAutopayBtn}
+          showPaperlessBtn={showPaperlessBtn}
+          onClickPaperless={onClickPaperless}
+          onClickAutopay={onClickAutopay}
+          cardStyle={cardStyle}
+          ref={{ autoPayBtnRef, paperlessBtnRef }}
+        />
         <div className={styles.column}>
           <Payment
             status={status}
@@ -136,7 +116,7 @@ function AccountCard({
             </li>
           </ul>
         </div>
-        <div className={`${styles.column} ${styles.cta}`}>
+        <div className={`${styles.column} ${styles.cta}`} ref={acctDetailRef}>
           <Link
             href={acctDetailsURL}
             renderIcon={() => (
@@ -173,9 +153,9 @@ function AccountCard({
               address={address}
             />
           </div>
-          {cardStyle === "closed" && renderInactiveContent()}
-          {cardStyle !== "closed" && type !== "merged" && renderActiveContent()}
-          {cardStyle !== "closed" && type === "merged" && (
+          {isClosed && renderInactiveContent()}
+          {!isClosed && type !== "merged" && renderActiveContent()}
+          {!isClosed && type === "merged" && (
             <ParentContent
               showPaperlessBtn={showPaperlessBtn}
               showAutopayBtn={showAutopayBtn}
@@ -230,19 +210,6 @@ function AccountCard({
           )}
         </>
       )}
-      {isClosed.toString()}
-      <Actions
-        isClosed={isClosed}
-        hasAutopay={hasAutopay}
-        hasPaperless={hasPaperless}
-        showAutopayBtn={showAutopayBtn}
-        showPaperlessBtn={showPaperlessBtn}
-        onClickPaperless={onClickPaperless}
-        onClickAutopay={onClickAutopay}
-        cardStyle={cardStyle}
-        autoPayBtnRef={autoPayBtnRef}
-        paperlessBtnRef={paperlessBtnRef}
-      />
     </section>
   );
 }

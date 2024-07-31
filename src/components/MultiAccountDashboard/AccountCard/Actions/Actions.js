@@ -1,21 +1,22 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import { Tag } from "../../../Tag/Tag";
 import { TagCTA } from "../../../Tag/TagCTA";
 import styles from "../AccountCard.module.scss";
 
-function Actions({
-  isClosed,
-  hasAutopay,
-  hasPaperless,
-  showAutopayBtn,
-  showPaperlessBtn,
-  cardStyle,
-  paperlessBtnRef,
-  autoPayBtnRef,
-  onClickPaperless,
-  onClickAutopay
-}) {
+const Actions = forwardRef(function Actions(props, refs) {
+  const {
+    isClosed,
+    hasAutopay,
+    hasPaperless,
+    showAutopayBtn,
+    showPaperlessBtn,
+    cardStyle,
+    onClickPaperless,
+    onClickAutopay
+  } = props;
+
+  const { autoPayBtnRef, paperlessBtnRef } = refs;
   return (
     <div className={`${styles.column} ${styles.actions}`}>
       {isClosed ? (
@@ -60,9 +61,9 @@ function Actions({
       )}
     </div>
   );
-}
+});
 
-export { Actions };
+export default Actions;
 
 Actions.propTypes = {
   /** Specify whether the account is active or closed */
@@ -81,7 +82,5 @@ Actions.propTypes = {
   onClickAutopay: PropTypes.func.isRequired,
   /** Indicates which card style/layout should be used. "Warning" and "danger" styles will cause the card to have an alert message at the bottom whose text can be customized using the alertText prop.  */
   cardStyle: PropTypes.oneOf(["default", "info", "warning", "danger", "closed"])
-    .isRequired,
-  paperlessBtnRef: PropTypes.any.isRequired,
-  autoPayBtnRef: PropTypes.any.isRequired
+    .isRequired
 };
