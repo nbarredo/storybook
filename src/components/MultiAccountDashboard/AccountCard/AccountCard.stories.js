@@ -24,6 +24,14 @@ const cardBodyClickFn = () => {
   );
 };
 
+const autopayClickFn = () => {
+  window.alert("Autopay button was clicked.");
+};
+
+const paperlessClickFn = () => {
+  window.alert("Paperless button was clicked.");
+};
+
 const ChildCard = {
   status: "nothingDue",
   type: "electric",
@@ -41,7 +49,9 @@ const ChildCard = {
   dateDue: "02/06/23",
   acctID: 12345678987,
   address: "124 Main Street NH 120384",
-  onCardBodyClick: cardBodyClickFn
+  onCardBodyClick: cardBodyClickFn,
+  onClickAutopay: autopayClickFn,
+  onClickPaperless: paperlessClickFn
 };
 
 export const Default = {
@@ -61,7 +71,9 @@ export const Default = {
     dateDue: "02/06/23",
     acctID: 12345678987,
     address: "124 Main Street NH 120384",
-    onCardBodyClick: cardBodyClickFn
+    onCardBodyClick: cardBodyClickFn,
+    onClickAutopay: autopayClickFn,
+    onClickPaperless: paperlessClickFn
   }
 };
 

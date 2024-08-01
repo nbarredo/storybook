@@ -63,11 +63,9 @@ ParentContent.propTypes = {
   ]),
   /** Specify what should occur when the "Pay Bill" button is clicked. */
   onClickPayBill: PropTypes.func,
-  paperlessBtnRef: PropTypes.node,
   hasPaperless: PropTypes.bool,
   showAutopayBtn: PropTypes.bool,
   onClickPaperless: PropTypes.func,
-  autoPayBtnRef: PropTypes.node,
   hasAutopay: PropTypes.bool,
   onClickAutopay: PropTypes.func
 };
