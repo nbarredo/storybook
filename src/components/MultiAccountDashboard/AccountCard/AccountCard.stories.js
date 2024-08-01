@@ -158,7 +158,8 @@ export const IsParent = {
   name: "Type: Merged/Parent",
   args: {
     ...Default.args,
-    type: "merged"
+    type: "merged",
+    mobileCTAType: "none"
   }
 };
 
