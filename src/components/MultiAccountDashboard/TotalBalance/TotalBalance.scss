@@ -52,9 +52,15 @@ $minimum-height: 80px;
           @include do-this-above(md) {
             font: #{map.get(t.$font-weights, bold)
               map.get(t.$font-sizes, size-6) t.$primary-font-stack};
-            margin-inline-end: g.$space-6;
           }
         }
+        .due-date-container {
+          align-items: center;
+          display: flex;
+          gap: 12px;
+          margin-left: g.$space-4;
+        }
+
         button {
           inline-size: 100%;
           margin-top: g.$space-3;
@@ -62,6 +68,7 @@ $minimum-height: 80px;
           text-align: center;
           @include do-this-above(md) {
             inline-size: max-content;
+            margin-left: g.$space-6;
             margin-top: 0;
             max-inline-size: 20rem;
           }
