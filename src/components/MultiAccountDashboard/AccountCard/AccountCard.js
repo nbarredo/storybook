@@ -7,7 +7,7 @@ import styles from "./AccountCard.module.scss";
 import Actions from "./Actions/Actions";
 import Header from "./Header/Header";
 import MobileCTA from "./MobileCTA/MobileCTA";
-import { ParentContent } from "./ParentContent";
+import ParentContent from "./ParentContent";
 import Payment from "./Payment/Payment";
 
 /**
@@ -50,7 +50,8 @@ function AccountCard({
   ];
 
   const cardAction = (e) => {
-    if (acctDetailRef.current.checkVisibility()) return;
+    if (acctDetailRef.current && acctDetailRef.current.checkVisibility())
+      return;
 
     const isFiltered = nodesToExcludeFromCardClick.some((node) => {
       if (node.current) return node.current.contains(e.target);
@@ -168,6 +169,7 @@ function AccountCard({
               onClickPaperless={onClickPaperless}
               hasAutopay={hasAutopay}
               hasPaperless={hasPaperless}
+              ref={{ autoPayBtnRef, paperlessBtnRef }}
             />
           )}
         </div>

@@ -1,21 +1,21 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import { TotalBalance } from "../TotalBalance/TotalBalance";
 import styles from "./AccountCard.module.scss";
 import Actions from "./Actions/Actions";
 
-function ParentContent({
-  isClosed,
-  cardStyle,
-  showPaperlessBtn,
-  paperlessBtnRef,
-  hasPaperless,
-  showAutopayBtn,
-  onClickPaperless,
-  autoPayBtnRef,
-  hasAutopay,
-  onClickAutopay
-}) {
+const ParentContent = forwardRef(function ParentContent(props, refs) {
+  const {
+    isClosed,
+    cardStyle,
+    showPaperlessBtn,
+    hasPaperless,
+    showAutopayBtn,
+    onClickPaperless,
+    hasAutopay,
+    onClickAutopay
+  } = props;
+  const { autoPayBtnRef, paperlessBtnRef } = refs;
   return (
     <>
       <Actions
@@ -38,9 +38,9 @@ function ParentContent({
       </div>
     </>
   );
-}
+});
 
-export { ParentContent };
+export default ParentContent;
 
 ParentContent.propTypes = {
   /** Specify whether the account is active or closed */
