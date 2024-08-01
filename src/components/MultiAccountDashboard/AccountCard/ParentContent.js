@@ -30,13 +30,14 @@ const ParentContent = forwardRef(function ParentContent(props, refs) {
         cardStyle={cardStyle}
         ref={{ autoPayBtnRef, paperlessBtnRef }}
       />
-      <div className={styles.column}>
+      <div className={`${styles.column} ${styles["total-balance"]}`}>
         <TotalBalance
           buttonLabel="Pay Bill"
           title="Total Balance"
           subtitle="$135.11"
           ref={totalBalanceRef}
           onClick={onClickPayBill}
+          dueDate="02/05/24"
         />
       </div>
     </>
