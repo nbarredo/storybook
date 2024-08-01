@@ -11,7 +11,7 @@ export * from "./components/Text/Text";
 export * from "./components/TextInput/TextInput";
 export * from "./components/Wizard/Wizard";
 export * from "./components/Wizard/children";
-export * from "./components/MultiAccountDashboard/TotalBalance/TotalBalance";
+export * from "./components/MultiAccountDashboard/TotalBalance/";
 export * from "./components/MultiAccountDashboard/AccountCard/AccountCard";
 export * from "./components/AccountOverview/AccountInfoCard/AccountInfoCard";
 export * from "./components/AccountOverview/BillingCard/BillingCard";
