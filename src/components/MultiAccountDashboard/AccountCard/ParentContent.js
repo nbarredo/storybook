@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
-import { TotalBalance } from "../TotalBalance/TotalBalance";
+import TotalBalance from "../TotalBalance/TotalBalance";
 import styles from "./AccountCard.module.scss";
 import Actions from "./Actions/Actions";
 
@@ -13,9 +13,10 @@ const ParentContent = forwardRef(function ParentContent(props, refs) {
     showAutopayBtn,
     onClickPaperless,
     hasAutopay,
-    onClickAutopay
+    onClickAutopay,
+    onClickPayBill
   } = props;
-  const { autoPayBtnRef, paperlessBtnRef } = refs;
+  const { autoPayBtnRef, paperlessBtnRef, totalBalanceRef } = refs;
   return (
     <>
       <Actions
@@ -34,6 +35,8 @@ const ParentContent = forwardRef(function ParentContent(props, refs) {
           buttonLabel="Pay Bill"
           title="Total Balance"
           subtitle="$135.11"
+          ref={totalBalanceRef}
+          onClick={onClickPayBill}
         />
       </div>
     </>
@@ -58,6 +61,8 @@ ParentContent.propTypes = {
     "danger",
     "closed"
   ]),
+  /** Specify what should occur when the "Pay Bill" button is clicked. */
+  onClickPayBill: PropTypes.func,
   paperlessBtnRef: PropTypes.node,
   hasPaperless: PropTypes.bool,
   showAutopayBtn: PropTypes.bool,

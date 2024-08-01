@@ -41,12 +41,14 @@ function AccountCard({
   const autoPayBtnRef = useRef();
   const paperlessBtnRef = useRef();
   const acctDetailRef = useRef();
+  const totalBalanceRef = useRef();
 
   // eslint-disable-next-line no-unused-vars
   const nodesToExcludeFromCardClick = [
     paymentRef,
     autoPayBtnRef,
-    paperlessBtnRef
+    paperlessBtnRef,
+    totalBalanceRef
   ];
 
   const cardAction = (e) => {
@@ -169,7 +171,8 @@ function AccountCard({
               onClickPaperless={onClickPaperless}
               hasAutopay={hasAutopay}
               hasPaperless={hasPaperless}
-              ref={{ autoPayBtnRef, paperlessBtnRef }}
+              onClickPayBill={onClickPayBill}
+              ref={{ autoPayBtnRef, paperlessBtnRef, totalBalanceRef }}
             />
           )}
         </div>
