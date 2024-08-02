@@ -1,3 +1,4 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
 @use "../../../styles/typography" as t;
 @use "../../../styles/mixins" as *;
 @use "../../../styles/global" as g;
@@ -49,15 +50,7 @@ $min-height-compact: 40px;
       grid-template-columns: minmax(231px, 1fr) minmax(116px, 1fr);
       width: 100%;
       &.parent {
-        border: 1px solid brown;
         grid-template-columns: 1fr;
-
-        .total-balance {
-          @include do-this-above(lg) {
-            display: flex;
-            justify-content: flex-end;
-          }
-        }
 
         @include do-this-above(md) {
           border: 1px solid fuchsia;

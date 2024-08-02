@@ -1,0 +1,41 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+@use "../../../styles/typography" as t;
+@use "../../../styles/mixins" as *;
+@use "../../../styles/global" as g;
+@use "sass:map";
+
+//overrides for the Total Balance component when it is used inside the multi-account parent card
+.ev-total-balance.cds--actionable-notification.parent-content {
+  border: none;
+  box-shadow: none;
+  max-inline-size: none;
+  padding: 8px 12px;
+  .cds--actionable-notification__details {
+    margin-inline: 0;
+    .cds--actionable-notification__text-wrapper {
+      padding: 0;
+      .cds--actionable-notification__content {
+        .due-date-container {
+          margin: 0;
+          .separator {
+            //display: none;
+            @include do-this-above(lg) {
+              display: block;
+            }
+          }
+        }
+
+        .cds--actionable-notification__title {
+          @extend %font-size-1-semi;
+          color: var(--gray-70);
+          line-height: 17px;
+          text-transform: capitalize;
+        }
+
+        @include do-this-above(md) {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

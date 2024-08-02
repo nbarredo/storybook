@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import TotalBalance from "../TotalBalance/TotalBalance";
 import styles from "./AccountCard.module.scss";
 import Actions from "./Actions/Actions";
+import "./carbon.overrides.scss";
 
 const ParentContent = forwardRef(function ParentContent(props, refs) {
   const {
@@ -30,8 +31,9 @@ const ParentContent = forwardRef(function ParentContent(props, refs) {
         cardStyle={cardStyle}
         ref={{ autoPayBtnRef, paperlessBtnRef }}
       />
-      <div className={`${styles.column} ${styles["total-balance"]}`}>
+      <div className={styles.column}>
         <TotalBalance
+          className="parent-content"
           buttonLabel="Pay Bill"
           title="Total Balance"
           subtitle="$135.11"
