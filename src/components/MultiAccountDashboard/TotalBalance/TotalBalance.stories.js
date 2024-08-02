@@ -8,6 +8,7 @@ const meta = {
     dueDate: { control: { type: "text" } }
   },
   parameters: {
+    layout: "fullscreen",
     design: {
       type: "figma",
       url: "https://www.figma.com/file/bXF13WTZOM72lG35coDswz/Account-Dashboard-(Account-Overview)---UI?type=design&node-id=560%3A6799&mode=design&t=ieaKzasMCaSbwME9-1"

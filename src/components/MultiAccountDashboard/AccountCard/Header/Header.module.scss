@@ -8,6 +8,29 @@
   .closed {
     color: var(--gray-60) !important;
   }
+  &.merged {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    padding-left: 0;
+    address {
+      flex: 1 1 fit-content;
+      margin-left: 0;
+    }
+    .clamp {
+      width: 100%;
+    }
+    .icon-container {
+      border-radius: 50%;
+      flex: 0 0 32px;
+      height: 32px;
+      position: relative;
+      width: 32px;
+    }
+    .title {
+      flex: 1 1 fit-content;
+    }
+  }
   .clamp {
     display: block;
     overflow: hidden;
