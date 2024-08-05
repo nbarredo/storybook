@@ -27,6 +27,32 @@ $min-height-compact: 40px;
     border: 1px solid var(--gray-20);
   }
 
+  &.parent {
+    .content-container {
+      padding: g.$space-5 g.$space-4;
+      .grid {
+        grid-template-columns: 1fr;
+
+        @include do-this-above(md) {
+          border: 1px solid fuchsia;
+          grid-template-columns: 201px 125px 1fr;
+        }
+
+        @include do-this-above(lg) {
+          border: 1px solid blue;
+          grid-template-columns: 201px 125px 1fr;
+        }
+        @include do-this-above(xl) {
+          border: 1px solid orange;
+          grid-template-columns: minmax(167px, 2fr) minmax(256px, 2fr) minmax(
+              540px,
+              2fr
+            );
+        }
+      }
+    }
+  }
+
   .content-container {
     cursor: pointer;
     display: flex;
@@ -49,26 +75,6 @@ $min-height-compact: 40px;
       gap: g.$space-5;
       grid-template-columns: minmax(231px, 1fr) minmax(116px, 1fr);
       width: 100%;
-      &.parent {
-        grid-template-columns: 1fr;
-
-        @include do-this-above(md) {
-          border: 1px solid fuchsia;
-          grid-template-columns: 201px 125px 1fr;
-        }
-
-        @include do-this-above(lg) {
-          border: 1px solid blue;
-          grid-template-columns: 201px 125px 1fr;
-        }
-        @include do-this-above(xl) {
-          border: 1px solid orange;
-          grid-template-columns: minmax(167px, 2fr) minmax(256px, 2fr) minmax(
-              540px,
-              2fr
-            );
-        }
-      }
 
       .column {
         &.actions {

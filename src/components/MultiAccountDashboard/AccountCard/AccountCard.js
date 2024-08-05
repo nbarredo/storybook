@@ -142,15 +142,13 @@ function AccountCard({
 
   return (
     <section
-      className={`${styles.root} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${className ?? ""} ${compact ? styles.compact : ""}`}
+      className={`${styles.root} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${className ?? ""} ${compact ? styles.compact : ""} ${type === "merged" ? styles.parent : ""}`}
     >
       <article
         className={`${styles["content-container"]} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${mobileCTAType !== "none" ? styles["mobile-cta"] : ""}`}
         onClick={cardAction}
       >
-        <div
-          className={`${styles.grid} ${type === "merged" ? styles.parent : ""}`}
-        >
+        <div className={`${styles.grid}`}>
           <div className={`${styles.column}`}>
             <Header
               type={type}
