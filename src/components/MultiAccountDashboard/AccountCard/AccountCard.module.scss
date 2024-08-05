@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 /* stylelint-disable selector-pseudo-class-no-unknown */
 @use "../../../styles/typography" as t;
 @use "../../../styles/mixins" as *;
@@ -134,7 +135,6 @@ $min-height-compact: 40px;
         text-decoration: underline;
       }
 
-      /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
       :global(.cds--link__icon) {
         align-self: center;
         color: var(--blue-50);
@@ -198,25 +198,25 @@ $min-height-compact: 40px;
       display: none;
     }
 
-    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
     :global(.cds--inline-notification__details) {
       margin-inline: g.$space-5;
       @include do-this-above(lg) {
         margin-inline: g.$space-6;
       }
     }
-    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+
     :global(.cds--inline-notification__title) {
       -webkit-box-orient: vertical;
       display: -webkit-box;
       -webkit-line-clamp: 2;
+      line-clamp: 2;
       margin-inline-end: 0;
       overflow: hidden;
       @include do-this-above(md) {
         margin-inline-end: g.$space-2;
       }
     }
-    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+
     :global(.cds--inline-notification__text-wrapper) {
       align-items: center;
     }
@@ -225,7 +225,7 @@ $min-height-compact: 40px;
       background-color: var(--gray-10);
       border: 1px solid var(--gray-20);
       border-bottom: none;
-      /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+
       :global(.cds--inline-notification__title) {
         color: var(--gray-60);
       }
