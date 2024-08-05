@@ -166,7 +166,7 @@ export const IsParent = {
   }
 };
 
-export const Test = {
+export const MergedAccountSamplePageLayout = {
   decorators: [
     (Story) => (
       <>
@@ -176,7 +176,9 @@ export const Test = {
           padding and spacing between the cards will be determined by the
           consuming application.
         </Text>
-        <Story args={{ ...Default.args, type: "merged" }} />
+        <Story
+          args={{ ...Default.args, type: "merged", mobileCTAType: "none" }}
+        />
         <br />
         <AccountCard {...ChildCard} />
         <br />

@@ -35,12 +35,10 @@ $min-height-compact: 40px;
         grid-template-columns: 1fr;
 
         @include do-this-above(md) {
-          border: 1px solid fuchsia;
           grid-template-columns: 201px 125px 1fr;
         }
 
         @include do-this-above(lg) {
-          border: 1px solid orange;
           grid-template-columns: minmax(167px, 2fr) minmax(256px, 2fr) minmax(
               540px,
               2fr

@@ -40,6 +40,7 @@
           @extend %font-size-0-reg;
           color: var(--gray-70);
           line-height: 14px;
+          margin-inline-end: 0;
           text-transform: capitalize;
 
           @include do-this-above(md) {
@@ -59,8 +60,20 @@
           }
         }
 
+        .cds--btn--primary {
+          margin-left: 0;
+          @include do-this-above(lg) {
+            margin-left: g.$space-4;
+          }
+        }
+
         @include do-this-above(md) {
+          gap: g.$space-2 g.$space-4;
           justify-content: center;
+        }
+
+        @include do-this-above(lg) {
+          gap: 0 g.$space-4;
         }
       }
     }
