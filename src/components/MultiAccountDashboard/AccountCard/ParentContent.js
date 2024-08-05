@@ -31,7 +31,7 @@ const ParentContent = forwardRef(function ParentContent(props, refs) {
         cardStyle={cardStyle}
         ref={{ autoPayBtnRef, paperlessBtnRef }}
       />
-      <div className={styles.column}>
+      <div className={`${styles.column} ${styles["total-balance-container"]}`}>
         <TotalBalance
           className="parent-content"
           buttonLabel="Pay Bill"

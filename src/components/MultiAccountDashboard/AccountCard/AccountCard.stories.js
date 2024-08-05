@@ -129,7 +129,9 @@ export const FinalBill = {
   name: "Status: Final Bill",
   args: {
     ...Default.args,
-    status: "finalBill"
+    status: "finalBill",
+    cardStyle: "warning",
+    alertText: "This balance reflects your final bill."
   }
 };
 

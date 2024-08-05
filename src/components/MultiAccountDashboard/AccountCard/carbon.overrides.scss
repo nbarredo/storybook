@@ -14,9 +14,20 @@
     margin-inline: 0;
     .cds--actionable-notification__text-wrapper {
       padding: 0;
+      width: 100%; //*//
       .cds--actionable-notification__content {
+        width: 100%; //*//
         .due-date-container {
+          column-gap: g.$space-3;
           margin: 0;
+          p.due-date {
+            @extend %font-size-1-reg;
+            color: var(--gray-60) !important;
+            @include do-this-above(md) {
+              font-weight: 600;
+              line-height: 17px;
+            }
+          }
           .separator {
             //display: none;
             @include do-this-above(lg) {
@@ -26,10 +37,26 @@
         }
 
         .cds--actionable-notification__title {
-          @extend %font-size-1-semi;
+          @extend %font-size-0-reg;
           color: var(--gray-70);
-          line-height: 17px;
+          line-height: 14px;
           text-transform: capitalize;
+
+          @include do-this-above(md) {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 17px;
+          }
+        }
+
+        .cds--actionable-notification__subtitle {
+          @extend %font-size-5-bold;
+          color: var(--gray-80);
+          line-height: 28px;
+          @include do-this-above(md) {
+            font-size: 28px;
+            line-height: 33px;
+          }
         }
 
         @include do-this-above(md) {
@@ -37,5 +64,11 @@
         }
       }
     }
+  }
+  @include do-this-above(md) {
+    min-block-size: 0;
+  }
+  @include do-this-above(lg) {
+    max-inline-size: fit-content;
   }
 }
