@@ -3,7 +3,7 @@
 @use "../../../../styles/mixins" as *;
 
 .acct-card-header {
-  padding-left: 32px;
+  padding-left: g.$space-7;
   position: relative;
   .closed {
     color: var(--gray-60) !important;
@@ -42,7 +42,7 @@
     align-content: center;
     display: inline-flex;
     flex-wrap: wrap;
-    margin: 0 8px;
+    margin: 0 g.$space-3;
     vertical-align: middle;
     width: 4px;
   }
