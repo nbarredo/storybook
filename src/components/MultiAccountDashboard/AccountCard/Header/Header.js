@@ -40,14 +40,16 @@ export default function Header({ cardStyle, type, acctID, address }) {
   };
 
   return (
-    <header className={styles["acct-card-header"]}>
+    <header
+      className={`${styles["acct-card-header"]} ${type === "merged" ? styles.merged : ""} `}
+    >
       {getIcon(type, cardStyle)}
       <Text
         size="3"
         weight="semi"
         inline={true}
         color={getTextColor()}
-        className={`${isClosed() ? styles.closed : ""}`}
+        className={`${styles.title} ${isClosed() ? styles.closed : ""}`}
       >
         {getAccountTitle()}
       </Text>

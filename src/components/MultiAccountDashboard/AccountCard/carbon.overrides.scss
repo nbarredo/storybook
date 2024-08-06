@@ -1,0 +1,87 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+@use "../../../styles/typography" as t;
+@use "../../../styles/mixins" as *;
+@use "../../../styles/global" as g;
+@use "sass:map";
+
+//overrides for the Total Balance component when it is used inside the multi-account parent card
+.ev-total-balance.cds--actionable-notification.parent-content {
+  border: none;
+  box-shadow: none;
+  max-inline-size: none;
+  padding: 8px 12px;
+  .cds--actionable-notification__details {
+    margin-inline: 0;
+    .cds--actionable-notification__text-wrapper {
+      padding: 0;
+      width: 100%; //*//
+      .cds--actionable-notification__content {
+        width: 100%; //*//
+        .due-date-container {
+          column-gap: g.$space-3;
+          margin: 0;
+          p.due-date {
+            @extend %font-size-1-reg;
+            color: var(--gray-60) !important;
+            @include do-this-above(md) {
+              font-weight: 600;
+              line-height: 17px;
+            }
+          }
+          .separator {
+            //display: none;
+            @include do-this-above(lg) {
+              display: block;
+            }
+          }
+        }
+
+        .cds--actionable-notification__title {
+          @extend %font-size-0-reg;
+          color: var(--gray-70);
+          line-height: 14px;
+          margin-inline-end: 0;
+          text-transform: capitalize;
+
+          @include do-this-above(md) {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 17px;
+          }
+        }
+
+        .cds--actionable-notification__subtitle {
+          @extend %font-size-5-bold;
+          color: var(--gray-80);
+          line-height: 28px;
+          @include do-this-above(md) {
+            font-size: 28px;
+            line-height: 33px;
+          }
+        }
+
+        .cds--btn--primary {
+          margin-left: 0;
+          @include do-this-above(lg) {
+            margin-left: g.$space-4;
+          }
+        }
+
+        @include do-this-above(md) {
+          gap: g.$space-2 g.$space-4;
+          justify-content: center;
+        }
+
+        @include do-this-above(lg) {
+          gap: 0 g.$space-4;
+        }
+      }
+    }
+  }
+  @include do-this-above(md) {
+    min-block-size: 0;
+  }
+  @include do-this-above(lg) {
+    max-inline-size: fit-content;
+  }
+}

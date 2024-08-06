@@ -3,10 +3,45 @@
 @use "../../../../styles/mixins" as *;
 
 .acct-card-header {
-  padding-left: 32px;
+  padding-left: g.$space-7;
   position: relative;
   .closed {
     color: var(--gray-60) !important;
+  }
+  &.merged {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    padding-left: 0;
+    address {
+      flex: 1 1 fit-content;
+      margin-left: 0;
+    }
+    .clamp {
+      width: 100%;
+    }
+    .icon-container {
+      border-radius: 50%;
+      flex: 0 0 32px;
+      height: 32px;
+      position: relative;
+      width: 32px;
+      @include do-this-above(md) {
+        border-radius: 4px;
+        height: 24px;
+        left: 0;
+        position: absolute;
+        width: 24px;
+      }
+    }
+    .title {
+      flex: 1 1 fit-content;
+    }
+    @include do-this-above(md) {
+      display: block;
+      padding-left: g.$space-7;
+      position: relative;
+    }
   }
   .clamp {
     display: block;
@@ -19,7 +54,7 @@
     align-content: center;
     display: inline-flex;
     flex-wrap: wrap;
-    margin: 0 8px;
+    margin: 0 g.$space-3;
     vertical-align: middle;
     width: 4px;
   }

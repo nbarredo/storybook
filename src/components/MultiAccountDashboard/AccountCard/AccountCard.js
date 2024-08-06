@@ -3,11 +3,11 @@ import { Link } from "@carbon/react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PropTypes from "prop-types";
 import { InlineNotification } from "../../Notification/InlineNotification/InlineNotification";
-import { Tag } from "../../Tag/Tag";
-import { TagCTA } from "../../Tag/TagCTA";
 import styles from "./AccountCard.module.scss";
+import Actions from "./Actions/Actions";
 import Header from "./Header/Header";
 import MobileCTA from "./MobileCTA/MobileCTA";
+import ParentContent from "./ParentContent";
 import Payment from "./Payment/Payment";
 
 /**
@@ -35,22 +35,29 @@ function AccountCard({
   address,
   status = "pmtDue"
 }) {
+  const isClosed = Boolean(cardStyle === "closed");
+
   const paymentRef = useRef();
   const autoPayBtnRef = useRef();
   const paperlessBtnRef = useRef();
   const acctDetailRef = useRef();
+  const totalBalanceRef = useRef();
 
+  // eslint-disable-next-line no-unused-vars
   const nodesToExcludeFromCardClick = [
     paymentRef,
     autoPayBtnRef,
-    paperlessBtnRef
+    paperlessBtnRef,
+    totalBalanceRef
   ];
 
   const cardAction = (e) => {
-    if (acctDetailRef.current.checkVisibility()) return;
+    if (acctDetailRef.current && acctDetailRef.current.checkVisibility())
+      return;
 
     const isFiltered = nodesToExcludeFromCardClick.some((node) => {
-      return node?.current.contains(e.target);
+      if (node.current) return node.current.contains(e.target);
+      return false;
     });
 
     if (isFiltered) return;
@@ -62,38 +69,17 @@ function AccountCard({
   const renderActiveContent = () => {
     return (
       <>
-        <div className={`${styles.column} ${styles.actions}`}>
-          {cardStyle !== "danger" && (
-            <ul className={styles.actions}>
-              {showPaperlessBtn && (
-                <li ref={paperlessBtnRef}>
-                  {hasPaperless ? (
-                    <Tag showIcon text="Paperless is On" theme="default" />
-                  ) : (
-                    <TagCTA
-                      onClick={onClickPaperless}
-                      text="Go Paperless"
-                      theme="default"
-                    />
-                  )}
-                </li>
-              )}
-              {showAutopayBtn && (
-                <li ref={autoPayBtnRef}>
-                  {hasAutopay ? (
-                    <Tag showIcon text="Autopay is On" theme="default" />
-                  ) : (
-                    <TagCTA
-                      onClick={onClickAutopay}
-                      text="Set Up Auto Pay"
-                      theme="blue"
-                    />
-                  )}
-                </li>
-              )}
-            </ul>
-          )}
-        </div>
+        <Actions
+          isClosed={isClosed}
+          hasAutopay={hasAutopay}
+          hasPaperless={hasPaperless}
+          showAutopayBtn={showAutopayBtn}
+          showPaperlessBtn={showPaperlessBtn}
+          onClickPaperless={onClickPaperless}
+          onClickAutopay={onClickAutopay}
+          cardStyle={cardStyle}
+          ref={{ autoPayBtnRef, paperlessBtnRef }}
+        />
         <div className={styles.column}>
           <Payment
             status={status}
@@ -125,14 +111,18 @@ function AccountCard({
   const renderInactiveContent = () => {
     return (
       <>
-        <div className={`${styles.column} ${styles.actions}`}>
-          <ul className={styles.actions}>
-            <li>
-              <Tag showIcon text="Account Closed" theme="important" />
-            </li>
-          </ul>
-        </div>
-        <div className={`${styles.column} ${styles.cta}`}>
+        <Actions
+          isClosed={isClosed}
+          hasAutopay={hasAutopay}
+          hasPaperless={hasPaperless}
+          showAutopayBtn={showAutopayBtn}
+          showPaperlessBtn={showPaperlessBtn}
+          onClickPaperless={onClickPaperless}
+          onClickAutopay={onClickAutopay}
+          cardStyle={cardStyle}
+          ref={{ autoPayBtnRef, paperlessBtnRef }}
+        />
+        <div className={`${styles.column} ${styles.cta}`} ref={acctDetailRef}>
           <Link
             href={acctDetailsURL}
             renderIcon={() => (
@@ -152,13 +142,13 @@ function AccountCard({
 
   return (
     <section
-      className={`${styles.root} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${className ?? ""} ${compact ? styles.compact : ""}`}
+      className={`${styles.root} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${className ?? ""} ${compact ? styles.compact : ""} ${type === "merged" ? styles.parent : ""}`}
     >
       <article
         className={`${styles["content-container"]} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${mobileCTAType !== "none" ? styles["mobile-cta"] : ""}`}
         onClick={cardAction}
       >
-        <div className={styles.grid}>
+        <div className={`${styles.grid}`}>
           <div className={`${styles.column}`}>
             <Header
               type={type}
@@ -167,9 +157,22 @@ function AccountCard({
               address={address}
             />
           </div>
-          {cardStyle === "closed"
-            ? renderInactiveContent()
-            : renderActiveContent()}
+          {isClosed && renderInactiveContent()}
+          {!isClosed && type !== "merged" && renderActiveContent()}
+          {!isClosed && type === "merged" && (
+            <ParentContent
+              onClickAutopay={onClickAutopay}
+              cardStyle={cardStyle}
+              isClosed={isClosed}
+              showPaperlessBtn={showPaperlessBtn}
+              showAutopayBtn={showAutopayBtn}
+              onClickPaperless={onClickPaperless}
+              hasAutopay={hasAutopay}
+              hasPaperless={hasPaperless}
+              onClickPayBill={onClickPayBill}
+              ref={{ autoPayBtnRef, paperlessBtnRef, totalBalanceRef }}
+            />
+          )}
         </div>
       </article>
       {cardStyle === "warning" && (
