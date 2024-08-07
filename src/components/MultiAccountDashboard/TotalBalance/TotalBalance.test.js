@@ -42,6 +42,5 @@ describe("TotalBalance component functions properly", () => {
     const dueDate = screen.getByText(/01\/29\/77/);
     expect(separator).toBeInTheDocument();
     expect(dueDate).toBeInTheDocument();
-    screen.debug();
   });
 });

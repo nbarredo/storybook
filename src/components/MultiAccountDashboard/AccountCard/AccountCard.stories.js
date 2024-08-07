@@ -162,7 +162,8 @@ export const IsParent = {
   args: {
     ...Default.args,
     type: "merged",
-    mobileCTAType: "none"
+    mobileCTAType: "none",
+    totalDue: "$115.25"
   }
 };
 

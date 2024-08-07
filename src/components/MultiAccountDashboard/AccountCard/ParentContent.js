@@ -15,7 +15,9 @@ const ParentContent = forwardRef(function ParentContent(props, refs) {
     onClickPaperless,
     hasAutopay,
     onClickAutopay,
-    onClickPayBill
+    onClickPayBill,
+    totalDue,
+    dateDue
   } = props;
   const { autoPayBtnRef, paperlessBtnRef, totalBalanceRef } = refs;
   return (
@@ -36,10 +38,10 @@ const ParentContent = forwardRef(function ParentContent(props, refs) {
           className="parent-content"
           buttonLabel="Pay Bill"
           title="Total Balance"
-          subtitle="$135.11"
+          subtitle={totalDue}
           ref={totalBalanceRef}
           onClick={onClickPayBill}
-          dueDate="02/05/24"
+          dueDate={dateDue}
         />
       </div>
     </>
@@ -49,6 +51,10 @@ const ParentContent = forwardRef(function ParentContent(props, refs) {
 export default ParentContent;
 
 ParentContent.propTypes = {
+  /** Total amount due on the account. It must be a string preceded by the relevant currency symbol (e.g. "$250.75") */
+  totalDue: PropTypes.string.isRequired,
+  /** The date the next payment is due in `mm/dd/yy` format.  This should be `null` if no payment is due. */
+  dateDue: PropTypes.string,
   /** Specify whether the account is active or closed */
   isClosed: PropTypes.bool.isRequired,
   /** */

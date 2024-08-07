@@ -11,7 +11,7 @@ import { ReactComponent as Separator } from "./separator.svg";
  */
 const TotalBalance = forwardRef(function TotalBalance(props, ref) {
   return (
-    <div ref={ref}>
+    <div ref={ref} data-testid="ev-total-balance">
       <CarbonActionableNotification
         hideCloseButton={true}
         className={`ev-total-balance ${props.className}`}

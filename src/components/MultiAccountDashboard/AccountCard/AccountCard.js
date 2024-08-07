@@ -170,6 +170,8 @@ function AccountCard({
               hasAutopay={hasAutopay}
               hasPaperless={hasPaperless}
               onClickPayBill={onClickPayBill}
+              totalDue={totalDue}
+              dateDue={dateDue}
               ref={{ autoPayBtnRef, paperlessBtnRef, totalBalanceRef }}
             />
           )}

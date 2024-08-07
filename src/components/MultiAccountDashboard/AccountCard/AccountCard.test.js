@@ -83,4 +83,36 @@ describe("Account Card component functions correctly", () => {
     expect(getByText("Account Closed")).toBeInTheDocument();
     expect(getByText("Past Bills & Payments")).toBeInTheDocument();
   });
+
+  test('renders notification message when cardStyle is "info"', () => {
+    render(
+      <AccountCard cardStyle="info" alertText="card message" {...basicData} />
+    );
+    expect(screen.getByText(/card message/)).toBeInTheDocument();
+  });
+
+  test('renders parent/merged card when type="merged"', () => {
+    render(
+      <AccountCard
+        cardStyle="default"
+        type="merged"
+        alertText="card message"
+        {...basicData}
+      />
+    );
+    expect(screen.getByTestId("ev-total-balance")).toBeInTheDocument();
+    expect(screen.getByText(/Merged Account/)).toBeInTheDocument();
+  });
+
+  test('does not render a mobile CTA when mobileCTAType is set to "none"', () => {
+    render(
+      <AccountCard
+        alertText="card message"
+        mobileCTAType="none"
+        {...basicData}
+      />
+    );
+    expect(screen.getByRole("article")).toHaveClass("content-container");
+    expect(screen.getByRole("article")).not.toHaveClass("mobile-cta");
+  });
 });
