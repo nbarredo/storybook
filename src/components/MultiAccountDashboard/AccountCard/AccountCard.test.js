@@ -6,7 +6,11 @@ describe("Account Card component functions correctly", () => {
     totalDue: "100",
     dateDue: "2023-01-01",
     acctID: 123,
-    address: "123 Main St"
+    address: "123 Main St",
+    onCardBodyClick: () => {},
+    onClickAutopay: () => {},
+    onClickPaperless: () => {},
+    acctDetailsURL: "www.yahoo.com"
   };
   test("renders AccountCard with default props", () => {
     render(<AccountCard {...basicData} />);
@@ -40,44 +44,13 @@ describe("Account Card component functions correctly", () => {
   });
 
   test('displays "Paperless is On" when hasPaperless is true', () => {
-    render(
-      <AccountCard
-        hasPaperless={true}
-        totalDue=""
-        dateDue=""
-        acctID={123}
-        address=""
-      />
-    );
+    render(<AccountCard hasPaperless={true} {...basicData} />);
     expect(screen.getByText("Paperless is On")).toBeInTheDocument();
   });
 
-  it('displays "Autopay is On" when hasAutopay is true', () => {
-    render(
-      <AccountCard
-        hasAutopay={true}
-        totalDue=""
-        dateDue=""
-        acctID={123}
-        address=""
-      />
-    );
+  test('displays "Autopay is On" when hasAutopay is true', () => {
+    render(<AccountCard hasAutopay={true} {...basicData} />);
     expect(screen.getByText("Autopay is On")).toBeInTheDocument();
-  });
-
-  test.skip("calls onClickPaperless when the paperless CTA is clicked", () => {
-    const onClickPaperless = jest.fn();
-
-    render(
-      <AccountCard
-        onClickPaperless={onClickPaperless}
-        mobileCTAType="none"
-        {...basicData}
-      />
-    );
-
-    fireEvent.click(screen.getByText(/Go Paperless/i));
-    expect(onClickPaperless).toHaveBeenCalled();
   });
 
   test("renders mobile CTA for autopay", () => {

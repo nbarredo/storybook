@@ -66,6 +66,6 @@ TotalBalance.propTypes = {
   /** Specify what will happen when the action button is clicked */
   onClick: PropTypes.func,
 
-  /** The date on which the payment is due. It should follow the format of mm/dd/yy. */
+  /** The date on which the payment is due. It should follow the format of `mm/dd/yy`. */
   dueDate: PropTypes.string
 };
