@@ -45,7 +45,7 @@ $min-height-compact: 40px;
             );
         }
         .total-balance-container {
-          @include do-this-above(lg) {
+          @include do-this-above(md) {
             display: flex;
             justify-content: flex-end;
           }
