@@ -23,7 +23,7 @@ const TotalBalance = forwardRef(function TotalBalance(props, ref) {
       >
         {props.dueDate && (
           <div className="due-date-container">
-            <div role="presentation" className="separator">
+            <div aria-hidden="true" className="separator">
               <Separator data-testid="separator" />
             </div>
             <Text
