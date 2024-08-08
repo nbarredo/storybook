@@ -1,10 +1,19 @@
 import React from "react";
+import { LanguageContextProvider } from "../../LanguageContext/LanguageContext";
+import data from "../../LanguageContext/lang.json";
 import { Text } from "../../Text/Text";
 import { AccountCard } from "./AccountCard";
 
 const meta = {
   title: "Delivery/Multi-Account Dashboard/AccountCard",
   component: AccountCard,
+  decorators: [
+    (Story) => (
+      <LanguageContextProvider data={data}>
+        <Story />
+      </LanguageContextProvider>
+    )
+  ],
   argTypes: {
     onClick: { action: "clicked" }
   },
