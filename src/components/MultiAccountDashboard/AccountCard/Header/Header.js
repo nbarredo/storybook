@@ -102,30 +102,21 @@ Header.propTypes = {
 export const getIcon = (type, cardStyle) => {
   if (cardStyle === "warning") {
     return (
-      <figure
-        aria-hidden="true"
-        className={`${styles["icon-container"]} ${styles.warning}`}
-      >
+      <figure className={`${styles["icon-container"]} ${styles.warning}`}>
         <IconWarning data-testid="icon-warning" />
       </figure>
     );
   }
   if (cardStyle === "danger") {
     return (
-      <figure
-        aria-hidden="true"
-        className={`${styles["icon-container"]} ${styles.danger}`}
-      >
+      <figure className={`${styles["icon-container"]} ${styles.danger}`}>
         <IconDanger data-testid="icon-danger" />
       </figure>
     );
   }
   if (cardStyle === "closed") {
     return (
-      <figure
-        aria-hidden="true"
-        className={`${styles["icon-container"]} ${styles.closed}`}
-      >
+      <figure className={`${styles["icon-container"]} ${styles.closed}`}>
         {type === "electric" && <IconElectric data-testid="icon-electric" />}
         {type === "gas" && <IconGas data-testid="icon-gas" />}
         {type === "unknown" && <IconUnknown data-testid="icon-unknown" />}
@@ -135,40 +126,28 @@ export const getIcon = (type, cardStyle) => {
   }
   if (type === "electric" && ["default", "info"].includes(cardStyle)) {
     return (
-      <figure
-        aria-hidden="true"
-        className={`${styles["icon-container"]} ${styles.electric}`}
-      >
+      <figure className={`${styles["icon-container"]} ${styles.electric}`}>
         <IconElectric role="presentation" data-testid="icon-electric" />
       </figure>
     );
   }
   if (type === "gas" && ["default", "info"].includes(cardStyle)) {
     return (
-      <figure
-        aria-hidden="true"
-        className={`${styles["icon-container"]} ${styles.gas}`}
-      >
+      <figure className={`${styles["icon-container"]} ${styles.gas}`}>
         <IconGas data-testid="icon-gas" />
       </figure>
     );
   }
   if (type === "unknown" && ["default", "info"].includes(cardStyle)) {
     return (
-      <figure
-        aria-hidden="true"
-        className={`${styles["icon-container"]} ${styles.unknown}`}
-      >
+      <figure className={`${styles["icon-container"]} ${styles.unknown}`}>
         <IconUnknown data-testid="icon-unknown" />
       </figure>
     );
   }
   if (type === "merged" && ["default", "info"].includes(cardStyle)) {
     return (
-      <figure
-        aria-hidden="true"
-        className={`${styles["icon-container"]} ${styles.merged}`}
-      >
+      <figure className={`${styles["icon-container"]} ${styles.merged}`}>
         <IconMerged data-testid="icon-merged" />
       </figure>
     );
