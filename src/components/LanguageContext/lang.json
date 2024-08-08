@@ -1,4 +1,13 @@
 {
-  "key1": "value",
-  "key2": "value2"
+  "action.paperless.inactive.btn.label": "Go Paperless",
+  "action.paperless.active.btn.label": "Paperless is On",
+  "action.autopay.inactive.btn.label": "Set Up Auto Pay",
+  "action.autopay.active.btn.label": "Auto Pay is On",
+  "action.acct.closed.tag.label": "Account Closed",
+  "pay.bill.btn.label": "Pay Bill",
+  "acct.details.link": "Acct Details",
+  "past.bills.link": "Past Bills & Payments",
+  "merged.acct.title": "Merged Account",
+  "merged.acct.subtitle": "(Parent Account)",
+  "total.balance.title": "Total Balance"
 }

@@ -1,8 +1,7 @@
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 import { Link } from "@carbon/react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PropTypes from "prop-types";
-import { LanguageContext } from "../../LanguageContext/LanguageContext";
 import { InlineNotification } from "../../Notification/InlineNotification/InlineNotification";
 import styles from "./AccountCard.module.scss";
 import Actions from "./Actions/Actions";
@@ -36,8 +35,6 @@ function AccountCard({
   address,
   status = "pmtDue"
 }) {
-  const { lang } = useContext(LanguageContext);
-
   const isClosed = Boolean(cardStyle === "closed");
 
   const paymentRef = useRef();
@@ -147,7 +144,6 @@ function AccountCard({
     <section
       className={`${styles.root} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${className ?? ""} ${compact ? styles.compact : ""} ${type === "merged" ? styles.parent : ""}`}
     >
-      <p>{lang("", "foot")}</p>
       <article
         className={`${styles["content-container"]} ${cardStyle !== "default" ? styles[cardStyle] : ""} ${mobileCTAType !== "none" ? styles["mobile-cta"] : ""}`}
         onClick={cardAction}

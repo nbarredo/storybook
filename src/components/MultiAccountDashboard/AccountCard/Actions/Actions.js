@@ -1,10 +1,12 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useContext } from "react";
 import PropTypes from "prop-types";
+import { LanguageContext } from "../../../LanguageContext/LanguageContext";
 import { Tag } from "../../../Tag/Tag";
 import { TagCTA } from "../../../Tag/TagCTA";
 import styles from "../AccountCard.module.scss";
 
 const Actions = forwardRef(function Actions(props, refs) {
+  const { lang } = useContext(LanguageContext);
   const {
     isClosed,
     hasAutopay,
@@ -22,7 +24,11 @@ const Actions = forwardRef(function Actions(props, refs) {
       {isClosed ? (
         <ul className={styles.actions}>
           <li>
-            <Tag showIcon text="Account Closed" theme="important" />
+            <Tag
+              showIcon
+              text={lang("action.acct.closed.tag.label")}
+              theme="important"
+            />
           </li>
         </ul>
       ) : (
@@ -32,11 +38,15 @@ const Actions = forwardRef(function Actions(props, refs) {
               {showPaperlessBtn && (
                 <li ref={paperlessBtnRef}>
                   {hasPaperless ? (
-                    <Tag showIcon text="Paperless is On" theme="default" />
+                    <Tag
+                      showIcon
+                      text={lang("action.paperless.active.btn.label")}
+                      theme="default"
+                    />
                   ) : (
                     <TagCTA
                       onClick={onClickPaperless}
-                      text="Go Paperless"
+                      text={lang("action.paperless.inactive.btn.label")}
                       theme="default"
                     />
                   )}
@@ -45,11 +55,15 @@ const Actions = forwardRef(function Actions(props, refs) {
               {showAutopayBtn && (
                 <li ref={autoPayBtnRef}>
                   {hasAutopay ? (
-                    <Tag showIcon text="Autopay is On" theme="default" />
+                    <Tag
+                      showIcon
+                      text={lang("action.autopay.active.btn.label")}
+                      theme="default"
+                    />
                   ) : (
                     <TagCTA
                       onClick={onClickAutopay}
-                      text="Set Up Auto Pay"
+                      text={lang("action.autopay.inactive.btn.label")}
                       theme="blue"
                     />
                   )}

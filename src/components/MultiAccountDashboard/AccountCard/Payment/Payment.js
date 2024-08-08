@@ -1,10 +1,13 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useContext } from "react";
 import PropTypes from "prop-types";
 import { Button } from "../../../Button/Button";
+import { LanguageContext } from "../../../LanguageContext/LanguageContext";
 import { Text } from "../../../Text/Text";
 import styles from "./Payment.module.scss";
 
 const Payment = forwardRef(function Payment(props, ref) {
+  const { lang } = useContext(LanguageContext);
+
   const {
     cardStyle = "default",
     totalDue,
@@ -34,7 +37,7 @@ const Payment = forwardRef(function Payment(props, ref) {
           disabled={isDisabled()}
           onClick={onClickPayBill}
           kind="tertiary"
-          label="Pay Bill"
+          label={lang("pay.bill.btn.label")}
           size="sm"
           type="button"
         />
