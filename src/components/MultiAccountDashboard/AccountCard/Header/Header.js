@@ -14,7 +14,7 @@ import { ReactComponent as Separator } from "./separator.svg";
 
 export default function Header({ cardStyle, type, acctID, address }) {
   const { lang } = useContext(LanguageContext);
-  console.log(lang);
+
   const isNumber = typeof acctID === "number";
   const isClosed = () => {
     return cardStyle === "closed";
@@ -35,7 +35,7 @@ export default function Header({ cardStyle, type, acctID, address }) {
       case "unknown":
         return "Acct ";
       case "merged":
-        return "Merged Account ";
+        return `${lang("merged.acct.title")} `;
       default:
         return ToTitleCase(type);
     }
@@ -78,7 +78,7 @@ export default function Header({ cardStyle, type, acctID, address }) {
           weight="reg"
           className={`${styles.clamp} ${isClosed() ? styles.closed : ""}`}
         >
-          {type === "merged" ? "(Parent Account)" : address}
+          {type === "merged" ? lang("merged.acct.subtitle") : address}
         </Text>
       </address>
     </header>
@@ -102,21 +102,30 @@ Header.propTypes = {
 export const getIcon = (type, cardStyle) => {
   if (cardStyle === "warning") {
     return (
-      <figure className={`${styles["icon-container"]} ${styles.warning}`}>
+      <figure
+        aria-hidden="true"
+        className={`${styles["icon-container"]} ${styles.warning}`}
+      >
         <IconWarning data-testid="icon-warning" />
       </figure>
     );
   }
   if (cardStyle === "danger") {
     return (
-      <figure className={`${styles["icon-container"]} ${styles.danger}`}>
+      <figure
+        aria-hidden="true"
+        className={`${styles["icon-container"]} ${styles.danger}`}
+      >
         <IconDanger data-testid="icon-danger" />
       </figure>
     );
   }
   if (cardStyle === "closed") {
     return (
-      <figure className={`${styles["icon-container"]} ${styles.closed}`}>
+      <figure
+        aria-hidden="true"
+        className={`${styles["icon-container"]} ${styles.closed}`}
+      >
         {type === "electric" && <IconElectric data-testid="icon-electric" />}
         {type === "gas" && <IconGas data-testid="icon-gas" />}
         {type === "unknown" && <IconUnknown data-testid="icon-unknown" />}
@@ -126,28 +135,40 @@ export const getIcon = (type, cardStyle) => {
   }
   if (type === "electric" && ["default", "info"].includes(cardStyle)) {
     return (
-      <figure className={`${styles["icon-container"]} ${styles.electric}`}>
+      <figure
+        aria-hidden="true"
+        className={`${styles["icon-container"]} ${styles.electric}`}
+      >
         <IconElectric role="presentation" data-testid="icon-electric" />
       </figure>
     );
   }
   if (type === "gas" && ["default", "info"].includes(cardStyle)) {
     return (
-      <figure className={`${styles["icon-container"]} ${styles.gas}`}>
+      <figure
+        aria-hidden="true"
+        className={`${styles["icon-container"]} ${styles.gas}`}
+      >
         <IconGas data-testid="icon-gas" />
       </figure>
     );
   }
   if (type === "unknown" && ["default", "info"].includes(cardStyle)) {
     return (
-      <figure className={`${styles["icon-container"]} ${styles.unknown}`}>
+      <figure
+        aria-hidden="true"
+        className={`${styles["icon-container"]} ${styles.unknown}`}
+      >
         <IconUnknown data-testid="icon-unknown" />
       </figure>
     );
   }
   if (type === "merged" && ["default", "info"].includes(cardStyle)) {
     return (
-      <figure className={`${styles["icon-container"]} ${styles.merged}`}>
+      <figure
+        aria-hidden="true"
+        className={`${styles["icon-container"]} ${styles.merged}`}
+      >
         <IconMerged data-testid="icon-merged" />
       </figure>
     );
