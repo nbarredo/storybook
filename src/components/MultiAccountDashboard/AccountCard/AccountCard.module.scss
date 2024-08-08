@@ -35,15 +35,23 @@ $min-height-compact: 40px;
         grid-template-columns: 1fr;
 
         @include do-this-above(md) {
-          grid-template-columns: 201px 125px 1fr;
+          grid-template-columns: 201px 1fr;
         }
 
         @include do-this-above(lg) {
-          grid-template-columns: minmax(167px, 2fr) minmax(256px, 2fr) minmax(
+          grid-template-columns: minmax(200px, 2fr) minmax(256px, 2fr) minmax(
               540px,
               2fr
             );
         }
+
+        .column.actions {
+          display: none;
+          @include do-this-above(lg) {
+            display: block;
+          }
+        }
+
         .total-balance-container {
           @include do-this-above(md) {
             display: flex;
