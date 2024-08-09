@@ -35,9 +35,6 @@ InlineNotification.propTypes = {
     "warning-alt"
   ]), */
 
-  /** Specify whether you are using the low contrast variant of the InlineNotification. */
-  lowContrast: PropTypes.bool,
-
   /** Provide a function that is called when menu is closed */
   onClose: PropTypes.func,
 
