@@ -21,7 +21,6 @@ export function LanguageContextProvider({ children, data }) {
         lang
       }}
     >
-      <p>provider active</p>
       {children}
     </LanguageContext.Provider>
   );
