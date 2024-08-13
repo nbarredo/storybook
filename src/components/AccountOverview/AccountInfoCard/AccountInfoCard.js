@@ -120,7 +120,7 @@ function AccountInfoCard({
                   <Tag
                     className={styles["cta-active"]}
                     showIcon
-                    text="Autopay is On"
+                    text="Auto Pay is On"
                     theme="default"
                   />
                 ) : (

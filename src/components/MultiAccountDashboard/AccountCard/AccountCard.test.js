@@ -62,7 +62,7 @@ describe("Account Card component functions correctly", () => {
         address=""
       />
     );
-    expect(screen.getByText("Autopay is On")).toBeInTheDocument();
+    expect(screen.getByText("Auto Pay is On")).toBeInTheDocument();
   });
 
   test.skip("calls onClickPaperless when the paperless CTA is clicked", () => {

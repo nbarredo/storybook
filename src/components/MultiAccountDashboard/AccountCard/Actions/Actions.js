@@ -45,7 +45,7 @@ const Actions = forwardRef(function Actions(props, refs) {
               {showAutopayBtn && (
                 <li ref={autoPayBtnRef}>
                   {hasAutopay ? (
-                    <Tag showIcon text="Autopay is On" theme="default" />
+                    <Tag showIcon text="Auto Pay is On" theme="default" />
                   ) : (
                     <TagCTA
                       onClick={onClickAutopay}
