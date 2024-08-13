@@ -182,7 +182,8 @@ $min-height-compact: 40px;
           }
         }
         @include do-this-above(md) {
-          grid-template-columns: minmax(228px, 386px) minmax(128px, 128px) 1fr;
+          gap: g.$space-7;
+          grid-template-columns: 316px 316px 1fr;
         }
       }
     }
