@@ -11,7 +11,7 @@ import { ReactComponent as Separator } from "./separator.svg";
  */
 const TotalBalance = forwardRef(function TotalBalance(props, ref) {
   return (
-    <div ref={ref}>
+    <div ref={ref} data-testid="ev-total-balance">
       <CarbonActionableNotification
         hideCloseButton={true}
         className={`ev-total-balance ${props.className}`}
@@ -23,7 +23,7 @@ const TotalBalance = forwardRef(function TotalBalance(props, ref) {
       >
         {props.dueDate && (
           <div className="due-date-container">
-            <div role="presentation" className="separator">
+            <div aria-hidden="true" className="separator">
               <Separator data-testid="separator" />
             </div>
             <Text
@@ -66,6 +66,6 @@ TotalBalance.propTypes = {
   /** Specify what will happen when the action button is clicked */
   onClick: PropTypes.func,
 
-  /** The date on which the payment is due. It should follow the format of mm/dd/yy. */
+  /** The date on which the payment is due. It should follow the format of `mm/dd/yy`. */
   dueDate: PropTypes.string
 };

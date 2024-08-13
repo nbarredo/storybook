@@ -27,11 +27,8 @@
       position: relative;
       width: 32px;
       @include do-this-above(md) {
-        border-radius: 4px;
-        height: 24px;
         left: 0;
         position: absolute;
-        width: 24px;
       }
     }
     .title {
@@ -39,7 +36,7 @@
     }
     @include do-this-above(md) {
       display: block;
-      padding-left: g.$space-7;
+      padding-left: g.$space-9;
       position: relative;
     }
   }

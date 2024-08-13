@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { ToTitleCase } from "../../../../utils";
+import { LanguageContext } from "../../../LanguageContext/LanguageContext";
 import { Text } from "../../../Text/Text";
 import styles from "./Header.module.scss";
 import { ReactComponent as IconElectric } from "./icon_acct_type_electric.svg";
@@ -13,6 +13,8 @@ import { ReactComponent as IconWarning } from "./icon_status_warning.svg";
 import { ReactComponent as Separator } from "./separator.svg";
 
 export default function Header({ cardStyle, type, acctID, address }) {
+  const { lang } = useContext(LanguageContext);
+
   const isNumber = typeof acctID === "number";
   const isClosed = () => {
     return cardStyle === "closed";
@@ -33,7 +35,7 @@ export default function Header({ cardStyle, type, acctID, address }) {
       case "unknown":
         return "Acct ";
       case "merged":
-        return "Merged Account ";
+        return `${lang("merged.acct.title")} `;
       default:
         return ToTitleCase(type);
     }
@@ -76,7 +78,7 @@ export default function Header({ cardStyle, type, acctID, address }) {
           weight="reg"
           className={`${styles.clamp} ${isClosed() ? styles.closed : ""}`}
         >
-          {type === "merged" ? "(Parent Account)" : address}
+          {type === "merged" ? lang("merged.acct.subtitle") : address}
         </Text>
       </address>
     </header>

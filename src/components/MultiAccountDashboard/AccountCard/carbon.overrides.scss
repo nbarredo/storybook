@@ -81,7 +81,7 @@
   @include do-this-above(md) {
     min-block-size: 0;
   }
-  @include do-this-above(lg) {
+  @include do-this-above(md) {
     max-inline-size: fit-content;
   }
 }

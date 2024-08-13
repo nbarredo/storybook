@@ -1,15 +1,24 @@
 import React from "react";
+import { LanguageContextProvider } from "../../LanguageContext/LanguageContext";
+import data from "../../LanguageContext/lang.json";
 import { Text } from "../../Text/Text";
 import { AccountCard } from "./AccountCard";
 
 const meta = {
   title: "Delivery/Multi-Account Dashboard/AccountCard",
   component: AccountCard,
+  decorators: [
+    (Story) => (
+      <LanguageContextProvider data={data}>
+        <Story />
+      </LanguageContextProvider>
+    )
+  ],
   argTypes: {
     onClick: { action: "clicked" }
   },
   parameters: {
-    layout: "fullwidth",
+    layout: "fullscreen",
     design: {
       type: "figma",
       url: "https://www.figma.com/file/bXF13WTZOM72lG35coDswz/Account-Dashboard-(Account-Overview)---UI?type=design&node-id=1059%3A6170&mode=design&t=3mMpsdnrh1Cv9mQa-1"
@@ -162,7 +171,8 @@ export const IsParent = {
   args: {
     ...Default.args,
     type: "merged",
-    mobileCTAType: "none"
+    mobileCTAType: "none",
+    totalDue: "$115.25"
   }
 };
 
