@@ -10,7 +10,7 @@ export default {
     layout: "fullscreen",
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/bXF13WTZOM72lG35coDswz/Account-Overview-(Multi-%26-Single)---UI?node-id=2357-29333&t=8QmL13IFudKD5XbE-4"
+      url: "https://www.figma.com/file/bXF13WTZOM72lG35coDswz/Account-Overview-(Multi-%26-Single)---UI?node-id=2541-24332&t=rjgkIPmESiIYK7bX-4"
     }
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
