@@ -2,10 +2,7 @@ import { InlineNotification } from "./InlineNotification";
 
 const meta = {
   title: "Design System/Notification/InlineNotification",
-  component: InlineNotification,
-  parameters: {
-    layout: "fullscreen"
-  }
+  component: InlineNotification
 };
 
 export default meta;
