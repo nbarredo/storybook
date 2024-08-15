@@ -40,13 +40,13 @@ export const RightArrow = () => (
 
 <div className="sb-container">
   <div className='sb-section-title'>
-    # One Source Design System Component Library
-
+  
+  # One Source Design System Component Library
+ 
     Welcome to the One Source Design System Component Library!  This library was created for two distinct purposes:
     - Provide designers, developers, and other Eversource employees with a browsable reference demonstrating the ways in which the One Source Style is being implemented.  This Library can serve as a source of inpiration when creating new designs, and as a reference for elements of the design language that have already been developed into reusable components.
     - Provides a means by which developers can utilize these components in their own projects.
 
-<Text weight="reg">Sample Text</Text>
 <Markdown>{Readme}</Markdown>
 
   </div>
@@ -221,8 +221,12 @@ export const RightArrow = () => (
 <style>
   {`
   .sb-container {
+    font-family: Open Sans, Segoe UI, tahoma, sans-serif !important;
     margin-bottom: 48px;
   }
+
+  ol {list-style-type: number;}
+  ul {list-style-type: disc;}
 
   .sb-section {
     width: 100%;
@@ -235,9 +239,14 @@ export const RightArrow = () => (
     object-fit: cover;
   }
 
+  .sb-section-title h1, h2 {
+    color: var(--gray-70);
+    font-family: Open Sans, Segoe UI, tahoma, sans-serif !important;  
+  }
+
   .sb-section-title {
     margin-bottom: 32px;
-  }
+  }  
 
   .sb-section a:not(h1 a, h2 a, h3 a) {
     font-size: 14px;
