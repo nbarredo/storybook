@@ -11,7 +11,7 @@ const meta = {
     layout: "fullscreen",
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/bXF13WTZOM72lG35coDswz/Account-Dashboard-(Account-Overview)---UI?type=design&node-id=560%3A6799&mode=design&t=ieaKzasMCaSbwME9-1"
+      url: "https://www.figma.com/file/bXF13WTZOM72lG35coDswz/Account-Overview-(Multi-%26-Single)---UI?node-id=2218-13437&t=pO2XzPyie353bzT4-4"
     }
   }
 };
