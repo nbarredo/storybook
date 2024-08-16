@@ -16,8 +16,8 @@ const LanguageTable = () => {
   return (
     <aside
       style={{
-        border: "1px solid gainsboro",
-        "background-color": "whitesmoke",
+        border: "1px solid var(--gray-30)",
+        "border-radius": "var(--global-radius)",
         padding: "10px",
         width: "fit-content",
         "margin-bottom": "40px"
