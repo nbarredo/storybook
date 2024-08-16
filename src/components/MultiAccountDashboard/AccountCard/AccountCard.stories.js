@@ -1,8 +1,50 @@
 import React from "react";
+import {
+  ArgsTable,
+  Description,
+  Primary,
+  Stories,
+  Subtitle,
+  Title
+} from "@storybook/addon-docs";
 import { LanguageContextProvider } from "../../LanguageContext/LanguageContext";
-import data from "../../LanguageContext/lang.json";
 import { Text } from "../../Text/Text";
 import { AccountCard } from "./AccountCard";
+import data from "./lang.json";
+
+const LanguageTable = () => {
+  return (
+    <aside
+      style={{
+        border: "1px solid gainsboro",
+        "background-color": "whitesmoke",
+        padding: "10px",
+        width: "fit-content",
+        "margin-bottom": "40px"
+      }}
+    >
+      <h5 style={{ "margin-bottom": "10px" }}>
+        Language Keys and Sample Values Used in This Component
+      </h5>
+      <table>
+        {Object.entries(data).map(([key, value], i) => {
+          return (
+            <tr style={{ "padding-bottom": "10px" }} key={i}>
+              <td style={{ "padding-right": "30px" }}>
+                <Text size={1} weight="semi">
+                  {key}
+                </Text>
+              </td>
+              <td>
+                <Text size={1}>{value}</Text>
+              </td>
+            </tr>
+          );
+        })}
+      </table>
+    </aside>
+  );
+};
 
 const meta = {
   title: "Delivery/Multi-Account Dashboard/AccountCard",
@@ -18,6 +60,19 @@ const meta = {
     onClick: { action: "clicked" }
   },
   parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <LanguageTable />
+          <Primary />
+          <ArgsTable />
+          <Stories />
+        </>
+      )
+    },
     layout: "fullscreen",
     design: {
       type: "figma",
