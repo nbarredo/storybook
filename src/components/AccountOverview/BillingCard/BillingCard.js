@@ -5,6 +5,10 @@ import { LastMonth } from "./LastMonth/LastMonth";
 import { ThisMonth } from "./ThisMonth/ThisMonth";
 
 function BillingCard({ data }) {
+  const isConnecticutCustomer = () => {
+    if (data.companyCode === "CTE" || data.companyCode === "CTG") return true;
+    return false;
+  };
   return (
     <section className={`${styles["billing-card"]} ${styles[data.type]}`}>
       <LastMonth
@@ -27,6 +31,7 @@ function BillingCard({ data }) {
         onClickPmtPlan={data.onClickPmtPlan}
         onClickCteViewPayBtn={data.onClickCteViewPayBtn}
         companyCode={data.companyCode}
+        isConnecticutCustomer={isConnecticutCustomer}
       />
     </section>
   );

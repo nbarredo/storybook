@@ -12,6 +12,12 @@ function PaymentOptions(props) {
     onClickCteViewPayBtn,
     companyCode
   } = props;
+
+  const isConnecticutCustomer = () => {
+    if (companyCode === "CTE" || companyCode === "CTG") return true;
+    return false;
+  };
+
   const getIsDisabled = () => {
     if (status === "nothingDue" || status === "credit") return true;
     return false;
@@ -93,7 +99,7 @@ function PaymentOptions(props) {
   };
 
   return (
-    <>{companyCode === "CTE" ? renderCTEContent() : renderDefaultContent()}</>
+    <>{isConnecticutCustomer() ? renderCTEContent() : renderDefaultContent()}</>
   );
 }
 
