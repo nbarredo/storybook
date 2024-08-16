@@ -17,30 +17,32 @@ const LanguageTable = () => {
     <aside
       style={{
         border: "1px solid var(--gray-30)",
-        "border-radius": "var(--global-radius)",
+        borderRadius: "var(--global-radius)",
         padding: "10px",
         width: "fit-content",
-        "margin-bottom": "40px"
+        marginBottom: "40px"
       }}
     >
-      <h5 style={{ "margin-bottom": "10px" }}>
+      <h5 style={{ marginBottom: "10px" }}>
         Language Keys and Sample Values Used in This Component
       </h5>
       <table>
-        {Object.entries(data).map(([key, value], i) => {
-          return (
-            <tr style={{ "padding-bottom": "10px" }} key={i}>
-              <td style={{ "padding-right": "30px" }}>
-                <Text size={1} weight="semi">
-                  {key}
-                </Text>
-              </td>
-              <td>
-                <Text size={1}>{value}</Text>
-              </td>
-            </tr>
-          );
-        })}
+        <tbody>
+          {Object.entries(data).map(([key, value], i) => {
+            return (
+              <tr key={i}>
+                <td style={{ paddingRight: "30px" }}>
+                  <Text size="1" weight="semi">
+                    {key}
+                  </Text>
+                </td>
+                <td>
+                  <Text size="1">{value}</Text>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </aside>
   );
