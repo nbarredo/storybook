@@ -9,6 +9,11 @@ import {
 import { ThisMonth } from "./ThisMonth";
 
 describe("ThisMonth Component Functions Properly", () => {
+  const mockIsConnecticutCustomer = (companyCode) => {
+    if (companyCode === "CTE" || companyCode === "CTG") return true;
+    return false;
+  };
+
   const defaultProps = {
     status: "pmtDue",
     currPaymentAmt: "$123.45",
@@ -20,7 +25,8 @@ describe("ThisMonth Component Functions Properly", () => {
     onClickPayByBank: jest.fn(),
     onClickPayByCard: jest.fn(),
     onClickAutopay: jest.fn(),
-    onClickPmtPlan: jest.fn()
+    onClickPmtPlan: jest.fn(),
+    isConnecticutCustomer: mockIsConnecticutCustomer
   };
 
   test("Applies the correct styles when status prop = 'credit'", () => {
@@ -38,7 +44,6 @@ describe("ThisMonth Component Functions Properly", () => {
     );
     expect(screen.getByText(/View & Pay Bill/i)).toBeInTheDocument();
     rerender(<ThisMonth {...defaultProps} companyCode="ABC" />);
-    screen.debug();
     expect(screen.queryByText(/View & Pay Bill/i)).not.toBeInTheDocument();
     expect(screen.getByText(/Pay by Card/i)).toBeInTheDocument();
     expect(screen.getByText(/View Bill/i)).toBeInTheDocument();

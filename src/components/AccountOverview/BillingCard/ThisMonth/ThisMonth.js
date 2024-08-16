@@ -19,7 +19,8 @@ function ThisMonth({
   onClickAutopay,
   onClickPmtPlan,
   onClickCteViewPayBtn,
-  companyCode
+  companyCode,
+  isConnecticutCustomer
 }) {
   const amountDue = () => {
     const symbol = currPaymentAmt.charAt(0);
@@ -79,7 +80,7 @@ function ThisMonth({
           Making another payment now might result in duplicate payment.
         </p>
       )}
-      {status !== "hasAutoPay" && companyCode !== "CTE" && (
+      {status !== "hasAutoPay" && !isConnecticutCustomer() && (
         <Button
           className={styles["view-bill-button"]}
           kind="ghost"
@@ -117,5 +118,6 @@ ThisMonth.propTypes = {
   onClickAutopay: PropTypes.func,
   onClickPmtPlan: PropTypes.func,
   onClickCteViewPayBtn: PropTypes.func,
-  companyCode: PropTypes.string
+  companyCode: PropTypes.string,
+  isConnecticutCustomer: PropTypes.func
 };
