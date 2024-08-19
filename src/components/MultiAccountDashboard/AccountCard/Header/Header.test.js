@@ -3,7 +3,12 @@ import React from "react";
 import "@testing-library/jest-dom";
 import { fireEvent, render, rerender, screen } from "@testing-library/react";
 import { LanguageProvider } from "../../../../setupTests";
+import data from "../lang.json";
 import Header from "./Header";
+
+const Wrapper = ({ children, ...props }) => {
+  return <LanguageProvider {...props}>{children}</LanguageProvider>;
+};
 
 describe("Header component functions properly", () => {
   const defaultProps = {
@@ -50,9 +55,11 @@ describe("Header component functions properly", () => {
   });
 
   test("renders correct icon and title for merged account type with default cardStyle", () => {
-    render(<Header {...defaultProps} type="merged" />, {
-      wrapper: LanguageProvider
-    });
+    render(
+      <LanguageProvider data={data}>
+        <Header {...defaultProps} type="merged" />
+      </LanguageProvider>
+    );
     expect(screen.getByTestId("icon-merged")).toBeInTheDocument();
     expect(screen.getByText(/Merged Account/)).toBeInTheDocument();
   });
@@ -90,18 +97,16 @@ describe("Header component functions properly", () => {
 
   test("renders correct icon when cardStyle is closed", () => {
     const { rerender } = render(
-      <Header acctID={123} address="" type="merged" cardStyle="closed" />,
-      {
-        wrapper: LanguageProvider
-      }
+      <LanguageProvider data={data}>
+        <Header acctID={123} address="" type="merged" cardStyle="closed" />,
+      </LanguageProvider>
     );
     expect(screen.getByRole("figure")).toHaveClass("closed");
     expect(screen.getByTestId("icon-merged")).toBeInTheDocument();
     rerender(
-      <Header acctID={123} address="" type="unknown" cardStyle="closed" />,
-      {
-        wrapper: LanguageProvider
-      }
+      <LanguageProvider data={data}>
+        <Header acctID={123} address="" type="unknown" cardStyle="closed" />
+      </LanguageProvider>
     );
     expect(screen.getByTestId("icon-unknown")).toBeInTheDocument();
   });
