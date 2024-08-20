@@ -17,9 +17,11 @@ function AccountInfoCard({
   hasPaperless,
   onClickAutopay,
   onClickBasicCta,
+  basicCtaUrl,
   onClickOutageAlerts,
   onClickPaperless,
   onClickSupplierCta,
+  supplierCtaURL,
   outageAlertLabel = "Outage Alerts",
   programs,
   showAutopayBtn = true,
@@ -54,6 +56,7 @@ function AccountInfoCard({
             onClickBasicCta={onClickBasicCta}
             acctID={acctID}
             addresses={addresses}
+            basicCtaUrl={basicCtaUrl}
           />
         )}
         {showSupplierInfo && (
@@ -61,6 +64,7 @@ function AccountInfoCard({
             onClickSupplierCta={onClickSupplierCta}
             supplier={supplier}
             type={type}
+            supplierCtaURL={supplierCtaURL}
           />
         )}
         {showProgramsInfo && <Programs programs={programs} />}
@@ -175,8 +179,12 @@ AccountInfoCard.propTypes = {
   onClickOutageAlerts: PropTypes.func,
   /** Specify what should occur when the Basic info CTA is clicked */
   onClickBasicCta: PropTypes.func,
+  /** Optional Basic CTA URL that can be used for navigation instead of via JavaScript onClick behavior. */
+  basicCtaUrl: PropTypes.string,
   /** Specify what should occur when the Supplier CTA is clicked */
   onClickSupplierCta: PropTypes.func,
+  /** Optional Supplier CTA URL that can be used for navigation instead of via JavaScript onClick behavior. */
+  supplierCtaURL: PropTypes.string,
   /** Support the case where the term "Outage Alert" might need to vary based on certain criteria */
   outageAlertLabel: PropTypes.string,
   /** Specify whether or not to display the Basic Information section  */

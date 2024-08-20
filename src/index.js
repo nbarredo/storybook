@@ -4,6 +4,7 @@ import "./index.scss";
 export * from "./components/Accordion/Accordion";
 export * from "./components/Button/Button";
 export * from "./components/ButtonSet/ButtonSet";
+export * from "./components/LanguageContext/LanguageContext";
 export * from "./components/Loading/Loading";
 export * from "./components/Notification/InlineNotification/InlineNotification";
 export * from "./components/Tag/Tag";
