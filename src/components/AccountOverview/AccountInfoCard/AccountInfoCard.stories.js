@@ -110,3 +110,13 @@ export const OnlyOneProgram = {
     ]
   }
 };
+
+export const WithBasicAndSupplierCtaUrls = {
+  args: {
+    ...Default.args,
+    supplierCtaURL: "http://www.eversource.com",
+    basicCtaUrl: "http://www.yahoo.com",
+    onClickBasicCta: () => {},
+    onClickSupplierCta: () => {}
+  }
+};
