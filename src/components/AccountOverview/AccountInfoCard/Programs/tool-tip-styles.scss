@@ -1,0 +1,18 @@
+@use "../../../../styles/typography" as t;
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/global" as g;
+
+.tooltip {
+  background-color: var(--gray-60);
+  border-radius: g.$border-radius;
+
+  .tippy-arrow {
+    color: var(--gray-60);
+  }
+  .tippy-content {
+    @extend %font-size-1-reg;
+    color: var(--white);
+    line-height: 21px;
+    padding: g.$space-5;
+  }
+}

@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import "tippy.js/dist/tippy.css";
 import { Tag } from "../../../Tag/Tag";
 import styles from "../AccountInfoCard.module.scss";
+import "./tool-tip-styles.scss";
 
 function Programs({ programs }) {
   return (
@@ -16,7 +17,7 @@ function Programs({ programs }) {
       {programs?.map((program) => {
         return (
           <Tippy
-            // className={styles.tooltip}
+            className="tooltip"
             key={program.id}
             content={program.description}
           >
