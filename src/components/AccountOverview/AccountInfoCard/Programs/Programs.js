@@ -1,6 +1,8 @@
 import React from "react";
-import { Tooltip } from "@carbon/react";
+// import { Tooltip } from "@carbon/react";
+import Tippy from "@tippyjs/react";
 import PropTypes from "prop-types";
+import "tippy.js/dist/tippy.css";
 import { Tag } from "../../../Tag/Tag";
 import styles from "../AccountInfoCard.module.scss";
 
@@ -13,21 +15,21 @@ function Programs({ programs }) {
       </dl>
       {programs?.map((program) => {
         return (
-          <Tooltip
-            className={styles.tooltip}
-            enterDelayMs={0}
+          <Tippy
+            // className={styles.tooltip}
             key={program.id}
-            label={program.description}
-            leaveDelayMs={0}
+            content={program.description}
           >
-            <Tag
-              showIcon
-              renderIcon={program.icon}
-              text={program.name}
-              theme={program.theme}
-              tabIndex="0"
-            />
-          </Tooltip>
+            <div>
+              <Tag
+                showIcon
+                renderIcon={program.icon}
+                text={program.name}
+                theme={program.theme}
+                tabIndex="0"
+              />
+            </div>
+          </Tippy>
         );
       })}
     </article>
@@ -48,3 +50,22 @@ Programs.propTypes = {
     })
   )
 };
+
+/*
+<Tooltip
+            className={styles.tooltip}
+            enterDelayMs={0}
+            key={program.id}
+            label={program.description}
+            leaveDelayMs={0}
+          >
+            <Tag
+              showIcon
+              renderIcon={program.icon}
+              text={program.name}
+              theme={program.theme}
+              tabIndex="0"
+            />
+          </Tooltip>
+
+*/
