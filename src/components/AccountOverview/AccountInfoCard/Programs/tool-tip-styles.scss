@@ -16,3 +16,10 @@
     padding: g.$space-5;
   }
 }
+.tag-container {
+  &:hover {
+    .cds--tag {
+      background-color: var(--purple-20);
+    }
+  }
+}

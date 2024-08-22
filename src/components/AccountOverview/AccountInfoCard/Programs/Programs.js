@@ -21,7 +21,7 @@ function Programs({ programs }) {
             key={program.id}
             content={program.description}
           >
-            <div tabIndex={0}>
+            <div className="tag-container" tabIndex={0}>
               <Tag
                 showIcon
                 renderIcon={program.icon}
@@ -50,22 +50,3 @@ Programs.propTypes = {
     })
   )
 };
-
-/*
-<Tooltip
-            className={styles.tooltip}
-            enterDelayMs={0}
-            key={program.id}
-            label={program.description}
-            leaveDelayMs={0}
-          >
-            <Tag
-              showIcon
-              renderIcon={program.icon}
-              text={program.name}
-              theme={program.theme}
-              tabIndex="0"
-            />
-          </Tooltip>
-
-*/
