@@ -21,13 +21,12 @@ function Programs({ programs }) {
             key={program.id}
             content={program.description}
           >
-            <div>
+            <div tabIndex={0}>
               <Tag
                 showIcon
                 renderIcon={program.icon}
                 text={program.name}
                 theme={program.theme}
-                tabIndex="0"
               />
             </div>
           </Tippy>
