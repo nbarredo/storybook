@@ -114,6 +114,24 @@ describe("Account Card component functions correctly", () => {
     expect(getByText("Past Bills & Payments")).toBeInTheDocument();
   });
 
+  test('fires onClick when cardStyle is "closed"', () => {
+    const alertMock = jest.spyOn(window, 'alert').mockImplementation();
+    const onClickValue = (event) => { 
+      event.stopPropagation(); 
+      window.alert("Past Bills & Payments link was clicked.");} 
+    const { getByText } = render(
+      <LanguageProvider data={data}>
+        <AccountCard onClickPastBills = {onClickValue} cardStyle="closed" {...basicData} />,
+      </LanguageProvider>
+      );
+
+    fireEvent.click(getByText("Past Bills & Payments"));
+
+    expect(alertMock).toHaveBeenCalledTimes(1);
+    expect(getByText("Account Closed")).toBeInTheDocument();
+    expect(getByText("Past Bills & Payments")).toBeInTheDocument();
+  });
+  
   test('renders notification message when cardStyle is "info"', () => {
     render(
       <LanguageProvider data={data}>

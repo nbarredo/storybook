@@ -99,6 +99,10 @@ const paperlessClickFn = () => {
   window.alert("Paperless button was clicked.");
 };
 
+const pastBillsClickFn = () => {
+  window.alert("Past Bills & Payments link was clicked.");
+};
+
 const ChildCard = {
   status: "nothingDue",
   type: "electric",
@@ -118,7 +122,8 @@ const ChildCard = {
   address: "124 Main Street NH 120384",
   onCardBodyClick: cardBodyClickFn,
   onClickAutopay: autopayClickFn,
-  onClickPaperless: paperlessClickFn
+  onClickPaperless: paperlessClickFn,
+  onClickPastBills: pastBillsClickFn
 };
 
 export const Default = {
@@ -140,7 +145,8 @@ export const Default = {
     address: "124 Main Street NH 120384",
     onCardBodyClick: cardBodyClickFn,
     onClickAutopay: autopayClickFn,
-    onClickPaperless: paperlessClickFn
+    onClickPaperless: paperlessClickFn,
+    onClickPastBills: pastBillsClickFn
   }
 };
 
