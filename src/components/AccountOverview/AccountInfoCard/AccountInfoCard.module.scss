@@ -200,24 +200,6 @@
     }
   }
 
-  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-  .tooltip :global(.cds--tag):hover {
-    background-color: var(--purple-20);
-  }
-
-  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-  :global(.cds--popover-content.cds--tooltip-content) {
-    @extend %font-size-1-reg;
-    background-color: var(--gray-60);
-    border-radius: g.$border-radius;
-    color: var(--white);
-    line-height: 18px;
-  }
-  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-  :global(.cds--popover-caret) {
-    background-color: var(--gray-60);
-  }
-
   &.electric {
     h4 {
       color: var(--teal-80);
