@@ -18,6 +18,8 @@ function Basic({ acctID, addresses, onClickBasicCta, basicCtaUrl }) {
       <dl>
         <dt>Acct number</dt>
         <dd>{acctID}</dd>
+      </dl>
+      <dl>
         <dt>Address</dt>
         <dd>{getAddress()}</dd>
       </dl>

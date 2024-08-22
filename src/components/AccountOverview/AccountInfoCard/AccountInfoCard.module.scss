@@ -118,14 +118,14 @@
   dl {
     column-gap: 16px;
     display: flex;
-    flex-wrap: wrap;
     margin-bottom: g.$space-5;
     dt {
       @extend %font-size-1-semi;
       color: var(--gray-70);
-      flex: 0 1 120px;
+      flex: 0 1 auto;
       line-height: 18px;
       padding-bottom: g.$space-4;
+      white-space: nowrap;
       &:last-of-type {
         padding-bottom: 0;
       }
@@ -133,7 +133,7 @@
     dd {
       @extend %font-size-1-reg;
       color: var(--gray-60);
-      flex: 1 0 180px;
+      flex: 1 1 290px;
       line-height: 18px;
       padding-bottom: g.$space-4;
       text-align: right;
