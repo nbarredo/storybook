@@ -14,7 +14,7 @@ export const Loading = ({
     <CarbonLoading
       data-testid="ev-loading"
       active={active}
-      className={className}
+      className={`ev-loading ${className || ""}`}
       description={description}
       small={small}
       withOverlay={withOverlay}
