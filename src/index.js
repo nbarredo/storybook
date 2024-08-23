@@ -1,4 +1,3 @@
-import TotalBalance from "./components/MultiAccountDashboard/TotalBalance/TotalBalance";
 import "./index.scss";
 
 export * from "./components/Accordion/Accordion";
@@ -13,7 +12,7 @@ export * from "./components/Text/Text";
 export * from "./components/TextInput/TextInput";
 export * from "./components/Wizard/Wizard";
 export * from "./components/Wizard/children";
-export default TotalBalance;
+export * from "./components/MultiAccountDashboard/TotalBalance/TotalBalance";
 export * from "./components/MultiAccountDashboard/AccountCard/AccountCard";
 export * from "./components/AccountOverview/AccountInfoCard/AccountInfoCard";
 export * from "./components/AccountOverview/BillingCard/BillingCard";

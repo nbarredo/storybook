@@ -1,4 +1,4 @@
-import TotalBalance from "./TotalBalance";
+import { TotalBalance } from "./TotalBalance";
 
 const meta = {
   title: "Delivery/Multi-Account Dashboard/TotalBalance",
