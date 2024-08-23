@@ -4,6 +4,7 @@
 @use "../../../styles/global" as g;
 
 .account-info-card {
+  background-color: var(--white);
   border: 1px solid var(--gray-10);
   border-radius: g.$border-radius-large;
   box-shadow:

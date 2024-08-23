@@ -4,6 +4,7 @@
 @use "../../../styles/mixins" as *;
 
 .billing-card {
+  background-color: var(--white);
   border-radius: g.$border-radius-large;
   box-shadow:
     0px 0px 1px 0px #006db340,
