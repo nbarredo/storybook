@@ -6,7 +6,7 @@ $placeholder-color: var(--gray-60);
 $field-label-color: var(--gray-80);
 $field-text-color: var(--gray-70);
 
-.cds--form-item.cds--text-input-wrapper {
+.ev-text-input.cds--form-item.cds--text-input-wrapper {
   .cds--text-input__field-outer-wrapper {
     .cds--text-input {
       @extend %font-size-1-reg;
