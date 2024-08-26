@@ -41,7 +41,7 @@ function Button({
   return (
     <>
       <CarbonButton
-        className={className || ""}
+        className={`ev-button ${className || ""}`}
         aria-disabled={disabled}
         iconDescription="Icon Description"
         kind={buttonType}

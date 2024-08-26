@@ -1,6 +1,6 @@
 @use "../../styles/global" as g;
 
-.cds--btn-set {
+.ev-button-set.cds--btn-set {
   flex-wrap: wrap;
   gap: g.$space-4;
   &.left {

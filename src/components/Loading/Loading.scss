@@ -1,6 +1,8 @@
 @use "../../styles/mixins" as *;
 
-.cds--loading__stroke {
-  stroke: var(--teal-60);
-  stroke-dashoffset: 52.5276;
+.ev-loading.cds--loading {
+  .cds--loading__stroke {
+    stroke: var(--teal-60);
+    stroke-dashoffset: 52.5276;
+  }
 }
