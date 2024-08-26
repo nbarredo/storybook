@@ -7,46 +7,11 @@ import {
   Subtitle,
   Title
 } from "@storybook/addon-docs";
+import { LanguageTable } from "../../../stories/custom_story_blocks";
 import { LanguageContextProvider } from "../../LanguageContext/LanguageContext";
 import { Text } from "../../Text/Text";
 import { AccountCard } from "./AccountCard";
 import data from "./lang.json";
-
-const LanguageTable = () => {
-  return (
-    <aside
-      style={{
-        border: "1px solid var(--gray-30)",
-        borderRadius: "var(--global-radius)",
-        padding: "10px",
-        width: "fit-content",
-        marginBottom: "40px"
-      }}
-    >
-      <h5 style={{ marginBottom: "10px" }}>
-        Language Keys and Sample Values Used in This Component
-      </h5>
-      <table>
-        <tbody>
-          {Object.entries(data).map(([key, value], i) => {
-            return (
-              <tr key={i}>
-                <td style={{ paddingRight: "30px" }}>
-                  <Text size="1" weight="semi">
-                    {key}
-                  </Text>
-                </td>
-                <td>
-                  <Text size="1">{value}</Text>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </aside>
-  );
-};
 
 const meta = {
   title: "Delivery/Multi-Account Dashboard/AccountCard",
@@ -68,7 +33,7 @@ const meta = {
           <Title />
           <Subtitle />
           <Description />
-          <LanguageTable />
+          {LanguageTable(data)}
           <Primary />
           <ArgsTable />
           <Stories />
