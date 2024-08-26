@@ -1,5 +1,9 @@
 {
   "last.month.title": "Last Month",
   "text.paid": "paid",
-  "past.bills.cta.label": "Past Bills & Payments"
+  "text.auto.pay": "Auto Pay",
+  "text.view.bill": "View Bill",
+  "auto.pay.scheduled.for": "scheduled for",
+  "past.bills.cta.label": "Past Bills & Payments",
+  "this.month.title": "This Month"
 }

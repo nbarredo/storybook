@@ -171,7 +171,8 @@ export const HasAutoPay = {
     data: {
       ...StatusPaymentDue.args.data,
       status: "hasAutoPay",
-      autoPayMessage: "scheduled for",
+      autoPayMessage:
+        "Making another payment now might result in duplicate payment.",
       autoPayDate: "01/06/24"
     }
   }

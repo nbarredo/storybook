@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Button } from "../../../Button/Button";
+import { LanguageContext } from "../../../LanguageContext/LanguageContext";
 import { TagCTA } from "../../../Tag/TagCTA";
 import styles from "../BillingCard.module.scss";
 import { PaymentOptions } from "../PaymentOptions/PaymentOptions";
@@ -22,6 +23,7 @@ function ThisMonth({
   companyCode,
   isConnecticutCustomer
 }) {
+  const { lang } = useContext(LanguageContext);
   const amountDue = () => {
     const symbol = currPaymentAmt.charAt(0);
     const amount = currPaymentAmt.substring(1);
@@ -45,7 +47,7 @@ function ThisMonth({
     <div
       className={`${styles["this-month"]} ${styles[status]} ${companyCode === "CTE" ? styles.cte : ""}`}
     >
-      <h4>This Month</h4>
+      <h4>{lang("this.month.title")}</h4>
       <aside className={`${styles[status]}`}>
         {amountDue()}
         {acctMessage}
@@ -53,7 +55,7 @@ function ThisMonth({
           <TagCTA
             className={styles["auto-pay-cta"]}
             onClick={onClickAutopay}
-            text={`Autopay ${autoPayMessage} ${autoPayDate}`}
+            text={`${lang("text.auto.pay")} ${lang("auto.pay.scheduled.for")} ${autoPayDate}`}
             theme="blue"
             renderIcon={autoPayIcon}
           />
@@ -76,15 +78,13 @@ function ThisMonth({
         companyCode={companyCode}
       />
       {status === "hasAutoPay" && (
-        <p className={styles["autopay-message"]}>
-          Making another payment now might result in duplicate payment.
-        </p>
+        <p className={styles["autopay-message"]}>{autoPayMessage}</p>
       )}
       {status !== "hasAutoPay" && !isConnecticutCustomer() && (
         <Button
           className={styles["view-bill-button"]}
           kind="ghost"
-          label="View Bill"
+          label={lang("text.view.bill")}
           onClick={onClickViewBill}
           size="md"
           type="button"
