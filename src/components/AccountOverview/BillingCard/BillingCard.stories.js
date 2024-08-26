@@ -9,12 +9,20 @@ import {
 } from "@storybook/addon-docs";
 import { fn } from "@storybook/test";
 import { LanguageTable } from "../../../stories/custom_story_blocks";
+import { LanguageContextProvider } from "../../LanguageContext/LanguageContext";
 import { BillingCard } from "./BillingCard";
 import data from "./lang.json";
 
 const meta = {
   title: "Delivery/Account Overview/Billing Card",
   component: BillingCard,
+  decorators: [
+    (Story) => (
+      <LanguageContextProvider data={data}>
+        <Story />
+      </LanguageContextProvider>
+    )
+  ],
   parameters: {
     docs: {
       page: () => (
