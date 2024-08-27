@@ -40,8 +40,10 @@ $min-height-compact: 40px;
         }
 
         @include do-this-above(lg) {
-          grid-template-columns: minmax(200px, 2fr) minmax(256px, 2fr) minmax(540px,
-              2fr);
+          grid-template-columns: minmax(200px, 2fr) minmax(256px, 2fr) minmax(
+              540px,
+              2fr
+            );
         }
 
         .column.actions {
@@ -106,18 +108,24 @@ $min-height-compact: 40px;
 
       @include do-this-above(md) {
         gap: g.$space-7;
-        grid-template-columns: minmax(224px, 1fr) minmax(118px, 1fr) minmax(205px,
-            1fr);
+        grid-template-columns: minmax(224px, 1fr) minmax(118px, 1fr) minmax(
+            205px,
+            1fr
+          );
       }
 
       @include do-this-above(lg) {
-        grid-template-columns:
-          minmax(264px, 2fr) minmax(252px, 2fr) minmax(217px, 2fr) minmax(128px, 1fr);
+        grid-template-columns: minmax(264px, 2fr) minmax(252px, 2fr) minmax(
+            217px,
+            2fr
+          ) minmax(128px, 1fr);
       }
 
       @include do-this-above(xl) {
-        grid-template-columns:
-          minmax(316px, 2fr) minmax(256px, 2fr) minmax(325px, 2fr) minmax(128px, 1fr);
+        grid-template-columns: minmax(316px, 2fr) minmax(256px, 2fr) minmax(
+            325px,
+            2fr
+          ) minmax(128px, 1fr);
       }
     }
 
@@ -171,13 +179,11 @@ $min-height-compact: 40px;
 
   &.compact {
     .content-container {
-
       &.info,
       &.warning,
       &.danger {
         padding: g.$space-4 g.$space-4 g.$space-5 g.$space-4;
       }
-
       padding: g.$space-4;
 
       @include do-this-above(lg) {
