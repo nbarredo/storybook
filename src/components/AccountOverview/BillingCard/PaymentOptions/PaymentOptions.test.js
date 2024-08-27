@@ -1,7 +1,13 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
+import { LanguageProvider } from "../../../../setupTests";
+import data from "../lang.json";
 import { PaymentOptions } from "./PaymentOptions";
+
+const LangWrapper = ({ children }) => {
+  return <LanguageProvider data={data}>{children}</LanguageProvider>;
+};
 
 describe("PaymentOptions component functions properly", () => {
   const defaultProps = {
@@ -12,7 +18,10 @@ describe("PaymentOptions component functions properly", () => {
   };
   test("Buttons are disabled when type is 'nothingDue' or 'credit'", () => {
     const { rerender } = render(
-      <PaymentOptions {...defaultProps} status="credit" />
+      <PaymentOptions {...defaultProps} status="credit" />,
+      {
+        wrapper: LangWrapper
+      }
     );
     const buttons = screen.getAllByRole("button");
     expect(buttons).toBeDisabled;

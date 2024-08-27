@@ -6,7 +6,13 @@ import {
   render,
   screen
 } from "@testing-library/react";
+import { LanguageProvider } from "../../../../setupTests";
+import data from "../lang.json";
 import { ThisMonth } from "./ThisMonth";
+
+const LangWrapper = ({ children }) => {
+  return <LanguageProvider data={data}>{children}</LanguageProvider>;
+};
 
 describe("ThisMonth Component Functions Properly", () => {
   const mockIsConnecticutCustomer = (companyCode) => {
@@ -31,16 +37,24 @@ describe("ThisMonth Component Functions Properly", () => {
 
   test("Applies the correct styles when status prop = 'credit'", () => {
     const { rerender } = render(
-      <ThisMonth {...defaultProps} status="credit" />
+      <ThisMonth {...defaultProps} status="credit" />,
+      {
+        wrapper: LangWrapper
+      }
     );
     expect(screen.getByLabelText("$123.45")).toHaveClass("credit");
-    rerender(<ThisMonth {...defaultProps} status="pmtDue" />);
+    rerender(<ThisMonth {...defaultProps} status="pmtDue" />, {
+      wrapper: LangWrapper
+    });
     expect(screen.getByLabelText("$123.45")).not.toHaveClass("credit");
   });
 
   test("Renders differently based on companyCode prop", () => {
     const { rerender } = render(
-      <ThisMonth {...defaultProps} companyCode="CTE" />
+      <ThisMonth {...defaultProps} companyCode="CTE" />,
+      {
+        wrapper: LangWrapper
+      }
     );
     expect(screen.getByText(/View & Pay Bill/i)).toBeInTheDocument();
     rerender(<ThisMonth {...defaultProps} companyCode="ABC" />);
