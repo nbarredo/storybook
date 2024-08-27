@@ -1,12 +1,42 @@
+import React from "react";
+import {
+  ArgsTable,
+  Description,
+  Primary,
+  Stories,
+  Subtitle,
+  Title
+} from "@storybook/addon-docs";
 import { fn } from "@storybook/test";
+import { LanguageTable } from "../../../stories/custom_story_blocks";
+import { LanguageContextProvider } from "../../LanguageContext/LanguageContext";
 import { BillingCard } from "./BillingCard";
+import data from "./lang.json";
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-export default {
+const meta = {
   title: "Delivery/Account Overview/Billing Card",
   component: BillingCard,
+  decorators: [
+    (Story) => (
+      <LanguageContextProvider data={data}>
+        <Story />
+      </LanguageContextProvider>
+    )
+  ],
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          {LanguageTable(data)}
+          <Primary />
+          <ArgsTable />
+          <Stories />
+        </>
+      )
+    },
     layout: "fullscreen",
     design: {
       type: "figma",
@@ -18,6 +48,8 @@ export default {
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: { onClick: fn() }
 };
+
+export default meta;
 
 const viewBillFn = () => {
   window.alert('clicked the "View Bill" button.');
@@ -139,7 +171,8 @@ export const HasAutoPay = {
     data: {
       ...StatusPaymentDue.args.data,
       status: "hasAutoPay",
-      autoPayMessage: "scheduled for",
+      autoPayMessage:
+        "Making another payment now might result in duplicate payment.",
       autoPayDate: "01/06/24"
     }
   }
