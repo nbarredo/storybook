@@ -84,7 +84,7 @@ function AccountInfoCard({
                   <Tag
                     className={styles["cta-active"]}
                     showIcon
-                    text="Paperless is On"
+                    text="Paperless On"
                     theme="default"
                   />
                 ) : (
@@ -124,7 +124,7 @@ function AccountInfoCard({
                   <Tag
                     className={styles["cta-active"]}
                     showIcon
-                    text="Auto Pay is On"
+                    text="Auto Pay On"
                     theme="default"
                   />
                 ) : (

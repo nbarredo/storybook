@@ -57,22 +57,22 @@ describe("Account Card component functions correctly", () => {
     expect(screen.getByText(/Check your account/i)).toBeInTheDocument();
   });
 
-  test('displays "Paperless is On" when hasPaperless is true', () => {
+  test('displays "Paperless On" when hasPaperless is true', () => {
     render(
       <LanguageProvider data={data}>
         <AccountCard hasPaperless={true} {...basicData} />
       </LanguageProvider>
     );
-    expect(screen.getByText("Paperless is On")).toBeInTheDocument();
+    expect(screen.getByText("Paperless On")).toBeInTheDocument();
   });
 
-  test('displays "Autopay is On" when hasAutopay is true', () => {
+  test('displays "Auto Pay On" when hasAutopay is true', () => {
     render(
       <LanguageProvider data={data}>
         <AccountCard hasAutopay={true} {...basicData} />
       </LanguageProvider>
     );
-    expect(screen.getByText("Auto Pay is On")).toBeInTheDocument();
+    expect(screen.getByText("Auto Pay On")).toBeInTheDocument();
   });
 
   test("renders mobile CTA for autopay", () => {
@@ -115,15 +115,21 @@ describe("Account Card component functions correctly", () => {
   });
 
   test('fires onClick when cardStyle is "closed"', () => {
-    const alertMock = jest.spyOn(window, 'alert').mockImplementation();
-    const onClickValue = (event) => { 
-      event.stopPropagation(); 
-      window.alert("Past Bills & Payments link was clicked.");} 
+    const alertMock = jest.spyOn(window, "alert").mockImplementation();
+    const onClickValue = (event) => {
+      event.stopPropagation();
+      window.alert("Past Bills & Payments link was clicked.");
+    };
     const { getByText } = render(
       <LanguageProvider data={data}>
-        <AccountCard onClickPastBills = {onClickValue} cardStyle="closed" {...basicData} />,
+        <AccountCard
+          onClickPastBills={onClickValue}
+          cardStyle="closed"
+          {...basicData}
+        />
+        ,
       </LanguageProvider>
-      );
+    );
 
     fireEvent.click(getByText("Past Bills & Payments"));
 
@@ -131,7 +137,7 @@ describe("Account Card component functions correctly", () => {
     expect(getByText("Account Closed")).toBeInTheDocument();
     expect(getByText("Past Bills & Payments")).toBeInTheDocument();
   });
-  
+
   test('renders notification message when cardStyle is "info"', () => {
     render(
       <LanguageProvider data={data}>
