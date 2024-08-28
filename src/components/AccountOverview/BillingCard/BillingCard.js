@@ -28,7 +28,6 @@ function BillingCard({ data }) {
         onClickPayByBank={data.onClickPayByBank}
         onClickPayByCard={data.onClickPayByCard}
         onClickAutopay={data.onClickAutopay}
-        onClickPmtPlan={data.onClickPmtPlan}
         onClickCteViewPayBtn={data.onClickCteViewPayBtn}
         companyCode={data.companyCode}
         isConnecticutCustomer={isConnecticutCustomer}
@@ -64,7 +63,6 @@ BillingCard.propTypes = {
     onClickPayByCard: PropTypes.func,
     onClickPastBills: PropTypes.func,
     onClickAutopay: PropTypes.func,
-    onClickPmtPlan: PropTypes.func,
     onClickCteViewPayBtn: PropTypes.func,
     companyCode: PropTypes.string
   }).isRequired

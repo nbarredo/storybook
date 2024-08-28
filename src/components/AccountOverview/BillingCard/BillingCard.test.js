@@ -19,8 +19,7 @@ const mockData = {
   onClickPayByBank: jest.fn(),
   onClickPayByCard: jest.fn(),
   onClickPastBills: jest.fn(),
-  onClickAutopay: jest.fn(),
-  onClickPmtPlan: jest.fn()
+  onClickAutopay: jest.fn()
 };
 
 const LangWrapper = ({ children }) => {
@@ -79,14 +78,5 @@ describe("BillingCard Component functions correctly", () => {
       screen.getByText(`Auto Pay scheduled for ${autoPayData.autoPayDate}`)
     );
     expect(autoPayData.onClickAutopay).toHaveBeenCalled();
-  });
-
-  test("handles onClickPmtPlan correctly", () => {
-    const pmtPlanData = { ...mockData, status: "hasPmtPlan" };
-    render(<BillingCard data={pmtPlanData} />, {
-      wrapper: LangWrapper
-    });
-    fireEvent.click(screen.getByText(pmtPlanData.pmtPlanMessage));
-    expect(pmtPlanData.onClickPmtPlan).toHaveBeenCalled();
   });
 });
