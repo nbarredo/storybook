@@ -31,7 +31,6 @@ describe("ThisMonth Component Functions Properly", () => {
     onClickPayByBank: jest.fn(),
     onClickPayByCard: jest.fn(),
     onClickAutopay: jest.fn(),
-    onClickPmtPlan: jest.fn(),
     isConnecticutCustomer: mockIsConnecticutCustomer
   };
 

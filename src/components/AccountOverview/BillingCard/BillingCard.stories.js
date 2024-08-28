@@ -69,10 +69,6 @@ const autopayFn = () => {
   window.alert('clicked the "Autopay" button.');
 };
 
-const pmtPlanFn = () => {
-  window.alert('clicked the "Payment Plan" button.');
-};
-
 const viewAndPayFn = () => {
   window.alert('clicked the "View & Pay Bill" button.');
 };
@@ -92,8 +88,7 @@ export const StatusPaymentDue = {
       onClickPayByBank: payBankFn,
       onClickPayByCard: payCardFn,
       onClickPastBills: pastBillsFn,
-      onClickAutopay: autopayFn,
-      onClickPmtPlan: pmtPlanFn
+      onClickAutopay: autopayFn
     }
   }
 };
