@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Button } from "../../../Button/Button";
 import { LanguageContext } from "../../../LanguageContext/LanguageContext";
+import { Tag } from "../../../Tag/Tag";
 import { TagCTA } from "../../../Tag/TagCTA";
 import styles from "../BillingCard.module.scss";
 import { PaymentOptions } from "../PaymentOptions/PaymentOptions";
@@ -18,7 +19,6 @@ function ThisMonth({
   onClickPayByBank,
   onClickPayByCard,
   onClickAutopay,
-  onClickPmtPlan,
   onClickCteViewPayBtn,
   companyCode,
   isConnecticutCustomer
@@ -61,9 +61,8 @@ function ThisMonth({
           />
         )}
         {status === "hasPmtPlan" && (
-          <TagCTA
+          <Tag
             className={styles["pmt-plan-cta"]}
-            onClick={onClickPmtPlan}
             text={pmtPlanMessage}
             theme="blue"
           />
@@ -116,7 +115,6 @@ ThisMonth.propTypes = {
   onClickPayByBank: PropTypes.func,
   onClickPayByCard: PropTypes.func,
   onClickAutopay: PropTypes.func,
-  onClickPmtPlan: PropTypes.func,
   onClickCteViewPayBtn: PropTypes.func,
   companyCode: PropTypes.string,
   isConnecticutCustomer: PropTypes.func
