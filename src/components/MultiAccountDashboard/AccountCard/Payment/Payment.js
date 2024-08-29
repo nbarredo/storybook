@@ -7,14 +7,19 @@ import styles from "./Payment.module.scss";
 
 const Payment = forwardRef(function Payment(props, ref) {
   const { lang } = useContext(LanguageContext);
-
   const {
     cardStyle = "default",
     totalDue,
     dateDue,
     onClickPayBill,
-    status
+    status,
+    isConnecticut = false
   } = props;
+  
+  const payBillBtnLabel = isConnecticut 
+  ? lang("ct.pay.bill.btn.label")
+  : lang("pay.bill.btn.label");
+
   const isDisabled = () => {
     if (status === "nothingDue" || status === "credit") return true;
     return false;
@@ -34,10 +39,10 @@ const Payment = forwardRef(function Payment(props, ref) {
       </div>
       <div className={styles["button-container"]}>
         <Button
-          disabled={isDisabled()}
+          disabled={!isConnecticut && isDisabled()}
           onClick={onClickPayBill}
           kind="tertiary"
-          label={lang("pay.bill.btn.label")}
+          label={payBillBtnLabel}
           size="sm"
           type="button"
         />
@@ -68,5 +73,7 @@ Payment.propTypes = {
     "finalBill",
     "nothingDue",
     "credit"
-  ])
+  ]),
+  /** Toggles Connecticut-specific styling and behavior. */
+  isConnecticut: PropTypes.bool
 };

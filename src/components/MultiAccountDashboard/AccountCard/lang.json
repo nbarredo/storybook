@@ -5,6 +5,7 @@
   "action.autopay.active.btn.label": "Auto Pay On",
   "action.acct.closed.tag.label": "Account Closed",
   "pay.bill.btn.label": "Pay Bill",
+  "ct.pay.bill.btn.label": "View & Pay Bill",
   "acct.details.link": "Acct Details",
   "past.bills.link": "Past Bills & Payments",
   "merged.acct.title": "Merged Account",

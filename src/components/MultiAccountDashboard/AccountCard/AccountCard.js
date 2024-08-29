@@ -34,7 +34,8 @@ function AccountCard({
   dateDue,
   acctID,
   address,
-  status = "pmtDue"
+  status = "pmtDue",
+  isConnecticut = false
 }) {
   const isClosed = Boolean(cardStyle === "closed");
 
@@ -88,6 +89,7 @@ function AccountCard({
             totalDue={totalDue}
             dateDue={dateDue}
             onClickPayBill={onClickPayBill}
+            isConnecticut={isConnecticut}
             ref={paymentRef}
           />
         </div>
@@ -288,5 +290,7 @@ AccountCard.propTypes = {
     "finalBill",
     "nothingDue",
     "credit"
-  ])
+  ]),
+  /** Toggles Connecticut-specific styling and behavior. */
+  isConnecticut: PropTypes.bool
 };

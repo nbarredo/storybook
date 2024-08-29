@@ -104,6 +104,7 @@ export const Default = {
     hasPaperless: false,
     showAutopayBtn: true,
     showPaperlessBtn: true,
+    isConnecticut: false,
     totalDue: "$900,853.02",
     dateDue: "02/06/23",
     acctID: 12345678987,
