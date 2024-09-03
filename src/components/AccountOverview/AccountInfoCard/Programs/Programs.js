@@ -1,11 +1,10 @@
 import React from "react";
-// import { Tooltip } from "@carbon/react";
 import Tippy from "@tippyjs/react";
 import PropTypes from "prop-types";
 import "tippy.js/dist/tippy.css";
 import { Tag } from "../../../Tag/Tag";
 import styles from "../AccountInfoCard.module.scss";
-import "./tool-tip-styles.scss";
+import "./tooltip.overrides.scss";
 
 function Programs({ programs }) {
   return (
@@ -17,16 +16,18 @@ function Programs({ programs }) {
       {programs?.map((program) => {
         return (
           <Tippy
-            className="tooltip"
+            className="program-tooltip"
             key={program.id}
+            allowHTML={false}
             content={program.description}
           >
-            <div className="tag-container" tabIndex={0}>
+            <div className={styles["tag-container"]} tabIndex={0}>
               <Tag
                 showIcon
                 renderIcon={program.icon}
                 text={program.name}
                 theme={program.theme}
+                className={styles["program-tag"]}
               />
             </div>
           </Tippy>

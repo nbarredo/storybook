@@ -213,6 +213,13 @@
     dl {
       flex: 100% 0 0;
     }
+    .tag-container {
+      &:hover {
+        .program-tag {
+          background-color: var(--purple-20);
+        }
+      }
+    }
   }
 
   &.electric {
