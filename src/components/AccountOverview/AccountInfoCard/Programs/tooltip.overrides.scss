@@ -2,7 +2,7 @@
 @use "../../../../styles/mixins" as *;
 @use "../../../../styles/global" as g;
 
-.tooltip {
+.program-tooltip {
   background-color: var(--gray-60);
   border-radius: g.$border-radius;
 
@@ -14,12 +14,5 @@
     color: var(--white);
     line-height: 21px;
     padding: g.$space-5;
-  }
-}
-.tag-container {
-  &:hover {
-    .cds--tag {
-      background-color: var(--purple-20);
-    }
   }
 }
