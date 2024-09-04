@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
-import TotalBalance from "../TotalBalance/TotalBalance";
+import { TotalBalance } from "../TotalBalance/TotalBalance";
 import styles from "./AccountCard.module.scss";
 import Actions from "./Actions/Actions";
 import "./carbon.overrides.scss";

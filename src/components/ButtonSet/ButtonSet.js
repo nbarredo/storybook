@@ -17,7 +17,7 @@ function ButtonSet({
       data-testid="ev-button-set"
       stacked={stacked}
       align={align}
-      className={`${align} ${fixedSize ? "fixed-size" : ""}`}
+      className={`ev-button-set ${align} ${fixedSize ? "fixed-size" : ""}`}
     >
       {children}
     </CarbonButtonSet>

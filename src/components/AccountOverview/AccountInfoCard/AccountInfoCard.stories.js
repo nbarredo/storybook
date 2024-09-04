@@ -8,7 +8,11 @@ const meta = {
   component: AccountInfoCard,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: "fullscreen"
+    layout: "fullscreen",
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/bXF13WTZOM72lG35coDswz/Account-Overview-(Multi-%26-Single)---UI?node-id=2590-32336&t=8QmL13IFudKD5XbE-4"
+    }
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
@@ -104,5 +108,15 @@ export const OnlyOneProgram = {
         theme: "purple"
       }
     ]
+  }
+};
+
+export const WithBasicAndSupplierCtaUrls = {
+  args: {
+    ...Default.args,
+    supplierCtaURL: "http://www.eversource.com",
+    basicCtaUrl: "http://www.yahoo.com",
+    onClickBasicCta: () => {},
+    onClickSupplierCta: () => {}
   }
 };

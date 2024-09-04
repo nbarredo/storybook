@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { LanguageContext } from "../../../LanguageContext/LanguageContext";
 import { TagCTA } from "../../../Tag/TagCTA";
 import styles from "../BillingCard.module.scss";
 import { billIcon } from "../Utils";
@@ -10,12 +11,15 @@ function LastMonth({
   prevPaymentDate,
   onClickPastBills
 }) {
+  const { lang } = useContext(LanguageContext);
   return (
     <header className={`${styles["last-month"]} ${styles[type]}`}>
       <div className={styles["col-info"]}>
-        <h4>Last Month</h4>
-        <p aria-label={`${prevPaymentAmt} paid ${prevPaymentDate}`}>
-          {prevPaymentAmt} paid {prevPaymentDate}
+        <h4>{lang("last.month.title")}</h4>
+        <p
+          aria-label={`${prevPaymentAmt} ${lang("text.paid")} ${prevPaymentDate}`}
+        >
+          {prevPaymentAmt} {lang("text.paid")} {prevPaymentDate}
         </p>
       </div>
       <div className={styles["col-cta"]}>
@@ -23,7 +27,7 @@ function LastMonth({
           renderIcon={billIcon}
           className={styles.tagcta}
           onClick={onClickPastBills}
-          text="Past Bills & Payments"
+          text={lang("past.bills.cta.label")}
           theme="blue"
         />
       </div>

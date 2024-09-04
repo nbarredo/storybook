@@ -48,7 +48,7 @@ const TotalBalance = forwardRef(function TotalBalance(props, ref) {
   );
 });
 
-export default TotalBalance;
+export { TotalBalance };
 
 TotalBalance.propTypes = {
   /** Specify an optional className to be applied to the notification box */

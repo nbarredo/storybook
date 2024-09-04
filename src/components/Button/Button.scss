@@ -1,11 +1,11 @@
 @use "../../styles/typography";
 @use "../../styles/global" as g;
 
-////////////////////
+///////////////////
 // Buttons
 ///////////////////
-///
-.cds--btn {
+
+.ev-button.cds--btn {
   align-items: center;
   border-radius: g.$border-radius;
   color: var(--black);

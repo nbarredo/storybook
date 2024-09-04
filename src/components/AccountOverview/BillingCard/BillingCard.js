@@ -5,6 +5,10 @@ import { LastMonth } from "./LastMonth/LastMonth";
 import { ThisMonth } from "./ThisMonth/ThisMonth";
 
 function BillingCard({ data }) {
+  const isConnecticutCustomer = () => {
+    if (data.companyCode === "CTE" || data.companyCode === "CTG") return true;
+    return false;
+  };
   return (
     <section className={`${styles["billing-card"]} ${styles[data.type]}`}>
       <LastMonth
@@ -24,9 +28,9 @@ function BillingCard({ data }) {
         onClickPayByBank={data.onClickPayByBank}
         onClickPayByCard={data.onClickPayByCard}
         onClickAutopay={data.onClickAutopay}
-        onClickPmtPlan={data.onClickPmtPlan}
         onClickCteViewPayBtn={data.onClickCteViewPayBtn}
         companyCode={data.companyCode}
+        isConnecticutCustomer={isConnecticutCustomer}
       />
     </section>
   );
@@ -59,7 +63,6 @@ BillingCard.propTypes = {
     onClickPayByCard: PropTypes.func,
     onClickPastBills: PropTypes.func,
     onClickAutopay: PropTypes.func,
-    onClickPmtPlan: PropTypes.func,
     onClickCteViewPayBtn: PropTypes.func,
     companyCode: PropTypes.string
   }).isRequired

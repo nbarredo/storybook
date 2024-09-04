@@ -1,7 +1,9 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render, screen } from "@testing-library/react";
+import { LanguageProvider } from "../../../setupTests";
 import { BillingCard } from "./BillingCard";
+import data from "./lang.json";
 
 const mockData = {
   type: "electric",
@@ -17,13 +19,18 @@ const mockData = {
   onClickPayByBank: jest.fn(),
   onClickPayByCard: jest.fn(),
   onClickPastBills: jest.fn(),
-  onClickAutopay: jest.fn(),
-  onClickPmtPlan: jest.fn()
+  onClickAutopay: jest.fn()
+};
+
+const LangWrapper = ({ children }) => {
+  return <LanguageProvider data={data}>{children}</LanguageProvider>;
 };
 
 describe("BillingCard Component functions correctly", () => {
   test("renders correctly with given data", () => {
-    render(<BillingCard data={mockData} />);
+    render(<BillingCard data={mockData} />, {
+      wrapper: LangWrapper
+    });
     expect(screen.getByText("Last Month")).toBeInTheDocument();
     expect(screen.getByText("This Month")).toBeInTheDocument();
     expect(screen.getByText("Past Bills & Payments")).toBeInTheDocument();
@@ -31,44 +38,45 @@ describe("BillingCard Component functions correctly", () => {
   });
 
   test("handles onClickPastBills correctly", () => {
-    render(<BillingCard data={mockData} />);
+    render(<BillingCard data={mockData} />, {
+      wrapper: LangWrapper
+    });
     fireEvent.click(screen.getByText("Past Bills & Payments"));
     expect(mockData.onClickPastBills).toHaveBeenCalled();
   });
 
   test("handles onClickViewBill correctly", () => {
-    render(<BillingCard data={mockData} />);
+    render(<BillingCard data={mockData} />, {
+      wrapper: LangWrapper
+    });
     fireEvent.click(screen.getByText("View Bill"));
     expect(mockData.onClickViewBill).toHaveBeenCalled();
   });
 
   test("handles onClickPayByBank correctly", () => {
-    render(<BillingCard data={mockData} />);
+    render(<BillingCard data={mockData} />, {
+      wrapper: LangWrapper
+    });
     fireEvent.click(screen.getByText("Pay by Bank"));
     expect(mockData.onClickPayByBank).toHaveBeenCalled();
   });
 
   test("handles onClickPayByCard correctly", () => {
-    render(<BillingCard data={mockData} />);
+    render(<BillingCard data={mockData} />, {
+      wrapper: LangWrapper
+    });
     fireEvent.click(screen.getByText("Pay by Card"));
     expect(mockData.onClickPayByCard).toHaveBeenCalled();
   });
 
   test("handles onClickAutopay correctly", () => {
     const autoPayData = { ...mockData, status: "hasAutoPay" };
-    render(<BillingCard data={autoPayData} />);
+    render(<BillingCard data={autoPayData} />, {
+      wrapper: LangWrapper
+    });
     fireEvent.click(
-      screen.getByText(
-        `Autopay ${autoPayData.autoPayMessage} ${autoPayData.autoPayDate}`
-      )
+      screen.getByText(`Auto Pay scheduled for ${autoPayData.autoPayDate}`)
     );
     expect(autoPayData.onClickAutopay).toHaveBeenCalled();
-  });
-
-  test("handles onClickPmtPlan correctly", () => {
-    const pmtPlanData = { ...mockData, status: "hasPmtPlan" };
-    render(<BillingCard data={pmtPlanData} />);
-    fireEvent.click(screen.getByText(pmtPlanData.pmtPlanMessage));
-    expect(pmtPlanData.onClickPmtPlan).toHaveBeenCalled();
   });
 });

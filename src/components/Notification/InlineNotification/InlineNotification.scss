@@ -6,7 +6,7 @@ $info-bkgd: var(--gray-60);
 $error-bkgd: var(--red-00);
 $minimum-height: 37px;
 
-.cds--inline-notification {
+.ev-inline-notification.cds--inline-notification {
   border-radius: g.$border-radius;
   min-block-size: $minimum-height;
   .cds--inline-notification__icon {

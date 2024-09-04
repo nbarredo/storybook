@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { LanguageProvider } from "../../../setupTests";
 import { AccountCard } from "./AccountCard";
+import data from "./lang.json";
 
 describe("Account Card component functions correctly", () => {
   const basicData = {
@@ -14,16 +15,20 @@ describe("Account Card component functions correctly", () => {
     acctDetailsURL: "www.yahoo.com"
   };
   test("renders AccountCard with default props", () => {
-    render(<AccountCard {...basicData} />, {
-      wrapper: LanguageProvider
-    });
+    render(
+      <LanguageProvider data={data}>
+        <AccountCard {...basicData} />
+      </LanguageProvider>
+    );
     expect(screen.getByText(/Acct Details/i)).toBeInTheDocument();
   });
 
   test("renders in compact mode", () => {
-    render(<AccountCard compact {...basicData} />, {
-      wrapper: LanguageProvider
-    });
+    render(
+      <LanguageProvider data={data}>
+        <AccountCard compact {...basicData} />
+      </LanguageProvider>
+    );
     expect(screen.getByText(/Acct Details/i).closest("section")).toHaveClass(
       "compact"
     );
@@ -31,54 +36,55 @@ describe("Account Card component functions correctly", () => {
 
   test("renders properly in warning or danger cardStyle and displays alert text", () => {
     const { rerender } = render(
-      <AccountCard
-        cardStyle="warning"
-        alertText="Check your account"
-        {...basicData}
-      />,
-      {
-        wrapper: LanguageProvider
-      }
+      <LanguageProvider data={data}>
+        <AccountCard
+          cardStyle="warning"
+          alertText="Check your account"
+          {...basicData}
+        />
+      </LanguageProvider>
     );
     expect(screen.getByText(/Check your account/i)).toBeInTheDocument();
     rerender(
-      <AccountCard
-        cardStyle="danger"
-        alertText="Check your account"
-        {...basicData}
-      />,
-      {
-        wrapper: LanguageProvider
-      }
+      <LanguageProvider data={data}>
+        <AccountCard
+          cardStyle="danger"
+          alertText="Check your account"
+          {...basicData}
+        />
+      </LanguageProvider>
     );
     expect(screen.getByText(/Check your account/i)).toBeInTheDocument();
   });
 
-  test('displays "Paperless is On" when hasPaperless is true', () => {
-    render(<AccountCard hasPaperless={true} {...basicData} />, {
-      wrapper: LanguageProvider
-    });
-    expect(screen.getByText("Paperless is On")).toBeInTheDocument();
+  test('displays "Paperless On" when hasPaperless is true', () => {
+    render(
+      <LanguageProvider data={data}>
+        <AccountCard hasPaperless={true} {...basicData} />
+      </LanguageProvider>
+    );
+    expect(screen.getByText("Paperless On")).toBeInTheDocument();
   });
 
-  test('displays "Autopay is On" when hasAutopay is true', () => {
-    render(<AccountCard hasAutopay={true} {...basicData} />, {
-      wrapper: LanguageProvider
-    });
-    expect(screen.getByText("Auto Pay is On")).toBeInTheDocument();
+  test('displays "Auto Pay On" when hasAutopay is true', () => {
+    render(
+      <LanguageProvider data={data}>
+        <AccountCard hasAutopay={true} {...basicData} />
+      </LanguageProvider>
+    );
+    expect(screen.getByText("Auto Pay On")).toBeInTheDocument();
   });
 
   test("renders mobile CTA for autopay", () => {
     const onClickAutopay = jest.fn();
     render(
-      <AccountCard
-        mobileCTAType="autopay"
-        onClickAutopay={onClickAutopay}
-        {...basicData}
-      />,
-      {
-        wrapper: LanguageProvider
-      }
+      <LanguageProvider data={data}>
+        <AccountCard
+          mobileCTAType="autopay"
+          onClickAutopay={onClickAutopay}
+          {...basicData}
+        />
+      </LanguageProvider>
     );
 
     expect(screen.getByTestId("mobile-cta-autopay")).toBeInTheDocument();
@@ -86,9 +92,11 @@ describe("Account Card component functions correctly", () => {
 
   test("applies custom class name", () => {
     const className = "my-custom-class";
-    render(<AccountCard className={className} {...basicData} />, {
-      wrapper: LanguageProvider
-    });
+    render(
+      <LanguageProvider data={data}>
+        <AccountCard className={className} {...basicData} />
+      </LanguageProvider>
+    );
 
     expect(screen.getByText(/Acct Details/i).closest("section")).toHaveClass(
       className
@@ -97,37 +105,58 @@ describe("Account Card component functions correctly", () => {
 
   test('renders inactive content when cardStyle is "closed"', () => {
     const { getByText } = render(
-      <AccountCard cardStyle="closed" {...basicData} />,
-      {
-        wrapper: LanguageProvider
-      }
+      <LanguageProvider data={data}>
+        <AccountCard cardStyle="closed" {...basicData} />
+      </LanguageProvider>
     );
 
     expect(getByText("Account Closed")).toBeInTheDocument();
     expect(getByText("Past Bills & Payments")).toBeInTheDocument();
   });
 
+  test('fires onClick when cardStyle is "closed"', () => {
+    const alertMock = jest.spyOn(window, "alert").mockImplementation();
+    const onClickValue = (event) => {
+      event.stopPropagation();
+      window.alert("Past Bills & Payments link was clicked.");
+    };
+    const { getByText } = render(
+      <LanguageProvider data={data}>
+        <AccountCard
+          onClickPastBills={onClickValue}
+          cardStyle="closed"
+          {...basicData}
+        />
+        ,
+      </LanguageProvider>
+    );
+
+    fireEvent.click(getByText("Past Bills & Payments"));
+
+    expect(alertMock).toHaveBeenCalledTimes(1);
+    expect(getByText("Account Closed")).toBeInTheDocument();
+    expect(getByText("Past Bills & Payments")).toBeInTheDocument();
+  });
+
   test('renders notification message when cardStyle is "info"', () => {
     render(
-      <AccountCard cardStyle="info" alertText="card message" {...basicData} />,
-      {
-        wrapper: LanguageProvider
-      }
+      <LanguageProvider data={data}>
+        <AccountCard cardStyle="info" alertText="card message" {...basicData} />
+      </LanguageProvider>
     );
     expect(screen.getByText(/card message/)).toBeInTheDocument();
   });
 
   test('renders parent/merged card when type="merged"', () => {
     render(
-      <AccountCard
-        cardStyle="default"
-        type="merged"
-        alertText="card message"
-        {...basicData}
-      />,
-      {
-        wrapper: LanguageProvider
-      }
+      <LanguageProvider data={data}>
+        <AccountCard
+          cardStyle="default"
+          type="merged"
+          alertText="card message"
+          {...basicData}
+        />
+      </LanguageProvider>
     );
     expect(screen.getByTestId("ev-total-balance")).toBeInTheDocument();
     expect(screen.getByText(/Merged Account/)).toBeInTheDocument();
@@ -135,16 +164,42 @@ describe("Account Card component functions correctly", () => {
 
   test('does not render a mobile CTA when mobileCTAType is set to "none"', () => {
     render(
-      <AccountCard
-        alertText="card message"
-        mobileCTAType="none"
-        {...basicData}
-      />,
-      {
-        wrapper: LanguageProvider
-      }
+      <LanguageProvider data={data}>
+        <AccountCard
+          alertText="card message"
+          mobileCTAType="none"
+          {...basicData}
+        />
+      </LanguageProvider>
     );
     expect(screen.getByRole("article")).toHaveClass("content-container");
     expect(screen.getByRole("article")).not.toHaveClass("mobile-cta");
+  });
+
+  test.each([
+    ["100", "2023-01-01"],
+    ["100", undefined],
+    [undefined, "2023-01-01"]
+  ])("renders the payment component when totalDue or dateDue are provided", (totalDue, dateDue) => {
+    let accountCardData =     {
+      totalDue: totalDue,
+      dateDue: dateDue,
+      acctID: 123,
+      address: "123 Main St",
+      onCardBodyClick: () => {},
+      onClickAutopay: () => {},
+      onClickPaperless: () => {},
+      acctDetailsURL: "www.yahoo.com"
+    }
+
+    render(
+      <LanguageProvider data={data}>
+        <AccountCard
+          {...accountCardData}
+        />
+      </LanguageProvider>
+    );
+
+    expect(screen.getByRole("complementary")).toBeInTheDocument();
   });
 });

@@ -28,12 +28,14 @@ function AccountCard({
   onClickAutopay,
   onClickPayBill,
   acctDetailsURL,
+  onClickPastBills,
   mobileCTAType = "paperless",
   totalDue,
   dateDue,
   acctID,
   address,
-  status = "pmtDue"
+  status = "pmtDue",
+  isConnecticut = false
 }) {
   const isClosed = Boolean(cardStyle === "closed");
 
@@ -61,7 +63,7 @@ function AccountCard({
     });
 
     if (isFiltered) return;
-
+    
     e.stopPropagation();
     onCardBodyClick();
   };
@@ -81,14 +83,15 @@ function AccountCard({
           ref={{ autoPayBtnRef, paperlessBtnRef }}
         />
         <div className={styles.column}>
-          <Payment
+          {(totalDue || dateDue) && <Payment
             status={status}
             cardStyle={cardStyle}
             totalDue={totalDue}
             dateDue={dateDue}
             onClickPayBill={onClickPayBill}
+            isConnecticut={isConnecticut}
             ref={paymentRef}
-          />
+          />}
         </div>
         <div className={`${styles.column} ${styles.cta}`} ref={acctDetailRef}>
           <Link
@@ -131,6 +134,9 @@ function AccountCard({
                 aria-label="Arrow Right"
               />
             )}
+            onClick={(event) => {
+              event.preventDefault();
+              onClickPastBills(event)}}
             className={styles.link}
           >
             Past Bills & Payments
@@ -251,6 +257,8 @@ AccountCard.propTypes = {
   onCardBodyClick: PropTypes.func.isRequired,
   /** The URL of the card's corresponding details page. At smaller viewports, the user can click the card body to navigate to the account details screen.  At larger viewports, an "Acct Details" link will appear on the card, and the users would need to click that link (and not the card body) to navigate to the details page. */
   acctDetailsURL: PropTypes.string.isRequired,
+  /** Specify what should occur when the "Past Bills and Payments" link is clicked. Note that the link to acctDetailsURL will no longer function, and the redirect will need to be implemented in the onClick() function. */
+  onClickPastBills: PropTypes.func,
   /** Specify an optional className to be applied to the AccountCard */
   className: PropTypes.string,
   /** Specify which type of account (gas or electric) the card is displaying */
@@ -282,5 +290,7 @@ AccountCard.propTypes = {
     "finalBill",
     "nothingDue",
     "credit"
-  ])
+  ]),
+  /** Toggles Connecticut-specific styling and behavior. */
+  isConnecticut: PropTypes.bool
 };

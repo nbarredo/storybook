@@ -7,7 +7,12 @@ import "./TextInput.scss";
  * This component is used to collect text-based information from the user.
  */
 function TextInput(props) {
-  return <CarbonTextInput {...props} />;
+  return (
+    <CarbonTextInput
+      {...props}
+      className={`ev-text-input ${props.className || ""}`}
+    />
+  );
 }
 
 export { TextInput };

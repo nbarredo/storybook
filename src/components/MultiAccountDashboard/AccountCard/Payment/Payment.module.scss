@@ -148,6 +148,7 @@
       min-block-size: 30px;
       top: 50%;
       transform: translateY(-50%);
+      padding-inline: 12px;
     }
     @include do-this-above(xl) {
       display: inline-block;

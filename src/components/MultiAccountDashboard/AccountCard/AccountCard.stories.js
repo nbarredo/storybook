@@ -1,8 +1,17 @@
 import React from "react";
+import {
+  ArgsTable,
+  Description,
+  Primary,
+  Stories,
+  Subtitle,
+  Title
+} from "@storybook/addon-docs";
+import { LanguageTable } from "../../../stories/custom_story_blocks";
 import { LanguageContextProvider } from "../../LanguageContext/LanguageContext";
-import data from "../../LanguageContext/lang.json";
 import { Text } from "../../Text/Text";
 import { AccountCard } from "./AccountCard";
+import data from "./lang.json";
 
 const meta = {
   title: "Delivery/Multi-Account Dashboard/AccountCard",
@@ -18,10 +27,23 @@ const meta = {
     onClick: { action: "clicked" }
   },
   parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          {LanguageTable(data)}
+          <Primary />
+          <ArgsTable />
+          <Stories />
+        </>
+      )
+    },
     layout: "fullscreen",
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/bXF13WTZOM72lG35coDswz/Account-Dashboard-(Account-Overview)---UI?type=design&node-id=1059%3A6170&mode=design&t=3mMpsdnrh1Cv9mQa-1"
+      url: "https://www.figma.com/file/bXF13WTZOM72lG35coDswz/Account-Overview-(Multi-%26-Single)---UI?node-id=1059-6171&t=pO2XzPyie353bzT4-4"
     }
   }
 };
@@ -40,6 +62,10 @@ const autopayClickFn = () => {
 
 const paperlessClickFn = () => {
   window.alert("Paperless button was clicked.");
+};
+
+const pastBillsClickFn = () => {
+  window.alert("Past Bills & Payments link was clicked.");
 };
 
 const ChildCard = {
@@ -61,7 +87,8 @@ const ChildCard = {
   address: "124 Main Street NH 120384",
   onCardBodyClick: cardBodyClickFn,
   onClickAutopay: autopayClickFn,
-  onClickPaperless: paperlessClickFn
+  onClickPaperless: paperlessClickFn,
+  onClickPastBills: pastBillsClickFn
 };
 
 export const Default = {
@@ -77,13 +104,15 @@ export const Default = {
     hasPaperless: false,
     showAutopayBtn: true,
     showPaperlessBtn: true,
+    isConnecticut: false,
     totalDue: "$900,853.02",
     dateDue: "02/06/23",
     acctID: 12345678987,
     address: "124 Main Street NH 120384",
     onCardBodyClick: cardBodyClickFn,
     onClickAutopay: autopayClickFn,
-    onClickPaperless: paperlessClickFn
+    onClickPaperless: paperlessClickFn,
+    onClickPastBills: pastBillsClickFn
   }
 };
 

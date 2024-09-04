@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Button } from "../../../Button/Button";
+import { LanguageContext } from "../../../LanguageContext/LanguageContext";
 import styles from "../BillingCard.module.scss";
 
 function PaymentOptions(props) {
@@ -12,6 +13,13 @@ function PaymentOptions(props) {
     onClickCteViewPayBtn,
     companyCode
   } = props;
+  const { lang } = useContext(LanguageContext);
+
+  const isConnecticutCustomer = () => {
+    if (companyCode === "CTE" || companyCode === "CTG") return true;
+    return false;
+  };
+
   const getIsDisabled = () => {
     if (status === "nothingDue" || status === "credit") return true;
     return false;
@@ -28,7 +36,7 @@ function PaymentOptions(props) {
           <>
             <Button
               kind="ghost"
-              label="Pay Bill"
+              label={lang("text.pay.bill")}
               onClick={onClickPayByBank}
               size="md"
               type="button"
@@ -36,7 +44,7 @@ function PaymentOptions(props) {
             />
             <Button
               kind="tertiary"
-              label="View Bill"
+              label={lang("text.view.bill")}
               onClick={onClickViewBill}
               size="md"
               type="button"
@@ -47,7 +55,7 @@ function PaymentOptions(props) {
           <>
             <Button
               kind="tertiary"
-              label="Pay by Card"
+              label={lang("pay.card.btn.label")}
               onClick={onClickPayByCard}
               size="md"
               type="button"
@@ -57,7 +65,7 @@ function PaymentOptions(props) {
             />
             <Button
               kind="primary"
-              label="Pay by Bank"
+              label={lang("pay.bank.btn.label")}
               onClick={onClickPayByBank}
               size="md"
               type="button"
@@ -69,7 +77,7 @@ function PaymentOptions(props) {
                 id="provider-label"
                 className={styles["provider-label"]}
               >
-                via Speedpay
+                {lang("provider.label")}
               </p>
             )}
           </>
@@ -84,7 +92,7 @@ function PaymentOptions(props) {
         className={styles["view-pay-bill-button"]}
         fullWidth
         kind="primary"
-        label="View & Pay Bill"
+        label={lang("ct.button.label")}
         onClick={onClickCteViewPayBtn}
         size="md"
         type="button"
@@ -93,7 +101,7 @@ function PaymentOptions(props) {
   };
 
   return (
-    <>{companyCode === "CTE" ? renderCTEContent() : renderDefaultContent()}</>
+    <>{isConnecticutCustomer() ? renderCTEContent() : renderDefaultContent()}</>
   );
 }
 

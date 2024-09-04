@@ -17,7 +17,7 @@ function Accordion({ children, title, icon, open = false }) {
   };
 
   return (
-    <CarbonAccordion>
+    <CarbonAccordion className="ev-accordion">
       <AccordionItem
         open={open}
         title={title && createTitle()}

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "../AccountInfoCard.module.scss";
 
-function Basic({ acctID, addresses, onClickBasicCta }) {
+function Basic({ acctID, addresses, onClickBasicCta, basicCtaUrl }) {
   const getAddress = () => {
     switch (addresses.length) {
       case 0:
@@ -18,10 +18,16 @@ function Basic({ acctID, addresses, onClickBasicCta }) {
       <dl>
         <dt>Acct number</dt>
         <dd>{acctID}</dd>
+      </dl>
+      <dl>
         <dt>Address</dt>
         <dd>{getAddress()}</dd>
       </dl>
-      <a className={styles.cta} href="#" onClick={onClickBasicCta}>
+      <a
+        className={styles.cta}
+        href={basicCtaUrl || "#"}
+        onClick={onClickBasicCta}
+      >
         Account Settings
       </a>
     </article>
@@ -36,5 +42,7 @@ Basic.propTypes = {
   /** An array of addresses associated with the account. */
   addresses: PropTypes.arrayOf(PropTypes.string).isRequired,
   /** Specify what should occur when the Basic info CTA is clicked */
-  onClickBasicCta: PropTypes.func
+  onClickBasicCta: PropTypes.func,
+  /** Optional Basic CTA URL that can be used for navigation instead of via JavaScript onClick behavior. */
+  basicCtaUrl: PropTypes.string
 };

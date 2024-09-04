@@ -1,6 +1,6 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import TotalBalance from "./TotalBalance";
+import { TotalBalance } from "./TotalBalance";
 
 describe("TotalBalance component functions properly", () => {
   test("renders without crashing", () => {

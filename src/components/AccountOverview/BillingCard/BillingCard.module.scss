@@ -4,6 +4,7 @@
 @use "../../../styles/mixins" as *;
 
 .billing-card {
+  background-color: var(--white);
   border-radius: g.$border-radius-large;
   box-shadow:
     0px 0px 1px 0px #006db340,
@@ -286,28 +287,23 @@
     }
 
     .pmt-plan-cta {
+      background-color: var(--orange-00);
+      border: 1px solid var(--orange-10);
+      display: block;
       margin: g.$space-5 auto 0 auto;
+      max-inline-size: 100%;
       max-width: 100%;
-      padding: 0;
-      button {
-        background-color: var(--orange-00);
-        border: 1px solid var(--orange-10);
-        cursor: pointer;
-        display: block;
-        max-inline-size: 100%;
-        min-height: 0;
-        padding: g.$space-1 g.$space-3;
-        width: 100%;
-        span {
-          @extend %font-size-1-semi;
-          color: var(--gray-80);
-          line-height: 18px;
-        }
-        div {
-          margin-right: g.$space-3;
-        }
+      min-height: 0;
+      padding: g.$space-1 g.$space-3;
+      width: 100%;
+      span {
+        @extend %font-size-1-semi;
+        color: var(--gray-80);
+        line-height: 18px;
       }
-
+      div {
+        margin-right: g.$space-3;
+      }
       @include do-this-above(md) {
         margin-top: g.$space-3;
       }

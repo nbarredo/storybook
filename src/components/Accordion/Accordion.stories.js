@@ -6,7 +6,14 @@ import image from "./art_acct_number.png";
 
 const meta = {
   title: "Design System/Accordion",
-  component: Accordion
+  component: Accordion,
+  parameters: {
+    layout: "fullscreen",
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/JewKs8uC7fp1AFHY5kApSG/One-Source-Components?node-id=1385-7201&t=asAD4uFz0DoqJQol-4"
+    }
+  }
 };
 
 export default meta;

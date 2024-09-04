@@ -1,10 +1,11 @@
 {
   "action.paperless.inactive.btn.label": "Go Paperless",
-  "action.paperless.active.btn.label": "Paperless is On",
+  "action.paperless.active.btn.label": "Paperless On",
   "action.autopay.inactive.btn.label": "Set Up Auto Pay",
-  "action.autopay.active.btn.label": "Auto Pay is On",
+  "action.autopay.active.btn.label": "Auto Pay On",
   "action.acct.closed.tag.label": "Account Closed",
   "pay.bill.btn.label": "Pay Bill",
+  "ct.pay.bill.btn.label": "View & Pay Bill",
   "acct.details.link": "Acct Details",
   "past.bills.link": "Past Bills & Payments",
   "merged.acct.title": "Merged Account",
