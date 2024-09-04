@@ -175,4 +175,31 @@ describe("Account Card component functions correctly", () => {
     expect(screen.getByRole("article")).toHaveClass("content-container");
     expect(screen.getByRole("article")).not.toHaveClass("mobile-cta");
   });
+
+  test.each([
+    ["100", "2023-01-01"],
+    ["100", undefined],
+    [undefined, "2023-01-01"]
+  ])("renders the payment component when totalDue or dateDue are provided", (totalDue, dateDue) => {
+    let accountCardData =     {
+      totalDue: totalDue,
+      dateDue: dateDue,
+      acctID: 123,
+      address: "123 Main St",
+      onCardBodyClick: () => {},
+      onClickAutopay: () => {},
+      onClickPaperless: () => {},
+      acctDetailsURL: "www.yahoo.com"
+    }
+
+    render(
+      <LanguageProvider data={data}>
+        <AccountCard
+          {...accountCardData}
+        />
+      </LanguageProvider>
+    );
+
+    expect(screen.getByRole("complementary")).toBeInTheDocument();
+  });
 });

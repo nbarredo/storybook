@@ -83,7 +83,7 @@ function AccountCard({
           ref={{ autoPayBtnRef, paperlessBtnRef }}
         />
         <div className={styles.column}>
-          <Payment
+          {(totalDue || dateDue) && <Payment
             status={status}
             cardStyle={cardStyle}
             totalDue={totalDue}
@@ -91,7 +91,7 @@ function AccountCard({
             onClickPayBill={onClickPayBill}
             isConnecticut={isConnecticut}
             ref={paymentRef}
-          />
+          />}
         </div>
         <div className={`${styles.column} ${styles.cta}`} ref={acctDetailRef}>
           <Link
