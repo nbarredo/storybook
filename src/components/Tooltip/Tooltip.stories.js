@@ -16,7 +16,7 @@ export const Default = {
   args: {
     content: "Test",
     renderOpener: (props) => (
-      <p {...props} style={{ "max-width": "fit-content" }}>
+      <p style={{ maxWidth: "fit-content" }} {...props}>
         Learn more about Increaser
       </p>
     ),
