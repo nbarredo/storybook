@@ -89,7 +89,7 @@ export const Tooltip = ({ content, renderOpener, placement }) => {
 
 Tooltip.propTypes = {
   /** stuff that goes in the tooltip */
-  content: PropTypes.node,
+  content: PropTypes.string,
   renderOpener: PropTypes.func,
   placement: PropTypes.oneOf([
     "top",
