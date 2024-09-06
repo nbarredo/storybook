@@ -1,5 +1,6 @@
 import React from "react";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
+import { Button } from "../Button/Button";
 import { Tag } from "../Tag/Tag";
 import { Tooltip } from "./Tooltip";
 
@@ -30,14 +31,46 @@ export const UsingAnotherComponentAsTheTrigger = {
   args: {
     content: "Test",
     renderOpener: (props) => (
-      <span {...props}>
-        <Tag
-          renderIcon={ChildCareIcon}
-          showIcon
-          text="Lorem ipsum"
-          theme="default"
-        />
-      </span>
+      <Tag
+        renderIcon={ChildCareIcon}
+        showIcon
+        text="Lorem ipsum"
+        theme="default"
+        {...props}
+      />
+    ),
+    placement: "left"
+  }
+};
+
+export const TestAgain = {
+  args: {
+    content: "Test",
+    triggerEL: (
+      <Tag
+        renderIcon={ChildCareIcon}
+        showIcon
+        text="Lorem ipsum"
+        theme="default"
+      />
+    ),
+    placement: "left"
+  }
+};
+
+export const TestAgainAgain = {
+  args: {
+    content: "Test",
+    triggerEL: (
+      <Button
+        ariaLabelledBy=""
+        id="test"
+        kind="primary"
+        label="Button"
+        onClick={function noRefCheck() {}}
+        size="lg"
+        type="button"
+      />
     ),
     placement: "left"
   }

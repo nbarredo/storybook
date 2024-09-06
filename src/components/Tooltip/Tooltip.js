@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useRef, useState } from "react";
 import {
   FloatingArrow,
@@ -17,7 +18,7 @@ import {
 import PropTypes from "prop-types";
 import styles from "./Tooltip.module.scss";
 
-export const Tooltip = ({ content, renderOpener, placement }) => {
+export const Tooltip = ({ content, renderOpener, placement, triggerEL }) => {
   const [isOpen, setIsOpen] = useState(null);
 
   const arrowRef = useRef(null);
@@ -61,9 +62,32 @@ export const Tooltip = ({ content, renderOpener, placement }) => {
     role
   ]);
 
+  const renderOpenerTest = (element) => {
+    return (
+      <span
+        style={{
+          maxWidth: "fit-content",
+          maxHeight: "fit-content",
+          display: "block"
+        }}
+        ref={setReference}
+        {...getReferenceProps()}
+      >
+        {element}
+      </span>
+    );
+  };
+
   return (
     <>
-      {renderOpener({ ref: setReference, ...getReferenceProps() })}
+      {renderOpener
+        ? renderOpener({ ref: setReference, ...getReferenceProps() })
+        : renderOpenerTest(triggerEL)}
+
+      {/*
+      {renderOpenerTest(triggerEL)}
+      {renderOpener &&
+        renderOpener({ ref: setReference, ...getReferenceProps() })} */}
       {isOpen && content && (
         <div
           ref={setFloating}
@@ -88,9 +112,11 @@ export const Tooltip = ({ content, renderOpener, placement }) => {
 };
 
 Tooltip.propTypes = {
-  /** stuff that goes in the tooltip */
+  /** The text you'd like to appear inside the tooltip */
   content: PropTypes.string,
+
   renderOpener: PropTypes.func,
+  triggerEL: PropTypes.node,
   placement: PropTypes.oneOf([
     "top",
     "top-start",
