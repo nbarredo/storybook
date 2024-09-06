@@ -1,0 +1,22 @@
+// @use '../../../styles/colors.scss' as *;
+@use "../../styles/global" as g;
+@use "../../styles/typography" as t;
+@use "sass:map";
+
+.ev-tooltip {
+  .container {
+    background: var(--gray-60);
+    border-radius: g.$border-radius;
+    box-shadow:
+      0px 4px 4px -2px #00538c14,
+      0px 2px 4px -2px #00538c1f;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 500;
+    max-width: 320px;
+    padding: g.$space-5;
+    .arrow {
+      fill: var(--gray-60);
+    }
+  }
+}
