@@ -1,7 +1,7 @@
 import { TextInput } from "./TextInput";
 
 const meta = {
-  title: "Design System/TextInput",
+  title: "Design System/Form Elements/TextInput",
   component: TextInput,
   parameters: {
     design: {
