@@ -16,6 +16,7 @@ import {
   useTransitionStyles
 } from "@floating-ui/react";
 import PropTypes from "prop-types";
+import { Text } from "../Text/Text";
 import styles from "./Tooltip.module.scss";
 
 export const Tooltip = ({ content, renderOpener, placement, triggerEL }) => {
@@ -34,7 +35,7 @@ export const Tooltip = ({ content, renderOpener, placement, triggerEL }) => {
     middleware: [
       offset(12),
       flip(),
-      shift(),
+      shift({ padding: 5 }),
       arrow({
         element: arrowRef,
         padding: 10
@@ -103,7 +104,9 @@ export const Tooltip = ({ content, renderOpener, placement, triggerEL }) => {
               context={context}
               className={styles.arrow}
             />
-            {content}
+            <Text color="white" size="1" weight="reg">
+              {content}
+            </Text>
           </div>
         </div>
       )}
