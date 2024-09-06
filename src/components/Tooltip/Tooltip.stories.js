@@ -1,4 +1,6 @@
 import React from "react";
+import ChildCareIcon from "@mui/icons-material/ChildCare";
+import { Tag } from "../Tag/Tag";
 import { Tooltip } from "./Tooltip";
 
 export default {
@@ -19,6 +21,23 @@ export const Default = {
       <p style={{ maxWidth: "fit-content" }} {...props}>
         Learn more about Increaser
       </p>
+    ),
+    placement: "left"
+  }
+};
+
+export const UsingAnotherComponentAsTheTrigger = {
+  args: {
+    content: "Test",
+    renderOpener: (props) => (
+      <span {...props}>
+        <Tag
+          renderIcon={ChildCareIcon}
+          showIcon
+          text="Lorem ipsum"
+          theme="default"
+        />
+      </span>
     ),
     placement: "left"
   }
