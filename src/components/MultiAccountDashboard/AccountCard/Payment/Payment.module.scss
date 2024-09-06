@@ -146,9 +146,9 @@
       line-height: 14px;
       max-block-size: 30px;
       min-block-size: 30px;
+      padding-inline: 12px;
       top: 50%;
       transform: translateY(-50%);
-      padding-inline: 12px;
     }
     @include do-this-above(xl) {
       display: inline-block;
