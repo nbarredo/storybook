@@ -47,7 +47,7 @@
       "/src/reportWebVitals.js",
       "/src/components/Wizard/children.js",
       ".stories.js",
-      "/src/stories/story_samples"
+      "/src/stories"
     ]
   },
   "browserslist": {
