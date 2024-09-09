@@ -17,8 +17,8 @@ function Programs({ programs }) {
             content={program.description}
             key={program.id}
             placement="top"
-            triggerEL={
-              <div className={styles["tag-container"]} tabIndex={0}>
+            triggerElement={
+              <div className={styles["tag-container"]}>
                 <Tag
                   showIcon
                   renderIcon={program.icon}
