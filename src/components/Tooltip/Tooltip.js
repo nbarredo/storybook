@@ -19,7 +19,16 @@ import PropTypes from "prop-types";
 import { Text } from "../Text/Text";
 import styles from "./Tooltip.module.scss";
 
-export const Tooltip = ({ content, renderOpener, placement, triggerEL }) => {
+/**
+ * This is an informational tooltip aimed at providing additional context or explanation to the user.  This variation of the tooltip can only display text and does not support links, buttons, or other interactive elements as content. It will display when the user hovers over the triggering element (or when tapped/clicked on a mobile device).
+ * <br><br>The Tooltip is designed to remain within the parent container whenever possible.  If a Tooltip's `placement` would cause it to overflow the viewport, it will reposition itself --to the extent possible--to prevent this. In the example below, if you set the placement to `left`, note that the tooltip actually appears to the `right` of the triggering element.  That is because, in order to prevent itself from overflowing the container, it "flips" to the other side of the triggering element.
+ */
+export const Tooltip = ({
+  content,
+  title,
+  placement = "bottom",
+  triggerEL
+}) => {
   const [isOpen, setIsOpen] = useState(null);
 
   const arrowRef = useRef(null);
@@ -63,7 +72,7 @@ export const Tooltip = ({ content, renderOpener, placement, triggerEL }) => {
     role
   ]);
 
-  const renderOpenerTest = (element) => {
+  const renderTrigger = (element) => {
     return (
       <span
         style={{
@@ -71,6 +80,7 @@ export const Tooltip = ({ content, renderOpener, placement, triggerEL }) => {
           maxHeight: "fit-content",
           display: "block"
         }}
+        tabIndex="0"
         ref={setReference}
         {...getReferenceProps()}
       >
@@ -81,14 +91,8 @@ export const Tooltip = ({ content, renderOpener, placement, triggerEL }) => {
 
   return (
     <>
-      {renderOpener
-        ? renderOpener({ ref: setReference, ...getReferenceProps() })
-        : renderOpenerTest(triggerEL)}
+      {renderTrigger(triggerEL)}
 
-      {/*
-      {renderOpenerTest(triggerEL)}
-      {renderOpener &&
-        renderOpener({ ref: setReference, ...getReferenceProps() })} */}
       {isOpen && content && (
         <div
           ref={setFloating}
@@ -104,6 +108,13 @@ export const Tooltip = ({ content, renderOpener, placement, triggerEL }) => {
               context={context}
               className={styles.arrow}
             />
+
+            {title && (
+              <Text color="white" size="2" weight="semi" marginBottom={3}>
+                {title}
+              </Text>
+            )}
+
             <Text color="white" size="1" weight="reg">
               {content}
             </Text>
@@ -115,11 +126,12 @@ export const Tooltip = ({ content, renderOpener, placement, triggerEL }) => {
 };
 
 Tooltip.propTypes = {
-  /** The text you'd like to appear inside the tooltip */
-  content: PropTypes.string,
-
-  renderOpener: PropTypes.func,
-  triggerEL: PropTypes.node,
+  /** The text you'd like to appear inside the tooltip. This is required. */
+  content: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  /** Pass an element or component to serve as the trigger for the tooltip. */
+  triggerEL: PropTypes.node.isRequired,
+  /** The Tooltip can be placed on four different sides (top, right, left, bottom) in relation to the triggering element. Additionally, it can be aligned to the triggering element's edge, rather than being centered.  The default value is 'bottom'. */
   placement: PropTypes.oneOf([
     "top",
     "top-start",

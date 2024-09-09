@@ -5,7 +5,7 @@ import { Tag } from "../Tag/Tag";
 import { Tooltip } from "./Tooltip";
 
 export default {
-  title: "Design System/Tooltip",
+  title: "Design System/Tooltip/Non-Interactive Tooltip",
   component: Tooltip,
   parameters: {
     design: {
@@ -17,33 +17,22 @@ export default {
 
 export const Default = {
   args: {
-    content: "Test",
-    renderOpener: (props) => (
-      <p style={{ maxWidth: "fit-content" }} {...props}>
-        Learn more about Increaser
+    content: "Hello. I'm a tooltip.",
+    triggerEL: (
+      <p
+        style={{
+          maxWidth: "fit-content",
+          borderBottom: `1px dotted var(--gray-40)`
+        }}
+      >
+        This text will trigger a tooltip.
       </p>
     ),
-    placement: "left"
+    placement: "right"
   }
 };
 
-export const UsingAnotherComponentAsTheTrigger = {
-  args: {
-    content: "Test",
-    renderOpener: (props) => (
-      <Tag
-        renderIcon={ChildCareIcon}
-        showIcon
-        text="Lorem ipsum"
-        theme="default"
-        {...props}
-      />
-    ),
-    placement: "left"
-  }
-};
-
-export const TestAgain = {
+export const TriggerTag = {
   args: {
     content: "Test",
     triggerEL: (
@@ -54,11 +43,13 @@ export const TestAgain = {
         theme="default"
       />
     ),
+    title: "Optional Title",
     placement: "left"
   }
 };
+TriggerTag.storyName = "Trigger: Tag Component";
 
-export const TestAgainAgain = {
+export const TriggerButton = {
   args: {
     content: "Test",
     triggerEL: (
@@ -72,6 +63,7 @@ export const TestAgainAgain = {
         type="button"
       />
     ),
-    placement: "left"
+    placement: "top"
   }
 };
+TriggerButton.storyName = "Trigger: Button Component";
