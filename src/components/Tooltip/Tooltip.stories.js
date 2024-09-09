@@ -18,7 +18,7 @@ export default {
 export const Default = {
   args: {
     content: "Hello. I'm a tooltip.",
-    triggerEL: (
+    triggerElement: (
       <p
         style={{
           maxWidth: "fit-content",
@@ -35,7 +35,7 @@ export const Default = {
 export const TriggerTag = {
   args: {
     content: "Test",
-    triggerEL: (
+    triggerElement: (
       <Tag
         renderIcon={ChildCareIcon}
         showIcon
@@ -52,7 +52,7 @@ TriggerTag.storyName = "Trigger: Tag Component";
 export const TriggerButton = {
   args: {
     content: "Test",
-    triggerEL: (
+    triggerElement: (
       <Button
         ariaLabelledBy=""
         id="test"

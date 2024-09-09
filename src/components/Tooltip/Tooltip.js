@@ -27,7 +27,7 @@ export const Tooltip = ({
   content,
   title,
   placement = "bottom",
-  triggerEL
+  triggerElement
 }) => {
   const [isOpen, setIsOpen] = useState(null);
 
@@ -91,7 +91,7 @@ export const Tooltip = ({
 
   return (
     <>
-      {renderTrigger(triggerEL)}
+      {renderTrigger(triggerElement)}
 
       {isOpen && content && (
         <div
@@ -130,7 +130,7 @@ Tooltip.propTypes = {
   content: PropTypes.string.isRequired,
   title: PropTypes.string,
   /** Pass an element or component to serve as the trigger for the tooltip. */
-  triggerEL: PropTypes.node.isRequired,
+  triggerElement: PropTypes.node.isRequired,
   /** The Tooltip can be placed on four different sides (top, right, left, bottom) in relation to the triggering element. Additionally, it can be aligned to the triggering element's edge, rather than being centered.  The default value is 'bottom'. */
   placement: PropTypes.oneOf([
     "top",
