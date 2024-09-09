@@ -6,8 +6,6 @@
   "action.acct.closed.tag.label": "Account Closed",
   "pay.bill.btn.label": "Pay Bill",
   "ct.pay.bill.btn.label": "View & Pay Bill",
-  "acct.details.link": "Acct Details",
-  "past.bills.link": "Past Bills & Payments",
   "merged.acct.title": "Merged Account",
   "merged.acct.subtitle": "(Parent Account)",
   "total.balance.title": "Total Balance"

@@ -68,6 +68,10 @@ const pastBillsClickFn = () => {
   window.alert("Past Bills & Payments link was clicked.");
 };
 
+const usageHistoryClickFn = () => {
+  window.alert("Usege History link was clicked.");
+};
+
 const ChildCard = {
   status: "nothingDue",
   type: "electric",
@@ -81,14 +85,16 @@ const ChildCard = {
   hasPaperless: false,
   showAutopayBtn: false,
   showPaperlessBtn: false,
+  isConnecticut: false,
   totalDue: "$135.11",
   dateDue: "02/06/23",
   acctID: 12345678987,
   address: "124 Main Street NH 120384",
+  navigationLinkLbl: "Usage History",
   onCardBodyClick: cardBodyClickFn,
   onClickAutopay: autopayClickFn,
   onClickPaperless: paperlessClickFn,
-  onClickPastBills: pastBillsClickFn
+  onClickNavigate: usageHistoryClickFn
 };
 
 export const Default = {
@@ -109,10 +115,11 @@ export const Default = {
     dateDue: "02/06/23",
     acctID: 12345678987,
     address: "124 Main Street NH 120384",
+    navigationLinkLbl: "Acct Details",
     onCardBodyClick: cardBodyClickFn,
     onClickAutopay: autopayClickFn,
     onClickPaperless: paperlessClickFn,
-    onClickPastBills: pastBillsClickFn
+    onClickNavigate: pastBillsClickFn
   }
 };
 

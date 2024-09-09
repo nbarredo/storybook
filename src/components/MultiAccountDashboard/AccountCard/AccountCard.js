@@ -28,7 +28,8 @@ function AccountCard({
   onClickAutopay,
   onClickPayBill,
   acctDetailsURL,
-  onClickPastBills,
+  onClickNavigate,
+  navigationLinkLbl,
   mobileCTAType = "paperless",
   totalDue,
   dateDue,
@@ -37,6 +38,7 @@ function AccountCard({
   status = "pmtDue",
   isConnecticut = false
 }) {
+
   const isClosed = Boolean(cardStyle === "closed");
 
   const paymentRef = useRef();
@@ -68,6 +70,30 @@ function AccountCard({
     onCardBodyClick();
   };
 
+  const renderNavigationContent = () => {
+    return (
+      <div className={`${styles.column} ${styles.cta}`} ref={acctDetailRef}>
+      <Link
+        href={acctDetailsURL}
+        renderIcon={() => (
+          <ArrowForwardIcon
+            sx={{ fontSize: 19 }}
+            aria-label="Arrow Right"
+          />
+        )}
+        className={styles.link}
+        aria-label="Account Details"
+        onClick={onClickNavigate && 
+          ((event) => {
+              event.preventDefault();
+              onClickNavigate(event)})}
+      >
+        {navigationLinkLbl}
+      </Link>
+    </div>
+    );
+  }
+
   const renderActiveContent = () => {
     return (
       <>
@@ -93,21 +119,7 @@ function AccountCard({
             ref={paymentRef}
           />}
         </div>
-        <div className={`${styles.column} ${styles.cta}`} ref={acctDetailRef}>
-          <Link
-            href={acctDetailsURL}
-            renderIcon={() => (
-              <ArrowForwardIcon
-                sx={{ fontSize: 19 }}
-                aria-label="Arrow Right"
-              />
-            )}
-            className={styles.link}
-            aria-label="Account Details"
-          >
-            Acct Details
-          </Link>
-        </div>
+        {renderNavigationContent()}
       </>
     );
   };
@@ -125,23 +137,7 @@ function AccountCard({
           cardStyle={cardStyle}
           ref={{ autoPayBtnRef, paperlessBtnRef }}
         />
-        <div className={`${styles.column} ${styles.cta}`} ref={acctDetailRef}>
-          <Link
-            href={acctDetailsURL}
-            renderIcon={() => (
-              <ArrowForwardIcon
-                sx={{ fontSize: 19 }}
-                aria-label="Arrow Right"
-              />
-            )}
-            onClick={(event) => {
-              event.preventDefault();
-              onClickPastBills(event)}}
-            className={styles.link}
-          >
-            Past Bills & Payments
-          </Link>
-        </div>
+        {renderNavigationContent()}
       </>
     );
   };
@@ -255,10 +251,16 @@ AccountCard.propTypes = {
   onClickPayBill: PropTypes.func,
   /** Specify what should occur when the card body is clicked. Note that action will only occur on viewports where the "Acct Details ->" link is not shown. */
   onCardBodyClick: PropTypes.func.isRequired,
-  /** The URL of the card's corresponding details page. At smaller viewports, the user can click the card body to navigate to the account details screen.  At larger viewports, an "Acct Details" link will appear on the card, and the users would need to click that link (and not the card body) to navigate to the details page. */
-  acctDetailsURL: PropTypes.string.isRequired,
-  /** Specify what should occur when the "Past Bills and Payments" link is clicked. Note that the link to acctDetailsURL will no longer function, and the redirect will need to be implemented in the onClick() function. */
-  onClickPastBills: PropTypes.func,
+  /** The URL of the card's corresponding details page. At smaller viewports, the user can click the card body to navigate to the account details screen.  At larger viewports, an "Acct Details" link will appear on the card, and the users would need to click that link (and not the card body) to navigate to the details page. 
+   * Either acctDetailsUrl or onClickNavigateAway must be defined, but not both, to control the link behavior.
+  */
+  acctDetailsURL: PropTypes.string,
+  /** Specify what should occur when the link to navigate away is clicked. If provided, the redirect logic must be implemented in the function. 
+   * Either acctDetailsUrl or onClickNavigateAway must be defined, but not both, to control the link behavior.
+  */
+  onClickNavigate: PropTypes.func,
+  /** The label of the account card link that navigates away from the Multi-Account Dashboard. */
+  navigationLinkLbl: PropTypes.string,
   /** Specify an optional className to be applied to the AccountCard */
   className: PropTypes.string,
   /** Specify which type of account (gas or electric) the card is displaying */
@@ -292,5 +294,5 @@ AccountCard.propTypes = {
     "credit"
   ]),
   /** Toggles Connecticut-specific styling and behavior. */
-  isConnecticut: PropTypes.bool
+  isConnecticut: PropTypes.bool,
 };

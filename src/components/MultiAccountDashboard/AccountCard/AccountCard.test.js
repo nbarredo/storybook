@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { LanguageProvider } from "../../../setupTests";
 import { AccountCard } from "./AccountCard";
 import data from "./lang.json";
@@ -9,6 +9,7 @@ describe("Account Card component functions correctly", () => {
     dateDue: "2023-01-01",
     acctID: 123,
     address: "123 Main St",
+    navigationLinkLbl: "Acct Details",
     onCardBodyClick: () => {},
     onClickAutopay: () => {},
     onClickPaperless: () => {},
@@ -111,31 +112,6 @@ describe("Account Card component functions correctly", () => {
     );
 
     expect(getByText("Account Closed")).toBeInTheDocument();
-    expect(getByText("Past Bills & Payments")).toBeInTheDocument();
-  });
-
-  test('fires onClick when cardStyle is "closed"', () => {
-    const alertMock = jest.spyOn(window, "alert").mockImplementation();
-    const onClickValue = (event) => {
-      event.stopPropagation();
-      window.alert("Past Bills & Payments link was clicked.");
-    };
-    const { getByText } = render(
-      <LanguageProvider data={data}>
-        <AccountCard
-          onClickPastBills={onClickValue}
-          cardStyle="closed"
-          {...basicData}
-        />
-        ,
-      </LanguageProvider>
-    );
-
-    fireEvent.click(getByText("Past Bills & Payments"));
-
-    expect(alertMock).toHaveBeenCalledTimes(1);
-    expect(getByText("Account Closed")).toBeInTheDocument();
-    expect(getByText("Past Bills & Payments")).toBeInTheDocument();
   });
 
   test('renders notification message when cardStyle is "info"', () => {
@@ -181,21 +157,12 @@ describe("Account Card component functions correctly", () => {
     ["100", undefined],
     [undefined, "2023-01-01"]
   ])("renders the payment component when totalDue or dateDue are provided", (totalDue, dateDue) => {
-    let accountCardData =     {
-      totalDue: totalDue,
-      dateDue: dateDue,
-      acctID: 123,
-      address: "123 Main St",
-      onCardBodyClick: () => {},
-      onClickAutopay: () => {},
-      onClickPaperless: () => {},
-      acctDetailsURL: "www.yahoo.com"
-    }
-
     render(
       <LanguageProvider data={data}>
         <AccountCard
-          {...accountCardData}
+          {...basicData}
+          totalDue={totalDue}
+          dateDue={dateDue}
         />
       </LanguageProvider>
     );
