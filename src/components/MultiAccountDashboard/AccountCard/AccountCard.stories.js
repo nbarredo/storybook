@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  ArgsTable,
+  Controls,
   Description,
   Primary,
   Stories,
@@ -35,7 +35,7 @@ const meta = {
           <Description />
           {LanguageTable(data)}
           <Primary />
-          <ArgsTable />
+          <Controls />
           <Stories />
         </>
       )

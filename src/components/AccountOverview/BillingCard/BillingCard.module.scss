@@ -295,6 +295,7 @@
       max-width: 100%;
       min-height: 0;
       padding: g.$space-1 g.$space-3;
+      pointer-events: none;
       width: 100%;
       span {
         @extend %font-size-1-semi;

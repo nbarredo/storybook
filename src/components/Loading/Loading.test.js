@@ -26,7 +26,6 @@ describe("Loading component functions correctly", () => {
     render(
       <Loading
         active={true}
-        className="testClass"
         description="Loading..."
         small={false}
         withOverlay={true}

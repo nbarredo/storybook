@@ -64,7 +64,7 @@ function ThisMonth({
           <Tag
             className={styles["pmt-plan-cta"]}
             text={pmtPlanMessage}
-            theme="blue"
+            theme="default"
           />
         )}
       </aside>
