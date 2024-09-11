@@ -11,6 +11,7 @@ function InlineNotification(props) {
     <CarbonInlineNotification
       {...props}
       className={`ev-inline-notification ${props.className || ""}`}
+      
     />
   );
 }
