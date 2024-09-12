@@ -1,3 +1,5 @@
+import React from "react";
+
 export const winterProtectionIcon = () => {
   return (
     <svg
@@ -7,22 +9,23 @@ export const winterProtectionIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="presentation"
+      data-testid="WinterProtectionIcon"
     >
       <rect
         width="16"
         height="16"
         fill="white"
-        style="mix-blend-mode:multiply"
+        style={{ mixBlendMode: "multiply" }}
       />
       <rect
         width="16"
         height="16"
         fill="white"
-        style="mix-blend-mode:multiply"
+        style={{ mixBlendMode: "multiply" }}
       />
       <mask
         id="mask0_4910_10474"
-        style="mask-type:alpha"
+        style={{ maskType: "alpha" }}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -50,22 +53,23 @@ export const fuelAssistanceIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="presentation"
+      data-testid="FuelAssistanceIcon"
     >
       <rect
         width="16"
         height="16"
         fill="white"
-        style="mix-blend-mode:multiply"
+        style={{ mixBlendMode: "multiply" }}
       />
       <rect
         width="16"
         height="16"
         fill="white"
-        style="mix-blend-mode:multiply"
+        style={{ mixBlendMode: "multiply" }}
       />
       <mask
         id="mask0_4910_10483"
-        style="mask-type:alpha"
+        style={{ maskType: "alpha" }}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -87,37 +91,38 @@ export const fuelAssistanceIcon = () => {
 export const paperlessIcon = () => {
   return (
     <svg
-      width="21"
-      height="20"
+      width={21}
+      height={20}
       viewBox="0 0 21 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="presentation"
+      data-testid="PaperlessIcon"
     >
       <rect
-        width="20"
-        height="20"
+        width={20}
+        height={20}
         transform="translate(0.5)"
         fill="white"
-        style="mix-blend-mode:multiply"
+        style={{ mixBlendMode: "multiply" }}
       />
       <rect
-        width="20"
-        height="20"
+        width={20}
+        height={20}
         transform="translate(0.5)"
         fill="white"
-        style="mix-blend-mode:multiply"
+        style={{ mixBlendMode: "multiply" }}
       />
       <mask
         id="mask0_4910_10415"
-        style="mask-type:alpha"
+        style={{ maskType: "alpha" }}
         maskUnits="userSpaceOnUse"
-        x="0"
-        y="0"
-        width="21"
-        height="20"
+        x={0}
+        y={0}
+        width={21}
+        height={20}
       >
-        <rect x="0.5" width="20" height="20" fill="#D9D9D9" />
+        <rect x="0.5" width={20} height={20} fill="#D9D9D9" />
       </mask>
       <g mask="url(#mask0_4910_10415)">
         <path
@@ -134,37 +139,38 @@ export const paperlessIcon = () => {
 export const outageIcon = () => {
   return (
     <svg
-      width="21"
-      height="20"
+      width={21}
+      height={20}
       viewBox="0 0 21 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="presentation"
+      data-testid="OutageIcon"
     >
       <rect
-        width="20"
-        height="20"
+        width={20}
+        height={20}
         transform="translate(0.5)"
         fill="white"
-        style="mix-blend-mode:multiply"
+        style={{ mixBlendMode: "multiply" }}
       />
       <rect
-        width="20"
-        height="20"
+        width={20}
+        height={20}
         transform="translate(0.5)"
         fill="white"
-        style="mix-blend-mode:multiply"
+        style={{ mixBlendMode: "multiply" }}
       />
       <mask
         id="mask0_4910_10429"
-        style="mask-type:alpha"
+        style={{ maskType: "alpha" }}
         maskUnits="userSpaceOnUse"
-        x="0"
-        y="0"
-        width="21"
-        height="20"
+        x={0}
+        y={0}
+        width={21}
+        height={20}
       >
-        <rect x="0.5" width="20" height="20" fill="#D9D9D9" />
+        <rect x="0.5" width={20} height={20} fill="#D9D9D9" />
       </mask>
       <g mask="url(#mask0_4910_10429)">
         <path
@@ -179,37 +185,38 @@ export const outageIcon = () => {
 export const autopayIcon = () => {
   return (
     <svg
-      width="21"
-      height="20"
+      width={21}
+      height={20}
       viewBox="0 0 21 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="presentation"
+      data-testid="AutopayIcon"
     >
       <rect
-        width="20"
-        height="20"
+        width={20}
+        height={20}
         transform="translate(0.5)"
         fill="white"
-        style="mix-blend-mode:multiply"
+        style={{ mixBlendMode: "multiply" }}
       />
       <rect
-        width="20"
-        height="20"
+        width={20}
+        height={20}
         transform="translate(0.5)"
         fill="white"
-        style="mix-blend-mode:multiply"
+        style={{ mixBlendMode: "multiply" }}
       />
       <mask
         id="mask0_4910_10437"
-        style="mask-type:alpha"
+        style={{ maskType: "alpha" }}
         maskUnits="userSpaceOnUse"
-        x="0"
-        y="0"
-        width="21"
-        height="20"
+        x={0}
+        y={0}
+        width={21}
+        height={20}
       >
-        <rect x="0.5" width="20" height="20" fill="#D9D9D9" />
+        <rect x="0.5" width={20} height={20} fill="#D9D9D9" />
       </mask>
       <g mask="url(#mask0_4910_10437)">
         <path

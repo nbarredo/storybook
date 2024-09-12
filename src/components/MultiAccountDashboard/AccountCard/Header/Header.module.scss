@@ -87,32 +87,32 @@
   &.electric {
     background-color: var(--teal-10);
     svg {
+      height: 16px;
+      width: 8px;
       path {
         fill: var(--teal-70);
       }
-      height: 16px;
-      width: 8px;
     }
   }
   &.gas {
     background-color: var(--purple-10);
     svg {
+      height: 16px;
+      width: 12px;
       path {
         fill: var(--purple-90);
       }
-      height: 16px;
-      width: 12px;
     }
   }
   &.unknown,
   &.merged {
     background-color: var(--gray-10);
     svg {
+      height: 17px;
+      width: 17px;
       path:last-of-type {
         fill: var(--gray-70);
       }
-      height: 17px;
-      width: 17px;
     }
   }
   &.warning {
