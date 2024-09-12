@@ -12,7 +12,8 @@
 		"storybook": "storybook dev -p 6006",
 		"test": "vitest",
 		"test:coverage": "vitest --coverage",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+		"publish:ci": "npm publish"
 	},
 	"dependencies": {
 		"@carbon/react": "1.46.1",
