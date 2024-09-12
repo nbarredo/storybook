@@ -1,7 +1,8 @@
 {
-	"name": "vite-project",
+	"name": "@eversource/storybook",
+	"version": "0.1.0",
 	"private": false,
-	"version": "0.0.0",
+	"homepage": "https://dev.azure.com/Eversource-Energy/ms-benchmark/_git/storybook?path=/README.md",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
