@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
+		"build-npm-package": "vite build",
 		"lint": "biome check",
 		"lint:fix": "biome check --write",
 		"preview": "vite preview",
