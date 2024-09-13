@@ -4,6 +4,21 @@
 	"private": false,
 	"homepage": "https://dev.azure.com/Eversource-Energy/ms-benchmark/_git/storybook?path=/README.md",
 	"type": "module",
+	"main": "dist/index.umd.js",
+	"module": "dist/index.es.js",
+	"exports": {
+		".": {
+			"import": "./dist/index.es.js",
+			"require": "./dist/index.umd.js"
+		},
+		"./dist/*.css": "./dist/*.css"
+	},
+	"files": [
+		"/dist"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build-npm-package": "vite build",
