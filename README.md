@@ -30,9 +30,9 @@ always-auth=true
 
 5. In your app's scss/css entry point file (usually something like index.scss or app.css), import Storybook's styles accordingly:
 
-- If your entry point is a SASS/SCSS file: `@use "../node_modules/@eversource/storybook/dist/esm/index.css";`
-- If your entry point is a CSS file: `@import url("../node_modules/@eversource/storybook/dist/esm/index.css");` or
-- `@import "../node_modules/@eversource/storybook/dist/esm/index.css";`
+- If your entry point is a SASS/SCSS file: `@use "../node_modules/@eversource/storybook/dist/index.css";`
+- If your entry point is a CSS file: `@import url("../node_modules/@eversource/storybook/dist/index.css");` or
+- `@import "../node_modules/@eversource/storybook/dist/index.css";`
 
 ## How to Contribute to Eversource Storybook
 
