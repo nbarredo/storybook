@@ -30,9 +30,9 @@ always-auth=true
 
 5. In your app's scss/css entry point file (usually something like index.scss or app.css), import Storybook's styles accordingly:
 
-- If your entry point is a SASS/SCSS file: `@use "../node_modules/@eversource/storybook/dist/esm/index.css";`
-- If your entry point is a CSS file: `@import url("../node_modules/@eversource/storybook/dist/esm/index.css");` or
-- `@import "../node_modules/@eversource/storybook/dist/esm/index.css";`
+- If your entry point is a SASS/SCSS file: `@use "../node_modules/@eversource/storybook/dist/index.css";`
+- If your entry point is a CSS file: `@import url("../node_modules/@eversource/storybook/dist/index.css");` or
+- `@import "../node_modules/@eversource/storybook/dist/index.css";`
 
 ## How to Contribute to Eversource Storybook
 
@@ -45,13 +45,11 @@ always-auth=true
 
 ## Writing code for the Storybook
 
-1.  Install the following IDE extensions in your IDE in order to ensure that linting and code formatting function properly:
+1.  Install the following IDE extension in your IDE in order to ensure that linting and code formatting function properly:
 
-- "ESLint"
-- "Prettier - Code Formatter"
-- "Stylelint"
+- "Biome" (biomejs.biome)
 
-  The extensions will automatically pick up the appropriate configuration from the project directory. Please be sure that you are pointing to the proper config files in the root of the project directory as opposed to some other location on your PC.
+  The extension will automatically pick up the appropriate configuration from the project directory. Please be sure that you are pointing to the proper config files in the root of the project directory as opposed to some other location on your PC.
 
 2.  There's no need to reinvent the wheel! Many Storybook components are based on components from [Carbon Design System (v10)](https://v10.carbondesignsystem.com/). Any new Storybook development should begin with a review of existing [Carbon components](https://v7-react.carbondesignsystem.com/?path=/story/getting-started--welcome) to see if something similar already exists. If it does, then you can import the carbon component into _your_ code and simply provide an Eversource _wrapper_ around the component, adding any Eversource-specific functionality that is required.
 
