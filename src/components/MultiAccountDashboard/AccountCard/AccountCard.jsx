@@ -9,7 +9,7 @@ import Header from "./Header/Header";
 import MobileCTA from "./MobileCTA/MobileCTA";
 import ParentContent from "./ParentContent";
 import Payment from "./Payment/Payment";
-
+import JsxParser from "react-jsx-parser";
 /**
  * The account card is a compact way to display key information about a customer's account.  This component should not be used in any other context except on the multi-account dashboard.
  */
@@ -39,6 +39,7 @@ function AccountCard({
 	isConnecticut = false,
 }) {
 	const isClosed = Boolean(cardStyle === "closed");
+	const childrenMessageText=()=><div class="cds--actionable-notification__title" >  <JsxParser jsx={alertText}/></div>; 
 
 	const paymentRef = useRef();
 	const autoPayBtnRef = useRef();
@@ -183,27 +184,30 @@ function AccountCard({
 			{cardStyle === "warning" && (
 				<InlineNotification
 					hideCloseButton
+					hasActionable={true}
 					kind="warning"
 					role="status"
-					title={alertText}
+					children={childrenMessageText()} 
 					className={styles.alert}
 				/>
 			)}
 			{cardStyle === "danger" && (
 				<InlineNotification
-					hideCloseButton
+					hideCloseButton 
+					hasActionable={true}
 					kind="error"
 					role="status"
-					title={alertText}
+					children={childrenMessageText()} 
 					className={styles.alert}
 				/>
 			)}
 			{cardStyle === "info" && (
 				<InlineNotification
 					hideCloseButton
+					hasActionable={true} 
 					kind="info"
 					role="status"
-					title={alertText}
+					children={childrenMessageText()} 
 					className={`${styles.alert} ${styles.info}`}
 				/>
 			)}

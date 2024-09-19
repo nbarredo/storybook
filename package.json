@@ -38,7 +38,8 @@
 		"@floating-ui/react": "^0.26.23",
 		"@mui/icons-material": "^6.0.2",
 		"react": "^18.3.1",
-		"react-dom": "^18.3.1"
+		"react-dom": "^18.3.1",
+		"react-jsx-parser": "^2.1.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",

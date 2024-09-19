@@ -1,5 +1,5 @@
 import React from "react";
-import { InlineNotification as CarbonInlineNotification } from "@carbon/react";
+import { InlineNotification as CarbonInlineNotification, ActionableNotification } from "@carbon/react";
 import PropTypes from "prop-types";
 import "./InlineNotification.scss";
 
@@ -7,13 +7,22 @@ import "./InlineNotification.scss";
  * Inline notifications show up in task flows, to notify users of the status of an action or system. They usually appear at the top of the primary content area or close to the item needing attention.  Other "kinds" will eventually be available once we have completed designs for them.
  */
 function InlineNotification(props) {
-  return (
-    <CarbonInlineNotification
-      {...props}
-      className={`ev-inline-notification ${props.className || ""}`}
-      
-    />
-  );
+  if(props.hasActionable){
+    return <ActionableNotification
+    {...props}
+    hasFocus={false}
+    className={`ev-inline-notification ${props.className || ""}`}
+    
+  />
+  }else{
+    return (
+      <CarbonInlineNotification
+        {...props} 
+        className={`ev-inline-notification ${props.className || ""}`}
+        
+      />
+    );
+  }
 }
 
 export { InlineNotification };
@@ -57,5 +66,8 @@ InlineNotification.propTypes = {
   subtitle: PropTypes.string,
 
   /** Specify the title */
-  title: PropTypes.string
+  title: PropTypes.string,
+  
+  /** Specify if the component has actionable html */
+  hasActionable: PropTypes.bool
 };
